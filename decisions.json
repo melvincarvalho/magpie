@@ -61,5 +61,31 @@
   "repo": "JavaScriptSolidServer/JavaScriptSolidServer",
   "priority": "later",
   "note": "CI is nice-to-have, not urgent"
+ },
+ {
+  "ts": "2026-07-08T18:54:50.406Z",
+  "id": "rdflib-js-readme-links-to",
+  "repo": "linkeddata/rdflib.js",
+  "priority": "pin",
+  "note": "test pin from API"
+ },
+ {
+  "ts": "2026-07-08T18:54:50.432Z",
+  "id": "rdflib-js-readme-links-to",
+  "repo": "linkeddata/rdflib.js",
+  "priority": "normal",
+  "note": "test unpin"
+ },
+ {
+  "ts": "2026-07-08T18:57:33.504Z",
+  "id": "solid-object-acptowac-emits-acppublicagent",
+  "repo": "solid/object",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-08T18:57:33.525Z",
+  "id": "solid-object-acptowac-emits-acppublicagent",
+  "repo": "solid/object",
+  "priority": "normal"
  }
 ]

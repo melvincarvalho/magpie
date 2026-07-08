@@ -84,6 +84,13 @@ A decision carries an `action`, a `priority`, or both — two independent axes:
 
 Never rewrite or delete entries; corrections are new entries.
 
+Two ways to append a decision: edit `decisions.json` directly (then run
+`refresh-worklist.mjs`), or POST it to **`magpie-serve.mjs`** — a tiny
+localhost-only write endpoint (`127.0.0.1:5446`, `POST /decision`) that appends
+and regenerates the worklist in one step. It is the ONLY writer of
+`decisions.json` and the only reason the read-only mirror can stay read-only.
+The dashboard's pin/unpin buttons drive it; `priority:"normal"` clears a pin.
+
 **After recording decisions, run `node refresh-worklist.mjs`** — it rewrites
 `worklist.json` as the latest survey's ranked findings minus anything
 done/rejected. Accepted items stay (in flight); later items sink. This is

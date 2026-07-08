@@ -47,10 +47,14 @@ for (const a of verdict.values()) if (a in counts) counts[a]++
 const pri = { pin: 0, later: 0 }
 for (const p of priority.values()) if (p in pri) pri[p]++
 
+const shownPriority = id => { // only pin/later surface; 'normal' clears
+  const p = priority.get(id)
+  return p === 'pin' || p === 'later' ? p : null
+}
 const item = f => ({
   id: f.id, repo: f.repo, pitch: f.pitch, kind: f.kind, effort: f.effort,
   score: f.score, status: verdict.get(f.id) || 'open',
-  priority: priority.get(f.id) || null,
+  priority: shownPriority(f.id),
   evidence: f.evidence, confidence: f.confidence, seeAlso: f.seeAlso
 })
 const worklist = {
