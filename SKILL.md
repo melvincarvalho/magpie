@@ -91,7 +91,11 @@ Per-repo scratchpad (`.git/magpie.json`):
    signals: recent pushes, stars/forks, open issues, failing CI, TODO and
    FIXME density, broken links in READMEs, missing licenses, security
    smells. Staleness alone is NOT a finding — an untouched-for-8-years
-   repo nobody uses scores near zero.
+   repo nobody uses scores near zero. An **empty local clone is not a sync
+   failure** — the upstream is usually just genuinely empty (0 commits);
+   verify the remote actually has commits before claiming gh-sync failed.
+   (Empty clones are excluded from the dashboard inventory, so you should
+   not normally see them.)
 4. **Dig only where promising.** Read code in the top candidates, at
    filesystem speed, straight from the mirror. Write findings to each
    repo's `.git/magpie.json`.
