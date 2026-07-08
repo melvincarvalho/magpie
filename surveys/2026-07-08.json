@@ -1,8 +1,8 @@
 {
  "generated": "2026-07-08",
- "cohort": "run 1: active surface (<550d), 25 repos deep-read; run 2: rotation — 25 fresh repos not in run 1 + org-wide nostr-client sweep (skipped: bitcoinknots/bitcoin upstream fork; nostr-client sampled ameba/theme/wallet + sweep)",
+ "cohort": "run 1: active surface (<550d), 25 repos; run 2: 25 fresh repos + nostr-client org sweep; run 3: 49 more fresh repos (bitcoin-kernel/bitmark/recordweb/jsclaw/solid-apps/bitcoin-desktop). Skipped: bitcoinknots/bitcoin (upstream fork); large forks audited for fork-changes only.",
  "reposScored": 511,
- "reposDeepRead": 50,
+ "reposDeepRead": 99,
  "findings": [
   {
    "repo": "solid-apps/alarm",
@@ -1565,6 +1565,1406 @@
    "seeAlso": [
     "http://localhost:5445/solid-apps/tileloom/",
     "https://github.com/solid-apps/tileloom"
+   ]
+  },
+  {
+   "id": "nostr-skills-github-io-the-sites-primary-install",
+   "repo": "nostr-skills/nostr-skills.github.io",
+   "pitch": "The site's primary install command `npm install nostrskills` and the two npmjs.com/package/nostrskills links are dead — the npm registry returns 404 for that package, so the copy-to-clipboard CTA gives visitors a command that fails.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 26,
+   "evidence": "index.html:268,246,370",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-skills/nostr-skills.github.io/",
+    "https://github.com/nostr-skills/nostr-skills.github.io"
+   ]
+  },
+  {
+   "id": "nostr-skills-github-io-the-meta-description-and",
+   "repo": "nostr-skills/nostr-skills.github.io",
+   "pitch": "The meta description and og:image:alt list only 5 skills, omitting 'Nostr Social', contradicting the page's own 'Six skills. One protocol.'",
+   "kind": "docs",
+   "effort": "small",
+   "score": 13,
+   "evidence": "index.html:7,17,276",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-skills/nostr-skills.github.io/",
+    "https://github.com/nostr-skills/nostr-skills.github.io"
+   ]
+  },
+  {
+   "id": "nostr-skills-github-io-footerfeature-copy-claims-agpl30only",
+   "repo": "nostr-skills/nostr-skills.github.io",
+   "pitch": "Footer/feature copy claims 'AGPL-3.0-only' but the LICENSE grants version 3 'or any later version' (AGPL-3.0-or-later); the SPDX id contradicts the grant.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 10,
+   "evidence": "index.html:354,373; LICENSE:9",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nostr-skills/nostr-skills.github.io/",
+    "https://github.com/nostr-skills/nostr-skills.github.io"
+   ]
+  },
+  {
+   "id": "solidskills-github-io-license-contains-only-the",
+   "repo": "solidskills/solidskills.github.io",
+   "pitch": "LICENSE contains only the ~18-line AGPL notice boilerplate, not the full license text, yet states 'You should have received a copy of the GNU Affero General Public License' — the copy is absent.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 8,
+   "evidence": "LICENSE:16",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solidskills/solidskills.github.io/",
+    "https://github.com/solidskills/solidskills.github.io"
+   ]
+  },
+  {
+   "id": "solidskills-github-io-license-identifier-inconsistent-footer",
+   "repo": "solidskills/solidskills.github.io",
+   "pitch": "License identifier inconsistent: footer and npm package declare 'AGPL-3.0-only' but the LICENSE grants v3 'or any later version' (AGPL-3.0-or-later).",
+   "kind": "docs",
+   "effort": "small",
+   "score": 8,
+   "evidence": "index.html:413",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solidskills/solidskills.github.io/",
+    "https://github.com/solidskills/solidskills.github.io"
+   ]
+  },
+  {
+   "id": "gamestr-packagejson-declares-nostrtools-reconnectingwebsocket",
+   "repo": "melvincarvalho/gamestr",
+   "pitch": "package.json declares nostr-tools, reconnecting-websocket and ws but none are used (nostr-tools/ws never imported; reconnecting-websocket loaded from CDN; tui.js uses built-in WebSocket) — remove them and reconcile the README 'Zero Dependencies' claim.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 10,
+   "evidence": "package.json:28-32",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/gamestr/",
+    "https://github.com/melvincarvalho/gamestr"
+   ]
+  },
+  {
+   "id": "gamestr-neither-client-verifies-nostr",
+   "repo": "melvincarvalho/gamestr",
+   "pitch": "Neither client verifies Nostr event signatures or author pubkey before rendering, so a malicious/buggy relay can spoof arbitrary progress numbers.",
+   "kind": "security",
+   "effort": "medium",
+   "score": 10,
+   "evidence": "index.html:636",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/gamestr/",
+    "https://github.com/melvincarvalho/gamestr"
+   ]
+  },
+  {
+   "id": "gamestr-readme-screenshot-embeds-an",
+   "repo": "melvincarvalho/gamestr",
+   "pitch": "README screenshot embeds an image from via.placeholder.com, a discontinued service, so the Screenshots image is a dead link.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 8,
+   "evidence": "README.md:40",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/gamestr/",
+    "https://github.com/melvincarvalho/gamestr"
+   ]
+  },
+  {
+   "id": "browser-node-readme-heading-what-it",
+   "repo": "bitcoin-kernel/browser-node",
+   "pitch": "README heading 'What it does — six acts' is contradicted by the table below listing 11 acts and by line 90 calling it 'the ten acts' — pick one consistent count.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "evidence": "README.md:36,90",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-kernel/browser-node/",
+    "https://github.com/bitcoin-kernel/browser-node"
+   ]
+  },
+  {
+   "id": "browser-node-the-demo-url-is",
+   "repo": "bitcoin-kernel/browser-node",
+   "pitch": "The demo URL is advertised as http:// everywhere, but key generation uses crypto.subtle and OPFS, which require a secure context — the http:// link as written breaks keygen; use https://.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 14,
+   "evidence": "wasm-keygen.js:81; package.json:7; README.md:31",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-kernel/browser-node/",
+    "https://github.com/bitcoin-kernel/browser-node"
+   ]
+  },
+  {
+   "id": "noskey-packagejson-ships-fileslib-which",
+   "repo": "melvincarvalho/noskey",
+   "pitch": "package.json ships \"files\":[\"lib/\"] which publishes dead backups lib/index.js.new and lib/index.js.saf plus a stray lib/key.pub to the npm tarball; remove/exclude them.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 22,
+   "evidence": "package.json:12; lib/index.js.saf,.new,key.pub",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/noskey/",
+    "https://github.com/melvincarvalho/noskey"
+   ]
+  },
+  {
+   "id": "noskey-readme-options-documents-only",
+   "repo": "melvincarvalho/noskey",
+   "pitch": "README Options documents only -v/-p/-s/-h but the CLI also defines a working -n/--npub vanity option, so it is undocumented.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "evidence": "bin/noskey.js:23-27 vs README.md:82",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/noskey/",
+    "https://github.com/melvincarvalho/noskey"
+   ]
+  },
+  {
+   "id": "rwc-indexbs-sets-groupwicg-but",
+   "repo": "recordweb/rwc",
+   "pitch": "index.bs sets Group:wicg but README states the spec is developed by the RecordWeb W3C Community Group; the Bikeshed Group metadata should be the RecordWeb CG, not WICG.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 8,
+   "evidence": "index.bs:6 vs README.md:9",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/recordweb/rwc/",
+    "https://github.com/recordweb/rwc"
+   ]
+  },
+  {
+   "id": "node-headersync-passes-nowthisnow7200-to",
+   "repo": "bitcoin-kernel/node",
+   "pitch": "HeaderSync passes now:this.now()+7200 to validateChain, but the engine's future-block rule already adds maxFutureBlockTime (7200s); this double-counts, relaxing the 2-hour future-timestamp consensus rule to 4 hours on the live sync path.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 18,
+   "evidence": "src/chain/header-sync.js:53",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-kernel/node/",
+    "https://github.com/bitcoin-kernel/node"
+   ]
+  },
+  {
+   "id": "node-in-headersyncsync-when-a",
+   "repo": "bitcoin-kernel/node",
+   "pitch": "In HeaderSync.sync, when a peer re-serves a full 2000-header batch already in the store, #ingest returns added:0,stop:false and the loop neither breaks nor advances the locator, so a peer serving known headers can spin sync forever.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 6,
+   "evidence": "src/chain/header-sync.js:74",
+   "confidence": 2,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-kernel/node/",
+    "https://github.com/bitcoin-kernel/node"
+   ]
+  },
+  {
+   "id": "kernel-swiftsync-readme-quickstart-calls",
+   "repo": "bitcoin-kernel/kernel",
+   "pitch": "swiftsync README quickstart calls acc.remove(encodeCoin(coin)), but the Accumulator class defines no remove method (only add/spend); the documented example throws — should be acc.spend(...).",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "evidence": "packages/swiftsync/README.md:15",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-kernel/kernel/",
+    "https://github.com/bitcoin-kernel/kernel"
+   ]
+  },
+  {
+   "id": "kernel-root-readme-lists-the",
+   "repo": "bitcoin-kernel/kernel",
+   "pitch": "Root README lists the swiftsync package as '(planned)' but it is fully implemented and shipped as @bitcoin-kernel/swiftsync with 6 passing test files.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "evidence": "README.md:23",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-kernel/kernel/",
+    "https://github.com/bitcoin-kernel/kernel"
+   ]
+  },
+  {
+   "id": "bitmark-explorer-markpanejs-sets-linkhref-markreference",
+   "repo": "project-bitmark/bitmark-explorer",
+   "pitch": "mark-pane.js sets link.href = mark.reference directly for url-type marks and the /reference POST endpoint stores the reference with no scheme validation, so an unauthenticated attacker can store a javascript: reference that runs arbitrary JS on click — able to read the wallet keys in localStorage.",
+   "kind": "security",
+   "effort": "small",
+   "score": 24,
+   "evidence": "web/panes/mark-pane.js:649; marks.js:86-94",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/bitmark-explorer/",
+    "https://github.com/project-bitmark/bitmark-explorer"
+   ]
+  },
+  {
+   "id": "poc-fragestunde-antwortmanagementhtml-case-filter-ends",
+   "repo": "recordweb/poc-fragestunde",
+   "pitch": "antwortmanagement.html case filter ends in ||true so it always returns true, so a Bundesrätin sees every department's cases instead of only her own as the README promises.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 15,
+   "evidence": "apps/antwortmanagement/antwortmanagement.html:517",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/recordweb/poc-fragestunde/",
+    "https://github.com/recordweb/poc-fragestunde"
+   ]
+  },
+  {
+   "id": "poc-fragestunde-readme-repositorystructure-tree-lists",
+   "repo": "recordweb/poc-fragestunde",
+   "pitch": "README repository-structure tree lists viewer/rw-viewer.html but no viewer directory/file exists.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 10,
+   "evidence": "README.md:173",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/recordweb/poc-fragestunde/",
+    "https://github.com/recordweb/poc-fragestunde"
+   ]
+  },
+  {
+   "id": "poc-fragestunde-readme-references-example-record",
+   "repo": "recordweb/poc-fragestunde",
+   "pitch": "README references example record case-ejpd-hs2026.json but the actual file is case-bk-hs2026.json, so the documented path is broken.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 10,
+   "evidence": "README.md:159",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/recordweb/poc-fragestunde/",
+    "https://github.com/recordweb/poc-fragestunde"
+   ]
+  },
+  {
+   "id": "w3c-cg-note-readme-frontmatter-says-draft",
+   "repo": "recordweb/w3c-cg-note",
+   "pitch": "README front-matter says 'Draft v0.0.2' but the spec document header declares 'Version: 0.2 (Draft)', so the repo advertises a version the document contradicts.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 8,
+   "evidence": "README.md:5 vs rw_w3c_cg_note.md:13",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/recordweb/w3c-cg-note/",
+    "https://github.com/recordweb/w3c-cg-note"
+   ]
+  },
+  {
+   "id": "w3c-cg-note-readme-labels-a-link",
+   "repo": "recordweb/w3c-cg-note",
+   "pitch": "README labels a link 'W3C DID Core 1.1' but points at TR/did-core/ (DID v1.0); the spec's own reference uses did-1.1, so the README link should update to the 1.1 URL.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 8,
+   "evidence": "README.md:26 vs rw_w3c_cg_note.md:552",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/recordweb/w3c-cg-note/",
+    "https://github.com/recordweb/w3c-cg-note"
+   ]
+  },
+  {
+   "id": "w3c-cg-note-readme-license-section-declares",
+   "repo": "recordweb/w3c-cg-note",
+   "pitch": "README License section declares W3C Software and Document License but the repo has no LICENSE file.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 8,
+   "evidence": "README.md:94",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/recordweb/w3c-cg-note/",
+    "https://github.com/recordweb/w3c-cg-note"
+   ]
+  },
+  {
+   "id": "shapes-docsvalidationstrategymd-says-rdfslabel-is",
+   "repo": "solid/shapes",
+   "pitch": "docs/validation-strategy.md says rdfs:label is the required per-shape metadata field, but the validator uses sh:name and all 26 shape files use sh:name — a contributor following the docs would fail CI.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 33,
+   "evidence": "docs/validation-strategy.md:33; scripts/check-metadata-and-immutability-file.py:39",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid/shapes/",
+    "https://github.com/solid/shapes"
+   ]
+  },
+  {
+   "id": "shapes-docsvalidationstrategymd-references-files-that",
+   "repo": "solid/shapes",
+   "pitch": "docs/validation-strategy.md references files that don't exist: workflow validate-shapes.yml (actual: main-pr-validation.yml) and two scripts missing their -dir/-file suffixes.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 22,
+   "evidence": "docs/validation-strategy.md:69-75",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid/shapes/",
+    "https://github.com/solid/shapes"
+   ]
+  },
+  {
+   "id": "shapes-docsvalidationstrategymd-claims-immutabilityversioning-are",
+   "repo": "solid/shapes",
+   "pitch": "docs/validation-strategy.md claims immutability/versioning are auto-enforced in CI, but check_immutability is an empty placeholder and no versioning check script exists.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 18,
+   "evidence": "docs/validation-strategy.md:39-50; check-metadata-and-immutability-file.py:70-74",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solid/shapes/",
+    "https://github.com/solid/shapes"
+   ]
+  },
+  {
+   "id": "faq-readme-declares-license-mit",
+   "repo": "fork-talk/faq",
+   "pitch": "README declares '## License / MIT' but the repo has no LICENSE file, so the MIT terms are unenforceable; add one.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "evidence": "README.md:36",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/fork-talk/faq/",
+    "https://github.com/fork-talk/faq"
+   ]
+  },
+  {
+   "id": "faq-logopng-is-a-914kb",
+   "repo": "fork-talk/faq",
+   "pitch": "logo.png is a 914KB 1254x1254 PNG rendered at width=200; resizing/compressing cuts ~880KB from every homepage load (same oversized asset as sibling fork-talk repos).",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 15,
+   "evidence": "index.md:6",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/fork-talk/faq/",
+    "https://github.com/fork-talk/faq"
+   ]
+  },
+  {
+   "id": "yasgui-root-packagejson-lintstaged-glob",
+   "repo": "rdfjs/Yasgui",
+   "pitch": "Root package.json lint-staged glob \"*.{js, css, scss}\" has literal spaces inside the brace, so css/scss files never match and are never prettier-formatted on commit — should be \"*.{js,css,scss}\".",
+   "kind": "bug",
+   "effort": "small",
+   "score": 20,
+   "evidence": "package.json:32",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/rdfjs/Yasgui/",
+    "https://github.com/rdfjs/Yasgui"
+   ]
+  },
+  {
+   "id": "yasgui-packagesyasgui-declares-es6objectassign-as",
+   "repo": "rdfjs/Yasgui",
+   "pitch": "packages/yasgui declares es6-object-assign as a runtime dependency but it is never imported in source; safe to drop.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 20,
+   "evidence": "packages/yasgui/package.json:42",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/rdfjs/Yasgui/",
+    "https://github.com/rdfjs/Yasgui"
+   ]
+  },
+  {
+   "id": "electrum-bitmark-the-wallets-blockexplorer-menu",
+   "repo": "project-bitmark/electrum-bitmark",
+   "pitch": "The wallet's block-explorer menu still lists only Bitcoin explorers, so 'View on block explorer' opens a Bitcoin site with a BTMK txid/address and shows the wrong chain or 404 — the rebrand missed the explorer list.",
+   "kind": "bug",
+   "effort": "medium",
+   "score": 22,
+   "evidence": "electrum/util.py:955",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/electrum-bitmark/",
+    "https://github.com/project-bitmark/electrum-bitmark"
+   ]
+  },
+  {
+   "id": "electrum-bitmark-setuppy-still-declares-nameelectrum",
+   "repo": "project-bitmark/electrum-bitmark",
+   "pitch": "setup.py still declares name=\"Electrum\" and url=electrum.org, so pip install builds a package branded plain 'Electrum', contradicting the rebrand.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 15,
+   "evidence": "setup.py:59",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/electrum-bitmark/",
+    "https://github.com/project-bitmark/electrum-bitmark"
+   ]
+  },
+  {
+   "id": "ntorrent-packagelockjson-declares-version-011",
+   "repo": "nostrapps/ntorrent",
+   "pitch": "package-lock.json declares version 0.1.1 (twice) while package.json declares 0.0.3, so npm ci fails with an out-of-sync lockfile.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 10,
+   "evidence": "package-lock.json:3",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostrapps/ntorrent/",
+    "https://github.com/nostrapps/ntorrent"
+   ]
+  },
+  {
+   "id": "ntorrent-relay-boot-logic-fires",
+   "repo": "nostrapps/ntorrent",
+   "pitch": "Relay boot logic fires when eoseCount>=connected, so a fast/empty relay's EOSE can trigger render before slower relays open, silently dropping their torrent events.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 9,
+   "evidence": "index.html:213",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/nostrapps/ntorrent/",
+    "https://github.com/nostrapps/ntorrent"
+   ]
+  },
+  {
+   "id": "bitmark-testnet-fixedseed-loop-iterates",
+   "repo": "project-bitmark/bitmark",
+   "pitch": "Testnet fixed-seed loop iterates over pnSeedTest but memcpy copies IPs from the mainnet pnSeed array, so testnet loads a mainnet seed IP instead of the defined test seed.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 15,
+   "evidence": "src/chainparams.cpp:199",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/bitmark/",
+    "https://github.com/project-bitmark/bitmark"
+   ]
+  },
+  {
+   "id": "bitmark-toplevel-license-is-the",
+   "repo": "project-bitmark/bitmark",
+   "pitch": "Top-level LICENSE is the Unlicense (public domain) while COPYING is MIT and source headers reference COPYING as MIT/X11, so the two license files contradict each other.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 18,
+   "evidence": "LICENSE:1",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/bitmark/",
+    "https://github.com/project-bitmark/bitmark"
+   ]
+  },
+  {
+   "id": "bitmark-readme-claims-eight-mining",
+   "repo": "project-bitmark/bitmark",
+   "pitch": "README claims eight mining algorithms and lists YESCRYPT, but the cpuminer algo value list omits yescrypt (only 7 values).",
+   "kind": "docs",
+   "effort": "small",
+   "score": 12,
+   "evidence": "README.md:78",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/bitmark/",
+    "https://github.com/project-bitmark/bitmark"
+   ]
+  },
+  {
+   "id": "pfennig-chainparamscpp-mainnet-dns-seed",
+   "repo": "project-bitmark/pfennig",
+   "pitch": "chainparams.cpp mainnet DNS seed host is misspelled 'seed.pgennif.co' (letters transposed; testnet uses pfennig.co), so mainnet nodes get zero DNS peer discovery.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 30,
+   "evidence": "src/chainparams.cpp:64",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/pfennig/",
+    "https://github.com/project-bitmark/pfennig"
+   ]
+  },
+  {
+   "id": "pfennig-chainparamscpp-references-undefined-identifiers",
+   "repo": "project-bitmark/pfennig",
+   "pitch": "chainparams.cpp references undefined identifiers P2PPORT/RPCPORT and lexically-invalid tokens 1P2PPORT/1RPCPORT defined nowhere, so pfennigd cannot compile despite the README claiming 'all tests passing'.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 24,
+   "evidence": "src/chainparams.cpp:117",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/pfennig/",
+    "https://github.com/project-bitmark/pfennig"
+   ]
+  },
+  {
+   "id": "pfennig-license-is-the-unlicense",
+   "repo": "project-bitmark/pfennig",
+   "pitch": "LICENSE is the Unlicense but COPYING is MIT and every source header points to COPYING/MIT, giving two contradictory license terms.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 12,
+   "evidence": "LICENSE:1",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/pfennig/",
+    "https://github.com/project-bitmark/pfennig"
+   ]
+  },
+  {
+   "id": "electrumx-bitmark-electrumxbitmarkservice-loads-config-via",
+   "repo": "project-bitmark/electrumx-bitmark",
+   "pitch": "electrumx-bitmark.service loads config via EnvironmentFile but the shipped conf uses shell 'export VAR=...' lines, which systemd's EnvironmentFile parser does not support, so the documented systemd deployment starts with no COIN/DAEMON_URL/DB_DIRECTORY and fails.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 24,
+   "evidence": "contrib/bitmark/electrumx-bitmark.service:11",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/electrumx-bitmark/",
+    "https://github.com/project-bitmark/electrumx-bitmark"
+   ]
+  },
+  {
+   "id": "electrumx-bitmark-bitmarktestnet-ships-an-allzeros",
+   "repo": "project-bitmark/electrumx-bitmark",
+   "pitch": "BitmarkTestnet ships an all-zeros placeholder GENESIS_HASH, so COIN=Bitmark NET=testnet cannot validate genesis and will not sync.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 15,
+   "evidence": "src/electrumx/lib/coins.py:2979",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/electrumx-bitmark/",
+    "https://github.com/project-bitmark/electrumx-bitmark"
+   ]
+  },
+  {
+   "id": "electrumx-bitmark-ticker-stated-inconsistently-top",
+   "repo": "project-bitmark/electrumx-bitmark",
+   "pitch": "Ticker stated inconsistently: top README says BTMK while the Bitmark coin class sets SHORTNAME='BTM' and contrib README also says BTM.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "evidence": "README.md:9",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/electrumx-bitmark/",
+    "https://github.com/project-bitmark/electrumx-bitmark"
+   ]
+  },
+  {
+   "id": "bitcoin-kernel-github-io-readme-use-it-as",
+   "repo": "bitcoin-kernel/bitcoin-kernel.github.io",
+   "pitch": "README 'Use it as a library' tells users to import ./engine/index.js 'today', but that file no longer exists after the CDN cutover; the whole createKernel() section is stale and the import path is broken.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "evidence": "README.md:30-31",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-kernel/bitcoin-kernel.github.io/",
+    "https://github.com/bitcoin-kernel/bitcoin-kernel.github.io"
+   ]
+  },
+  {
+   "id": "bitcoin-kernel-github-io-spechtml-footer-states-generated",
+   "repo": "bitcoin-kernel/bitcoin-kernel.github.io",
+   "pitch": "spec.html footer states 'Generated from validate.jsonld (engine v0.0.24)' but the committed validate.jsonld it cites declares version 0.0.13.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 6,
+   "evidence": "spec.html:157",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-kernel/bitcoin-kernel.github.io/",
+    "https://github.com/bitcoin-kernel/bitcoin-kernel.github.io"
+   ]
+  },
+  {
+   "id": "schema-readme-version-badge-says",
+   "repo": "bitcoin-desktop/schema",
+   "pitch": "README version badge says v0.0.14 but the roadmap ends at v0.0.17 and package.json is 0.0.24 — the headline version is stale and self-contradicting.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 10,
+   "evidence": "README.md:3",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-desktop/schema/",
+    "https://github.com/bitcoin-desktop/schema"
+   ]
+  },
+  {
+   "id": "schema-readme-claims-the-validate",
+   "repo": "bitcoin-desktop/schema",
+   "pitch": "README claims the validate module has '31 rules' but schema/validate.jsonld defines 34 ValidationRules.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 10,
+   "evidence": "README.md:126",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-desktop/schema/",
+    "https://github.com/bitcoin-desktop/schema"
+   ]
+  },
+  {
+   "id": "pigeon-readme-discovery-summary-says",
+   "repo": "solid-apps/pigeon",
+   "pitch": "README Discovery summary says 'pod's built-in relay first, aggregator as fallback', but loadContacts does the opposite for public pods — aggregator first, pod relay only as fallback.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 6,
+   "evidence": "index.html:1053",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/pigeon/",
+    "https://github.com/solid-apps/pigeon"
+   ]
+  },
+  {
+   "id": "pigeon-dummycontact-is-defined-but",
+   "repo": "solid-apps/pigeon",
+   "pitch": "DUMMY_CONTACT is defined but never referenced, making it and the c.dummy/'demo' rendering branches dead code.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 5,
+   "evidence": "index.html:950",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/pigeon/",
+    "https://github.com/solid-apps/pigeon"
+   ]
+  },
+  {
+   "id": "solid-oidc-login-sends-redirecturi-including",
+   "repo": "JavaScriptSolidServer/solid-oidc",
+   "pitch": "login() sends redirect_uri including the query string but the token exchange sends redirect_uri without it, so per RFC 6749 (values must be identical) login breaks for any app whose redirect URI contains a query string.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 22,
+   "evidence": "solid-oidc.js:464,499,562",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/solid-oidc/",
+    "https://github.com/JavaScriptSolidServer/solid-oidc"
+   ]
+  },
+  {
+   "id": "solid-oidc-the-refreshrestore-path-never",
+   "repo": "JavaScriptSolidServer/solid-oidc",
+   "pitch": "The refresh/restore path never calls validateAccessToken, so refreshed access tokens are only decodeJwt'd with no signature/issuer/audience/DPoP-binding checks, unlike initial login — inconsistent security on the primary page-reload path.",
+   "kind": "security",
+   "effort": "small",
+   "score": 14,
+   "evidence": "solid-oidc.js:605",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/solid-oidc/",
+    "https://github.com/JavaScriptSolidServer/solid-oidc"
+   ]
+  },
+  {
+   "id": "record-test-packagelockjson-declares-name-recordssmoke",
+   "repo": "melvincarvalho/record-test",
+   "pitch": "package-lock.json declares name 'records-smoke', version 1.0.0, license ISC while package.json declares name 'record-test', 0.0.1, MIT — the lockfile is out of sync with the manifest.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 15,
+   "evidence": "package-lock.json:2-10 vs package.json:2-9",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/record-test/",
+    "https://github.com/melvincarvalho/record-test"
+   ]
+  },
+  {
+   "id": "record-test-packagejson-declares-mit-but",
+   "repo": "melvincarvalho/record-test",
+   "pitch": "package.json declares MIT but the repo has no LICENSE file.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 10,
+   "evidence": "package.json:9",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/record-test/",
+    "https://github.com/melvincarvalho/record-test"
+   ]
+  },
+  {
+   "id": "did-nostr-github-io-skillmds-npubhex-example-is",
+   "repo": "did-nostr/did-nostr.github.io",
+   "pitch": "SKILL.md's npub->hex example is wrong: decoding the shown npub yields c04d994f... not the 124c0fa9... in the comment, so the copy-paste build example is internally inconsistent (same wrong-npub family as nostrcg/did-nostr).",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "evidence": "SKILL.md:32",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/did-nostr/did-nostr.github.io/",
+    "https://github.com/did-nostr/did-nostr.github.io"
+   ]
+  },
+  {
+   "id": "aam-libindexjs-imports-bytestohexhextobytes-from",
+   "repo": "melvincarvalho/aam",
+   "pitch": "lib/index.js imports {bytesToHex,hexToBytes} from @noble/hashes/utils but @noble/hashes is not a declared dependency (resolves only via nostr-tools' transitive hoist), so a stricter install or nostr-tools bump breaks signing.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 22,
+   "evidence": "lib/index.js:8",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/aam/",
+    "https://github.com/melvincarvalho/aam"
+   ]
+  },
+  {
+   "id": "aam-exported-getclaudehome-returns-the",
+   "repo": "melvincarvalho/aam",
+   "pitch": "Exported getClaudeHome() returns the identifier CLAUDE_HOME which is never defined (only GLOBAL_CLAUDE_HOME exists), so any caller of this public API throws ReferenceError.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 15,
+   "evidence": "lib/index.js:1362",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/aam/",
+    "https://github.com/melvincarvalho/aam"
+   ]
+  },
+  {
+   "id": "aam-readme-documents-only-the",
+   "repo": "melvincarvalho/aam",
+   "pitch": "README documents only the legacy A2A commands and omits the tool's primary current commands (skill/agent install, sign, verify, search) which are fully implemented in bin/aam.js.",
+   "kind": "docs",
+   "effort": "medium",
+   "score": 18,
+   "evidence": "README.md:211",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/aam/",
+    "https://github.com/melvincarvalho/aam"
+   ]
+  },
+  {
+   "id": "xlogin-nip04-encryptdecrypt-call-cryptosubtle",
+   "repo": "melvincarvalho/xlogin",
+   "pitch": "NIP-04 encrypt/decrypt call crypto.subtle directly without the non-secure-context fallback the file added for sha256/signing, so window.nostr.nip04.encrypt/decrypt (advertised in README) throw on plain-HTTP LAN/IP origins.",
+   "kind": "bug",
+   "effort": "medium",
+   "score": 24,
+   "evidence": "xlogin.js:172",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/xlogin/",
+    "https://github.com/melvincarvalho/xlogin"
+   ]
+  },
+  {
+   "id": "xlogin-readme-builtin-solid-providers",
+   "repo": "melvincarvalho/xlogin",
+   "pitch": "README 'Built-in Solid Providers' lists only 4 but the modal renders solidweb.app plus the current origin too, so the documented list contradicts the code.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 20,
+   "evidence": "README.md:128",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/xlogin/",
+    "https://github.com/melvincarvalho/xlogin"
+   ]
+  },
+  {
+   "id": "xlogin-packagejson-pins-solidoidc-008",
+   "repo": "melvincarvalho/xlogin",
+   "pitch": "package.json pins solid-oidc ^0.0.8 but the runtime import loads solid-oidc@0.0.9 from esm.sh — declared vs used version mismatch.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 16,
+   "evidence": "xlogin.js:80",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/xlogin/",
+    "https://github.com/melvincarvalho/xlogin"
+   ]
+  },
+  {
+   "id": "verify-readme-claims-each-mark",
+   "repo": "blocktrails/verify",
+   "pitch": "README claims each mark is verified to spend the previous one, but linkOK is only rendered as text and never affects the result — a broken chain link still shows the green verified pill and increments okCount.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 20,
+   "evidence": "index.html:146-154",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/blocktrails/verify/",
+    "https://github.com/blocktrails/verify"
+   ]
+  },
+  {
+   "id": "verify-on-amount-mismatch-the",
+   "repo": "blocktrails/verify",
+   "pitch": "On amount mismatch the mark is styled orange 'pend' with label 'amount mismatch' but counted into badCount not pendCount, so row and summary disagree.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 15,
+   "evidence": "index.html:148-150",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/blocktrails/verify/",
+    "https://github.com/blocktrails/verify"
+   ]
+  },
+  {
+   "id": "verify-parsetxo-can-return-null",
+   "repo": "blocktrails/verify",
+   "pitch": "parseTxo can return null but t.commit is dereferenced outside the try block, so a single bad txo entry throws an uncaught TypeError that halts rendering of all remaining marks.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 12,
+   "evidence": "index.html:135-138",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/blocktrails/verify/",
+    "https://github.com/blocktrails/verify"
+   ]
+  },
+  {
+   "id": "verify-an-empty-trail-0",
+   "repo": "blocktrails/verify",
+   "pitch": "An empty trail (0 marks) evaluates allOK true and shows the green 'verified — all 0/0 marks confirmed' banner, falsely presenting nothing-to-verify as fully verified.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 8,
+   "evidence": "index.html:169-172",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/blocktrails/verify/",
+    "https://github.com/blocktrails/verify"
+   ]
+  },
+  {
+   "id": "discuss-discussacl-grants-aclwrite-not",
+   "repo": "solid-apps/discuss",
+   "pitch": "discussAcl() grants acl:Write (not just Append) to acl:AuthenticatedAgent on the whole container with acl:default, so any authenticated user can overwrite or DELETE any other user's posts — contradicting the README's Append model and 'author-gated' claim (enforced only in the UI).",
+   "kind": "security",
+   "effort": "small",
+   "score": 20,
+   "evidence": "app.js:325 vs README.md:25",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/discuss/",
+    "https://github.com/solid-apps/discuss"
+   ]
+  },
+  {
+   "id": "gitmark-legacy-bingitmark-interpolates-a",
+   "repo": "solidpayorg/gitmark",
+   "pitch": "Legacy bin/git-mark interpolates a git-commit-message-derived token straight into execSync shell strings, so a crafted 'gitmark:a$(...)' commit subject yields arbitrary command execution — same execSync-interpolation class fixed in fund-agent.",
+   "kind": "security",
+   "effort": "medium",
+   "score": 18,
+   "evidence": "bin/git-mark:243",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solidpayorg/gitmark/",
+    "https://github.com/solidpayorg/gitmark"
+   ]
+  },
+  {
+   "id": "gitmark-packagelockjson-declares-license-mit",
+   "repo": "solidpayorg/gitmark",
+   "pitch": "package-lock.json declares license MIT while package.json, README badge and the 34KB LICENSE all say AGPL-3.0-or-later — a metadata contradiction.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "evidence": "package-lock.json:10",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solidpayorg/gitmark/",
+    "https://github.com/solidpayorg/gitmark"
+   ]
+  },
+  {
+   "id": "gitmark-bin-scripts-require-bitcoinjslib",
+   "repo": "solidpayorg/gitmark",
+   "pitch": "bin scripts require bitcoinjs-lib, tiny-secp256k1, minimist, gitlog and ws, but package.json dependencies lists only @noble/curves and @noble/hashes, so the shipped bins throw MODULE_NOT_FOUND on a clean install.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 15,
+   "evidence": "bin/git-mark:6",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solidpayorg/gitmark/",
+    "https://github.com/solidpayorg/gitmark"
+   ]
+  },
+  {
+   "id": "podwire-packagelockjson-still-pins-version",
+   "repo": "jsclaw/podwire",
+   "pitch": "package-lock.json still pins version 0.0.1 while package.json and the git tag are 0.0.2, so the lockfile is out of sync.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 10,
+   "evidence": "package-lock.json:3",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/jsclaw/podwire/",
+    "https://github.com/jsclaw/podwire"
+   ]
+  },
+  {
+   "id": "podwire-podjs-sends-a-nip98",
+   "repo": "jsclaw/podwire",
+   "pitch": "pod.js sends a NIP-98 Authorization header on GET requests, contradicting its own docstring, the README and SKILL.md which all state reads are public/unauthenticated.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 12,
+   "evidence": "pod.js:62",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/jsclaw/podwire/",
+    "https://github.com/jsclaw/podwire"
+   ]
+  },
+  {
+   "id": "jsclaw-packagejson-exports-maps-groupqueue",
+   "repo": "jsclaw/jsclaw",
+   "pitch": "package.json exports maps ./group-queue to ./src/group-queue.js, a file that does not exist (renamed to src/agent-queue.js), so import 'jsclaw/group-queue' throws ERR_MODULE_NOT_FOUND.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 20,
+   "evidence": "package.json:26",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/jsclaw/jsclaw/",
+    "https://github.com/jsclaw/jsclaw"
+   ]
+  },
+  {
+   "id": "agent-micro-readme-whats-inside-lists",
+   "repo": "jsclaw/agent-micro",
+   "pitch": "README 'What's inside' lists src/session.js but no such file exists and runner.js persists nothing since v0.0.3 — update or remove the bullet.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "evidence": "README.md:53",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/jsclaw/agent-micro/",
+    "https://github.com/jsclaw/agent-micro"
+   ]
+  },
+  {
+   "id": "agent-micro-readme-stdout-example-shows",
+   "repo": "jsclaw/agent-micro",
+   "pitch": "README stdout example shows {status,result,newSessionId} but runner.js never emits newSessionId; it emits messages and usage, so the documented output shape is wrong.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "evidence": "README.md:42",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/jsclaw/agent-micro/",
+    "https://github.com/jsclaw/agent-micro"
+   ]
+  },
+  {
+   "id": "docs-the-step3-callout-in",
+   "repo": "jsclaw/docs",
+   "pitch": "The step-3 callout in index.html is corrupted: two sentences spliced mid-word ('...agent-microNo Docker?...') plus a broken HTML entity '#x27;' (missing leading &), rendering as visibly garbled text on the getting-started page.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "evidence": "index.html:117",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/jsclaw/docs/",
+    "https://github.com/jsclaw/docs"
+   ]
+  },
+  {
+   "id": "elementarybitcoin-github-io-readme-declares-cc-bysa",
+   "repo": "elementarybitcoin/elementarybitcoin.github.io",
+   "pitch": "README declares CC BY-SA 4.0 and invites PRs/forks, but the repo ships no LICENSE file, so GitHub can't detect the license and forkers get no license text.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "evidence": "README.md:74",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/elementarybitcoin/elementarybitcoin.github.io/",
+    "https://github.com/elementarybitcoin/elementarybitcoin.github.io"
+   ]
+  },
+  {
+   "id": "headers-extractheadersjs-writes-latestjson-in",
+   "repo": "bitcoincc/headers",
+   "pitch": "extract-headers.js writes latest.json in a flat schema and never writes current.json, but the watch.js updaters the README says to run next read latest.tip.height and require current.json, so the documented bootstrap produces state the watchers crash on.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 12,
+   "evidence": "extract-headers.js:180; watch.js:91,96",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/bitcoincc/headers/",
+    "https://github.com/bitcoincc/headers"
+   ]
+  },
+  {
+   "id": "bitcoin-mesh-readme-header-badge-still",
+   "repo": "bitcoin-desktop/bitcoin-mesh",
+   "pitch": "README header badge still reads v0.0.2 while package.json, lockfile and index.html's wire-log all report v0.0.11 — 9 releases stale.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 10,
+   "evidence": "README.md:3",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-desktop/bitcoin-mesh/",
+    "https://github.com/bitcoin-desktop/bitcoin-mesh"
+   ]
+  },
+  {
+   "id": "bitcoin-mesh-the-join-error-handler",
+   "repo": "bitcoin-desktop/bitcoin-mesh",
+   "pitch": "The join error handler does diagnoseSignaling(...) ?? joinErr.message, but diagnoseSignaling always returns a non-null string, so the fallback is dead and the real connect error is always discarded.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 4,
+   "evidence": "index.html:234",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-desktop/bitcoin-mesh/",
+    "https://github.com/bitcoin-desktop/bitcoin-mesh"
+   ]
+  },
+  {
+   "id": "socialdocs-org-packagejson-still-has-the",
+   "repo": "socialdocs/socialdocs.org",
+   "pitch": "package.json still has the scaffolding placeholder name 'temp-docs' instead of a real project name.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 10,
+   "evidence": "package.json:2",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/socialdocs/socialdocs.org/",
+    "https://github.com/socialdocs/socialdocs.org"
+   ]
+  },
+  {
+   "id": "socialdocs-org-docusaurus-onbrokenlinks-is-warn",
+   "repo": "socialdocs/socialdocs.org",
+   "pitch": "docusaurus onBrokenLinks is 'warn' but every doc id and /docs/ link currently resolves, so switching to 'throw' is a safe regression guard.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 12,
+   "evidence": "docusaurus.config.ts:20",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/socialdocs/socialdocs.org/",
+    "https://github.com/socialdocs/socialdocs.org"
+   ]
+  },
+  {
+   "id": "socialdocs-org-sidebarsts-defines-communitysidebar-but",
+   "repo": "socialdocs/socialdocs.org",
+   "pitch": "sidebars.ts defines communitySidebar but no navbar item references it, so the Community section is undiscoverable from the top nav.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 9,
+   "evidence": "sidebars.ts:246",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/socialdocs/socialdocs.org/",
+    "https://github.com/socialdocs/socialdocs.org"
+   ]
+  },
+  {
+   "id": "testnet4-readme-and-packagejson-declare",
+   "repo": "bitcoin-desktop/testnet4",
+   "pitch": "README and package.json declare MIT but the repo has no LICENSE file.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "evidence": "README.md:51",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-desktop/testnet4/",
+    "https://github.com/bitcoin-desktop/testnet4"
+   ]
+  },
+  {
+   "id": "testnet4-the-nip333-crosscheck-uses",
+   "repo": "bitcoin-desktop/testnet4",
+   "pitch": "The NIP-333 cross-check uses a pubkey with a 'cccccccc' placeholder prefix against live relays, which would silently never match the real stream.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 9,
+   "evidence": "index.html:103",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-desktop/testnet4/",
+    "https://github.com/bitcoin-desktop/testnet4"
+   ]
+  },
+  {
+   "id": "nip-333-github-io-readme-quick-start-subscribes",
+   "repo": "nip-333/nip-333.github.io",
+   "pitch": "README Quick Start subscribes with #d:['latest'], but the spec now requires d to be the network code (btc); the spec's example and index.html use 'btc', so the README example matches no current events (commit fixed the live query but left the README).",
+   "kind": "bug",
+   "effort": "small",
+   "score": 12,
+   "evidence": "README.md:30 vs spec/nip-333.md:34,135",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nip-333/nip-333.github.io/",
+    "https://github.com/nip-333/nip-333.github.io"
+   ]
+  },
+  {
+   "id": "nip-333-github-io-the-reference-implementation-is",
+   "repo": "nip-333/nip-333.github.io",
+   "pitch": "The reference implementation is referred to inconsistently: README/spec point at bitcoincc/bitcoin-epochs & bitcoin-current, while the homepage lists nip-333/btc-archive & btc-current, leaving readers unsure which is canonical.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 6,
+   "evidence": "index.html:165 vs README.md:20-21",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/nip-333/nip-333.github.io/",
+    "https://github.com/nip-333/nip-333.github.io"
+   ]
+  },
+  {
+   "id": "headers-packagejson-declares-mit-and",
+   "repo": "bitcoin-desktop/headers",
+   "pitch": "package.json declares MIT and the README bills this as an open community project, but the repo has no LICENSE file.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "evidence": "package.json:16",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-desktop/headers/",
+    "https://github.com/bitcoin-desktop/headers"
+   ]
+  },
+  {
+   "id": "endgames-contributingmd-claims-the-chesscheck",
+   "repo": "melvincarvalho/endgames",
+   "pitch": "CONTRIBUTING.md claims the chess-check CI 'Checks puzzle solutions for soundness using Stockfish', but scripts/chess-check.py never invokes Stockfish and only verifies moves are legal (structural).",
+   "kind": "docs",
+   "effort": "small",
+   "score": 10,
+   "evidence": "CONTRIBUTING.md:16",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/endgames/",
+    "https://github.com/melvincarvalho/endgames"
+   ]
+  },
+  {
+   "id": "endgames-docusaurusconfigts-sets-ogimage-to",
+   "repo": "melvincarvalho/endgames",
+   "pitch": "docusaurus.config.ts sets og:image to img/social-card.png but static/img contains only favicon.ico and logo.svg, so the link-preview thumbnail is a 404.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 8,
+   "evidence": "docusaurus.config.ts:46",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/endgames/",
+    "https://github.com/melvincarvalho/endgames"
+   ]
+  },
+  {
+   "id": "nostrfinance-github-io-socialshare-metadata-ogimage-and",
+   "repo": "nostrfinance/nostrfinance.github.io",
+   "pitch": "Social-share metadata (og:image and twitter:image) points to /img/og-image.png but static/img only contains og-image.svg, so link previews load a 404.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 15,
+   "evidence": "docusaurus.config.ts:51",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostrfinance/nostrfinance.github.io/",
+    "https://github.com/nostrfinance/nostrfinance.github.io"
+   ]
+  },
+  {
+   "id": "nostrfinance-github-io-readme-ships-the-unedited",
+   "repo": "nostrfinance/nostrfinance.github.io",
+   "pitch": "README ships the unedited Docusaurus template using yarn while the project is npm-based (package-lock.json, npm ci in CI), so the documented commands don't match the repo.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 8,
+   "evidence": "README.md:8",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nostrfinance/nostrfinance.github.io/",
+    "https://github.com/nostrfinance/nostrfinance.github.io"
+   ]
+  },
+  {
+   "id": "journal-reldays-today-branch-compares",
+   "repo": "solid-apps/journal",
+   "pitch": "relDay()'s 'Today' branch compares a UTC date against a locally-built todaySlug() while the 'Yesterday' branch compares against a UTC toISOString(), so for non-UTC users day-grouping and Today/Yesterday labels can be off by one.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 12,
+   "evidence": "app.js relDay/todaySlug",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/journal/",
+    "https://github.com/solid-apps/journal"
+   ]
+  },
+  {
+   "id": "journal-getentries-skips-any-resource",
+   "repo": "solid-apps/journal",
+   "pitch": "getEntries() skips any resource whose URL does not end in '.jsonld', contradicting the 'tolerant reader' intent — an agent writing an entry without that exact extension never appears in the timeline.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 9,
+   "evidence": "app.js getEntries",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/journal/",
+    "https://github.com/solid-apps/journal"
+   ]
+  },
+  {
+   "id": "docs-the-post-pods-response",
+   "repo": "JavaScriptSolidServer/docs",
+   "pitch": "The POST /.pods response examples in quick-start.md and reference/api.md show webId http://localhost:3000/alice/#me, but the server returns /alice/profile/card.jsonld#me; fix both examples.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 22,
+   "evidence": "docs/getting-started/quick-start.md:35; reference/api.md:24; src/handlers/container.js:425-430",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/docs/",
+    "https://github.com/JavaScriptSolidServer/docs"
+   ]
+  },
+  {
+   "id": "schema-apps-indexhtml-landing-cards-hardcode",
+   "repo": "solid-apps/schema-apps",
+   "pitch": "index.html landing cards hardcode an icon+accent per app that has drifted from each app's own window.APP config for 10 of 326 apps (6 accent-color mismatches, 4 icon mismatches), so tiles render a different color/glyph than the app.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 10,
+   "evidence": "index.html:193",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/schema-apps/",
+    "https://github.com/solid-apps/schema-apps"
+   ]
+  },
+  {
+   "id": "soul-trail-readme-stack-table-lists",
+   "repo": "soul-trail/soul-trail",
+   "pitch": "README stack table lists soul-trail's npm column as '(skill)' (no package), but soul-trail is actually published on npm, so the bill-of-materials row should link the package.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 8,
+   "evidence": "README.md:51",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/soul-trail/soul-trail/",
+    "https://github.com/soul-trail/soul-trail"
+   ]
+  },
+  {
+   "id": "tasks-seeded-acls-grant-public",
+   "repo": "solid-apps/tasks",
+   "pitch": "Seeded ACLs grant public read to index.html but the container .acl uses acl:accessTo without acl:default, so app.js/style.css/manifest.json get no public-read rule and anonymous visitors load index.html without its script/styles; add acl:default.",
+   "kind": "security",
+   "effort": "small",
+   "score": 9,
+   "evidence": ".acl:13; index.html.acl",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/tasks/",
+    "https://github.com/solid-apps/tasks"
+   ]
+  },
+  {
+   "id": "podkey-approving-the-lowsensitivity-getpublickey",
+   "repo": "JavaScriptSolidServer/podkey",
+   "pitch": "Approving the low-sensitivity GET_PUBLIC_KEY prompt (worded only 'read your public key') calls addTrustedOrigin, and that single trust bit then lets the origin silently SIGN_EVENT any kind and NIP44_DECRYPT DMs with no further consent — a scope escalation from read to sign/decrypt.",
+   "kind": "security",
+   "effort": "medium",
+   "score": 29,
+   "evidence": "src/background.js:182",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/podkey/",
+    "https://github.com/JavaScriptSolidServer/podkey"
+   ]
+  },
+  {
+   "id": "podkey-packagejson-declares-main-srcindexjs",
+   "repo": "JavaScriptSolidServer/podkey",
+   "pitch": "package.json declares main src/index.js but no such file exists, so any import of the package entrypoint fails.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 18,
+   "evidence": "package.json:5",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/podkey/",
+    "https://github.com/JavaScriptSolidServer/podkey"
+   ]
+  },
+  {
+   "id": "podkey-packagejson-version-is-007",
+   "repo": "JavaScriptSolidServer/podkey",
+   "pitch": "package.json version is 0.0.7 while manifest.json and README badge say 0.0.8.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 18,
+   "evidence": "package.json:3",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/podkey/",
+    "https://github.com/JavaScriptSolidServer/podkey"
    ]
   }
  ]
