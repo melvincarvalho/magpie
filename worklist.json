@@ -1,19 +1,14 @@
 {
- "generated": "2026-07-08T18:40:00Z",
- "note": "First magpie survey. Top items by (impact x confidence x reach x kind) / effort. Accept/reject via decisions.jsonl.",
+ "generated": "2026-07-08",
+ "refreshed": true,
+ "note": "Ranked survey findings minus done/rejected. Accepted items stay (in flight); later items sink. Accept/reject via decisions.jsonl, then re-run refresh-worklist.mjs.",
+ "resolved": {
+  "done": 1,
+  "rejected": 2,
+  "accepted": 2,
+  "later": 0
+ },
  "items": [
-  {
-   "id": "alarm-the-seeded-acl",
-   "repo": "solid-apps/alarm",
-   "pitch": "The seeded ACL makes /public/alarm/alarms.jsonld world-writable (foaf:Agent gets Read+Write), so anyone on the internet can read/alter/delete a user’s alarms — tighten to owner-only write.",
-   "kind": "security",
-   "effort": "small",
-   "score": 108,
-   "seeAlso": [
-    "http://localhost:5445/solid-apps/alarm/",
-    "https://github.com/solid-apps/alarm"
-   ]
-  },
   {
    "id": "jspod-seedpodfiles-unconditionally-overwrites",
    "repo": "JavaScriptSolidServer/jspod",
@@ -21,6 +16,7 @@
    "kind": "bug",
    "effort": "small",
    "score": 92,
+   "status": "open",
    "seeAlso": [
     "http://localhost:5445/JavaScriptSolidServer/jspod/",
     "https://github.com/JavaScriptSolidServer/jspod"
@@ -33,6 +29,7 @@
    "kind": "bug",
    "effort": "small",
    "score": 74,
+   "status": "accepted",
    "seeAlso": [
     "http://localhost:5445/solid-apps/alarm/",
     "https://github.com/solid-apps/alarm"
@@ -45,6 +42,7 @@
    "kind": "bug",
    "effort": "small",
    "score": 74,
+   "status": "accepted",
    "seeAlso": [
     "http://localhost:5445/solid-apps/alarm/",
     "https://github.com/solid-apps/alarm"
@@ -57,6 +55,7 @@
    "kind": "cleanup",
    "effort": "small",
    "score": 68,
+   "status": "open",
    "seeAlso": [
     "http://localhost:5445/JavaScriptSolidServer/JavaScriptSolidServer/",
     "https://github.com/JavaScriptSolidServer/JavaScriptSolidServer"
@@ -69,6 +68,7 @@
    "kind": "security",
    "effort": "small",
    "score": 65,
+   "status": "open",
    "seeAlso": [
     "http://localhost:5445/blocktrails/fund-agent/",
     "https://github.com/blocktrails/fund-agent"
@@ -81,6 +81,7 @@
    "kind": "docs",
    "effort": "small",
    "score": 54,
+   "status": "open",
    "seeAlso": [
     "http://localhost:5445/linkeddata/rdflib.js/",
     "https://github.com/linkeddata/rdflib.js"
@@ -93,33 +94,10 @@
    "kind": "bug",
    "effort": "small",
    "score": 52,
+   "status": "open",
    "seeAlso": [
     "http://localhost:5445/rdfjs/wrapper/",
     "https://github.com/rdfjs/wrapper"
-   ]
-  },
-  {
-   "id": "nanoblog-mirror-clone-is",
-   "repo": "melvincarvalho/nanoblog",
-   "pitch": "Mirror clone is EMPTY (0 git objects, no refs) despite recent pushes — gh-sync failed to fetch content; needs re-clone.",
-   "kind": "bug",
-   "effort": "small",
-   "score": 52,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/nanoblog/",
-    "https://github.com/melvincarvalho/nanoblog"
-   ]
-  },
-  {
-   "id": "liwi-mirror-clone-is",
-   "repo": "melvincarvalho/liwi",
-   "pitch": "Mirror clone is EMPTY (0 git objects, no refs) despite recent pushes — gh-sync failed to fetch content; needs re-clone.",
-   "kind": "bug",
-   "effort": "small",
-   "score": 52,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/liwi/",
-    "https://github.com/melvincarvalho/liwi"
    ]
   },
   {
@@ -129,6 +107,7 @@
    "kind": "bug",
    "effort": "small",
    "score": 41,
+   "status": "open",
    "seeAlso": [
     "http://localhost:5445/solid/object/",
     "https://github.com/solid/object"
@@ -141,9 +120,49 @@
    "kind": "docs",
    "effort": "small",
    "score": 41,
+   "status": "open",
    "seeAlso": [
     "http://localhost:5445/nosdav/dnstr.org/",
     "https://github.com/nosdav/dnstr.org"
+   ]
+  },
+  {
+   "id": "dnstr-org-the-cli-bech32",
+   "repo": "nosdav/dnstr.org",
+   "pitch": "The CLI bech32 decoder drops the checksum without verifying it, so a typo’d npub silently decodes to a wrong pubkey and resolves someone else’s domain — add the polymod check.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 41,
+   "status": "open",
+   "seeAlso": [
+    "http://localhost:5445/nosdav/dnstr.org/",
+    "https://github.com/nosdav/dnstr.org"
+   ]
+  },
+  {
+   "id": "clawdocs-github-io-switch-docusaurus-onbrokenlinks",
+   "repo": "clawdocs/clawdocs.github.io",
+   "pitch": "Switch docusaurus onBrokenLinks from \"warn\" to \"throw\" so the Pages deploy fails on broken internal links; all current links verified resolving, so it is safe now.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 38,
+   "status": "open",
+   "seeAlso": [
+    "http://localhost:5445/clawdocs/clawdocs.github.io/",
+    "https://github.com/clawdocs/clawdocs.github.io"
+   ]
+  },
+  {
+   "id": "javascriptsolidserver-urltopath-strips-literal",
+   "repo": "JavaScriptSolidServer/JavaScriptSolidServer",
+   "pitch": "urlToPath strips literal \"..\" from decoded paths, so /a..b and /ab collide onto one file — reject with 400 instead (the startsWith(dataRoot) guard already blocks real traversal).",
+   "kind": "bug",
+   "effort": "small",
+   "score": 37,
+   "status": "open",
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/JavaScriptSolidServer/",
+    "https://github.com/JavaScriptSolidServer/JavaScriptSolidServer"
    ]
   }
  ]

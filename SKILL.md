@@ -74,6 +74,11 @@ Decision line (`decisions.jsonl`, append-only, one JSON object per line):
 `action`: accepted | rejected | done | later. Never rewrite or delete
 lines; corrections are new lines.
 
+**After recording decisions, run `node refresh-worklist.mjs`** — it rewrites
+`worklist.json` as the latest survey's ranked findings minus anything
+done/rejected. Accepted items stay (in flight); later items sink. This is
+what keeps the worklist and the dashboard in step with reality.
+
 Per-repo scratchpad (`.git/magpie.json`):
 
 ```json
