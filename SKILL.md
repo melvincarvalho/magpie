@@ -129,6 +129,26 @@ Per-repo scratchpad (`.git/magpie.json`):
    nightly; rotate cohorts between runs so the whole estate gets covered
    over time. Log what was skipped.
 
+## Working the worklist (a pin is a work request)
+
+A pin is not just ordering — it is the human saying **"work on this next."**
+When asked to *work the magpie worklist* (or handed a specific pinned item):
+
+1. **Read `worklist.json`.** Take items with `priority: "pin"` first (they sort
+   to the top), then by score. Skip anything already `in flight` (status
+   `accepted`) unless told to continue it.
+2. **Do the work under the hard rules below** — on a branch, delivered as a PR,
+   never a push to a default branch; destructive actions stay proposals.
+3. **Record progress in `decisions.json`** (via `magpie-serve` or by editing +
+   `refresh-worklist.mjs`): `accepted` with a PR link when you start (it shows
+   as *in flight*), `done` when merged. The item then leaves the worklist and
+   appears in the Done tab.
+
+That is the loop end to end: you **pin** in the UI, an agent (a Claude Code
+session or a scheduled run) picks up pinned items and turns them into PRs, and
+the Done tab fills in behind it. Pinning is how a human points; this is how the
+agent follows.
+
 ## Hard rules
 
 - Propose, never execute: deletions, archivals, and force-pushes are
