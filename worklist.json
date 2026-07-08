@@ -10,7 +10,7 @@
  "pinned": 14,
  "deferred": 1,
  "headline": 12,
- "total": 247,
+ "total": 356,
  "items": [
   {
    "id": "json-rocks-13-metascraper--plugins",
@@ -269,6 +269,54 @@
    ]
   },
   {
+   "id": "nip7-readme-security-table-claims-private",
+   "repo": "nip-07/nip7",
+   "pitch": "README's security table claims the private key is \"Memory only — never touches localStorage\" and that refresh clears it, but nip7.js writes the raw privkey into the localStorage 'accounts'/'currentAccount' entries, auto-restores it on page load, and logout leaves it in 'accounts' forever.",
+   "kind": "security",
+   "effort": "small",
+   "score": 110,
+   "status": "open",
+   "priority": null,
+   "evidence": "nip7.js:132 — if ((method === \"key\" || method === \"guest\") && _privKey) account.privkey = _privKey; persisted via localStorage.setItem, restored at nip7.js:349-353; contradicts README.md:132 \"Memory only — never touches localStorage\"",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nip-07/nip7/",
+    "https://github.com/nip-07/nip7"
+   ]
+  },
+  {
+   "id": "plume-stored-xss-rendermarkdown-app-js",
+   "repo": "solid-apps/plume",
+   "pitch": "Stored XSS: renderMarkdown (app.js:62-76) passes post bodies through marked.parse with no sanitizer and injects the result via innerHTML (app.js:946), so opening a malicious blog via ?pod=https://attacker.pod executes attacker HTML/script on the plume origin and can hijack the viewer's xlogin session.",
+   "kind": "security",
+   "effort": "small",
+   "score": 99,
+   "status": "open",
+   "priority": null,
+   "evidence": "app.js:946 — page.querySelector('.post-body').innerHTML = renderMarkdown(post.body); renderMarkdown uses window.marked.parse with no sanitization",
+   "confidence": 4.5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/plume/",
+    "https://github.com/solid-apps/plume"
+   ]
+  },
+  {
+   "id": "jsserve-auth-user-pass-option-documented",
+   "repo": "JavaScriptSolidServer/jsserve",
+   "pitch": "The --auth <user:pass> option is documented in the README and defined at bin/jsserve.js:131 but options.auth is never read or forwarded to JSS, so 'servejss --auth user:pass ~/sync' (the README's WebDAV use case) silently serves PUT/DELETE-enabled files on 0.0.0.0 with no authentication at all.",
+   "kind": "security",
+   "effort": "small",
+   "score": 96,
+   "status": "open",
+   "priority": null,
+   "evidence": "bin/jsserve.js:131 — .option('--auth <credentials>', 'Enable basic auth (user:pass)'); run() builds jssArgs without any auth flag and never references options.auth",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/jsserve/",
+    "https://github.com/JavaScriptSolidServer/jsserve"
+   ]
+  },
+  {
    "id": "contacts-follow-unfollow-silently-destroy-the",
    "repo": "nostr-client/contacts",
    "pitch": "follow()/unfollow() silently destroy the user's whole follow list when the kind-3 fetch returns null — pool.get() resolves null after its 8s timeout or when the list isn't on the default relays, publishContacts then signs a fresh kind-3 with 0-1 p-tags and empty content, and the null is cached page-wide so every click repeats it — refuse to publish when the previous contact list is null (or require explicit first-list confirmation).",
@@ -493,6 +541,134 @@
    ]
   },
   {
+   "id": "forum-seeded-forum-acl-grants-acl",
+   "repo": "solid-apps/forum",
+   "pitch": "The seeded forum ACL grants acl:AuthenticatedAgent acl:Write (not just Append) with acl:default inheritance over the whole /public/forum/ tree, so anyone with any WebID or self-minted Nostr key can overwrite or delete other users' posts and the channel index — plaza's equivalent toggle correctly grants only acl:Append.",
+   "kind": "security",
+   "effort": "small",
+   "score": 55,
+   "status": "open",
+   "priority": null,
+   "evidence": "app.js:44-53 — '#authenticated' Authorization with agentClass acl:AuthenticatedAgent, acl:default './', modes Read+Write+Append; contrast plaza app.js:306-312 (Append only)",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/forum/",
+    "https://github.com/solid-apps/forum"
+   ]
+  },
+  {
+   "id": "explorer-index-html-8-loads-auth",
+   "repo": "solid-apps/explorer",
+   "pitch": "index.html:8 loads the auth layer via unpinned <script src=\"https://unpkg.com/xlogin\"> (no version), so any future npm publish of xlogin runs unreviewed code in the app — pin it like plume pins xlogin@0.0.12.",
+   "kind": "security",
+   "effort": "small",
+   "score": 55,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:8 — <script src=\"https://unpkg.com/xlogin\"></script>",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/explorer/",
+    "https://github.com/solid-apps/explorer"
+   ]
+  },
+  {
+   "id": "vellum-index-html-10-loads-auth",
+   "repo": "solid-apps/vellum",
+   "pitch": "index.html:10 loads the auth layer via unpinned <script src=\"https://unpkg.com/xlogin\"> while Crepe is pinned to 7.20.0, so a bad or breaking xlogin publish silently compromises or breaks login — pin a version.",
+   "kind": "security",
+   "effort": "small",
+   "score": 55,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:10 — <script src=\"https://unpkg.com/xlogin\"></script>",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/vellum/",
+    "https://github.com/solid-apps/vellum"
+   ]
+  },
+  {
+   "id": "timeline-index-html-9-loads-auth",
+   "repo": "solid-apps/timeline",
+   "pitch": "index.html:9 loads the auth layer via unpinned <script src=\"https://unpkg.com/xlogin\"> (no version), so any future xlogin publish runs unreviewed code in the app — pin it like plume pins xlogin@0.0.12.",
+   "kind": "security",
+   "effort": "small",
+   "score": 55,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:9 — <script src=\"https://unpkg.com/xlogin\"></script>",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/timeline/",
+    "https://github.com/solid-apps/timeline"
+   ]
+  },
+  {
+   "id": "git-live-jss-live-git-browser",
+   "repo": "JavaScriptSolidServer/git",
+   "pitch": "The live jss.live/git/ browser renders README/markdown from any user-supplied `?repo=` remote via marked.parse(text) piped straight into dangerouslySetInnerHTML with no sanitizer, so a malicious repo's README can run script on the jss.live origin (DOM XSS).",
+   "kind": "security",
+   "effort": "small",
+   "score": 55,
+   "status": "open",
+   "priority": null,
+   "evidence": "src/app.js:285,387,626,660 — marked.parse output set via dangerouslySetInnerHTML; no DOMPurify/sanitize anywhere, and marked@18 does not sanitize by default",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/git/",
+    "https://github.com/JavaScriptSolidServer/git"
+   ]
+  },
+  {
+   "id": "nip98-github-io-skill-md-express-middleware-example",
+   "repo": "nip98/nip98.github.io",
+   "pitch": "SKILL.md's Express middleware example omits the payload-hash verification that its own 'Validation Rules (All Required)' table mandates, so anyone copying the guide's server code accepts POST/PUT bodies without integrity checking (a signed token can be replayed with a different body for 60 seconds).",
+   "kind": "security",
+   "effort": "small",
+   "score": 55,
+   "status": "open",
+   "priority": null,
+   "evidence": "SKILL.md:180 — table requires 'If payload tag present, must match SHA-256 of request body'; SKILL.md:207-228 — nip98Auth middleware checks kind/timestamp/u/method/signature but never the payload tag",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nip98/nip98.github.io/",
+    "https://github.com/nip98/nip98.github.io"
+   ]
+  },
+  {
+   "id": "pilot-index-html-loads-auth-library",
+   "repo": "solid-apps/pilot",
+   "pitch": "index.html loads the auth library from https://unpkg.com/xlogin with no version pin and no SRI hash, so any future npm publish of xlogin executes arbitrary code with the user's authenticated pod session (which PUTs to their WebID and trackers).",
+   "kind": "security",
+   "effort": "small",
+   "score": 55,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:544 — <script src=\"https://unpkg.com/xlogin\"></script> (unversioned, no integrity attribute), while the esm.sh dep at line 42 is pinned to @0.0.2",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/pilot/",
+    "https://github.com/solid-apps/pilot"
+   ]
+  },
+  {
+   "id": "webledgers-merge-add-strategy-reads-getbalance",
+   "repo": "solidpayorg/webledgers",
+   "pitch": "merge() with the 'add' strategy reads this.getBalance(entry.url) into both existingBalance and newBalance (index.js:424-425), never reading the incoming ledger's amount, so 'webledgers merge -s add' doubles your own balance instead of adding the other ledger's.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 55,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.js:424-425 — const existingBalance = parseInt(this.getBalance(entry.url) || '0', 10); const newBalance = parseInt(this.getBalance(entry.url) || '0', 10);",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solidpayorg/webledgers/",
+    "https://github.com/solidpayorg/webledgers"
+   ]
+  },
+  {
    "id": "rdflib-js-readme-links-to",
    "repo": "linkeddata/rdflib.js",
    "pitch": "README links to the defunct Inrupt Solid portal (solid.inrupt.com) and a dead Gitter room/badge; replace with live Solid community links.",
@@ -525,6 +701,22 @@
    ]
   },
   {
+   "id": "git-nostr-hook-installed-git-hooks-post-commit",
+   "repo": "nostrapps/git-nostr-hook",
+   "pitch": "The installed ~/.git-hooks/post-commit does a bare ESM import of 'git-nostr-hook/lib/hook.js' (bin/cli.js:24-27), which Node cannot resolve from ~/.git-hooks when the package is npm-installed globally, and run().catch(() => {}) swallows the ERR_MODULE_NOT_FOUND, so the hook silently never publishes anything after a successful install.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 53,
+   "status": "open",
+   "priority": null,
+   "evidence": "bin/cli.js:24-27 — HOOK_SCRIPT with bare import 'git-nostr-hook/lib/hook.js'; global npm dirs are not on the ESM resolution path from ~/.git-hooks",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nostrapps/git-nostr-hook/",
+    "https://github.com/nostrapps/git-nostr-hook"
+   ]
+  },
+  {
    "id": "wrapper-literalfrombase64hex-call-uint8arraytobase64tohex",
    "repo": "rdfjs/wrapper",
    "pitch": "LiteralFrom.base64/hex call Uint8Array.toBase64()/toHex(), which do not exist on the package minimum Node 24, so both mappers throw TypeError at runtime.",
@@ -538,6 +730,38 @@
    "seeAlso": [
     "http://localhost:5445/rdfjs/wrapper/",
     "https://github.com/rdfjs/wrapper"
+   ]
+  },
+  {
+   "id": "profile-first-run-wizard-never-persists",
+   "repo": "solid-apps/profile",
+   "pitch": "The first-run wizard never persists the card: onWizardSubmit sets ctx.card and awaits save(), but save() early-returns because ctx.dirty is still false (only scheduleSave sets it), so card.jsonld is never PUT and the wizard reappears on every reload.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 50,
+   "status": "open",
+   "priority": null,
+   "evidence": "app.js:303 `if (!ctx.dirty) return` vs app.js:472-474 — wizard sets ctx.card and calls `await save()` without ever setting ctx.dirty",
+   "confidence": 4.5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/profile/",
+    "https://github.com/solid-apps/profile"
+   ]
+  },
+  {
+   "id": "bitcoin-desktop-main-js-21-22-creates",
+   "repo": "bitcoincc/bitcoin-desktop",
+   "pitch": "main.js:21-22 creates the Electron BrowserWindow with nodeIntegration:true and contextIsolation:false in a Bitcoin wallet app whose panes render data fetched from remote APIs (blockstream/mempool/electrum), so any injected content in that data gets full Node.js access on the user machine.",
+   "kind": "security",
+   "effort": "medium",
+   "score": 48,
+   "status": "open",
+   "priority": null,
+   "evidence": "main.js:21-22 — nodeIntegration: true, contextIsolation: false",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/bitcoincc/bitcoin-desktop/",
+    "https://github.com/bitcoincc/bitcoin-desktop"
    ]
   },
   {
@@ -586,6 +810,22 @@
    "seeAlso": [
     "http://localhost:5445/solid/specification/",
     "https://github.com/solid/specification"
+   ]
+  },
+  {
+   "id": "nostr-beacon-profile-name-about-website-nostr",
+   "repo": "nostr-labs/nostr-beacon",
+   "pitch": "Profile name/about/website from Nostr events are interpolated into the profile page HTML without escaping, a stored XSS since anyone can publish a kind-0 event.",
+   "kind": "security",
+   "effort": "medium",
+   "score": 45,
+   "status": "open",
+   "priority": null,
+   "evidence": "server.js:1421,1431,1440 — profile-name/about/website interpolated into template literals; no escapeHtml anywhere in server.js",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nostr-labs/nostr-beacon/",
+    "https://github.com/nostr-labs/nostr-beacon"
    ]
   },
   {
@@ -701,6 +941,102 @@
    ]
   },
   {
+   "id": "server-seeded-operator-docs-claim-nosdav",
+   "repo": "nosdav/server",
+   "pitch": "Seeded operator docs claim 'nosdav bundles Pilot at /public/apps/pilot/' (docs.html:120) but the repo has no apps/ directory and package.json's files whitelist ships none, so the cpSync at bin/nosdav.js:777-780 never fires and /public/apps/pilot/ 404s on a fresh npx install.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 44,
+   "status": "open",
+   "priority": null,
+   "evidence": "docs.html:120 vs package.json files:[bin/, *.html, links.jsonld] — no apps/ dir in repo or package",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nosdav/server/",
+    "https://github.com/nosdav/server"
+   ]
+  },
+  {
+   "id": "webid-profile-published-discovery-shacl-shape-invalid",
+   "repo": "solid/webid-profile",
+   "pitch": "The published discovery SHACL shape is invalid Turtle and mis-maps namespaces: solid: is bound to the FOAF namespace (so solid:oidcIssuer/publicTypeIndex/privateTypeIndex resolve to foaf:*) and the header uses undeclared dcterms: and xsd: prefixes, so the file cannot be parsed or used for validation.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 44,
+   "status": "open",
+   "priority": null,
+   "evidence": "shapes/profile-discovery-shape.ttl:4 binds solid: to <http://xmlns.com/foaf/0.1/>; line 26 uses dcterms:issued and xsd:date with no @prefix for dcterms or xsd",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid/webid-profile/",
+    "https://github.com/solid/webid-profile"
+   ]
+  },
+  {
+   "id": "taskmill-smart-agent-js-18-sets",
+   "repo": "task-mill/taskmill",
+   "pitch": "smart-agent.js:18 sets API to the raw --api value without appending /db/taskmill (agent.js:14 does append it), so the documented `--api http://localhost:3005` makes the smart agent hit http://localhost:3005/issues/ instead of /db/taskmill/issues/ and fail on every request.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 44,
+   "status": "open",
+   "priority": null,
+   "evidence": "smart-agent.js:18 — if (arg === '--api') API = process.argv[i + 1] (no /db/taskmill suffix; contrast agent.js:14)",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/task-mill/taskmill/",
+    "https://github.com/task-mill/taskmill"
+   ]
+  },
+  {
+   "id": "webrtc-background-js-7-appends-raw",
+   "repo": "bitcoincc/webrtc",
+   "pitch": "background.js:7 appends the raw magnet URL to client.html?magnet= without encodeURIComponent, so URLSearchParams in init.js truncates the magnet at its first & and every clicked magnet link loses its dn and tr (tracker) parameters.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 44,
+   "status": "open",
+   "priority": null,
+   "evidence": "background.js:7 — var clientUrl = chrome.runtime.getURL('client.html') + '?magnet=' + msg.url",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/bitcoincc/webrtc/",
+    "https://github.com/bitcoincc/webrtc"
+   ]
+  },
+  {
+   "id": "solid-shim-webpack-emits-only-dist-mashlib",
+   "repo": "JavaScriptSolidServer/solid-shim",
+   "pitch": "webpack emits only dist/mashlib.min.js, but package.json main/module/exports point at dist/solid-shim.js and dist/solid-shim.esm.js and both the README's unpkg snippet and the repo's own index.html load dist/solid-shim.min.js — every documented entry point is a file the build never produces.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 44,
+   "status": "open",
+   "priority": null,
+   "evidence": "webpack.config.mjs:25 — filename: isProduction ? 'mashlib.min.js' : 'mashlib.js' vs package.json:6-7 main/module dist/solid-shim(.esm).js, README.md:25 unpkg .../dist/solid-shim.min.js, index.html:10 dist/solid-shim.min.js",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/solid-shim/",
+    "https://github.com/JavaScriptSolidServer/solid-shim"
+   ]
+  },
+  {
+   "id": "nip98-validatetoken-never-compares-event-payload",
+   "repo": "nip98/nip98",
+   "pitch": "validateToken never compares the event's payload tag to the actual request body, so within the 60-second window a captured POST token validates for any body a replaying attacker substitutes.",
+   "kind": "security",
+   "effort": "small",
+   "score": 44,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.js:92-118 — validateToken checks kind, created_at, 'u' and 'method' tags only; no payload/body parameter despite getToken emitting a payload tag at index.js:29",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nip98/nip98/",
+    "https://github.com/nip98/nip98"
+   ]
+  },
+  {
    "id": "object-acptowac-emits-acppublicagent",
    "repo": "solid/object",
    "pitch": "acpToWac emits acp:PublicAgent as acl:agent foaf:Agent instead of acl:agentClass foaf:Agent, producing WAC servers will not treat as public.",
@@ -714,6 +1050,38 @@
    "seeAlso": [
     "http://localhost:5445/solid/object/",
     "https://github.com/solid/object"
+   ]
+  },
+  {
+   "id": "poker-index-html-9-loads-xlogin",
+   "repo": "solid-apps/poker",
+   "pitch": "index.html:9 loads xlogin unpinned from unpkg while pokersolver is pinned to 2.1.4 on the line above — a bad xlogin publish silently compromises or breaks the app; pin a version.",
+   "kind": "security",
+   "effort": "small",
+   "score": 41,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:8-9 — pokersolver@2.1.4 pinned, xlogin unversioned",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/poker/",
+    "https://github.com/solid-apps/poker"
+   ]
+  },
+  {
+   "id": "chess-index-html-14-loads-xlogin",
+   "repo": "solid-apps/chess",
+   "pitch": "index.html:14 loads xlogin unpinned from unpkg while chessground assets are pinned to 9.1.0 — a bad xlogin publish silently compromises or breaks the app; pin a version.",
+   "kind": "security",
+   "effort": "small",
+   "score": 41,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:9-14 — chessground@9.1.0 pinned, xlogin unversioned",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/chess/",
+    "https://github.com/solid-apps/chess"
    ]
   },
   {
@@ -765,6 +1133,70 @@
    ]
   },
   {
+   "id": "data-browser-github-io-repo-root-index-html-only",
+   "repo": "data-browser/data-browser.github.io",
+   "pitch": "The repo root has no index.html (only browse.html, browse-test.html, databrowser.html), so the org's live homepage https://data-browser.github.io/ serves GitHub's 404 instead of the browser the README describes.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 40,
+   "status": "open",
+   "priority": null,
+   "evidence": "git ls-files — no index.html; README.md says 'Open browse.html?uri=...'",
+   "confidence": 4.5,
+   "seeAlso": [
+    "http://localhost:5445/data-browser/data-browser.github.io/",
+    "https://github.com/data-browser/data-browser.github.io"
+   ]
+  },
+  {
+   "id": "agenticalliance-com-email-signup-form-live-prelaunch",
+   "repo": "agenticalliance/agenticalliance.com",
+   "pitch": "The email signup form on this live prelaunch site only simulates submission with a setTimeout and never sends anywhere, so collected emails are silently discarded.",
+   "kind": "bug",
+   "effort": "medium",
+   "score": 40,
+   "status": "open",
+   "priority": null,
+   "evidence": "src/components/EmailSignupForm.tsx:33-40 — 'TODO: Replace with actual API call' then setTimeout shows success toast with no network request",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/agenticalliance/agenticalliance.com/",
+    "https://github.com/agenticalliance/agenticalliance.com"
+   ]
+  },
+  {
+   "id": "nip7-signing-widget-dynamically-imports-crypto",
+   "repo": "nip-07/nip7",
+   "pitch": "The signing widget dynamically imports its crypto from https://esm.sh/@noble/secp256k1@1.7.1 at runtime, so every key operation trusts a live CDN — contradicting the README's \"single audited dep\" claim and creating a supply-chain path to key theft.",
+   "kind": "security",
+   "effort": "medium",
+   "score": 40,
+   "status": "open",
+   "priority": null,
+   "evidence": "nip7.js:37 — const _secpReady = import(\"https://esm.sh/@noble/secp256k1@1.7.1\")",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nip-07/nip7/",
+    "https://github.com/nip-07/nip7"
+   ]
+  },
+  {
+   "id": "bitcoin-desktop-main-js-46-spawns-block",
+   "repo": "bitcoincc/bitcoin-desktop",
+   "pitch": "main.js:46 spawns the block-serving JSS with a hardcoded TOKEN_SECRET of \"bitcoin-desktop\", so anyone who reads the public source can forge auth tokens for every user who enables serveBlocks.",
+   "kind": "security",
+   "effort": "small",
+   "score": 39,
+   "status": "open",
+   "priority": null,
+   "evidence": "main.js:46 — env: { ...process.env, TOKEN_SECRET: 'bitcoin-desktop' }",
+   "confidence": 3.5,
+   "seeAlso": [
+    "http://localhost:5445/bitcoincc/bitcoin-desktop/",
+    "https://github.com/bitcoincc/bitcoin-desktop"
+   ]
+  },
+  {
    "id": "clawdocs-github-io-switch-docusaurus-onbrokenlinks",
    "repo": "clawdocs/clawdocs.github.io",
    "pitch": "Switch docusaurus onBrokenLinks from \"warn\" to \"throw\" so the Pages deploy fails on broken internal links; all current links verified resolving, so it is safe now.",
@@ -794,6 +1226,22 @@
    "seeAlso": [
     "http://localhost:5445/solid/solid-oidc/",
     "https://github.com/solid/solid-oidc"
+   ]
+  },
+  {
+   "id": "solid-teams-github-io-live-site-github-read-source",
+   "repo": "solid-teams/solid-teams.github.io",
+   "pitch": "The live site's GitHub, 'Read the source', and 'open an issue' links (index.html:42,57,152,193) and package.json's repository field all point to github.com/solid-teams/solid-teams, which doesn't exist — the org's only repo is solid-teams.github.io — so every source/issues link 404s.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 38,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:42 — href=\"https://github.com/solid-teams/solid-teams\"; local mirror of solid-teams org contains only solid-teams.github.io",
+   "confidence": 3.5,
+   "seeAlso": [
+    "http://localhost:5445/solid-teams/solid-teams.github.io/",
+    "https://github.com/solid-teams/solid-teams.github.io"
    ]
   },
   {
@@ -893,6 +1341,38 @@
    ]
   },
   {
+   "id": "txo-parser-every-usage-example-readme-md",
+   "repo": "sandy-mount/txo_parser",
+   "pitch": "Every Usage example in README.md uses a 62-character txid (README.md:28,34,41), so copy-pasting the documented parseTxoUri call throws \"Invalid URI: TXID must be a 64-character lowercase hexadecimal\" (verified by running index.js).",
+   "kind": "docs",
+   "effort": "small",
+   "score": 37,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:28 — txid 4e9c1ef9ba5fa3b0aaa...aaa0 is 62 hex chars; parseTxoUri throws on it",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/sandy-mount/txo_parser/",
+    "https://github.com/sandy-mount/txo_parser"
+   ]
+  },
+  {
+   "id": "authorization-panel-readme-md-line-36-contains",
+   "repo": "solid/authorization-panel",
+   "pitch": "README.md line 36 contains two malformed Markdown links — '[schedule]([url](https://github.com/solid/specification/discussions/555))' and '[Matrix][(https://gitter.im/solid/specification](https://matrix.to/...))' — that render as broken literal text on the panel's front page.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 37,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:36 — nested '[schedule]([url](...))' and mismatched '[Matrix][(...](...))' bracket syntax",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid/authorization-panel/",
+    "https://github.com/solid/authorization-panel"
+   ]
+  },
+  {
    "id": "wrapper-packagejson-license-mit",
    "repo": "rdfjs/wrapper",
    "pitch": "package.json license \"MIT\" contradicts the repo dual-license (README SPDX \"MIT OR Apache-2.0\", both LICENSE files present); npm metadata should say \"(MIT OR Apache-2.0)\".",
@@ -957,6 +1437,70 @@
    ]
   },
   {
+   "id": "store-installed-status-probe-open-button",
+   "repo": "solid-apps/store",
+   "pitch": "Installed-status probe and the Open button use the absolute path /public/apps/ while install/uninstall PUT and DELETE relative to location.href, so on a path-prefixed pod (e.g. behind a tunnel) installs succeed but never show as Installed and Open links 404.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 35,
+   "status": "open",
+   "priority": null,
+   "evidence": "store.js:187 fetch('/public/apps/') and store.js:509 open.href=`/public/apps/${a.name}/` vs store.js:121 authFetch(new URL(`../${a.name}/${f}`, location.href))",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/store/",
+    "https://github.com/solid-apps/store"
+   ]
+  },
+  {
+   "id": "server-docs-html-git-examples-use",
+   "repo": "nosdav/server",
+   "pitch": "docs.html git examples use http://localhost:5444 (jspod's default port) instead of nosdav's default 5544 (bin/nosdav.js:252), and the push example clones https://github.com/solid-apps/penny.git which doesn't exist in the solid-apps org.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 35,
+   "status": "open",
+   "priority": null,
+   "evidence": "docs.html:127,130-132 — 'git clone http://localhost:5444/public/apps/pilot' and 'git clone https://github.com/solid-apps/penny.git'; bin/nosdav.js:252 port: 5544",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nosdav/server/",
+    "https://github.com/nosdav/server"
+   ]
+  },
+  {
+   "id": "nip98-github-io-skill-md-prerequisite-script-tag",
+   "repo": "nip98/nip98.github.io",
+   "pitch": "SKILL.md's prerequisite script tag loads https://nip-07.github.io/nip7/login.js, but the nip-07/nip7 repo ships only index.js and nip7.js (no login.js), so the copy-paste onboarding step 404s and window.nostr never appears.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 35,
+   "status": "open",
+   "priority": null,
+   "evidence": "SKILL.md:14 and SKILL.md:243 — <script src=\"https://nip-07.github.io/nip7/login.js\">; local mirror nip-07/nip7 contains index.js and nip7.js only",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nip98/nip98.github.io/",
+    "https://github.com/nip98/nip98.github.io"
+   ]
+  },
+  {
+   "id": "japps-readme-quick-start-imports-authfetch",
+   "repo": "json-os/japps",
+   "pitch": "The README Quick Start imports authFetch from https://nip98.com/nip98.js and loads https://jsonos.com/jsonos.js, but neither file exists in the mirrored gh-pages repos (nip98/nip98.github.io and json-os/json-os.github.io), so the canonical example 404s twice.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 35,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:30 and README.md:44 — script URLs; ls of nip98/nip98.github.io and json-os/json-os.github.io root show no nip98.js or jsonos.js",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/json-os/japps/",
+    "https://github.com/json-os/japps"
+   ]
+  },
+  {
    "id": "rdflib-js-delete-2016-era-repo-root",
    "repo": "linkeddata/rdflib.js",
    "pitch": "Delete 2016-era repo-root cruft (jquery.uri.js, jquery.xmlns.js, scratch-serialize.js, reference/*.coffee, legacy test/ dir) superseded by tests/.",
@@ -986,6 +1530,102 @@
    "seeAlso": [
     "http://localhost:5445/solid/shapes/",
     "https://github.com/solid/shapes"
+   ]
+  },
+  {
+   "id": "fonstr-package-lock-json-stale-pins",
+   "repo": "nostrapps/fonstr",
+   "pitch": "package-lock.json is stale — it pins version 0.0.22 and a totally different dependency set (fastify, nostr-tools, minimist) than package.json's version 0.0.25 with its single jspod dependency, so npm ci fails with an EUSAGE lock-mismatch error.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 33,
+   "status": "open",
+   "priority": null,
+   "evidence": "package.json:2,38 — version 0.0.25, deps {jspod:^0.0.7}; package-lock.json root — version 0.0.22, deps {@fastify/websocket, fastify, fs, https, minimist, nostr-tools}",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostrapps/fonstr/",
+    "https://github.com/nostrapps/fonstr"
+   ]
+  },
+  {
+   "id": "webledgers-gettotalbalance-sums-balances-parseint-index",
+   "repo": "solidpayorg/webledgers",
+   "pitch": "getTotalBalance() sums balances with parseInt (index.js:239) while deposit/withdraw and the README use decimal amounts like \"25.50\" USD, so ledger totals silently truncate fractional balances.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 33,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.js:239 — total += parseInt(balance, 10); README documents amount \"25.00\"/\"25.50\" USD entries",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solidpayorg/webledgers/",
+    "https://github.com/solidpayorg/webledgers"
+   ]
+  },
+  {
+   "id": "scripts-package-json-declares-dependencies-gen",
+   "repo": "taskify/scripts",
+   "pitch": "package.json declares no dependencies but gen-page.js:1 and suggest-task.js:10 import 'jsonwebtoken' (and seed-agent.js needs nostr-tools), so a fresh clone plus npm install leaves the LLM scripts failing with ERR_MODULE_NOT_FOUND.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 33,
+   "status": "open",
+   "priority": null,
+   "evidence": "package.json — no \"dependencies\" key; gen-page.js:1 and suggest-task.js:10 — import jwt from 'jsonwebtoken'",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/taskify/scripts/",
+    "https://github.com/taskify/scripts"
+   ]
+  },
+  {
+   "id": "nostrfinance-com-hero-get-started-button-links",
+   "repo": "nostrfinance/nostrfinance.com",
+   "pitch": "The hero 'Get Started' button links to #quick-start but no element with that id exists, so the primary CTA does nothing.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 33,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:461 — href=\"#quick-start\"; no matching id in the document",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostrfinance/nostrfinance.com/",
+    "https://github.com/nostrfinance/nostrfinance.com"
+   ]
+  },
+  {
+   "id": "paa-pub-ssrf-guard-isprivateipv6-never-checks",
+   "repo": "melvincarvalho/paa-pub",
+   "pitch": "The SSRF guard's isPrivateIPv6 never checks IPv4-mapped addresses, so a URL like http://[::ffff:127.0.0.1]/ passes validateExternalUrl and reaches the ActivityPub inbox/delivery fetch paths.",
+   "kind": "security",
+   "effort": "small",
+   "score": 33,
+   "status": "open",
+   "priority": null,
+   "evidence": "src/security/ssrf.js isPrivateIPv6 — matches ::1, fc00::/7, fe80::, :: but has no ::ffff:a.b.c.d case; callers at src/activitypub/inbox.js:42, delivery.js:24, remote.js:16",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/paa-pub/",
+    "https://github.com/melvincarvalho/paa-pub"
+   ]
+  },
+  {
+   "id": "solid-desktop-pod-data-root-resolved-against",
+   "repo": "JavaScriptSolidServer/solid-desktop",
+   "pitch": "The pod data root is resolved against the installed package directory (resolve(__dirname, './data')), so for the README's `npx solid-desktop` / global-install paths all pod data lands inside node_modules (or the npx cache) and is silently lost on upgrade, reinstall, or cache prune.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 31,
+   "status": "open",
+   "priority": null,
+   "evidence": "main.js:92 — const ROOT = resolve(__dirname, config.root); with config.json root './data' and README Quick Start 'npx solid-desktop'",
+   "confidence": 3.5,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/solid-desktop/",
+    "https://github.com/JavaScriptSolidServer/solid-desktop"
    ]
   },
   {
@@ -1053,6 +1693,54 @@
    ]
   },
   {
+   "id": "draft-spec-both-reference-example-servers-build",
+   "repo": "solid-lite/draft-spec",
+   "pitch": "Both reference example servers build filesystem paths as path.join(DATA_DIR, req.url) with no '..' sanitization, so a crafted request path can read or write files outside DATA_DIR (path traversal) in code the spec invites users to copy.",
+   "kind": "security",
+   "effort": "small",
+   "score": 30,
+   "status": "open",
+   "priority": null,
+   "evidence": "examples/minimal-server.js:33,48,56 and examples/personal-server.js:57,80,92,110 — path.join(DATA_DIR, req.url) with unvalidated req.url",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/solid-lite/draft-spec/",
+    "https://github.com/solid-lite/draft-spec"
+   ]
+  },
+  {
+   "id": "solid26-content-md-received-5-wording",
+   "repo": "solid/solid26",
+   "pitch": "content.md received 5 wording-fix commits (1f4ba4f..be57d25, e.g. removing the unverified claim that Solid was created in 2014) that were never applied to index.html:285, so the deployed GitHub Pages site still shows the old uncorrected text.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 30,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:285 — \"since its creation by Sir Tim Berners-Lee at MIT in 2014\" vs content.md — \"since it was developed by Sir Tim Berners-Lee and his team at MIT\"; git log shows index.html last touched at d3065b9",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solid/solid26/",
+    "https://github.com/solid/solid26"
+   ]
+  },
+  {
+   "id": "data-model-spec-abstract-section-index-html-79",
+   "repo": "rdfjs/data-model-spec",
+   "pitch": "The abstract section at index.html:79-83 contains only an empty <p></p>, so the published RDF/JS Data Model spec at rdf.js.org renders a blank Abstract at the top of a widely-referenced document.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 30,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:79-83 — <section id=\"abstract\"><p></p></section>",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/rdfjs/data-model-spec/",
+    "https://github.com/rdfjs/data-model-spec"
+   ]
+  },
+  {
    "id": "podkey-approving-the-lowsensitivity-getpublickey",
    "repo": "JavaScriptSolidServer/podkey",
    "pitch": "Approving the low-sensitivity GET_PUBLIC_KEY prompt (worded only 'read your public key') calls addTrustedOrigin, and that single trust bit then lets the origin silently SIGN_EVENT any kind and NIP44_DECRYPT DMs with no further consent — a scope escalation from read to sign/decrypt.",
@@ -1066,6 +1754,70 @@
    "seeAlso": [
     "http://localhost:5445/JavaScriptSolidServer/podkey/",
     "https://github.com/JavaScriptSolidServer/podkey"
+   ]
+  },
+  {
+   "id": "settings-app-names-ldp-container-listing",
+   "repo": "solid-apps/settings",
+   "pitch": "App names from the LDP container listing are decodeURIComponent'd and interpolated raw into innerHTML (data-app attribute, href, and link text), so a container named like %3Cimg%20src%3Dx%20onerror%3D...%3E under /public/apps/ executes script in the settings page, while the sibling store app escapes the same data.",
+   "kind": "security",
+   "effort": "small",
+   "score": 29,
+   "status": "open",
+   "priority": null,
+   "evidence": "app.js:136-137 — `<div class=\"app-row\" data-app=\"${name}\"> ... <a href=\"../${name}/\">${name}</a>` with name from listApps() (app.js:39 decodeURIComponent)",
+   "confidence": 3.5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/settings/",
+    "https://github.com/solid-apps/settings"
+   ]
+  },
+  {
+   "id": "taskify-github-io-repo-behind-live-taskify-org",
+   "repo": "taskify/taskify.github.io",
+   "pitch": "The repo behind the live taskify.org dashboard has no README.md at the root (only legacy/README.md for the old todo app), so visitors from GitHub get no explanation of the app, its JSS/MongoDB setup, or how npm start relates to the pages site.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 28,
+   "status": "open",
+   "priority": null,
+   "evidence": "repo root — CNAME=taskify.org, LICENSE, SKILL.md, RECIPE.md present but no README.md",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/taskify/taskify.github.io/",
+    "https://github.com/taskify/taskify.github.io"
+   ]
+  },
+  {
+   "id": "odi-governance-readme-md-40-links-equal",
+   "repo": "solid/odi-governance",
+   "pitch": "README.md:40 links the Equal Opportunities & Diversity policy to ./odi-eoad.pdf, but no such file exists in the repo, so the link 404s on GitHub for anyone reading the governance proposal.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 28,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:40 — [Equal Opportunities & Diversity](./odi-eoad.pdf); git ls-files contains no .pdf",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid/odi-governance/",
+    "https://github.com/solid/odi-governance"
+   ]
+  },
+  {
+   "id": "clawdocs-live-clawdocs-org-repo-license",
+   "repo": "clawdocs/clawdocs",
+   "pitch": "The live clawdocs.org repo has no LICENSE file even though its footer claims 'Copyright © ClawDocs Contributors' and its docs discuss MIT licensing, and README.md is the unmodified Docusaurus '# Website' scaffold that never mentions ClawDocs.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 28,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:1 — '# Website' Docusaurus boilerplate; no LICENSE* in repo root; docusaurus.config.ts:164 asserts copyright with no license grant",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/clawdocs/clawdocs/",
+    "https://github.com/clawdocs/clawdocs"
    ]
   },
   {
@@ -1146,6 +1898,102 @@
    "seeAlso": [
     "http://localhost:5445/nostr-skills/nostr-skills.github.io/",
     "https://github.com/nostr-skills/nostr-skills.github.io"
+   ]
+  },
+  {
+   "id": "logseq-plugin-podbase-setting-defaults-author",
+   "repo": "JavaScriptSolidServer/logseq",
+   "pitch": "The plugin's podBase setting defaults to the author's personal pod (https://melvincarvalho.solid.social/logseq/), so any user who runs /Push to pod before configuring sends their full page content in a PUT to a stranger's server, and the 'Pod base URL not set' guard is dead code because replace(/\\/?$/, '/') turns the empty string into '/'.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 26,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.js:10 default 'https://melvincarvalho.solid.social/logseq/'; index.js:67-68 — base is '/' when podBase is empty so `if (!base)` never throws",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/logseq/",
+    "https://github.com/JavaScriptSolidServer/logseq"
+   ]
+  },
+  {
+   "id": "nip98-github-io-skill-md-step-3-signs",
+   "repo": "nip98/nip98.github.io",
+   "pitch": "SKILL.md Step 3 signs a relative URL — nip98Auth('/api/data', 'GET') puts '/api/data' in the u tag — which violates NIP-98 (u must be the absolute request URL) and fails the guide's own middleware, which compares u against the full protocol://host URL.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 26,
+   "status": "open",
+   "priority": null,
+   "evidence": "SKILL.md:257 — const auth = await nip98Auth('/api/data', 'GET'); SKILL.md:221-222 — server builds fullUrl from req.protocol/host and requires exact match",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nip98/nip98.github.io/",
+    "https://github.com/nip98/nip98.github.io"
+   ]
+  },
+  {
+   "id": "webvouchers-spec-page-loads-respec-https",
+   "repo": "solidpayorg/webvouchers",
+   "pitch": "The spec page loads ReSpec from https://www.w3.org/Tools/respec/respec-w3c-common (index.html:7), a profile W3C sunset years ago, so the live webvouchers.org spec renders with a deprecation error instead of a clean document.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 26,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:7 — <script src='https://www.w3.org/Tools/respec/respec-w3c-common' class='remove'>",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/solidpayorg/webvouchers/",
+    "https://github.com/solidpayorg/webvouchers"
+   ]
+  },
+  {
+   "id": "jsserve-cli-flags-single-c-cors",
+   "repo": "JavaScriptSolidServer/jsserve",
+   "pitch": "CLI flags -s/--single, -C/--cors, --no-etag and -S/--symlinks (bin/jsserve.js:119-124) are accepted and documented in the README but never translated into JSS arguments, so SPA mode and the other advertised behaviors are no-ops.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 26,
+   "status": "open",
+   "priority": null,
+   "evidence": "bin/jsserve.js:119-124 — options defined; run() at bin/jsserve.js:170+ only forwards root/port/host/public/read-only/quiet/ssl/idp/conneg/live-reload/git",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/jsserve/",
+    "https://github.com/JavaScriptSolidServer/jsserve"
+   ]
+  },
+  {
+   "id": "blocktrails-hue-viewer-injects-relay-supplied",
+   "repo": "play-grounds/blocktrails",
+   "pitch": "The hue viewer injects relay-supplied trail.network into innerHTML unescaped, an XSS from any attacker-controlled kind-30333 event.",
+   "kind": "security",
+   "effort": "small",
+   "score": 26,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:191-196 — infoEl.innerHTML = `...network: ${trail.network || 'unknown'}...` where trail = JSON.parse(event.content)",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/play-grounds/blocktrails/",
+    "https://github.com/play-grounds/blocktrails"
+   ]
+  },
+  {
+   "id": "nostr-lib-relay-js-reconnect-retry",
+   "repo": "melvincarvalho/nostr",
+   "pitch": "lib/relay.js reconnect() has no retry loop — on a failed reconnect it sleeps once in the catch block and returns with me.reconnecting stuck true, so the default {reconnect: true} silently gives up after one failed attempt.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 26,
+   "status": "open",
+   "priority": null,
+   "evidence": "lib/relay.js:82-95 — catch block does await sleep(n); n *= 1.5 with no loop and never resets me.reconnecting, so init_websocket is never re-attempted",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/nostr/",
+    "https://github.com/melvincarvalho/nostr"
    ]
   },
   {
@@ -1274,6 +2122,22 @@
    "seeAlso": [
     "http://localhost:5445/melvincarvalho/xlogin/",
     "https://github.com/melvincarvalho/xlogin"
+   ]
+  },
+  {
+   "id": "create-pane-package-json-declares-bin-bin",
+   "repo": "melvincarvalho/create-pane",
+   "pitch": "package.json declares bin ./bin/create-pane.js and main index.js but the repo's only committed file is package.json, so the create-pane package is uninstallable/non-functional as published — either add the generator or archive the stub.",
+   "kind": "bug",
+   "effort": "medium",
+   "score": 24,
+   "status": "open",
+   "priority": null,
+   "evidence": "package.json:6-8 — \"main\": \"index.js\", \"bin\": {\"create-pane\": \"./bin/create-pane.js\"}; git ls-files returns only package.json",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/create-pane/",
+    "https://github.com/melvincarvalho/create-pane"
    ]
   },
   {
@@ -1469,6 +2333,54 @@
    ]
   },
   {
+   "id": "webvouchers-package-json-declares-main-index",
+   "repo": "solidpayorg/webvouchers",
+   "pitch": "package.json declares \"main\": \"index.js\" but no index.js exists anywhere in the repo root, so require('webvouchers') fails for the published 0.0.13 package.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 22,
+   "status": "open",
+   "priority": null,
+   "evidence": "package.json:5 — \"main\": \"index.js\"; repo root contains no index.js (only index.html, src/, bin/, play/)",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solidpayorg/webvouchers/",
+    "https://github.com/solidpayorg/webvouchers"
+   ]
+  },
+  {
+   "id": "shape-generation-artefacts-readme-repo-structure-diagram-lists",
+   "repo": "solid/shape-generation-artefacts",
+   "pitch": "README's repo-structure diagram lists LICENSE.md and the footer declares MIT, but no LICENSE file exists anywhere in this solid-org repo.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 22,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:17 — ├── LICENSE.md and README.md \"## License / MIT\"; ls shows only .gitignore, README.md, data/, scripts/, shapes/",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid/shape-generation-artefacts/",
+    "https://github.com/solid/shape-generation-artefacts"
+   ]
+  },
+  {
+   "id": "json-os-github-io-live-jsonos-com-site-repo",
+   "repo": "json-os/json-os.github.io",
+   "pitch": "The live jsonos.com site repo has no README.md and no LICENSE anywhere (root contains only CNAME, SKILL.md, index.html, og-image files, browser/, examples/), so GitHub visitors get no project page and reusers of the pane code get no license grant.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 22,
+   "status": "open",
+   "priority": null,
+   "evidence": "repo root — ls shows CNAME, SKILL.md, browser/, examples/, index.html, og-image.html, og-image.png; no README* or LICENSE* in the tree",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/json-os/json-os.github.io/",
+    "https://github.com/json-os/json-os.github.io"
+   ]
+  },
+  {
    "id": "object-wactoacp-silently-drops",
    "repo": "solid/object",
    "pitch": "wacToAcp silently drops acl:agentClass, losing the standard WAC public-access pattern (agentClass foaf:Agent).",
@@ -1498,6 +2410,22 @@
    "seeAlso": [
     "http://localhost:5445/fork-talk/fork-talk.github.io/",
     "https://github.com/fork-talk/fork-talk.github.io"
+   ]
+  },
+  {
+   "id": "melrise-nostr-js-stores-all-session",
+   "repo": "nostrapps/melrise",
+   "pitch": "nostr.js stores all session state (including the guest private key at line 138) under leftover skyrise-nostr-* localStorage keys, which on the shared nostrapps.github.io origin collides with any sibling game copied from the same template and silently shares/overwrites identities.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 21,
+   "status": "open",
+   "priority": null,
+   "evidence": "nostr.js:138 — localStorage.setItem('skyrise-nostr-privkey', privHex) (17 skyrise- occurrences in a game whose GAME_ID is 'melrise')",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nostrapps/melrise/",
+    "https://github.com/nostrapps/melrise"
    ]
   },
   {
@@ -1613,6 +2541,54 @@
    ]
   },
   {
+   "id": "bitcoin-desktop-index-html-loads-xlogin-sign",
+   "repo": "bitcoin-desktop/bitcoin-desktop",
+   "pitch": "index.html loads the xlogin sign-in library from https://unpkg.com/xlogin unpinned and without SRI, so a self-custody Bitcoin app fetches its credential-handling code as mutable CDN 'latest'.",
+   "kind": "security",
+   "effort": "small",
+   "score": 20,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:62 — <script src=\"https://unpkg.com/xlogin\"></script> (no version, no integrity)",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/bitcoin-desktop/bitcoin-desktop/",
+    "https://github.com/bitcoin-desktop/bitcoin-desktop"
+   ]
+  },
+  {
+   "id": "japps-example-index-html-reads-e",
+   "repo": "json-os/japps",
+   "pitch": "example/index.html reads e.detail.pubkey from the nlAuth event, but nip7.js dispatches nlAuth with detail {type} only, so the login status always renders the fallback string \"unknown…nown\".",
+   "kind": "bug",
+   "effort": "small",
+   "score": 20,
+   "status": "open",
+   "priority": null,
+   "evidence": "example/index.html:69 — const pk = e.detail.pubkey || 'unknown'; nip-07/nip7/nip7.js dispatches new CustomEvent(\"nlAuth\", { detail: { type: \"login\" } }) with no pubkey",
+   "confidence": 4.5,
+   "seeAlso": [
+    "http://localhost:5445/json-os/japps/",
+    "https://github.com/json-os/japps"
+   ]
+  },
+  {
+   "id": "types-readme-widely-downloaded-typings-package",
+   "repo": "rdfjs/types",
+   "pitch": "The README of this widely-downloaded typings package misspells \"TypecScript\" and \"interafces\" and tells contributors to run the nonexistent command npx run changeset (should be npx changeset).",
+   "kind": "docs",
+   "effort": "small",
+   "score": 20,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:5 \"TypecScript-specific\", README.md:15 \"interafces\", README.md:41 \"npx run changeset\"",
+   "confidence": 4.5,
+   "seeAlso": [
+    "http://localhost:5445/rdfjs/types/",
+    "https://github.com/rdfjs/types"
+   ]
+  },
+  {
    "id": "btcnostr-readme-feature-table-says-the-tip-wallet",
    "repo": "nostr-client/btcnostr",
    "pitch": "README feature table says the tip wallet is 'P2WPKH per nostr user', but wallet.js derives a taproot (p2tr) address straight from the nostr pubkey for all nostr-native logins and only falls back to a random P2WPKH key for NIP-07 extension logins — fix the table cell to say taproot (P2WPKH fallback for extensions).",
@@ -1626,6 +2602,118 @@
    "seeAlso": [
     "http://localhost:5445/nostr-client/btcnostr/",
     "https://github.com/nostr-client/btcnostr"
+   ]
+  },
+  {
+   "id": "javascriptsolidserver-github-io-live-jss-live-landing-page",
+   "repo": "JavaScriptSolidServer/JavaScriptSolidServer.github.io",
+   "pitch": "The live jss.live landing page footer says \"AGPL-3.0\" but the repo ships no LICENSE file, so the license it claims isn't actually distributed.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 19,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:281 — footer text 'AGPL-3.0 · Built with Solid + Nostr'; repo has no LICENSE file",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/JavaScriptSolidServer.github.io/",
+    "https://github.com/JavaScriptSolidServer/JavaScriptSolidServer.github.io"
+   ]
+  },
+  {
+   "id": "solidos-package-json-declares-license-mit",
+   "repo": "mashlib/solidos",
+   "pitch": "package.json declares \"license\": \"MIT\" but the repo ships no LICENSE file, so the published vocabulary site and npm metadata claim a license the repo doesn't actually grant.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 19,
+   "status": "open",
+   "priority": null,
+   "evidence": "package.json:10 — \"license\": \"MIT\"; git ls-files shows no LICENSE file in the repo",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/mashlib/solidos/",
+    "https://github.com/mashlib/solidos"
+   ]
+  },
+  {
+   "id": "secure-access-conditions-spec-changelog-cites-w3c-process",
+   "repo": "webacl/secure-access-conditions",
+   "pitch": "The spec's changelog cites [W3C-PROCESS] with a bibref link to #bib-w3c-process, but no element with that id exists anywhere in index.html (the References appendix lacks a W3C-PROCESS entry), leaving a dead citation in the published draft.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 19,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:1133 — <a class=\"bibref\" href=\"#bib-w3c-process\">W3C-PROCESS</a>; grep finds no id=\"bib-w3c-process\" in the document",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/webacl/secure-access-conditions/",
+    "https://github.com/webacl/secure-access-conditions"
+   ]
+  },
+  {
+   "id": "bitcoin-desktop-repo-ships-wallet-full-verification",
+   "repo": "bitcoincc/bitcoin-desktop",
+   "pitch": "The repo ships a wallet/full-verification desktop app with an 11KB CLAUDE.md but no README, so GitHub visitors get no install or usage instructions at all.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 19,
+   "status": "open",
+   "priority": null,
+   "evidence": "git ls-files — CLAUDE.md present, no README*; package.json scripts start/headless/web undocumented",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/bitcoincc/bitcoin-desktop/",
+    "https://github.com/bitcoincc/bitcoin-desktop"
+   ]
+  },
+  {
+   "id": "solid26-repo-backing-live-solid26-pages",
+   "repo": "solid/solid26",
+   "pitch": "The repo backing the live solid26 Pages site has no LICENSE and no README, and content.md:13 contains the typo \"and is aims to make Solid more accessible\".",
+   "kind": "docs",
+   "effort": "small",
+   "score": 19,
+   "status": "open",
+   "priority": null,
+   "evidence": "git ls-files — only content.md, index.html, .github/workflows/deploy.yml; content.md:13 — \"is aims\"",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid/solid26/",
+    "https://github.com/solid/solid26"
+   ]
+  },
+  {
+   "id": "paa-pub-readme-declares-mit-license-repo",
+   "repo": "melvincarvalho/paa-pub",
+   "pitch": "README declares an MIT license but the repo contains no LICENSE file.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 19,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:449-451 — \"## License / MIT\"; repo root has no LICENSE and package.json has no license field",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/paa-pub/",
+    "https://github.com/melvincarvalho/paa-pub"
+   ]
+  },
+  {
+   "id": "solid-docs-github-io-solidos-org-landing-page-repo",
+   "repo": "solid-docs/solid-docs.github.io",
+   "pitch": "The solidos.org landing-page repo ships only CNAME, favicon.ico, img/ and index.html — no README and no LICENSE — so the source of a live homepage that says 'Built with open-source' carries no license or contributor entry point itself.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 19,
+   "status": "open",
+   "priority": null,
+   "evidence": "repo root — only CNAME, favicon.ico, img/, index.html; index.html:643 footer reads 'Community-maintained by SolidOS contributors. Built with open-source.'",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-docs/solid-docs.github.io/",
+    "https://github.com/solid-docs/solid-docs.github.io"
    ]
   },
   {
@@ -1853,6 +2941,70 @@
    ]
   },
   {
+   "id": "server-every-new-pod-seeded-public",
+   "repo": "nosdav/server",
+   "pitch": "Every new pod's seeded /public/links.jsonld labels 'nosdav source' as https://github.com/JavaScriptSolidServer/nosdav, a repo that doesn't exist (source lives at nosdav/server), so the starter link 404s.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 18,
+   "status": "open",
+   "priority": null,
+   "evidence": "links.jsonld — @id https://github.com/JavaScriptSolidServer/nosdav; JavaScriptSolidServer org has no 'nosdav' repo in the mirror",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nosdav/server/",
+    "https://github.com/nosdav/server"
+   ]
+  },
+  {
+   "id": "solid-ui-core-package-json-main-exports-point",
+   "repo": "melvincarvalho/solid-ui-core",
+   "pitch": "package.json main/exports point at ./lib/*.js but lib/ is gitignored and there is no \"prepare\" script (only prepublishOnly), so npm install from the git repo yields a package whose entry point does not exist.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 18,
+   "status": "open",
+   "priority": null,
+   "evidence": "package.json:5 — \"main\": \"./lib/index.js\"; .gitignore:2 — lib/; package.json:39 — only prepublishOnly builds",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/solid-ui-core/",
+    "https://github.com/melvincarvalho/solid-ui-core"
+   ]
+  },
+  {
+   "id": "unspux-package-json-points-main-index",
+   "repo": "spux/unspux",
+   "pitch": "package.json points main at index.js and module at web_modules/unspux.js, neither of which exists (only bin/unspux.js ships), so require('unspux') fails — and htm, preact, shelljs and the placeholder 'fs' package are declared deps the 26-line CLI never uses.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 18,
+   "status": "open",
+   "priority": null,
+   "evidence": "package.json:5-6 — \"main\": \"index.js\", \"module\": \"web_modules/unspux.js\"; repo contains only bin/unspux.js, package.json, release.sh",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/spux/unspux/",
+    "https://github.com/spux/unspux"
+   ]
+  },
+  {
+   "id": "explorer-readme-md-still-shows-phases",
+   "repo": "solid-apps/explorer",
+   "pitch": "README.md still shows Phases 2, 4, and 6 (create/rename/delete, ACL editor, upload/drag-drop) as unchecked, but app.js already implements them (openAclEditor at app.js:1555, file-picker upload and PUT create in index.html/app.js).",
+   "kind": "docs",
+   "effort": "small",
+   "score": 17,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md Phases list vs app.js:1555 openAclEditor and index.html file-picker inputs",
+   "confidence": 4.5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/explorer/",
+    "https://github.com/solid-apps/explorer"
+   ]
+  },
+  {
    "id": "xlogin-packagejson-pins-solidoidc-008",
    "repo": "melvincarvalho/xlogin",
    "pitch": "package.json pins solid-oidc ^0.0.8 but the runtime import loads solid-oidc@0.0.9 from esm.sh — declared vs used version mismatch.",
@@ -1866,6 +3018,54 @@
    "seeAlso": [
     "http://localhost:5445/melvincarvalho/xlogin/",
     "https://github.com/melvincarvalho/xlogin"
+   ]
+  },
+  {
+   "id": "bitmark-hub-index-html-pulls-xlogin-login",
+   "repo": "project-bitmark/bitmark-hub",
+   "pitch": "index.html pulls the xlogin login library from https://unpkg.com/xlogin unpinned and without SRI, exposing the pod sign-in flow to CDN 'latest' tampering.",
+   "kind": "security",
+   "effort": "small",
+   "score": 16,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:82 — <script src=\"https://unpkg.com/xlogin\"></script> (no version, no integrity)",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/bitmark-hub/",
+    "https://github.com/project-bitmark/bitmark-hub"
+   ]
+  },
+  {
+   "id": "bitmark-os-index-html-pulls-xlogin-login",
+   "repo": "project-bitmark/bitmark-os",
+   "pitch": "index.html pulls the xlogin login library from https://unpkg.com/xlogin unpinned and without SRI, exposing the pod sign-in flow to CDN 'latest' tampering.",
+   "kind": "security",
+   "effort": "small",
+   "score": 16,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:62 — <script src=\"https://unpkg.com/xlogin\"></script> (no version, no integrity)",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/bitmark-os/",
+    "https://github.com/project-bitmark/bitmark-os"
+   ]
+  },
+  {
+   "id": "taskify-github-io-agent-js-here-near-duplicate",
+   "repo": "taskify/taskify.github.io",
+   "pitch": "agent.js here is a near-duplicate of taskify/agent's agent.js that has already drifted (different header comments and loop defaults), so fixes land in one copy and not the other.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 16,
+   "status": "open",
+   "priority": null,
+   "evidence": "diff taskify/agent/agent.js taskify/taskify.github.io/agent.js — same GLM-5 agent, diverged comments/usage docs",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/taskify/taskify.github.io/",
+    "https://github.com/taskify/taskify.github.io"
    ]
   },
   {
@@ -2349,6 +3549,198 @@
    ]
   },
   {
+   "id": "profile-readme-ends-license-agpl-3",
+   "repo": "solid-apps/profile",
+   "pitch": "README ends with '## License AGPL-3.0' but the repo contains no LICENSE file (unlike every sibling solid-apps repo), so the published gh-pages app claims a license it doesn't ship.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md last section 'License / AGPL-3.0'; `ls` shows no LICENSE file in repo root",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/profile/",
+    "https://github.com/solid-apps/profile"
+   ]
+  },
+  {
+   "id": "demo-readme-md-license-section-declares",
+   "repo": "JavaScriptSolidServer/demo",
+   "pitch": "README.md's License section declares 'MIT for code, CC BY 4.0 for written content' but the repo contains no LICENSE file at all, so the published site's licensing claim is unbacked.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md 'MIT for code, CC BY 4.0 ...' — git ls-files shows no LICENSE",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/demo/",
+    "https://github.com/JavaScriptSolidServer/demo"
+   ]
+  },
+  {
+   "id": "solid-apps-github-io-readme-md-apps-section-lists",
+   "repo": "solid-apps/solid-apps.github.io",
+   "pitch": "README.md's Apps section lists only todos/ while the built catalog (index.json) ships six live apps (bookmark, calendar, contacts, feed, profile, todos), so the repo front page undersells the site by five apps.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:10 — Apps code block contains only 'todos/  →  https://solid-apps.github.io/todos/'; index.json has 6 entries",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/solid-apps.github.io/",
+    "https://github.com/solid-apps/solid-apps.github.io"
+   ]
+  },
+  {
+   "id": "agent-taskify-agent-package-bin-entry",
+   "repo": "taskify/agent",
+   "pitch": "The taskify-agent package (with a bin entry) ships no README.md, so its only usage docs are the comment block inside agent.js — a short README covering ZAI_API_KEY setup and --loop/--interval flags would make it installable by others.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "status": "open",
+   "priority": null,
+   "evidence": "repo root — package.json (bin: taskify-agent), agent.js, LICENSE; no README.md",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/taskify/agent/",
+    "https://github.com/taskify/agent"
+   ]
+  },
+  {
+   "id": "git-nostr-hook-readme-displays-mit-license-badge",
+   "repo": "nostrapps/git-nostr-hook",
+   "pitch": "README displays an MIT license badge and package.json declares \"license\": \"MIT\", but the repo contains no LICENSE file.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:5 — MIT badge; package.json — \"license\": \"MIT\"; no LICENSE file in repo root",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostrapps/git-nostr-hook/",
+    "https://github.com/nostrapps/git-nostr-hook"
+   ]
+  },
+  {
+   "id": "webrtc-extension-repo-readme-license-file",
+   "repo": "bitcoincc/webrtc",
+   "pitch": "The extension repo has no README and no LICENSE file while package.json declares \"license\": \"ISC\", so users installing the browser extension get no usage docs and no actual license text.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "status": "open",
+   "priority": null,
+   "evidence": "package.json:22 — \"license\": \"ISC\"; git ls-files shows no README or LICENSE",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/bitcoincc/webrtc/",
+    "https://github.com/bitcoincc/webrtc"
+   ]
+  },
+  {
+   "id": "solid-lite-readme-md-single-line-solid",
+   "repo": "play-grounds/solid-lite",
+   "pitch": "README.md is the single line \"# solid-lite\" for a live Solid-OIDC login demo, giving visitors no description, demo link, or usage notes.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:1 — entire file is \"# solid-lite\" (12 bytes)",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/play-grounds/solid-lite/",
+    "https://github.com/play-grounds/solid-lite"
+   ]
+  },
+  {
+   "id": "nostrfinance-com-footer-states-mit-license-repo",
+   "repo": "nostrfinance/nostrfinance.com",
+   "pitch": "Footer states 'MIT License' but the repo ships no LICENSE file.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:827 — '© 2025 Nostr Finance Protocol · MIT License'; repo has only DEVELOPMENT_PLAN.md and index.html",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostrfinance/nostrfinance.com/",
+    "https://github.com/nostrfinance/nostrfinance.com"
+   ]
+  },
+  {
+   "id": "agenticalliance-com-live-site-cname-agenticalliance-com",
+   "repo": "agenticalliance/agenticalliance.com",
+   "pitch": "Live site (CNAME agenticalliance.com) has no LICENSE file though README asserts copyright.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md — '© 2024 Agentic Alliance'; no LICENSE file, package.json has no license field",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/agenticalliance/agenticalliance.com/",
+    "https://github.com/agenticalliance/agenticalliance.com"
+   ]
+  },
+  {
+   "id": "nip98-readme-package-json-declare-mit",
+   "repo": "nip98/nip98",
+   "pitch": "README and package.json declare MIT but the repo ships no LICENSE file.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "status": "open",
+   "priority": null,
+   "evidence": "package.json \"license\": \"MIT\" and README.md \"## License / MIT\"; repo contains only README.md, SKILL.md, index.js, package.json",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nip98/nip98/",
+    "https://github.com/nip98/nip98"
+   ]
+  },
+  {
+   "id": "webcomponent-package-json-declares-mit-lists",
+   "repo": "json-os/webcomponent",
+   "pitch": "package.json declares MIT and lists LICENSE in its npm files array, but no LICENSE file exists in the repo, so publishes silently omit it.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "status": "open",
+   "priority": null,
+   "evidence": "package.json:17 — \"LICENSE\" in files[] and \"license\": \"MIT\"; repo contains only README.md, json-os.js, package.json, examples/",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/json-os/webcomponent/",
+    "https://github.com/json-os/webcomponent"
+   ]
+  },
+  {
+   "id": "docs-readme-md-unmodified-docusaurus-scaffold",
+   "repo": "solid-docs/docs",
+   "pitch": "README.md is the unmodified Docusaurus scaffold titled '# Website' — it never names SolidOS Docs or links the live site at solidos.org/docs/, so the GitHub landing page tells contributors nothing about the project.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 15,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:1 — '# Website / This website is built using Docusaurus', stock yarn install/build/deploy text only",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-docs/docs/",
+    "https://github.com/solid-docs/docs"
+   ]
+  },
+  {
    "id": "studyknots-github-io-switch-docusaurus-onbrokenlinksonbrokenmarkdownlinks",
    "repo": "studyknots/studyknots.github.io",
    "pitch": "Switch docusaurus onBrokenLinks/onBrokenMarkdownLinks from \"warn\" to \"throw\" — all internal links verify clean, so it is a safe regression guard.",
@@ -2490,6 +3882,86 @@
    "seeAlso": [
     "http://localhost:5445/nostr-skills/nostr-skills.github.io/",
     "https://github.com/nostr-skills/nostr-skills.github.io"
+   ]
+  },
+  {
+   "id": "forum-readme-install-command-jss-install",
+   "repo": "solid-apps/forum",
+   "pitch": "README's install command 'jss install forum' names the wrong CLI (every sibling repo documents 'jspod install'), and the Status checklist still shows Auth/Channels/Posts unchecked even though app.js implements all three.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 13,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:10 'jss install forum' vs store/home/profile READMEs 'jspod install <name>'; README Status boxes 2-4 unchecked while app.js has xlogin auth, index.jsonld channels, and createPost",
+   "confidence": 3.5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/forum/",
+    "https://github.com/solid-apps/forum"
+   ]
+  },
+  {
+   "id": "playlist-readme-claims-bundled-1-m3u",
+   "repo": "solid-apps/playlist",
+   "pitch": "README claims 'The bundled 1.m3u is loaded by default' but index.html never fetches 1.m3u — the default is a separate playlist embedded in a <script type=text/plain> block, so editing 1.m3u (the obvious knob) changes nothing.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 13,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:9 vs index.html:1054-1059 — loadEmbeddedPlaylist() reads #default-playlist (index.html:842); no reference to 1.m3u anywhere in index.html",
+   "confidence": 4.5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/playlist/",
+    "https://github.com/solid-apps/playlist"
+   ]
+  },
+  {
+   "id": "chess-readme-md-marks-v2-federation",
+   "repo": "solid-apps/chess",
+   "pitch": "README.md marks 'v2 federation' as an unchecked TODO, but app.js already implements hosting, moves-container ACL provisioning (app.js:379-430), a share-link UI, and WebSocket/polling sync — the README undersells shipped features.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 13,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md '[ ] v2 federation' vs app.js:379-430 buildMovesAcl + share-card in index.html",
+   "confidence": 4.5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/chess/",
+    "https://github.com/solid-apps/chess"
+   ]
+  },
+  {
+   "id": "solid-login-source-file-license-header-says",
+   "repo": "melvincarvalho/solid-login",
+   "pitch": "The source file's @license header says GPL-3.0-or-later while package.json, LICENSE, and README all say AGPL-3.0-or-later.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 13,
+   "status": "open",
+   "priority": null,
+   "evidence": "solid-login.js:17 — '@license GPL-3.0-or-later' vs package.json license 'AGPL-3.0-or-later' and AGPL LICENSE file",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/solid-login/",
+    "https://github.com/melvincarvalho/solid-login"
+   ]
+  },
+  {
+   "id": "japps-readme-declares-agpl-3-0",
+   "repo": "json-os/japps",
+   "pitch": "README declares AGPL-3.0 but the repo (README.md, SKILL.md, example/ only) contains no LICENSE file.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 13,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:56-58 — \"## License / AGPL-3.0\"; repo has just 3 tracked files, none a LICENSE",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/json-os/japps/",
+    "https://github.com/json-os/japps"
    ]
   },
   {
@@ -2730,6 +4202,86 @@
    "seeAlso": [
     "http://localhost:5445/solid-apps/journal/",
     "https://github.com/solid-apps/journal"
+   ]
+  },
+  {
+   "id": "demo-published-index-html-footer-links",
+   "repo": "JavaScriptSolidServer/demo",
+   "pitch": "The published index.html footer links to https://javascriptsolidserver.github.io/JavaScriptSolidServer.github.io/ — an org user-site repo is served at the root URL, so this path form almost certainly 404s and should be https://javascriptsolidserver.github.io/.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 12,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html footer — href=\"https://javascriptsolidserver.github.io/JavaScriptSolidServer.github.io/\"",
+   "confidence": 3.5,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/demo/",
+    "https://github.com/JavaScriptSolidServer/demo"
+   ]
+  },
+  {
+   "id": "taskify-server-2016-webcredits-basic-income-demo",
+   "repo": "taskify/taskify-server",
+   "pitch": "This is a 2016 webcredits 'basic income' demo (last commit 2016-05-24) whose README tells users to clone https://github.com/quantumpayments/basic_incom.git and whose package.json repository points to taskify/taskify_server — neither matches this repo, making it a strong archive candidate.",
+   "kind": "archive-candidate",
+   "effort": "small",
+   "score": 12,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md Installation — 'git clone https://github.com/quantumpayments/basic_incom.git'; package.json repository.url — git+https://github.com/taskify/taskify_server.git; git log -1 = 2016-05-24 'Bug fix'",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/taskify/taskify-server/",
+    "https://github.com/taskify/taskify-server"
+   ]
+  },
+  {
+   "id": "kinds-kinds-json-lists-kind-22242",
+   "repo": "nostrdata/kinds",
+   "pitch": "kinds.json lists kind 22242 (\"Client Authentication\", NIP 42) twice with identical fields, so the live table renders a duplicate row.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 11,
+   "status": "open",
+   "priority": null,
+   "evidence": "kinds.json:288 and kinds.json:295 — two identical {\"kind\":\"22242\",\"description\":\"Client Authentication\",\"NIP\":[42]} objects",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostrdata/kinds/",
+    "https://github.com/nostrdata/kinds"
+   ]
+  },
+  {
+   "id": "solidos-index-html-embeds-full-inline",
+   "repo": "mashlib/solidos",
+   "pitch": "index.html embeds a full inline copy of vocab.jsonld's @graph as its data island (the page renders only from the inline copy), so every vocabulary edit must be made twice and the live page silently drifts from the canonical vocab.jsonld if one is missed.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 11,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:22-120 — <script type=\"application/ld+json\" id=\"data\"> duplicates vocab.jsonld verbatim; js/dior.js reads only inline islands",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/mashlib/solidos/",
+    "https://github.com/mashlib/solidos"
+   ]
+  },
+  {
+   "id": "nostr-beacon-index-js-listens-port-3100",
+   "repo": "nostr-labs/nostr-beacon",
+   "pitch": "index.js listens on port 3100 but its startup log claims http://localhost:3000, misleading anyone running the DID endpoint.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 11,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.js — app.listen(3100, () => console.log('Server running on http://localhost:3000'))",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-labs/nostr-beacon/",
+    "https://github.com/nostr-labs/nostr-beacon"
    ]
   },
   {
@@ -3213,6 +4765,118 @@
    ]
   },
   {
+   "id": "data-browser-github-io-browse-test-html-stale-near",
+   "repo": "data-browser/data-browser.github.io",
+   "pitch": "browse-test.html is a stale near-duplicate of browse.html (identical except browse.html's 3 extra .outline-view CSS lines) and is referenced nowhere — delete it or note why it exists.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 9,
+   "status": "open",
+   "priority": null,
+   "evidence": "diff browse.html browse-test.html — only lines 145-147 (.outline-view width rule) differ",
+   "confidence": 4.5,
+   "seeAlso": [
+    "http://localhost:5445/data-browser/data-browser.github.io/",
+    "https://github.com/data-browser/data-browser.github.io"
+   ]
+  },
+  {
+   "id": "fonstr-bin-relay-js-imports-createserver",
+   "repo": "nostrapps/fonstr",
+   "pitch": "bin/relay.js imports createServer from ../index.js, but the current index.js is a spawn-wrapper that exports nothing (createServer only lives in the unused index.js.legacy), so running bin/relay.js throws a SyntaxError on the import.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 9,
+   "status": "open",
+   "priority": null,
+   "evidence": "bin/relay.js:4 — import { createServer } from '../index.js'; index.js has no export (spawns jss); createServer defined only in index.js.legacy",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nostrapps/fonstr/",
+    "https://github.com/nostrapps/fonstr"
+   ]
+  },
+  {
+   "id": "draft-spec-repo-license-file-though-ships",
+   "repo": "solid-lite/draft-spec",
+   "pitch": "Repo has no LICENSE file though it ships runnable example server code and a spec meant for reuse.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 9,
+   "status": "open",
+   "priority": null,
+   "evidence": "repo root — no LICENSE (README declares no license either)",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solid-lite/draft-spec/",
+    "https://github.com/solid-lite/draft-spec"
+   ]
+  },
+  {
+   "id": "linkedobjects-github-io-package-lock-json-declares-license",
+   "repo": "linkedobjects/linkedobjects.github.io",
+   "pitch": "package-lock.json declares \"license\": \"MIT\" while package.json and the LICENSE file are AGPL-3.0-or-later, an inconsistency that ships to npm on publish.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 9,
+   "status": "open",
+   "priority": null,
+   "evidence": "package-lock.json packages.\"\".license = \"MIT\" vs package.json license \"AGPL-3.0-or-later\" and AGPL LICENSE file",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/linkedobjects/linkedobjects.github.io/",
+    "https://github.com/linkedobjects/linkedobjects.github.io"
+   ]
+  },
+  {
+   "id": "solid-panes-github-io-demo-hub-describes-vtodo-demo",
+   "repo": "solid-panes/solid-panes.github.io",
+   "pitch": "The demo hub describes the Vtodo demo as 'Custom todo-pane.js for urn:solid:Vtodo' but the Vtodo registry manifest routes to schema-pane.js (todo-pane.js is Tracker's pane), so the listing contradicts both the manifest and the demo page itself.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 9,
+   "status": "open",
+   "priority": null,
+   "evidence": "demo/index.html:41 — 'Custom todo-pane.js for urn:solid:Vtodo'; Vtodo/index.json pane = https://losos.org/panes/schema-pane.js",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solid-panes/solid-panes.github.io/",
+    "https://github.com/solid-panes/solid-panes.github.io"
+   ]
+  },
+  {
+   "id": "data-model-spec-repo-license-file-even-though",
+   "repo": "rdfjs/data-model-spec",
+   "pitch": "The repo has no LICENSE file even though the ReSpec-rendered spec page carries a W3C document license footer, leaving the repo contents (e.g. img/data_diagram.svg) without stated licensing on GitHub.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 9,
+   "status": "open",
+   "priority": null,
+   "evidence": "git ls-files — README.md, index.html, img/*, .github/CODEOWNERS; no LICENSE",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/rdfjs/data-model-spec/",
+    "https://github.com/rdfjs/data-model-spec"
+   ]
+  },
+  {
+   "id": "spec-readme-declares-license-public-domain",
+   "repo": "blocktrails/spec",
+   "pitch": "README declares 'License: Public domain.' but there is no LICENSE/COPYING file (CC0/Unlicense) to make that legally effective.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 9,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md — 'License\\n\\nPublic domain.'; no LICENSE file in repo",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/blocktrails/spec/",
+    "https://github.com/blocktrails/spec"
+   ]
+  },
+  {
    "id": "comunica-browser-readme-license-section-credits",
    "repo": "rdfjs/comunica-browser",
    "pitch": "README License section credits only 'Ghent University – imec' while LICENSE.txt credits 'Ruben Taelman, Joachim Van Herwegen, Ghent University – imec'; align the README attribution.",
@@ -3565,6 +5229,38 @@
    ]
   },
   {
+   "id": "plaza-mock-html-17kb-static-design",
+   "repo": "solid-apps/plaza",
+   "pitch": "mock.html (17KB static design mockup) is still shipped in the app root, so it gets published on gh-pages and copied onto every pod by store/settings installs; deleting it trims dead weight from every install.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 8,
+   "status": "open",
+   "priority": null,
+   "evidence": "mock.html — 17263-byte standalone mockup, referenced nowhere in index.html or app.js",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/plaza/",
+    "https://github.com/solid-apps/plaza"
+   ]
+  },
+  {
+   "id": "losos-root-level-store-js-html",
+   "repo": "linkedobjects/losos",
+   "pitch": "Root-level store.js, html.js and drop-demo.html are stale duplicates of the canonical losos/ copies (root store.js is byte-identical, root html.js has diverged to an older version) and nothing imports them — index.html and test.js load from ./losos/, so they are dead code.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 8,
+   "status": "open",
+   "priority": null,
+   "evidence": "md5 store.js == losos/store.js; md5 html.js != losos/html.js; index.html:465-466 import from './losos/store.js' & './losos/html.js', test.js:3 imports './losos/store.js'",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/linkedobjects/losos/",
+    "https://github.com/linkedobjects/losos"
+   ]
+  },
+  {
    "id": "json-rocks-server-runs-on",
    "repo": "spux/json.rocks",
    "pitch": "Server runs on EOL fastify v3 with deprecated pre-scope plugin names while mixing in @fastify/basic-auth built for v4 — migrate to fastify v4/v5.",
@@ -3578,6 +5274,22 @@
    "seeAlso": [
     "http://localhost:5445/spux/json.rocks/",
     "https://github.com/spux/json.rocks"
+   ]
+  },
+  {
+   "id": "data-readme-md-unfilled-readme-generator",
+   "repo": "linkedobjects/data",
+   "pitch": "README.md is an unfilled readme-generator stub with an npm version badge pointing at the unrelated 'data' npm package and no description of the repo's actual dbpedia JSON-LD dataset.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 7,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md — 'Welcome to data' + <img src=\"https://img.shields.io/npm/v/data.svg\"> and link to npmjs.com/package/data; no real content",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/linkedobjects/data/",
+    "https://github.com/linkedobjects/data"
    ]
   },
   {
@@ -3725,6 +5437,22 @@
    ]
   },
   {
+   "id": "unspux-unspux-single-26-line-html",
+   "repo": "spux/unspux",
+   "pitch": "unspux is a single 26-line HTML-stripping script untouched since 2020 with a 37-byte README, broken entry points, and no LICENSE — an archive candidate.",
+   "kind": "archive-candidate",
+   "effort": "small",
+   "score": 6,
+   "status": "open",
+   "priority": null,
+   "evidence": "bin/unspux.js — whole tool is one readFileSync + two regex replaces; last substantive commit Jun 2020",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/spux/unspux/",
+    "https://github.com/spux/unspux"
+   ]
+  },
+  {
    "id": "project-bitmark-github-io-deploysh-stages-with",
    "repo": "project-bitmark/project-bitmark.github.io",
    "pitch": "deploy.sh stages with \"git add -u\", so newly created assets are silently left out of the commit and never deployed.",
@@ -3770,6 +5498,22 @@
    "seeAlso": [
     "http://localhost:5445/solid-apps/pigeon/",
     "https://github.com/solid-apps/pigeon"
+   ]
+  },
+  {
+   "id": "userguide-jekyll-era-fork-solidos-userguide",
+   "repo": "melvincarvalho/userguide",
+   "pitch": "This Jekyll-era fork of the SolidOS userguide duplicates content now maintained and served from solid-docs/userguide at solidos.org/userguide/, making it an archive candidate to avoid two diverging user guides.",
+   "kind": "archive-candidate",
+   "effort": "small",
+   "score": 5,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md:1 — 'SolidOS Databrowser Frontend User Guide' covering the same views that solid-docs/userguide/docs/views now covers on the live site",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/userguide/",
+    "https://github.com/melvincarvalho/userguide"
    ]
   },
   {
