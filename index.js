@@ -7,7 +7,7 @@ export const VERSION = '0.0.1'
 export const LEDGER = {
   worklist: 'worklist.json',
   surveys: 'surveys/',
-  decisions: 'decisions.jsonl',
+  decisions: 'decisions.json',
   scores: 'scores.json'
 }
 

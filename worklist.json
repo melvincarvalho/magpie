@@ -1,7 +1,7 @@
 {
  "generated": "2026-07-08",
  "refreshed": true,
- "note": "All live survey findings (done/rejected removed), ranked. \"headline\" is how many the Worklist tab shows; the rest are under All. Accept/reject via decisions.jsonl, then re-run refresh-worklist.mjs.",
+ "note": "All live survey findings (done/rejected removed), ranked. \"headline\" is how many the Worklist tab shows; the rest are under All. Accept/reject via decisions.json, then re-run refresh-worklist.mjs.",
  "resolved": {
   "done": 3,
   "rejected": 2,

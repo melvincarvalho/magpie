@@ -20,7 +20,7 @@ and any capable agent can run a survey or record decisions.
 
 - `worklist.json` — the current ranked shortlist
 - `surveys/` — full output of every survey run
-- `decisions.jsonl` — append-only human verdicts (the taste dataset)
+- `decisions.json` — append-only human verdicts (the taste dataset)
 
 ## Install
 

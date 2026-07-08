@@ -21,14 +21,12 @@ const latest = readdirSync(surveyDir).filter(f => f.endsWith('.json')).sort().po
 if (!latest) { console.error('no surveys found'); process.exit(1) }
 const survey = JSON.parse(readFileSync(join(surveyDir, latest), 'utf8'))
 
-// fold decisions.jsonl into the latest verdict per finding id
+// fold decisions.json into the latest verdict per finding id
 const verdict = new Map()
-let decisions = ''
-try { decisions = readFileSync(join(dir, 'decisions.jsonl'), 'utf8') } catch {}
-for (const line of decisions.split('\n')) {
-  const s = line.trim()
-  if (!s) continue
-  try { const d = JSON.parse(s); if (d.id && d.action) verdict.set(d.id, d.action) } catch {}
+let decisions = []
+try { decisions = JSON.parse(readFileSync(join(dir, 'decisions.json'), 'utf8')) } catch {}
+for (const d of decisions) {
+  if (d && d.id && d.action) verdict.set(d.id, d.action)
 }
 
 const TERMINAL = new Set(['done', 'rejected'])
@@ -48,7 +46,7 @@ const item = f => ({
 const worklist = {
   generated: survey.generated,
   refreshed: true,
-  note: 'All live survey findings (done/rejected removed), ranked. "headline" is how many the Worklist tab shows; the rest are under All. Accept/reject via decisions.jsonl, then re-run refresh-worklist.mjs.',
+  note: 'All live survey findings (done/rejected removed), ranked. "headline" is how many the Worklist tab shows; the rest are under All. Accept/reject via decisions.json, then re-run refresh-worklist.mjs.',
   resolved: counts,
   headline: TOP,
   total: survey.findings.length,

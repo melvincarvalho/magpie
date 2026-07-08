@@ -24,7 +24,7 @@ from the mirror (e.g. `http://localhost:5445/melvincarvalho/magpie/`):
 ```
 worklist.json          # current ranked shortlist (the product)
 surveys/YYYY-MM-DD.json # full scored output of each survey run
-decisions.jsonl        # append-only human verdicts — the taste dataset
+decisions.json         # append-only human verdicts — the taste dataset
 scores.json            # cached per-repo signals, diffed between runs
 ```
 
@@ -65,7 +65,8 @@ Worklist entry (`worklist.json` is `{ "generated": iso8601, "items": [...] }`):
 `kind`: bug | feature | docs | cleanup | security | archive-candidate.
 `effort`: small | medium | large. Prefer small.
 
-Decision line (`decisions.jsonl`, append-only, one JSON object per line):
+Decision entry (`decisions.json`, a JSON array; append-only — push new
+entries, never rewrite or delete existing ones):
 
 ```json
 {"ts":"2026-07-08T18:00:00Z","id":"jspod-seed-clobber","repo":"JavaScriptSolidServer/jspod","action":"accepted","note":"good catch, fixing today"}
@@ -87,7 +88,7 @@ Per-repo scratchpad (`.git/magpie.json`):
 
 ## Survey procedure
 
-1. **Read taste first.** Load every line of `decisions.jsonl`. Rejected
+1. **Read taste first.** Load every entry of `decisions.json`. Rejected
    patterns (e.g. "README polish on dead repos") must not resurface;
    accepted patterns tell you what scores high.
 2. **Inventory.** Read the mirror index JSON for the repo list and
@@ -124,4 +125,4 @@ Per-repo scratchpad (`.git/magpie.json`):
   during a survey.
 - Respect privacy: repos marked private in the mirror must never be
   referenced in a ledger that is pushed to a public remote.
-- `decisions.jsonl` is append-only, forever.
+- `decisions.json` is append-only, forever (push entries; never rewrite/delete).
