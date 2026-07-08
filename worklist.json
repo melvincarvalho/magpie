@@ -5,42 +5,13 @@
  "resolved": {
   "done": 3,
   "rejected": 2,
-  "accepted": 0,
-  "later": 0
+  "accepted": 0
  },
+ "pinned": 1,
+ "deferred": 1,
  "headline": 12,
  "total": 51,
  "items": [
-  {
-   "id": "jspod-seedpodfiles-unconditionally-overwrites",
-   "repo": "JavaScriptSolidServer/jspod",
-   "pitch": "seedPodFiles() unconditionally overwrites <root>/index.html (and signin/account/docs) on every start, clobbering user content; no opt-out, and it diverges from JSS which seeds skip-if-exists.",
-   "kind": "bug",
-   "effort": "small",
-   "score": 92,
-   "status": "open",
-   "evidence": "lib/start.js:136-150 no existsSync guard; called at :311; contrast JSS src/server.js:887-893",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/JavaScriptSolidServer/jspod/",
-    "https://github.com/JavaScriptSolidServer/jspod"
-   ]
-  },
-  {
-   "id": "javascriptsolidserver-add-a-github",
-   "repo": "JavaScriptSolidServer/JavaScriptSolidServer",
-   "pitch": "Add a GitHub Actions workflow running npm test — 63 test files and a node --test script but zero CI.",
-   "kind": "cleanup",
-   "effort": "small",
-   "score": 68,
-   "status": "open",
-   "evidence": ".github/ has only CODEOWNERS; test/ has 63 *.test.js",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/JavaScriptSolidServer/JavaScriptSolidServer/",
-    "https://github.com/JavaScriptSolidServer/JavaScriptSolidServer"
-   ]
-  },
   {
    "id": "fund-agent-shell-command-injection",
    "repo": "blocktrails/fund-agent",
@@ -49,11 +20,28 @@
    "effort": "small",
    "score": 65,
    "status": "open",
+   "priority": "pin",
    "evidence": "bin/fund-agent.js:98 execSync reached at :334 via untrusted voucher.chain",
    "confidence": 4,
    "seeAlso": [
     "http://localhost:5445/blocktrails/fund-agent/",
     "https://github.com/blocktrails/fund-agent"
+   ]
+  },
+  {
+   "id": "jspod-seedpodfiles-unconditionally-overwrites",
+   "repo": "JavaScriptSolidServer/jspod",
+   "pitch": "seedPodFiles() unconditionally overwrites <root>/index.html (and signin/account/docs) on every start, clobbering user content; no opt-out, and it diverges from JSS which seeds skip-if-exists.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 92,
+   "status": "open",
+   "priority": null,
+   "evidence": "lib/start.js:136-150 no existsSync guard; called at :311; contrast JSS src/server.js:887-893",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/jspod/",
+    "https://github.com/JavaScriptSolidServer/jspod"
    ]
   },
   {
@@ -64,6 +52,7 @@
    "effort": "small",
    "score": 54,
    "status": "open",
+   "priority": null,
    "evidence": "README.md:3,31; Documentation/webapp-intro.html:613",
    "confidence": 4,
    "seeAlso": [
@@ -79,6 +68,7 @@
    "effort": "small",
    "score": 52,
    "status": "open",
+   "priority": null,
    "evidence": "src/mapping/LiteralFrom.ts:23,48; verified undefined on node v24.16.0; no tests cover these",
    "confidence": 5,
    "seeAlso": [
@@ -94,6 +84,7 @@
    "effort": "small",
    "score": 41,
    "status": "open",
+   "priority": null,
    "evidence": "src/accessControlConversion/acpToWac.ts:76-79",
    "confidence": 4,
    "seeAlso": [
@@ -109,6 +100,7 @@
    "effort": "small",
    "score": 41,
    "status": "open",
+   "priority": null,
    "evidence": "README example ~lines 36-42",
    "confidence": 5,
    "seeAlso": [
@@ -124,6 +116,7 @@
    "effort": "small",
    "score": 41,
    "status": "open",
+   "priority": null,
    "evidence": "bin/dnstr.js:17-41 slice(0,-6) no polymod",
    "confidence": 4,
    "seeAlso": [
@@ -139,6 +132,7 @@
    "effort": "small",
    "score": 38,
    "status": "open",
+   "priority": null,
    "evidence": "docusaurus.config.ts:16; deploy.yml on push; commit 0d0d2e6",
    "confidence": 5,
    "seeAlso": [
@@ -154,6 +148,7 @@
    "effort": "small",
    "score": 37,
    "status": "open",
+   "priority": null,
    "evidence": "src/utils/url.js:33-38,65-78",
    "confidence": 4,
    "seeAlso": [
@@ -169,6 +164,7 @@
    "effort": "small",
    "score": 35,
    "status": "open",
+   "priority": null,
    "evidence": "package.json vs README.md:267-272 + LICENSE.Apache-2.0.md",
    "confidence": 5,
    "seeAlso": [
@@ -184,6 +180,7 @@
    "effort": "small",
    "score": 35,
    "status": "open",
+   "priority": null,
    "evidence": "package.json vs README + LICENSE.Apache-2.0.md",
    "confidence": 5,
    "seeAlso": [
@@ -199,6 +196,7 @@
    "effort": "small",
    "score": 34,
    "status": "open",
+   "priority": null,
    "evidence": "repo-root legacy files; package.json test scripts use tests/ only",
    "confidence": 4,
    "seeAlso": [
@@ -214,6 +212,7 @@
    "effort": "medium",
    "score": 30,
    "status": "open",
+   "priority": null,
    "evidence": "package.json has main/module/types but no exports; esm/ lacks type marker",
    "confidence": 4,
    "seeAlso": [
@@ -229,6 +228,7 @@
    "effort": "medium",
    "score": 30,
    "status": "open",
+   "priority": null,
    "evidence": "wallet-app.html:280,620; status text contradiction",
    "confidence": 5,
    "seeAlso": [
@@ -244,6 +244,7 @@
    "effort": "small",
    "score": 27,
    "status": "open",
+   "priority": null,
    "evidence": "README.md Installation section",
    "confidence": 5,
    "seeAlso": [
@@ -259,6 +260,7 @@
    "effort": "small",
    "score": 27,
    "status": "open",
+   "priority": null,
    "evidence": "README yarn instructions; no yarn.lock; deploy.yml npm ci",
    "confidence": 5,
    "seeAlso": [
@@ -274,6 +276,7 @@
    "effort": "small",
    "score": 27,
    "status": "open",
+   "priority": null,
    "evidence": "proof/follow.mjs:21, proof/validate-forward.mjs:25 hardcoded Basic-auth",
    "confidence": 5,
    "seeAlso": [
@@ -289,6 +292,7 @@
    "effort": "small",
    "score": 26,
    "status": "open",
+   "priority": null,
    "evidence": "bin/server.js:12-31; package.json declares only 5 metascraper plugins",
    "confidence": 5,
    "seeAlso": [
@@ -304,6 +308,7 @@
    "effort": "small",
    "score": 26,
    "status": "open",
+   "priority": null,
    "evidence": "package.json main vs repo has only bin/dnstr.js",
    "confidence": 5,
    "seeAlso": [
@@ -319,6 +324,7 @@
    "effort": "small",
    "score": 26,
    "status": "open",
+   "priority": null,
    "evidence": "logo.png 914174 bytes; style.css:71 28px",
    "confidence": 5,
    "seeAlso": [
@@ -334,6 +340,7 @@
    "effort": "medium",
    "score": 21,
    "status": "open",
+   "priority": null,
    "evidence": "src/accessControlConversion/wacToAcp.ts:42-48; agentClass absent from conversion",
    "confidence": 4,
    "seeAlso": [
@@ -349,6 +356,7 @@
    "effort": "small",
    "score": 21,
    "status": "open",
+   "priority": null,
    "evidence": "index.html:185; org has no timeline repo",
    "confidence": 3,
    "seeAlso": [
@@ -364,6 +372,7 @@
    "effort": "small",
    "score": 18,
    "status": "open",
+   "priority": null,
    "evidence": "index.html:40,496,605,855 vs jsclaw/package.json 0.0.20",
    "confidence": 5,
    "seeAlso": [
@@ -379,6 +388,7 @@
    "effort": "small",
    "score": 18,
    "status": "open",
+   "priority": null,
    "evidence": "bin/server.js:908 vs encoded searchBrave/searchDuckDuckGo",
    "confidence": 4,
    "seeAlso": [
@@ -394,6 +404,7 @@
    "effort": "small",
    "score": 18,
    "status": "open",
+   "priority": null,
    "evidence": "63 tracked files, no README; CNAME studyknots.com",
    "confidence": 5,
    "seeAlso": [
@@ -409,6 +420,7 @@
    "effort": "small",
    "score": 18,
    "status": "open",
+   "priority": null,
    "evidence": "proof/decode-block.mjs:11, proof/follow.mjs:12",
    "confidence": 5,
    "seeAlso": [
@@ -424,6 +436,7 @@
    "effort": "small",
    "score": 18,
    "status": "open",
+   "priority": null,
    "evidence": "no LICENSE; package.json license AGPL-3.0-or-later",
    "confidence": 5,
    "seeAlso": [
@@ -439,6 +452,7 @@
    "effort": "small",
    "score": 18,
    "status": "open",
+   "priority": null,
    "evidence": "no README.md; contracts/ scripts/ faucet/ present",
    "confidence": 5,
    "seeAlso": [
@@ -454,6 +468,7 @@
    "effort": "small",
    "score": 18,
    "status": "open",
+   "priority": null,
    "evidence": "app.js:733-740 vs :562",
    "confidence": 4,
    "seeAlso": [
@@ -469,6 +484,7 @@
    "effort": "small",
    "score": 18,
    "status": "open",
+   "priority": null,
    "evidence": "app.js:71,76 regex",
    "confidence": 4,
    "seeAlso": [
@@ -484,6 +500,7 @@
    "effort": "small",
    "score": 18,
    "status": "open",
+   "priority": null,
    "evidence": "index.html:209; root has only index.html/style.css/logo.png",
    "confidence": 5,
    "seeAlso": [
@@ -499,6 +516,7 @@
    "effort": "small",
    "score": 18,
    "status": "open",
+   "priority": null,
    "evidence": "index.html:488; no README/LICENSE",
    "confidence": 5,
    "seeAlso": [
@@ -514,6 +532,7 @@
    "effort": "small",
    "score": 18,
    "status": "open",
+   "priority": null,
    "evidence": "README vs cli.mjs:4, js/api.mjs:2",
    "confidence": 5,
    "seeAlso": [
@@ -529,6 +548,7 @@
    "effort": "small",
    "score": 17,
    "status": "open",
+   "priority": null,
    "evidence": "bin/fund-agent.js:309",
    "confidence": 5,
    "seeAlso": [
@@ -544,6 +564,7 @@
    "effort": "small",
    "score": 14,
    "status": "open",
+   "priority": null,
    "evidence": "package.json license MIT; no LICENSE in root",
    "confidence": 4,
    "seeAlso": [
@@ -559,6 +580,7 @@
    "effort": "small",
    "score": 14,
    "status": "open",
+   "priority": null,
    "evidence": "docusaurus.config.ts:16-17",
    "confidence": 4,
    "seeAlso": [
@@ -574,6 +596,7 @@
    "effort": "small",
    "score": 14,
    "status": "open",
+   "priority": null,
    "evidence": "git ls-files no LICENSE",
    "confidence": 5,
    "seeAlso": [
@@ -589,6 +612,7 @@
    "effort": "medium",
    "score": 13,
    "status": "open",
+   "priority": null,
    "evidence": "bin/fund-agent.js duplicates index.js",
    "confidence": 5,
    "seeAlso": [
@@ -604,6 +628,7 @@
    "effort": "small",
    "score": 13,
    "status": "open",
+   "priority": null,
    "evidence": "git status M gen-snapshot.mjs, ?? package-lock.json",
    "confidence": 5,
    "seeAlso": [
@@ -619,6 +644,7 @@
    "effort": "small",
    "score": 12,
    "status": "open",
+   "priority": null,
    "evidence": "fund-faucet.js:9 vs package.json scripts",
    "confidence": 5,
    "seeAlso": [
@@ -634,6 +660,7 @@
    "effort": "medium",
    "score": 12,
    "status": "open",
+   "priority": null,
    "evidence": "data/nodes.json snapshot 1781774113; no .github/workflows",
    "confidence": 4,
    "seeAlso": [
@@ -649,6 +676,7 @@
    "effort": "small",
    "score": 10,
    "status": "open",
+   "priority": null,
    "evidence": "package.json jest.globals[\"ts-jest\"] with ts-jest ^29 / jest ^30",
    "confidence": 4,
    "seeAlso": [
@@ -664,6 +692,7 @@
    "effort": "small",
    "score": 9,
    "status": "open",
+   "priority": null,
    "evidence": "package.json description vs name",
    "confidence": 5,
    "seeAlso": [
@@ -679,6 +708,7 @@
    "effort": "medium",
    "score": 7,
    "status": "open",
+   "priority": null,
    "evidence": "package.json fastify ^3.4.1 + fastify-compress/-cors/-rate-limit",
    "confidence": 4,
    "seeAlso": [
@@ -694,11 +724,28 @@
    "effort": "small",
    "score": 5,
    "status": "open",
+   "priority": null,
    "evidence": "deploy.sh:3 git add -u",
    "confidence": 4,
    "seeAlso": [
     "http://localhost:5445/project-bitmark/project-bitmark.github.io/",
     "https://github.com/project-bitmark/project-bitmark.github.io"
+   ]
+  },
+  {
+   "id": "javascriptsolidserver-add-a-github",
+   "repo": "JavaScriptSolidServer/JavaScriptSolidServer",
+   "pitch": "Add a GitHub Actions workflow running npm test — 63 test files and a node --test script but zero CI.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 68,
+   "status": "open",
+   "priority": "later",
+   "evidence": ".github/ has only CODEOWNERS; test/ has 63 *.test.js",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/JavaScriptSolidServer/",
+    "https://github.com/JavaScriptSolidServer/JavaScriptSolidServer"
    ]
   }
  ]

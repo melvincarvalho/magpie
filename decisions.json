@@ -47,5 +47,19 @@
   "repo": "solid-apps/alarm",
   "action": "done",
   "note": "Merged in PR #4 (squash 912ada0)."
+ },
+ {
+  "ts": "2026-07-08T20:55:00Z",
+  "id": "fund-agent-shell-command-injection",
+  "repo": "blocktrails/fund-agent",
+  "priority": "pin",
+  "note": "security bug, do first regardless of score"
+ },
+ {
+  "ts": "2026-07-08T20:55:00Z",
+  "id": "javascriptsolidserver-add-a-github",
+  "repo": "JavaScriptSolidServer/JavaScriptSolidServer",
+  "priority": "later",
+  "note": "CI is nice-to-have, not urgent"
  }
 ]

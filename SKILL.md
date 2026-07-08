@@ -70,10 +70,19 @@ entries, never rewrite or delete existing ones):
 
 ```json
 {"ts":"2026-07-08T18:00:00Z","id":"jspod-seed-clobber","repo":"JavaScriptSolidServer/jspod","action":"accepted","note":"good catch, fixing today"}
+{"ts":"2026-07-08T18:05:00Z","id":"fund-agent-shell-injection","priority":"pin","note":"security, do first"}
 ```
 
-`action`: accepted | rejected | done | later. Never rewrite or delete
-lines; corrections are new lines.
+A decision carries an `action`, a `priority`, or both — two independent axes:
+
+- **`action`** (lifecycle): `accepted | rejected | done`. Drives filtering
+  (done/rejected leave the worklist) and the status shown on an item.
+- **`priority`** (ordering): `pin | later`. `pin` floats a finding to the top
+  regardless of score; `later` sinks it to the bottom; absent = normal score
+  order. Orthogonal to `action` — pinning does not change lifecycle status.
+  Latest entry per finding wins on each axis, so you can re-pin or clear later.
+
+Never rewrite or delete entries; corrections are new entries.
 
 **After recording decisions, run `node refresh-worklist.mjs`** — it rewrites
 `worklist.json` as the latest survey's ranked findings minus anything
