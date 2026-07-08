@@ -1,0 +1,150 @@
+{
+ "generated": "2026-07-08T18:40:00Z",
+ "note": "First magpie survey. Top items by (impact x confidence x reach x kind) / effort. Accept/reject via decisions.jsonl.",
+ "items": [
+  {
+   "id": "alarm-the-seeded-acl",
+   "repo": "solid-apps/alarm",
+   "pitch": "The seeded ACL makes /public/alarm/alarms.jsonld world-writable (foaf:Agent gets Read+Write), so anyone on the internet can read/alter/delete a user’s alarms — tighten to owner-only write.",
+   "kind": "security",
+   "effort": "small",
+   "score": 108,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/alarm/",
+    "https://github.com/solid-apps/alarm"
+   ]
+  },
+  {
+   "id": "jspod-seedpodfiles-unconditionally-overwrites",
+   "repo": "JavaScriptSolidServer/jspod",
+   "pitch": "seedPodFiles() unconditionally overwrites <root>/index.html (and signin/account/docs) on every start, clobbering user content; no opt-out, and it diverges from JSS which seeds skip-if-exists.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 92,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/jspod/",
+    "https://github.com/JavaScriptSolidServer/jspod"
+   ]
+  },
+  {
+   "id": "alarm-top-level-permission-notificationpermission",
+   "repo": "solid-apps/alarm",
+   "pitch": "Top-level `permission: Notification.permission` throws ReferenceError on browsers without the Notification API (iOS Safari), killing the module so the app renders nothing — guard with \"Notification\" in window.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 74,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/alarm/",
+    "https://github.com/solid-apps/alarm"
+   ]
+  },
+  {
+   "id": "alarm-alarms-only-fire",
+   "repo": "solid-apps/alarm",
+   "pitch": "Alarms only fire when a 1s tick lands on seconds===0, so background-tab timer throttling silently skips alarms — track last-checked minute instead.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 74,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/alarm/",
+    "https://github.com/solid-apps/alarm"
+   ]
+  },
+  {
+   "id": "javascriptsolidserver-add-a-github",
+   "repo": "JavaScriptSolidServer/JavaScriptSolidServer",
+   "pitch": "Add a GitHub Actions workflow running npm test — 63 test files and a node --test script but zero CI.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 68,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/JavaScriptSolidServer/",
+    "https://github.com/JavaScriptSolidServer/JavaScriptSolidServer"
+   ]
+  },
+  {
+   "id": "fund-agent-shell-command-injection",
+   "repo": "blocktrails/fund-agent",
+   "pitch": "Shell command injection via a crafted voucher URI: the voucher chain segment is interpolated into an execSync git-config string where $(...) executes; switch to execFileSync.",
+   "kind": "security",
+   "effort": "small",
+   "score": 65,
+   "seeAlso": [
+    "http://localhost:5445/blocktrails/fund-agent/",
+    "https://github.com/blocktrails/fund-agent"
+   ]
+  },
+  {
+   "id": "rdflib-js-readme-links-to",
+   "repo": "linkeddata/rdflib.js",
+   "pitch": "README links to the defunct Inrupt Solid portal (solid.inrupt.com) and a dead Gitter room/badge; replace with live Solid community links.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 54,
+   "seeAlso": [
+    "http://localhost:5445/linkeddata/rdflib.js/",
+    "https://github.com/linkeddata/rdflib.js"
+   ]
+  },
+  {
+   "id": "wrapper-literalfrombase64hex-call-uint8arraytobase64tohex",
+   "repo": "rdfjs/wrapper",
+   "pitch": "LiteralFrom.base64/hex call Uint8Array.toBase64()/toHex(), which do not exist on the package minimum Node 24, so both mappers throw TypeError at runtime.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 52,
+   "seeAlso": [
+    "http://localhost:5445/rdfjs/wrapper/",
+    "https://github.com/rdfjs/wrapper"
+   ]
+  },
+  {
+   "id": "nanoblog-mirror-clone-is",
+   "repo": "melvincarvalho/nanoblog",
+   "pitch": "Mirror clone is EMPTY (0 git objects, no refs) despite recent pushes — gh-sync failed to fetch content; needs re-clone.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 52,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/nanoblog/",
+    "https://github.com/melvincarvalho/nanoblog"
+   ]
+  },
+  {
+   "id": "liwi-mirror-clone-is",
+   "repo": "melvincarvalho/liwi",
+   "pitch": "Mirror clone is EMPTY (0 git objects, no refs) despite recent pushes — gh-sync failed to fetch content; needs re-clone.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 52,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/liwi/",
+    "https://github.com/melvincarvalho/liwi"
+   ]
+  },
+  {
+   "id": "object-acptowac-emits-acppublicagent",
+   "repo": "solid/object",
+   "pitch": "acpToWac emits acp:PublicAgent as acl:agent foaf:Agent instead of acl:agentClass foaf:Agent, producing WAC servers will not treat as public.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 41,
+   "seeAlso": [
+    "http://localhost:5445/solid/object/",
+    "https://github.com/solid/object"
+   ]
+  },
+  {
+   "id": "dnstr-org-the-first-nip-134",
+   "repo": "nosdav/dnstr.org",
+   "pitch": "The first NIP-134 spec example flattens the u and d tags into one malformed 4-element array — should be two separate tags.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 41,
+   "seeAlso": [
+    "http://localhost:5445/nosdav/dnstr.org/",
+    "https://github.com/nosdav/dnstr.org"
+   ]
+  }
+ ]
+}
