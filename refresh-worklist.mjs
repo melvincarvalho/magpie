@@ -40,16 +40,21 @@ live.sort((a, b) => tier(a) - tier(b) || b.score - a.score)
 const counts = { done: 0, rejected: 0, accepted: 0, later: 0 }
 for (const a of verdict.values()) if (a in counts) counts[a]++
 
+const item = f => ({
+  id: f.id, repo: f.repo, pitch: f.pitch, kind: f.kind, effort: f.effort,
+  score: f.score, status: verdict.get(f.id) || 'open',
+  evidence: f.evidence, confidence: f.confidence, seeAlso: f.seeAlso
+})
 const worklist = {
   generated: survey.generated,
   refreshed: true,
-  note: 'Ranked survey findings minus done/rejected. Accepted items stay (in flight); later items sink. Accept/reject via decisions.jsonl, then re-run refresh-worklist.mjs.',
+  note: 'All live survey findings (done/rejected removed), ranked. "headline" is how many the Worklist tab shows; the rest are under All. Accept/reject via decisions.jsonl, then re-run refresh-worklist.mjs.',
   resolved: counts,
-  items: live.slice(0, TOP).map(f => ({
-    id: f.id, repo: f.repo, pitch: f.pitch, kind: f.kind, effort: f.effort,
-    score: f.score, status: verdict.get(f.id) || 'open', seeAlso: f.seeAlso
-  }))
+  headline: TOP,
+  total: survey.findings.length,
+  items: live.map(item) // full live set; the UI slices `headline` for the Worklist tab
 }
 writeFileSync(join(dir, 'worklist.json'), JSON.stringify(worklist, null, 1))
 console.log(`worklist: ${live.length} live of ${survey.findings.length} findings ` +
-  `(done ${counts.done}, rejected ${counts.rejected}, accepted ${counts.accepted}, later ${counts.later}); top ${worklist.items.length} written`)
+  `(done ${counts.done}, rejected ${counts.rejected}, accepted ${counts.accepted}, later ${counts.later}); ` +
+  `headline ${TOP}, all ${live.length} written`)

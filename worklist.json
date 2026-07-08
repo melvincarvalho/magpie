@@ -1,13 +1,15 @@
 {
  "generated": "2026-07-08",
  "refreshed": true,
- "note": "Ranked survey findings minus done/rejected. Accepted items stay (in flight); later items sink. Accept/reject via decisions.jsonl, then re-run refresh-worklist.mjs.",
+ "note": "All live survey findings (done/rejected removed), ranked. \"headline\" is how many the Worklist tab shows; the rest are under All. Accept/reject via decisions.jsonl, then re-run refresh-worklist.mjs.",
  "resolved": {
   "done": 3,
   "rejected": 2,
   "accepted": 0,
   "later": 0
  },
+ "headline": 12,
+ "total": 51,
  "items": [
   {
    "id": "jspod-seedpodfiles-unconditionally-overwrites",
@@ -17,6 +19,8 @@
    "effort": "small",
    "score": 92,
    "status": "open",
+   "evidence": "lib/start.js:136-150 no existsSync guard; called at :311; contrast JSS src/server.js:887-893",
+   "confidence": 5,
    "seeAlso": [
     "http://localhost:5445/JavaScriptSolidServer/jspod/",
     "https://github.com/JavaScriptSolidServer/jspod"
@@ -30,6 +34,8 @@
    "effort": "small",
    "score": 68,
    "status": "open",
+   "evidence": ".github/ has only CODEOWNERS; test/ has 63 *.test.js",
+   "confidence": 5,
    "seeAlso": [
     "http://localhost:5445/JavaScriptSolidServer/JavaScriptSolidServer/",
     "https://github.com/JavaScriptSolidServer/JavaScriptSolidServer"
@@ -43,6 +49,8 @@
    "effort": "small",
    "score": 65,
    "status": "open",
+   "evidence": "bin/fund-agent.js:98 execSync reached at :334 via untrusted voucher.chain",
+   "confidence": 4,
    "seeAlso": [
     "http://localhost:5445/blocktrails/fund-agent/",
     "https://github.com/blocktrails/fund-agent"
@@ -56,6 +64,8 @@
    "effort": "small",
    "score": 54,
    "status": "open",
+   "evidence": "README.md:3,31; Documentation/webapp-intro.html:613",
+   "confidence": 4,
    "seeAlso": [
     "http://localhost:5445/linkeddata/rdflib.js/",
     "https://github.com/linkeddata/rdflib.js"
@@ -69,6 +79,8 @@
    "effort": "small",
    "score": 52,
    "status": "open",
+   "evidence": "src/mapping/LiteralFrom.ts:23,48; verified undefined on node v24.16.0; no tests cover these",
+   "confidence": 5,
    "seeAlso": [
     "http://localhost:5445/rdfjs/wrapper/",
     "https://github.com/rdfjs/wrapper"
@@ -82,6 +94,8 @@
    "effort": "small",
    "score": 41,
    "status": "open",
+   "evidence": "src/accessControlConversion/acpToWac.ts:76-79",
+   "confidence": 4,
    "seeAlso": [
     "http://localhost:5445/solid/object/",
     "https://github.com/solid/object"
@@ -95,6 +109,8 @@
    "effort": "small",
    "score": 41,
    "status": "open",
+   "evidence": "README example ~lines 36-42",
+   "confidence": 5,
    "seeAlso": [
     "http://localhost:5445/nosdav/dnstr.org/",
     "https://github.com/nosdav/dnstr.org"
@@ -108,6 +124,8 @@
    "effort": "small",
    "score": 41,
    "status": "open",
+   "evidence": "bin/dnstr.js:17-41 slice(0,-6) no polymod",
+   "confidence": 4,
    "seeAlso": [
     "http://localhost:5445/nosdav/dnstr.org/",
     "https://github.com/nosdav/dnstr.org"
@@ -121,6 +139,8 @@
    "effort": "small",
    "score": 38,
    "status": "open",
+   "evidence": "docusaurus.config.ts:16; deploy.yml on push; commit 0d0d2e6",
+   "confidence": 5,
    "seeAlso": [
     "http://localhost:5445/clawdocs/clawdocs.github.io/",
     "https://github.com/clawdocs/clawdocs.github.io"
@@ -134,6 +154,8 @@
    "effort": "small",
    "score": 37,
    "status": "open",
+   "evidence": "src/utils/url.js:33-38,65-78",
+   "confidence": 4,
    "seeAlso": [
     "http://localhost:5445/JavaScriptSolidServer/JavaScriptSolidServer/",
     "https://github.com/JavaScriptSolidServer/JavaScriptSolidServer"
@@ -147,6 +169,8 @@
    "effort": "small",
    "score": 35,
    "status": "open",
+   "evidence": "package.json vs README.md:267-272 + LICENSE.Apache-2.0.md",
+   "confidence": 5,
    "seeAlso": [
     "http://localhost:5445/rdfjs/wrapper/",
     "https://github.com/rdfjs/wrapper"
@@ -160,9 +184,521 @@
    "effort": "small",
    "score": 35,
    "status": "open",
+   "evidence": "package.json vs README + LICENSE.Apache-2.0.md",
+   "confidence": 5,
    "seeAlso": [
     "http://localhost:5445/solid/object/",
     "https://github.com/solid/object"
+   ]
+  },
+  {
+   "id": "rdflib-js-delete-2016-era-repo-root",
+   "repo": "linkeddata/rdflib.js",
+   "pitch": "Delete 2016-era repo-root cruft (jquery.uri.js, jquery.xmlns.js, scratch-serialize.js, reference/*.coffee, legacy test/ dir) superseded by tests/.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 34,
+   "status": "open",
+   "evidence": "repo-root legacy files; package.json test scripts use tests/ only",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/linkeddata/rdflib.js/",
+    "https://github.com/linkeddata/rdflib.js"
+   ]
+  },
+  {
+   "id": "rdflib-js-add-a-packagejson",
+   "repo": "linkeddata/rdflib.js",
+   "pitch": "Add a package.json \"exports\" map and an esm/ {\"type\":\"module\"} marker so Node ESM consumers can load the ESM build.",
+   "kind": "feature",
+   "effort": "medium",
+   "score": 30,
+   "status": "open",
+   "evidence": "package.json has main/module/types but no exports; esm/ lacks type marker",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/linkeddata/rdflib.js/",
+    "https://github.com/linkeddata/rdflib.js"
+   ]
+  },
+  {
+   "id": "browser-node-the-wallet-remember",
+   "repo": "bitmark-kernel/browser-node",
+   "pitch": "The wallet \"remember\" option stores the mnemonic/private key in plaintext localStorage while the UI claims \"keys in this tab only\" — encrypt with a passphrase or correct the claim.",
+   "kind": "security",
+   "effort": "medium",
+   "score": 30,
+   "status": "open",
+   "evidence": "wallet-app.html:280,620; status text contradiction",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/bitmark-kernel/browser-node/",
+    "https://github.com/bitmark-kernel/browser-node"
+   ]
+  },
+  {
+   "id": "rdfxml-streaming-parser-js-readme-install-command",
+   "repo": "rdfjs/rdfxml-streaming-parser.js",
+   "pitch": "README install command is wrong: `yarn install rdfxml-streaming-parser` should be `yarn add rdfxml-streaming-parser`.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 27,
+   "status": "open",
+   "evidence": "README.md Installation section",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/rdfjs/rdfxml-streaming-parser.js/",
+    "https://github.com/rdfjs/rdfxml-streaming-parser.js"
+   ]
+  },
+  {
+   "id": "clawdocs-github-io-rewrite-the-stock",
+   "repo": "clawdocs/clawdocs.github.io",
+   "pitch": "Rewrite the stock Docusaurus README — it says yarn/\"yarn deploy\" but the repo uses package-lock.json and deploys via Actions npm ci.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 27,
+   "status": "open",
+   "evidence": "README yarn instructions; no yarn.lock; deploy.yml npm ci",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/clawdocs/clawdocs.github.io/",
+    "https://github.com/clawdocs/clawdocs.github.io"
+   ]
+  },
+  {
+   "id": "bitmark-kernel-rpc-credentials-for",
+   "repo": "project-bitmark/bitmark-kernel",
+   "pitch": "RPC credentials for the local bitmarkd are committed in the proof scripts; move to env vars and rotate.",
+   "kind": "security",
+   "effort": "small",
+   "score": 27,
+   "status": "open",
+   "evidence": "proof/follow.mjs:21, proof/validate-forward.mjs:25 hardcoded Basic-auth",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/bitmark-kernel/",
+    "https://github.com/project-bitmark/bitmark-kernel"
+   ]
+  },
+  {
+   "id": "json-rocks-13-metascraper--plugins",
+   "repo": "spux/json.rocks",
+   "pitch": "13 metascraper-* plugins imported by the server are undeclared phantom deps (present only transitively via a commented-out package) — declare them before a dep cleanup breaks startup.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 26,
+   "status": "open",
+   "evidence": "bin/server.js:12-31; package.json declares only 5 metascraper plugins",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/spux/json.rocks/",
+    "https://github.com/spux/json.rocks"
+   ]
+  },
+  {
+   "id": "dnstr-org-packagejson-mainindexjs-but",
+   "repo": "nosdav/dnstr.org",
+   "pitch": "package.json \"main\":\"index.js\" but no index.js exists, so importing the published package fails — drop main or add the file.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 26,
+   "status": "open",
+   "evidence": "package.json main vs repo has only bin/dnstr.js",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nosdav/dnstr.org/",
+    "https://github.com/nosdav/dnstr.org"
+   ]
+  },
+  {
+   "id": "fork-talk-github-io-logopng-is-a",
+   "repo": "fork-talk/fork-talk.github.io",
+   "pitch": "logo.png is a 914 KB 1254x1254 PNG rendered as a 28x28 nav icon on every page — resize/compress (same oversized file duplicated in bip110).",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 26,
+   "status": "open",
+   "evidence": "logo.png 914174 bytes; style.css:71 28px",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/fork-talk/fork-talk.github.io/",
+    "https://github.com/fork-talk/fork-talk.github.io"
+   ]
+  },
+  {
+   "id": "object-wactoacp-silently-drops",
+   "repo": "solid/object",
+   "pitch": "wacToAcp silently drops acl:agentClass, losing the standard WAC public-access pattern (agentClass foaf:Agent).",
+   "kind": "bug",
+   "effort": "medium",
+   "score": 21,
+   "status": "open",
+   "evidence": "src/accessControlConversion/wacToAcp.ts:42-48; agentClass absent from conversion",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solid/object/",
+    "https://github.com/solid/object"
+   ]
+  },
+  {
+   "id": "fork-talk-github-io-homepage-timeline-quick",
+   "repo": "fork-talk/fork-talk.github.io",
+   "pitch": "Homepage \"Timeline\" quick link /timeline/ 404s — no such project site exists in the org.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 21,
+   "status": "open",
+   "evidence": "index.html:185; org has no timeline repo",
+   "confidence": 3,
+   "seeAlso": [
+    "http://localhost:5445/fork-talk/fork-talk.github.io/",
+    "https://github.com/fork-talk/fork-talk.github.io"
+   ]
+  },
+  {
+   "id": "jsclaw-github-io-landing-page-hardcodes",
+   "repo": "jsclaw/jsclaw.github.io",
+   "pitch": "Landing page hardcodes v0.0.10 in four places (incl. JSON-LD softwareVersion for SEO) while jsclaw is at 0.0.20.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 18,
+   "status": "open",
+   "evidence": "index.html:40,496,605,855 vs jsclaw/package.json 0.0.20",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/jsclaw/jsclaw.github.io/",
+    "https://github.com/jsclaw/jsclaw.github.io"
+   ]
+  },
+  {
+   "id": "json-rocks-searchtext-builds-the",
+   "repo": "spux/json.rocks",
+   "pitch": "searchText builds the SearXNG URL without encodeURIComponent, so multi-word queries error and silently fall through to DuckDuckGo.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 18,
+   "status": "open",
+   "evidence": "bin/server.js:908 vs encoded searchBrave/searchDuckDuckGo",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/spux/json.rocks/",
+    "https://github.com/spux/json.rocks"
+   ]
+  },
+  {
+   "id": "studyknots-github-io-actively-developed-docusaurus",
+   "repo": "studyknots/studyknots.github.io",
+   "pitch": "Actively developed Docusaurus site (41 docs, 9 PRs merged last week) has no README — add site URL, scope, and start/build instructions.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 18,
+   "status": "open",
+   "evidence": "63 tracked files, no README; CNAME studyknots.com",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/studyknots/studyknots.github.io/",
+    "https://github.com/studyknots/studyknots.github.io"
+   ]
+  },
+  {
+   "id": "bitmark-kernel-readme-proof-command",
+   "repo": "project-bitmark/bitmark-kernel",
+   "pitch": "README proof command fails on a fresh clone: kernel imported from a sibling checkout path and the KERNEL_DIR escape hatch is undocumented (and missing in follow.mjs).",
+   "kind": "docs",
+   "effort": "small",
+   "score": 18,
+   "status": "open",
+   "evidence": "proof/decode-block.mjs:11, proof/follow.mjs:12",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/bitmark-kernel/",
+    "https://github.com/project-bitmark/bitmark-kernel"
+   ]
+  },
+  {
+   "id": "bitmark-kernel-add-a-license",
+   "repo": "project-bitmark/bitmark-kernel",
+   "pitch": "Add a LICENSE file: README and package.json declare AGPL-3.0-or-later but no license text is committed.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 18,
+   "status": "open",
+   "evidence": "no LICENSE; package.json license AGPL-3.0-or-later",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/bitmark-kernel/",
+    "https://github.com/project-bitmark/bitmark-kernel"
+   ]
+  },
+  {
+   "id": "rootstock-three-contracts-five",
+   "repo": "play-grounds/rootstock",
+   "pitch": "Three contracts, five ops scripts and a faucet dApp but no README — add setup/deploy instructions.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 18,
+   "status": "open",
+   "evidence": "no README.md; contracts/ scripts/ faucet/ present",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/play-grounds/rootstock/",
+    "https://github.com/play-grounds/rootstock"
+   ]
+  },
+  {
+   "id": "stockfish-undo-does-not",
+   "repo": "solid-apps/stockfish",
+   "pitch": "undo() does not clear hint/analysis arrows, so after a hint then Undo the arrows persist over the wrong position — add ground.setAutoShapes([]) in undo().",
+   "kind": "bug",
+   "effort": "small",
+   "score": 18,
+   "status": "open",
+   "evidence": "app.js:733-740 vs :562",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/stockfish/",
+    "https://github.com/solid-apps/stockfish"
+   ]
+  },
+  {
+   "id": "stockfish-enginesearch-score-regex",
+   "repo": "solid-apps/stockfish",
+   "pitch": "Engine.search score regex also matches UCI lowerbound/upperbound info lines, so the eval bar can show bound values instead of exact scores — skip those lines.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 18,
+   "status": "open",
+   "evidence": "app.js:71,76 regex",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/stockfish/",
+    "https://github.com/solid-apps/stockfish"
+   ]
+  },
+  {
+   "id": "fork-talk-github-io-footer-claims-mit",
+   "repo": "fork-talk/fork-talk.github.io",
+   "pitch": "Footer claims \"MIT License\" but the repo ships no LICENSE and no README — add both.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 18,
+   "status": "open",
+   "evidence": "index.html:209; root has only index.html/style.css/logo.png",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/fork-talk/fork-talk.github.io/",
+    "https://github.com/fork-talk/fork-talk.github.io"
+   ]
+  },
+  {
+   "id": "bip110-add-a-readme",
+   "repo": "fork-talk/bip110",
+   "pitch": "Add a README and a LICENSE — the page footer claims \"MIT License\" but no license text is committed and the landing page is empty.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 18,
+   "status": "open",
+   "evidence": "index.html:488; no README/LICENSE",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/fork-talk/bip110/",
+    "https://github.com/fork-talk/bip110"
+   ]
+  },
+  {
+   "id": "bip110-monitor-readme-data-sources",
+   "repo": "fork-talk/bip110-monitor",
+   "pitch": "README \"Data sources\" says mempool.space, but all code fetches bip110monitor.com — fix the README.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 18,
+   "status": "open",
+   "evidence": "README vs cli.mjs:4, js/api.mjs:2",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/fork-talk/bip110-monitor/",
+    "https://github.com/fork-talk/bip110-monitor"
+   ]
+  },
+  {
+   "id": "fund-agent-explorer-link-after",
+   "repo": "blocktrails/fund-agent",
+   "pitch": "Explorer link after broadcast is hardcoded to mempool.space/testnet4 regardless of voucher chain, so btc/signet users get a wrong link.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 17,
+   "status": "open",
+   "evidence": "bin/fund-agent.js:309",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/blocktrails/fund-agent/",
+    "https://github.com/blocktrails/fund-agent"
+   ]
+  },
+  {
+   "id": "beacon-add-a-license",
+   "repo": "JavaScriptSolidServer/beacon",
+   "pitch": "Add a LICENSE file — package.json declares MIT and it is published to npm as nostr-beacon 0.0.4, but no LICENSE exists.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 14,
+   "status": "open",
+   "evidence": "package.json license MIT; no LICENSE in root",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/beacon/",
+    "https://github.com/JavaScriptSolidServer/beacon"
+   ]
+  },
+  {
+   "id": "studyknots-github-io-switch-docusaurus-onbrokenlinksonbrokenmarkdownlinks",
+   "repo": "studyknots/studyknots.github.io",
+   "pitch": "Switch docusaurus onBrokenLinks/onBrokenMarkdownLinks from \"warn\" to \"throw\" — all internal links verify clean, so it is a safe regression guard.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 14,
+   "status": "open",
+   "evidence": "docusaurus.config.ts:16-17",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/studyknots/studyknots.github.io/",
+    "https://github.com/studyknots/studyknots.github.io"
+   ]
+  },
+  {
+   "id": "browser-node-add-a-license",
+   "repo": "bitmark-kernel/browser-node",
+   "pitch": "Add a LICENSE file: package.json declares AGPL-3.0-or-later but no license text is committed.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 14,
+   "status": "open",
+   "evidence": "git ls-files no LICENSE",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/bitmark-kernel/browser-node/",
+    "https://github.com/bitmark-kernel/browser-node"
+   ]
+  },
+  {
+   "id": "fund-agent-the-cli-reimplements",
+   "repo": "blocktrails/fund-agent",
+   "pitch": "The CLI reimplements the whole index.js library inline and has drifted (CLI sets gitmark.network, exported fundAgent never does) — make the CLI import the library.",
+   "kind": "cleanup",
+   "effort": "medium",
+   "score": 13,
+   "status": "open",
+   "evidence": "bin/fund-agent.js duplicates index.js",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/blocktrails/fund-agent/",
+    "https://github.com/blocktrails/fund-agent"
+   ]
+  },
+  {
+   "id": "browser-node-uncommitted-work-in",
+   "repo": "bitmark-kernel/browser-node",
+   "pitch": "Uncommitted work in the tree: SKIP_SIGS signature-verification gate in gen-snapshot.mjs and an untracked package-lock.json — commit or discard.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 13,
+   "status": "open",
+   "evidence": "git status M gen-snapshot.mjs, ?? package-lock.json",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/bitmark-kernel/browser-node/",
+    "https://github.com/bitmark-kernel/browser-node"
+   ]
+  },
+  {
+   "id": "rootstock-scriptsfund-faucetjs-instructs-npm",
+   "repo": "play-grounds/rootstock",
+   "pitch": "scripts/fund-faucet.js instructs \"npm run fund\" but package.json defines no such script (nor deploy-faucet/dailyfaucet).",
+   "kind": "bug",
+   "effort": "small",
+   "score": 12,
+   "status": "open",
+   "evidence": "fund-faucet.js:9 vs package.json scripts",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/play-grounds/rootstock/",
+    "https://github.com/play-grounds/rootstock"
+   ]
+  },
+  {
+   "id": "bip110-monitor-add-a-scheduled",
+   "repo": "fork-talk/bip110-monitor",
+   "pitch": "Add a scheduled GitHub Action running `npm run snapshot` so the committed CORS-fallback data stops going stale (current snapshot ~2026-06-18).",
+   "kind": "feature",
+   "effort": "medium",
+   "score": 12,
+   "status": "open",
+   "evidence": "data/nodes.json snapshot 1781774113; no .github/workflows",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/fork-talk/bip110-monitor/",
+    "https://github.com/fork-talk/bip110-monitor"
+   ]
+  },
+  {
+   "id": "rdfxml-streaming-parser-js-move-tsconfig-into",
+   "repo": "rdfjs/rdfxml-streaming-parser.js",
+   "pitch": "Move tsconfig into the ts-jest transform entry to silence the deprecated globals[\"ts-jest\"] warning on jest 30.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 10,
+   "status": "open",
+   "evidence": "package.json jest.globals[\"ts-jest\"] with ts-jest ^29 / jest ^30",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/rdfjs/rdfxml-streaming-parser.js/",
+    "https://github.com/rdfjs/rdfxml-streaming-parser.js"
+   ]
+  },
+  {
+   "id": "beacon-fix-self-referential-packagejson",
+   "repo": "JavaScriptSolidServer/beacon",
+   "pitch": "Fix self-referential package.json description left from the rename (\"Same schema as nostr-beacon\" while the package IS nostr-beacon).",
+   "kind": "docs",
+   "effort": "small",
+   "score": 9,
+   "status": "open",
+   "evidence": "package.json description vs name",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/beacon/",
+    "https://github.com/JavaScriptSolidServer/beacon"
+   ]
+  },
+  {
+   "id": "json-rocks-server-runs-on",
+   "repo": "spux/json.rocks",
+   "pitch": "Server runs on EOL fastify v3 with deprecated pre-scope plugin names while mixing in @fastify/basic-auth built for v4 — migrate to fastify v4/v5.",
+   "kind": "cleanup",
+   "effort": "medium",
+   "score": 7,
+   "status": "open",
+   "evidence": "package.json fastify ^3.4.1 + fastify-compress/-cors/-rate-limit",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/spux/json.rocks/",
+    "https://github.com/spux/json.rocks"
+   ]
+  },
+  {
+   "id": "project-bitmark-github-io-deploysh-stages-with",
+   "repo": "project-bitmark/project-bitmark.github.io",
+   "pitch": "deploy.sh stages with \"git add -u\", so newly created assets are silently left out of the commit and never deployed.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 5,
+   "status": "open",
+   "evidence": "deploy.sh:3 git add -u",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/project-bitmark/project-bitmark.github.io/",
+    "https://github.com/project-bitmark/project-bitmark.github.io"
    ]
   }
  ]
