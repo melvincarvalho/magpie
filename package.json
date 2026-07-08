@@ -1,0 +1,23 @@
+{
+  "name": "getmagpie",
+  "version": "0.0.1",
+  "description": "Surveys a local GitHub mirror and picks the shiny things worth working on",
+  "type": "module",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "SKILL.md"
+  ],
+  "repository": "github:melvincarvalho/magpie",
+  "homepage": "https://melvincarvalho.github.io/magpie/",
+  "keywords": [
+    "agent",
+    "worklist",
+    "repo",
+    "mirror",
+    "triage",
+    "skill"
+  ],
+  "author": "Melvin Carvalho",
+  "license": "MIT"
+}
