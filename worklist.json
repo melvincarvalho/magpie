@@ -10,7 +10,7 @@
  "pinned": 14,
  "deferred": 1,
  "headline": 12,
- "total": 208,
+ "total": 247,
  "items": [
   {
    "id": "json-rocks-13-metascraper--plugins",
@@ -173,6 +173,326 @@
    ]
   },
   {
+   "id": "wallet-the-whole-solid-apps-suite-loads-its-aut",
+   "repo": "solid-apps/wallet",
+   "pitch": "The whole solid-apps suite loads its auth layer from an unpinned, un-SRI'd <script src=\"https://unpkg.com/xlogin\"> (xlogin supplies the credentialed authFetch used for every private-pod read/write), so one hijacked or broken 'latest' publish of xlogin runs with full pod credentials in ~18 apps at once — pin an exact version with an SRI integrity hash, or vendor the file the way intents does.",
+   "kind": "security",
+   "effort": "small",
+   "score": 138,
+   "status": "open",
+   "priority": null,
+   "evidence": "Unversioned, integrity-less `<script src=\"https://unpkg.com/xlogin\">` in index.html across the suite: notifications, camera, gallery, webacl, tunnel, peer, wallet, health, nutrition (batch I) AND weather, maps, messages, contacts, kanban, bookmarks, notes, calendar, split (batch J); taproot loads it too. maps also pulls leaflet@1.9.4 and taproot qrcodejs from CDN without SRI. intents is the only app that vendors it.",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/wallet/",
+    "https://github.com/solid-apps/wallet"
+   ]
+  },
+  {
+   "id": "nexus-nexus-s-html-markdown-sanitizer-strips-s",
+   "repo": "solid-apps/nexus",
+   "pitch": "nexus's HTML/markdown sanitizer strips script/style/iframe tags but leaves inline event-handler attributes (onerror/onclick) and javascript: URLs intact before assigning doc.body.innerHTML, so any fetched web page or pod document (e.g. <img src=x onerror=...>) executes JS in the app origin with the user's authenticated fetch (which can PUT to the pod) — strip on* attributes and javascript: hrefs in the same sanitize pass.",
+   "kind": "security",
+   "effort": "small",
+   "score": 110,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:346 removes only 'script,style,link,meta,iframe,object,embed,base', then index.html:352 w.docEl.innerHTML=doc.body.innerHTML; same gap in renderMarkdown (index.html:326/333); authenticated PUT at index.html:431",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/nexus/",
+    "https://github.com/solid-apps/nexus"
+   ]
+  },
+  {
+   "id": "taproot-taproot-is-a-mainnet-bitcoin-wallet-that",
+   "repo": "solid-apps/taproot",
+   "pitch": "taproot is a mainnet Bitcoin wallet that reads the raw secp256k1 private key from the pod into page memory, yet loads its JS from mutable CDN URLs — unpkg.com/xlogin (unversioned) and cdn.jsdelivr.net/gh/davidshimjs/qrcodejs (unversioned), no SRI on any script — so a hijacked package release can exfiltrate the key and drain funds; pin exact versions and add integrity hashes or vendor the scripts.",
+   "kind": "security",
+   "effort": "small",
+   "score": 110,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:63-65 (unpkg.com/xlogin unpinned, qrcodejs unpinned, tapscript@1.4.6 pinned but no integrity) + index.html:119-133 loadSecret() reading /private/privkey.jsonld into JS memory",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/taproot/",
+    "https://github.com/solid-apps/taproot"
+   ]
+  },
+  {
+   "id": "vouchers-a-crafted-share-link-key-txo-network",
+   "repo": "solid-apps/vouchers",
+   "pitch": "A crafted share link (?key=txo:<network>:<txid>:<vout>) is auto-imported on page load and the attacker-controlled txid/network are written into the voucher-card HTML unescaped, giving reflected XSS in an app that holds Bitcoin private keys (key exfiltration); run txid/network through escHtml() before interpolating.",
+   "kind": "security",
+   "effort": "small",
+   "score": 110,
+   "status": "open",
+   "priority": null,
+   "evidence": "vouchers.js:944 interpolates ${v.txid} into an href and link text unescaped, and :929 renders ${(v.network||'').toUpperCase()} unescaped; init() at :1211 auto-imports ?key= via importKey(), which does no hex validation on txid/network. escHtml() exists (used for privkey at :951) but is not applied here.",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/vouchers/",
+    "https://github.com/solid-apps/vouchers"
+   ]
+  },
+  {
+   "id": "wallet-revoking-an-agent-flips-its-status-to-r",
+   "repo": "solid-apps/wallet",
+   "pitch": "Revoking an agent flips its status to 'revoked' but leaves every previously-shared card's .acl still granting that did:nostr key acl:Read (the toast even tells the user to manually re-open each shared card), so a supposedly revoked key keeps reading ID/payment/credential cards — on revoke, iterate ITEMS whose sharedWith includes the agentId and rewrite their ACLs without it.",
+   "kind": "security",
+   "effort": "small",
+   "score": 110,
+   "status": "open",
+   "priority": null,
+   "evidence": "solid-apps/wallet/app.js:219-222 — toggleAgent() only calls saveItem(it) on the agent card itself; writeAcl (app.js:124-129) runs solely for the item being saved, so cards listing the revoked agent in wallet:sharedWith keep their #shared acl:Read authorization (app.js:109). The toast at line 221 admits it: 'Agent revoked — re-open any shared card to drop its access'.",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/wallet/",
+    "https://github.com/solid-apps/wallet"
+   ]
+  },
+  {
+   "id": "contacts-phone-book-imports-third-parties-names",
+   "repo": "solid-apps/contacts",
+   "pitch": "Phone-book imports (third parties' names, emails, phone numbers) are written to the world-readable /public/contacts/ container and the repo's own open issue #1 already accepts the fix — implement it by pointing BOOK at a /private/ container (as weather/maps/messages do) or seeding an owner-only ACL.",
+   "kind": "security",
+   "effort": "small",
+   "score": 110,
+   "status": "open",
+   "priority": null,
+   "evidence": "contacts/app.js:14 — `const BOOK = new URL('../../contacts/', location.href)` = <pod>/public/contacts/; app.js:104-151 imports the device address book and .vcf files there. README 'Notes' admits the exposure ('lock this container down with an ACL — see the issue tracker'); open issue #1 is titled 'Store contacts in an owner-only container (not world-readable /public)'. Siblings store equivalent data privately (weather/app.js:8, maps/app.js:9, messages/app.js:14).",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/contacts/",
+    "https://github.com/solid-apps/contacts"
+   ]
+  },
+  {
+   "id": "contacts-follow-unfollow-silently-destroy-the",
+   "repo": "nostr-client/contacts",
+   "pitch": "follow()/unfollow() silently destroy the user's whole follow list when the kind-3 fetch returns null — pool.get() resolves null after its 8s timeout or when the list isn't on the default relays, publishContacts then signs a fresh kind-3 with 0-1 p-tags and empty content, and the null is cached page-wide so every click repeats it — refuse to publish when the previous contact list is null (or require explicit first-list confirmation).",
+   "kind": "bug",
+   "effort": "small",
+   "score": 88,
+   "status": "open",
+   "priority": null,
+   "evidence": "contacts.js:25-34 — myContacts caches cache.promise = pool.get({kinds:[3],authors:[key]}) which can resolve null; contacts.js:42-49 — tags = [...(prevEvent?.tags ?? [])], content = prevEvent?.content ?? ''; contacts.js:60-70 — follow/unfollow publish the result; pool/pool.js:209-228 — list() resolves whatever arrived within 8s, get() returns events[0] ?? null. README ironically promises it 'won't wipe your follows' metadata like careless clients do'.",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/contacts/",
+    "https://github.com/nostr-client/contacts"
+   ]
+  },
+  {
+   "id": "bridges-login-html-injects-the-stored-profile-na",
+   "repo": "solid-apps/bridges",
+   "pitch": "login.html injects the stored profile name into innerHTML without escaping ('Continue as '+label) while index.html escapes the same value, so an attacker-controlled Nostr display name persisted to shared localStorage executes as HTML in the login page (DOM XSS on a page handling keys) — wrap label in esc().",
+   "kind": "security",
+   "effort": "small",
+   "score": 88,
+   "status": "open",
+   "priority": null,
+   "evidence": "login.html:118 — $('continueWrap').innerHTML = `<button ... id=contBtn>Continue as ${label}</button>...` with label=(mem().name) unescaped; mem().name is written unescaped in index.html:390 (from Nostr profile p.name fetched from a relay) and index.html:574-575 (from ?name= query param), both stored under the shared localStorage key 'bridges.v0'. Every other innerHTML sink in bridges (index.html:396,459,556) uses esc(); login.html:118 is the lone outlier.",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/bridges/",
+    "https://github.com/solid-apps/bridges"
+   ]
+  },
+  {
+   "id": "magpie-magpie-serve-mjs-sets-access-control-all",
+   "repo": "melvincarvalho/magpie",
+   "pitch": "magpie-serve.mjs sets Access-Control-Allow-Origin:* on the localhost POST /decision write endpoint, so any web page you visit can fire a no-preflight cross-origin POST that appends forged entries to decisions.json (the taste dataset) and regenerates worklist.json — restrict by checking the Origin header against localhost:5445 or require a custom request header.",
+   "kind": "security",
+   "effort": "small",
+   "score": 82,
+   "status": "open",
+   "priority": null,
+   "evidence": "magpie-serve.mjs:27-31 cors() sets ACAO * on every response; :47-72 POST /decision appends to decisions.json with no origin/auth check despite the ':7-9 single-user, local, no auth needed' comment",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/magpie/",
+    "https://github.com/melvincarvalho/magpie"
+   ]
+  },
+  {
+   "id": "tip-tip-js-pays-out-to-a-bitcoin-address-rea",
+   "repo": "nostr-client/tip",
+   "pitch": "tip.js pays out to a bitcoin address read from a kind-0 profile fetched with zero signature verification (tip.js, tip/index.html, and note.js's ProfileResolver never call verifyEvent, and the demo never installs the verify wrapper), so one malicious relay can serve a forged profile substituting its own address and receive the tip (mainnet supported via network=\"mainnet\"); verify the profile event with the sibling verify repo before showing the address/QR.",
+   "kind": "security",
+   "effort": "small",
+   "score": 82,
+   "status": "open",
+   "priority": null,
+   "evidence": "tip.js:91-95,105-114 (_address/_load trust profiles() output from defaultPool); tip/index.html imports no verify; grep note.js: no verifyEvent anywhere",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/tip/",
+    "https://github.com/nostr-client/tip"
+   ]
+  },
+  {
+   "id": "news-striphtml-renders-untrusted-feed-html",
+   "repo": "solid-apps/news",
+   "pitch": "stripHtml() renders untrusted feed HTML via innerHTML — any subscribed RSS/Atom feed (or a compromised public CORS proxy, the app's documented fallback fetch path) can execute JS in the app origin holding the user's Solid session via <img onerror>; fix by parsing with DOMParser and reading .body.textContent instead.",
+   "kind": "security",
+   "effort": "small",
+   "score": 82,
+   "status": "open",
+   "priority": null,
+   "evidence": "app.js:105-109 — const d = document.createElement('div'); d.innerHTML = s || '' where s is item description/summary/content straight from parseFeed; img loads and inline onerror handlers fire even on detached elements, so escaping-after is too late",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/news/",
+    "https://github.com/solid-apps/news"
+   ]
+  },
+  {
+   "id": "android-release-apks-published-to-the-rolling-l",
+   "repo": "js-pod/android",
+   "pitch": "Release APKs published to the rolling 'latest' GitHub release are signed with the universal React Native debug keystore (androiddebugkey, password 'android', committed to the repo), so anyone can craft an APK Android accepts as a legitimate update over users' installed pods — while the README promises 'signed with a stable key, your pod data is preserved'; fix by generating a dedicated release keystore held as a CI secret.",
+   "kind": "security",
+   "effort": "small",
+   "score": 82,
+   "status": "open",
+   "priority": null,
+   "evidence": "android/app/build.gradle:31-45 — release buildType uses signingConfigs.debug (storeFile file('debug.keystore'), storePassword 'android'); android/app/debug.keystore is committed; .github/workflows/build.yml:37-57 builds assembleRelease and publishes it as solid-pod.apk; README.md:67 claims stable-key over-the-top updates",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/js-pod/android/",
+    "https://github.com/js-pod/android"
+   ]
+  },
+  {
+   "id": "chess-handleevent-buffers-only-the-first-kind",
+   "repo": "nostr-client/chess",
+   "pitch": "handleEvent buffers only the FIRST kind-2434 move event seen per ply while the seen-id set dedupes, so any spectator can pre-publish junk moves at future plies: the squatted slot is deleted on pubkey mismatch but the legit player's move that arrived meanwhile was silently dropped and never re-processed, freezing the game on every client — buffer move candidates per (ply, pubkey) or only accept moves from the white/black pubkeys.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 66,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:219-220 'if (!pendingMoves.has(msg.ply)) pendingMoves.set(...)' first-writer-wins; :207-209 seen dedup prevents replay; :196-197 tryApplyMoves deletes the squatter after the real move is already lost; README claims 'a malicious relay or player can't corrupt the board'",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/chess/",
+    "https://github.com/nostr-client/chess"
+   ]
+  },
+  {
+   "id": "embed-the-a-comment-section-guestbook-embe",
+   "repo": "nostr-client/embed",
+   "pitch": "The 'a comment section' (guestbook) embed option is doubly broken: snippet() pipes the page-URL input through decodeAny() which throws on any URL so a non-empty URL never yields a snippet, and the live preview renders an inert <nostr-guestbook> because guestbook.js is never imported — exclude 'guestbook' from the decodeAny branch and import guestbook.js alongside note/feed/profile.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 66,
+   "status": "open",
+   "priority": null,
+   "evidence": "embed/index.html:85 — `if (kind !== 'hashtag' && kind !== 'global' && value) value = decodeAny(value).hex` also runs for kind==='guestbook' and nip19 decodeAny (nip19/nip19.js:120) throws on any URL; embed/index.html:60-62 imports only note.js/feed.js/profile.js while the preview at :119-122 relies on 'modules already loaded here', but nostr-guestbook is defined only in guestbook/guestbook.js:175",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/embed/",
+    "https://github.com/nostr-client/embed"
+   ]
+  },
+  {
+   "id": "profile-editor-while-the-current-kind-0-is-still-loadin",
+   "repo": "nostr-client/profile-editor",
+   "pitch": "While the current kind-0 is still loading (up to 8s), _load() renders a fully-enabled empty form ('loading current profile…' is only status text), so clicking Save publishes content '{}' and wipes the user's entire profile, and a timed-out fetch leaves the same empty form — disable the save button until the load resolves and confirm before overwriting when no existing profile was found.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 66,
+   "status": "open",
+   "priority": null,
+   "evidence": "profile-editor.js:130-140 — _load() calls _renderForm({}, 'loading current profile…') before awaiting this._pool.get(); profile-editor.js:181-219 — save button created enabled, onsubmit serializes blank inputs + this._extra ({}) into a kind-0 and publishes; pool/pool.js:225-228 — get() resolves null on timeout.",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/profile-editor/",
+    "https://github.com/nostr-client/profile-editor"
+   ]
+  },
+  {
+   "id": "relay-manager-applysavedrelays-adds-then-instantly-r",
+   "repo": "nostr-client/relay-manager",
+   "pitch": "applySavedRelays() adds then instantly removes any relay whose raw URL differs from pool-normalized form — line 39 checks `!urls.includes(url)` comparing normalized pool.urls against the raw input array, and _load65 feeds raw NIP-65 r-tag values which commonly carry trailing slashes ('wss://relay.damus.io/'), so 'Load my NIP-65' silently drops those relays; normalize the input URLs before the membership check.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 66,
+   "status": "open",
+   "priority": null,
+   "evidence": "relay-manager.js:35-41 (raw urls vs normalized pool.urls in removal loop); relay-manager.js:156-166 (_load65 passes raw r-tag strings); pool.js:31-35 (normalizeUrl strips trailing slash, lowercases host)",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/relay-manager/",
+    "https://github.com/nostr-client/relay-manager"
+   ]
+  },
+  {
+   "id": "browser-markdown-pane-assigns-marked-output-di",
+   "repo": "linkedobjects/browser",
+   "pitch": "markdown-pane assigns marked() output directly to innerHTML with no sanitizer, so opening a hostile pod/nostr markdown resource in the browser executes attacker script; sanitize the parsed HTML (e.g. DOMPurify) before assigning innerHTML.",
+   "kind": "security",
+   "effort": "small",
+   "score": 66,
+   "status": "open",
+   "priority": null,
+   "evidence": "panes/markdown-pane.js:121 — rendered.innerHTML = marked.parse(content) with no sanitize step; content comes from arbitrary fetched resources.",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/linkedobjects/browser/",
+    "https://github.com/linkedobjects/browser"
+   ]
+  },
+  {
+   "id": "browser-same-unsanitized-marked-dom-xss-as-linke",
+   "repo": "nosdav/browser",
+   "pitch": "Same unsanitized-marked DOM XSS as linkedobjects/browser (byte-identical pane file): viewing a hostile markdown resource runs script; sanitize parsed HTML before innerHTML.",
+   "kind": "security",
+   "effort": "small",
+   "score": 66,
+   "status": "open",
+   "priority": null,
+   "evidence": "panes/markdown-pane.js:121 — rendered.innerHTML = marked.parse(content), no sanitize; file is byte-identical to linkedobjects/browser/panes/markdown-pane.js (diff -q reports identical).",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nosdav/browser/",
+    "https://github.com/nosdav/browser"
+   ]
+  },
+  {
+   "id": "calendar-personal-calendar-events-are-stored-at-w",
+   "repo": "solid-apps/calendar",
+   "pitch": "Personal calendar events are stored at world-readable <pod>/public/calendar/calendar.jsonld while the UI says 'Sign in ... to read and edit your calendar' (implying privacy) and, unlike contacts, no README caveat or issue tracks it — move the file to /private/calendar/ or seed an owner-only ACL and document the exposure.",
+   "kind": "security",
+   "effort": "small",
+   "score": 66,
+   "status": "open",
+   "priority": null,
+   "evidence": "calendar/app.js:6 — `const CAL = new URL('../../calendar/calendar.jsonld', location.href)` resolves to <pod>/public/calendar/; app.js:54 sign-in note implies privacy; README documents the /public/ path with no caveat. Unlike notes (/public/note/) and bookmarks (/public/bookmark/), calendar has no hub-interop rationale for being public.",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/calendar/",
+    "https://github.com/solid-apps/calendar"
+   ]
+  },
+  {
+   "id": "android-installapp-writes-bootstrap-app-files",
+   "repo": "js-pod/android",
+   "pitch": "installApp() writes bootstrap app files to paths taken verbatim from remote tree listings (jsDelivr tree API / GitHub git-trees API) without rejecting '..' segments, allowing writes outside the app dir (e.g. overwriting main.js for code execution at next boot) if either source is compromised; fix with a one-line filter rejecting '..' segments and absolute paths.",
+   "kind": "security",
+   "effort": "small",
+   "score": 55,
+   "status": "open",
+   "priority": null,
+   "evidence": "nodejs-assets/nodejs-project/main.js:283 — const dest = join(appDir, ...file.split(posix.sep)) with file from listAppFiles() network responses; no segment validation",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/js-pod/android/",
+    "https://github.com/js-pod/android"
+   ]
+  },
+  {
    "id": "rdflib-js-readme-links-to",
    "repo": "linkeddata/rdflib.js",
    "pitch": "README links to the defunct Inrupt Solid portal (solid.inrupt.com) and a dead Gitter room/badge; replace with live Solid community links.",
@@ -186,6 +506,22 @@
    "seeAlso": [
     "http://localhost:5445/linkeddata/rdflib.js/",
     "https://github.com/linkeddata/rdflib.js"
+   ]
+  },
+  {
+   "id": "groups-savejoined-republishes-the-replaceable",
+   "repo": "nostr-client/groups",
+   "pitch": "saveJoined() republishes the replaceable kind-10004 NIP-51 communities list from the local joined set on every Join/Leave click, but the user's existing list is only merged after the nostr:login fetch resolves — a slow/unreachable relay or an early Join click overwrites their whole communities list (incl. groups joined in Satellite/Coracle) with just the local entries; await and merge the fetched list before the first publish.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 53,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:172-182 saveJoined signs kind 10004 with only [...joined]; :346-351 login handler merges remote list asynchronously; :199 join.onclick calls saveJoined immediately",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/groups/",
+    "https://github.com/nostr-client/groups"
    ]
   },
   {
@@ -253,6 +589,118 @@
    ]
   },
   {
+   "id": "groups-opengroup-does-history-pushstate-345",
+   "repo": "nostr-client/groups",
+   "pitch": "openGroup() does history.pushState('#34550:…') on every group open but the page registers no popstate handler, so the browser Back button rewinds the URL without changing the view — every sibling app (chat, did-nostr, birdsite, bookface, dittly, btcnostr) has the listener; add a popstate handler that re-opens the hash group.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 44,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:187 pushState; grep 'popstate' over groups/index.html returns nothing; chat/index.html:262, dittly/index.html:158, bookface/index.html:161 all have it",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/groups/",
+    "https://github.com/nostr-client/groups"
+   ]
+  },
+  {
+   "id": "jumbly-deep-links-to-person-hex-are-not-rest",
+   "repo": "nostr-client/jumbly",
+   "pitch": "Deep links to #person/<hex> are not restored on page load — the initial-load handler only routes 'note' while the popstate handler routes both note and person, so a shared profile permalink silently opens the home relay feed; reuse the popstate routing on load like skyline and monty do.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 44,
+   "status": "open",
+   "priority": null,
+   "evidence": "jumbly/index.html:208-209 — `if (kind === 'note' && HEX.test(value))` only, vs popstate handler at :141-149 which also handles 'person'; siblings skyline/index.html:271 and monty/index.html:272 call route(location.hash) on load",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/jumbly/",
+    "https://github.com/nostr-client/jumbly"
+   ]
+  },
+  {
+   "id": "feed-get-pool-unconditionally-constructs-a",
+   "repo": "nostr-client/feed",
+   "pitch": "get _pool() unconditionally constructs and assigns a NEW Pool on every access when the relays attribute is set, so each reactive attribute change opens fresh WebSockets to every relay and never closes the superseded Pool — cache it with this.pool ??= like composer.js:97-103 and notifications.js:78-84 do.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 44,
+   "status": "open",
+   "priority": null,
+   "evidence": "feed.js:69-73 — `if (relays) return (this.pool = new Pool(relays.split(',')...))` runs on every getter access; _resubscribe (feed.js:91-114) only closes the sub, never the old Pool; disconnectedCallback (feed.js:63) also leaves relay-attr Pools connected.",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/feed/",
+    "https://github.com/nostr-client/feed"
+   ]
+  },
+  {
+   "id": "thread-the-reply-composer-renders-thread-js-15",
+   "repo": "nostr-client/thread",
+   "pitch": "The reply composer renders (thread.js:153) before this.replies is initialized (line 170), separated by up to 10 awaited ancestor fetches (8s timeout each), so a reply submitted in that window publishes successfully but then throws on this.replies.has(event.id) (line 265) and shows '✗ Cannot read properties of undefined' for a reply that actually went out; initialize this.replies before _renderComposer().",
+   "kind": "bug",
+   "effort": "small",
+   "score": 44,
+   "status": "open",
+   "priority": null,
+   "evidence": "thread.js:153 vs :170 (composer rendered before replies Map exists), :158-164 (awaited ancestor loop between them), :264-265 (onsubmit dereferences this.replies after publish)",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/thread/",
+    "https://github.com/nostr-client/thread"
+   ]
+  },
+  {
+   "id": "taproot-the-send-tab-s-max-link-sets-amount",
+   "repo": "solid-apps/taproot",
+   "pitch": "The Send tab's 'max' link sets amount = full balance, but selectCoins requires total >= amount + fee, so sending max always throws 'Insufficient funds' — make max subtract the estimated fee (send-max).",
+   "kind": "bug",
+   "effort": "small",
+   "score": 44,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:270 maxBtn sets amt=bal; index.html:160-174 selectCoins: with amount==total, total>=amount+fee is never true so the loop exhausts and throws",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/taproot/",
+    "https://github.com/solid-apps/taproot"
+   ]
+  },
+  {
+   "id": "health-the-blood-pressure-logger-stores-nan-th",
+   "repo": "solid-apps/health",
+   "pitch": "The blood-pressure logger stores NaN: the dual-value path assigns entry.value=+sys and entry.value2=+dia with no isNaN guard (the single-value path right below has one), so a non-numeric answer saves NaN which JSON.stringify turns into null in log.jsonld and the card renders 'null/null mmHg' — add the same isNaN check to the dual branch.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 44,
+   "status": "open",
+   "priority": null,
+   "evidence": "solid-apps/health/app.js:78-80 — 'entry.value = +sys; entry.value2 = +dia' with no validation, versus app.js:83 where the non-dual branch checks 'if (isNaN(entry.value)) { toast(\"Numbers only\"); return }'.",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/health/",
+    "https://github.com/solid-apps/health"
+   ]
+  },
+  {
+   "id": "messages-manifest-json-declares-handles-webi",
+   "repo": "solid-apps/messages",
+   "pitch": "manifest.json declares \"handles\": [\"webid\", \"text\"] but app.js only receives webid intents, so choosing messages from the intent chooser to share text silently drops the text — prefill the composer from a text intent or remove \"text\" from handles.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 44,
+   "status": "open",
+   "priority": null,
+   "evidence": "messages/manifest.json handles [\"webid\",\"text\"]; messages/app.js:179-183 — OPEN only checks `i.type === 'webid'` and no other intent.receive() call exists, so `?intent=text&value=...` renders the plain conversation list and the shared value is lost.",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/messages/",
+    "https://github.com/solid-apps/messages"
+   ]
+  },
+  {
    "id": "object-acptowac-emits-acppublicagent",
    "repo": "solid/object",
    "pitch": "acpToWac emits acp:PublicAgent as acl:agent foaf:Agent instead of acl:agentClass foaf:Agent, producing WAC servers will not treat as public.",
@@ -282,6 +730,38 @@
    "seeAlso": [
     "http://localhost:5445/nostrcg/did-nostr/",
     "https://github.com/nostrcg/did-nostr"
+   ]
+  },
+  {
+   "id": "magpie-index-js-published-to-npm-as-getmagpie",
+   "repo": "melvincarvalho/magpie",
+   "pitch": "index.js (published to npm as getmagpie) exports ACTIONS=['accepted','rejected','done','later'], but SKILL.md, magpie-serve.mjs and refresh-worklist.mjs all define actions as accepted|rejected|done with 'later' being a priority — remove 'later' from ACTIONS and export PRIORITIES=['pin','later','normal'] so the published constants match the convention.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 40,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.js:18 ACTIONS includes 'later'; magpie-serve.mjs:24-25 ACTIONS excludes it and PRIORITIES has it; SKILL.md:78-82 documents the two axes",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/magpie/",
+    "https://github.com/melvincarvalho/magpie"
+   ]
+  },
+  {
+   "id": "hub-hub-package-json-declares-license-is",
+   "repo": "solid-apps/hub",
+   "pitch": "hub package.json declares \"license\": \"ISC\" while the shipped LICENSE file and README both say AGPL-3.0-or-later — fix the package.json license field.",
+   "kind": "cleanup",
+   "effort": "small",
+   "score": 40,
+   "status": "open",
+   "priority": null,
+   "evidence": "package.json:17 \"license\": \"ISC\" vs LICENSE (AGPL-3.0) and README.md:93-95 'AGPL-3.0-or-later'",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/hub/",
+    "https://github.com/solid-apps/hub"
    ]
   },
   {
@@ -333,6 +813,86 @@
    ]
   },
   {
+   "id": "nip19-readme-says-tlv-entities-nevent-nprofil",
+   "repo": "nostr-client/nip19",
+   "pitch": "README says TLV entities (nevent/nprofile/naddr) are 'deliberately not included' and decoding 'may grow later', but nip19.js already exports decodeAny() with full nprofile/nevent/naddr TLV decoding, which is also missing from the README's export list; update the README to document decodeAny and drop the stale paragraph.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 37,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md 'Deliberately not included: TLV entities…' vs nip19.js:120-147 export function decodeAny handling nprofile/nevent/naddr",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/nip19/",
+    "https://github.com/nostr-client/nip19"
+   ]
+  },
+  {
+   "id": "login-readme-s-theming-section-documents-css-c",
+   "repo": "nostr-client/login",
+   "pitch": "README's Theming section documents CSS custom properties --nostr-login-bg/--nostr-login-color/--nostr-login-border but login.js contains no --nostr-login-* variable at all (the component themes via --nc-accent, --nc-ink, --nc-line, …), so following the docs has no effect; rewrite the Theming section to list the actual --nc-* variables.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 37,
+   "status": "open",
+   "priority": null,
+   "evidence": "login/README.md Theming section vs grep -n 'nostr-login-' login.js = no matches; login.js:208-258 TEMPLATE uses only --nc-* vars",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/login/",
+    "https://github.com/nostr-client/login"
+   ]
+  },
+  {
+   "id": "win98-win98-readme-declares-license-agpl-3-0",
+   "repo": "solid-apps/win98",
+   "pitch": "win98 README declares 'License AGPL-3.0' and links the live GitHub Pages site, but the repo ships no LICENSE file — chrome (AGPL-3.0 in README) and registry (CC0 in README) have the same gap — add LICENSE files matching the declared licenses.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 37,
+   "status": "open",
+   "priority": null,
+   "evidence": "win98/README.md:54-56 + live URL at README.md:52, no LICENSE on disk; solid-apps/chrome README.md:53-55 no LICENSE; solid-apps/registry README.md:66-68 no LICENSE",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/win98/",
+    "https://github.com/solid-apps/win98"
+   ]
+  },
+  {
+   "id": "chrome-chrome-readme-still-opens-with-day-1",
+   "repo": "solid-apps/chrome",
+   "pitch": "chrome README still opens with '⚠️ Day-1 scaffold' and a status table marking the window manager as 'next', but src/ ships the full desktop (windows, launcher, registry, auth, lock, panes, sync) — update the README status to match reality.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 37,
+   "status": "open",
+   "priority": null,
+   "evidence": "chrome/README.md:8-10 and 43-51 (status table days 2-5 pending) vs chrome/src/ containing windows.js, launcher.js, registry.js, auth.js, lock.js etc.",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/chrome/",
+    "https://github.com/solid-apps/chrome"
+   ]
+  },
+  {
+   "id": "datawiki-datawiki-ships-without-a-license-file-or",
+   "repo": "solid-apps/datawiki",
+   "pitch": "datawiki ships without a LICENSE file or any license statement (3-line README), while every sibling app in the suite (video, music, portal, search, tabulator, news, budget) ships an AGPL-3.0-only LICENSE plus a README license footer, and it also lacks the siblings' .nojekyll and manifest.json; fix by adding the standard AGPL-3.0-only LICENSE and README footer.",
+   "kind": "docs",
+   "effort": "small",
+   "score": 37,
+   "status": "open",
+   "priority": null,
+   "evidence": "solid-apps/datawiki root contains only README.md + index.html (git log confirms only 3 commits); LICENSE present in all seven sibling repos in this batch",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/datawiki/",
+    "https://github.com/solid-apps/datawiki"
+   ]
+  },
+  {
    "id": "wrapper-packagejson-license-mit",
    "repo": "rdfjs/wrapper",
    "pitch": "package.json license \"MIT\" contradicts the repo dual-license (README SPDX \"MIT OR Apache-2.0\", both LICENSE files present); npm metadata should say \"(MIT OR Apache-2.0)\".",
@@ -362,6 +922,38 @@
    "seeAlso": [
     "http://localhost:5445/solid/object/",
     "https://github.com/solid/object"
+   ]
+  },
+  {
+   "id": "reactions-kind-6-repost-publishes-tags-e-id",
+   "repo": "nostr-client/reactions",
+   "pitch": "Kind-6 repost publishes tags [['e', id], ['p', author]] without a relay URL in the e tag, but NIP-18 says that tag MUST include a relay URL as its third entry (and content SHOULD be the stringified reposted note), so strict clients won't resolve these reposts while the README claims 'correct e/p tags'; add a pool relay URL as the e tag's third element.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 35,
+   "status": "open",
+   "priority": null,
+   "evidence": "reactions.js:120-131 (_publish builds tags = [['e', this._id]] + optional p); README.md 'reposting publishes kind 6 … with correct e/p tags'",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/reactions/",
+    "https://github.com/nostr-client/reactions"
+   ]
+  },
+  {
+   "id": "lan-lan-resolves-its-data-file-as-new-url",
+   "repo": "solid-apps/lan",
+   "pitch": "lan resolves its data file as new URL('../../../private/net/hosts.jsonld', location.href), so it only works when installed at exactly depth-3 on the pod, while the README claims it works served from GitHub Pages — derive the pod root from the signed-in WebID (like nexus's podRoot()) instead.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 35,
+   "status": "open",
+   "priority": null,
+   "evidence": "app.js:15 — const LAN_HOSTS = new URL('../../../private/net/hosts.jsonld', location.href); README.md:11-12 claims 'works even when served from https:// GitHub Pages'",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/lan/",
+    "https://github.com/solid-apps/lan"
    ]
   },
   {
@@ -861,6 +1453,22 @@
    ]
   },
   {
+   "id": "nexus-the-e-edit-shortcut-only-fires-for-kind",
+   "repo": "solid-apps/nexus",
+   "pitch": "The ⌘E Edit shortcut only fires for kind 'html' or 'source' and silently skips markdown pages, though the menu Edit and the Help page say ⌘E edits markdown — add \"markdown\" to the keydown check.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 22,
+   "status": "open",
+   "priority": null,
+   "evidence": "index.html:472 if(we&&(we.kind===\"html\"||we.kind===\"source\")) vs menu handler index.html:467 → enterEdit accepting markdown at index.html:408",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/nexus/",
+    "https://github.com/solid-apps/nexus"
+   ]
+  },
+  {
    "id": "object-wactoacp-silently-drops",
    "repo": "solid/object",
    "pitch": "wacToAcp silently drops acl:agentClass, losing the standard WAC public-access pattern (agentClass foaf:Agent).",
@@ -1002,6 +1610,22 @@
    "seeAlso": [
     "http://localhost:5445/jsclaw/jsclaw/",
     "https://github.com/jsclaw/jsclaw"
+   ]
+  },
+  {
+   "id": "btcnostr-readme-feature-table-says-the-tip-wallet",
+   "repo": "nostr-client/btcnostr",
+   "pitch": "README feature table says the tip wallet is 'P2WPKH per nostr user', but wallet.js derives a taproot (p2tr) address straight from the nostr pubkey for all nostr-native logins and only falls back to a random P2WPKH key for NIP-07 extension logins — fix the table cell to say taproot (P2WPKH fallback for extensions).",
+   "kind": "docs",
+   "effort": "small",
+   "score": 19,
+   "status": "open",
+   "priority": null,
+   "evidence": "README.md table row 'wallet — P2WPKH per nostr user'; wallet/wallet.js:91-95 p2tr from npub, :117-135 taproot for secret-exposing signers, p2wpkh only in the NIP-07 else branch",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/btcnostr/",
+    "https://github.com/nostr-client/btcnostr"
    ]
   },
   {

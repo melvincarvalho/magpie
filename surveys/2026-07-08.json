@@ -1,12 +1,12 @@
 {
  "generated": "2026-07-08",
- "cohort": "run 1: active surface (<550d), 25 repos; run 2: 25 fresh repos + nostr-client org sweep; run 3: 49 more fresh repos (bitcoin-kernel/bitmark/recordweb/jsclaw/solid-apps/bitcoin-desktop). Skipped: bitcoinknots/bitcoin (upstream fork); large forks audited for fork-changes only.",
- "reposScored": 511,
- "reposDeepRead": 99,
+ "cohort": "run 1: active surface (<550d), 25 repos; run 2: 25 fresh repos + nostr-client org sweep; run 3: 49 more fresh repos (bitcoin-kernel/bitmark/recordweb/jsclaw/solid-apps/bitcoin-desktop). Skipped: bitcoinknots/bitcoin (upstream fork); large forks audited for fork-changes only. | run 4: next 100 never-deep-read repos (freshest-first): melvincarvalho/magpie + 38 nostr-client org + ~55 solid-apps + solid/solid-tools/linkedobjects/nosdav/js-pod/linkedwebstorage. Substituted solid-apps/protect for bitcoinknots/bitcoin (huge upstream fork, skipped per cohort-3 policy). Scoring: round(4*impact*confidence*effortMult*kindMult), effortMult small1.1/med0.8/large0.55, kindMult security1.25/bug1.0/feature0.95/cleanup0.9/docs0.85/archive0.7.",
+ "reposScored": 1084,
+ "reposDeepRead": 199,
  "findings": [
   {
    "repo": "solid-apps/alarm",
-   "pitch": "The seeded ACL makes /public/alarm/alarms.jsonld world-writable (foaf:Agent gets Read+Write), so anyone on the internet can read/alter/delete a user’s alarms — tighten to owner-only write.",
+   "pitch": "The seeded ACL makes /public/alarm/alarms.jsonld world-writable (foaf:Agent gets Read+Write), so anyone on the internet can read/alter/delete a user\u2019s alarms \u2014 tighten to owner-only write.",
    "kind": "security",
    "effort": "small",
    "impact": 4,
@@ -36,7 +36,7 @@
   },
   {
    "repo": "solid-apps/alarm",
-   "pitch": "Top-level `permission: Notification.permission` throws ReferenceError on browsers without the Notification API (iOS Safari), killing the module so the app renders nothing — guard with \"Notification\" in window.",
+   "pitch": "Top-level `permission: Notification.permission` throws ReferenceError on browsers without the Notification API (iOS Safari), killing the module so the app renders nothing \u2014 guard with \"Notification\" in window.",
    "kind": "bug",
    "effort": "small",
    "impact": 4,
@@ -51,7 +51,7 @@
   },
   {
    "repo": "solid-apps/alarm",
-   "pitch": "Alarms only fire when a 1s tick lands on seconds===0, so background-tab timer throttling silently skips alarms — track last-checked minute instead.",
+   "pitch": "Alarms only fire when a 1s tick lands on seconds===0, so background-tab timer throttling silently skips alarms \u2014 track last-checked minute instead.",
    "kind": "bug",
    "effort": "small",
    "impact": 4,
@@ -66,7 +66,7 @@
   },
   {
    "repo": "JavaScriptSolidServer/JavaScriptSolidServer",
-   "pitch": "Add a GitHub Actions workflow running npm test — 63 test files and a node --test script but zero CI.",
+   "pitch": "Add a GitHub Actions workflow running npm test \u2014 63 test files and a node --test script but zero CI.",
    "kind": "cleanup",
    "effort": "small",
    "impact": 4,
@@ -126,7 +126,7 @@
   },
   {
    "repo": "melvincarvalho/nanoblog",
-   "pitch": "Mirror clone is EMPTY (0 git objects, no refs) despite recent pushes — gh-sync failed to fetch content; needs re-clone.",
+   "pitch": "Mirror clone is EMPTY (0 git objects, no refs) despite recent pushes \u2014 gh-sync failed to fetch content; needs re-clone.",
    "kind": "bug",
    "effort": "small",
    "impact": 3,
@@ -141,7 +141,7 @@
   },
   {
    "repo": "melvincarvalho/liwi",
-   "pitch": "Mirror clone is EMPTY (0 git objects, no refs) despite recent pushes — gh-sync failed to fetch content; needs re-clone.",
+   "pitch": "Mirror clone is EMPTY (0 git objects, no refs) despite recent pushes \u2014 gh-sync failed to fetch content; needs re-clone.",
    "kind": "bug",
    "effort": "small",
    "impact": 3,
@@ -171,7 +171,7 @@
   },
   {
    "repo": "nosdav/dnstr.org",
-   "pitch": "The first NIP-134 spec example flattens the u and d tags into one malformed 4-element array — should be two separate tags.",
+   "pitch": "The first NIP-134 spec example flattens the u and d tags into one malformed 4-element array \u2014 should be two separate tags.",
    "kind": "docs",
    "effort": "small",
    "impact": 3,
@@ -186,7 +186,7 @@
   },
   {
    "repo": "nosdav/dnstr.org",
-   "pitch": "The CLI bech32 decoder drops the checksum without verifying it, so a typo’d npub silently decodes to a wrong pubkey and resolves someone else’s domain — add the polymod check.",
+   "pitch": "The CLI bech32 decoder drops the checksum without verifying it, so a typo\u2019d npub silently decodes to a wrong pubkey and resolves someone else\u2019s domain \u2014 add the polymod check.",
    "kind": "bug",
    "effort": "small",
    "impact": 3,
@@ -216,7 +216,7 @@
   },
   {
    "repo": "JavaScriptSolidServer/JavaScriptSolidServer",
-   "pitch": "urlToPath strips literal \"..\" from decoded paths, so /a..b and /ab collide onto one file — reject with 400 instead (the startsWith(dataRoot) guard already blocks real traversal).",
+   "pitch": "urlToPath strips literal \"..\" from decoded paths, so /a..b and /ab collide onto one file \u2014 reject with 400 instead (the startsWith(dataRoot) guard already blocks real traversal).",
    "kind": "bug",
    "effort": "small",
    "impact": 2,
@@ -291,7 +291,7 @@
   },
   {
    "repo": "bitmark-kernel/browser-node",
-   "pitch": "The wallet \"remember\" option stores the mnemonic/private key in plaintext localStorage while the UI claims \"keys in this tab only\" — encrypt with a passphrase or correct the claim.",
+   "pitch": "The wallet \"remember\" option stores the mnemonic/private key in plaintext localStorage while the UI claims \"keys in this tab only\" \u2014 encrypt with a passphrase or correct the claim.",
    "kind": "security",
    "effort": "medium",
    "impact": 3,
@@ -321,7 +321,7 @@
   },
   {
    "repo": "clawdocs/clawdocs.github.io",
-   "pitch": "Rewrite the stock Docusaurus README — it says yarn/\"yarn deploy\" but the repo uses package-lock.json and deploys via Actions npm ci.",
+   "pitch": "Rewrite the stock Docusaurus README \u2014 it says yarn/\"yarn deploy\" but the repo uses package-lock.json and deploys via Actions npm ci.",
    "kind": "docs",
    "effort": "small",
    "impact": 2,
@@ -351,7 +351,7 @@
   },
   {
    "repo": "spux/json.rocks",
-   "pitch": "13 metascraper-* plugins imported by the server are undeclared phantom deps (present only transitively via a commented-out package) — declare them before a dep cleanup breaks startup.",
+   "pitch": "13 metascraper-* plugins imported by the server are undeclared phantom deps (present only transitively via a commented-out package) \u2014 declare them before a dep cleanup breaks startup.",
    "kind": "cleanup",
    "effort": "small",
    "impact": 3,
@@ -366,7 +366,7 @@
   },
   {
    "repo": "nosdav/dnstr.org",
-   "pitch": "package.json \"main\":\"index.js\" but no index.js exists, so importing the published package fails — drop main or add the file.",
+   "pitch": "package.json \"main\":\"index.js\" but no index.js exists, so importing the published package fails \u2014 drop main or add the file.",
    "kind": "cleanup",
    "effort": "small",
    "impact": 2,
@@ -381,7 +381,7 @@
   },
   {
    "repo": "fork-talk/fork-talk.github.io",
-   "pitch": "logo.png is a 914 KB 1254x1254 PNG rendered as a 28x28 nav icon on every page — resize/compress (same oversized file duplicated in bip110).",
+   "pitch": "logo.png is a 914 KB 1254x1254 PNG rendered as a 28x28 nav icon on every page \u2014 resize/compress (same oversized file duplicated in bip110).",
    "kind": "cleanup",
    "effort": "small",
    "impact": 3,
@@ -411,7 +411,7 @@
   },
   {
    "repo": "fork-talk/fork-talk.github.io",
-   "pitch": "Homepage \"Timeline\" quick link /timeline/ 404s — no such project site exists in the org.",
+   "pitch": "Homepage \"Timeline\" quick link /timeline/ 404s \u2014 no such project site exists in the org.",
    "kind": "bug",
    "effort": "small",
    "impact": 3,
@@ -456,7 +456,7 @@
   },
   {
    "repo": "studyknots/studyknots.github.io",
-   "pitch": "Actively developed Docusaurus site (41 docs, 9 PRs merged last week) has no README — add site URL, scope, and start/build instructions.",
+   "pitch": "Actively developed Docusaurus site (41 docs, 9 PRs merged last week) has no README \u2014 add site URL, scope, and start/build instructions.",
    "kind": "docs",
    "effort": "small",
    "impact": 2,
@@ -501,7 +501,7 @@
   },
   {
    "repo": "play-grounds/rootstock",
-   "pitch": "Three contracts, five ops scripts and a faucet dApp but no README — add setup/deploy instructions.",
+   "pitch": "Three contracts, five ops scripts and a faucet dApp but no README \u2014 add setup/deploy instructions.",
    "kind": "docs",
    "effort": "small",
    "impact": 2,
@@ -516,7 +516,7 @@
   },
   {
    "repo": "solid-apps/stockfish",
-   "pitch": "undo() does not clear hint/analysis arrows, so after a hint then Undo the arrows persist over the wrong position — add ground.setAutoShapes([]) in undo().",
+   "pitch": "undo() does not clear hint/analysis arrows, so after a hint then Undo the arrows persist over the wrong position \u2014 add ground.setAutoShapes([]) in undo().",
    "kind": "bug",
    "effort": "small",
    "impact": 2,
@@ -531,7 +531,7 @@
   },
   {
    "repo": "solid-apps/stockfish",
-   "pitch": "Engine.search score regex also matches UCI lowerbound/upperbound info lines, so the eval bar can show bound values instead of exact scores — skip those lines.",
+   "pitch": "Engine.search score regex also matches UCI lowerbound/upperbound info lines, so the eval bar can show bound values instead of exact scores \u2014 skip those lines.",
    "kind": "bug",
    "effort": "small",
    "impact": 2,
@@ -546,7 +546,7 @@
   },
   {
    "repo": "fork-talk/fork-talk.github.io",
-   "pitch": "Footer claims \"MIT License\" but the repo ships no LICENSE and no README — add both.",
+   "pitch": "Footer claims \"MIT License\" but the repo ships no LICENSE and no README \u2014 add both.",
    "kind": "docs",
    "effort": "small",
    "impact": 2,
@@ -561,7 +561,7 @@
   },
   {
    "repo": "fork-talk/bip110",
-   "pitch": "Add a README and a LICENSE — the page footer claims \"MIT License\" but no license text is committed and the landing page is empty.",
+   "pitch": "Add a README and a LICENSE \u2014 the page footer claims \"MIT License\" but no license text is committed and the landing page is empty.",
    "kind": "docs",
    "effort": "small",
    "impact": 2,
@@ -576,7 +576,7 @@
   },
   {
    "repo": "fork-talk/bip110-monitor",
-   "pitch": "README \"Data sources\" says mempool.space, but all code fetches bip110monitor.com — fix the README.",
+   "pitch": "README \"Data sources\" says mempool.space, but all code fetches bip110monitor.com \u2014 fix the README.",
    "kind": "docs",
    "effort": "small",
    "impact": 2,
@@ -606,7 +606,7 @@
   },
   {
    "repo": "JavaScriptSolidServer/beacon",
-   "pitch": "Add a LICENSE file — package.json declares MIT and it is published to npm as nostr-beacon 0.0.4, but no LICENSE exists.",
+   "pitch": "Add a LICENSE file \u2014 package.json declares MIT and it is published to npm as nostr-beacon 0.0.4, but no LICENSE exists.",
    "kind": "cleanup",
    "effort": "small",
    "impact": 2,
@@ -621,7 +621,7 @@
   },
   {
    "repo": "studyknots/studyknots.github.io",
-   "pitch": "Switch docusaurus onBrokenLinks/onBrokenMarkdownLinks from \"warn\" to \"throw\" — all internal links verify clean, so it is a safe regression guard.",
+   "pitch": "Switch docusaurus onBrokenLinks/onBrokenMarkdownLinks from \"warn\" to \"throw\" \u2014 all internal links verify clean, so it is a safe regression guard.",
    "kind": "cleanup",
    "effort": "small",
    "impact": 2,
@@ -651,7 +651,7 @@
   },
   {
    "repo": "blocktrails/fund-agent",
-   "pitch": "The CLI reimplements the whole index.js library inline and has drifted (CLI sets gitmark.network, exported fundAgent never does) — make the CLI import the library.",
+   "pitch": "The CLI reimplements the whole index.js library inline and has drifted (CLI sets gitmark.network, exported fundAgent never does) \u2014 make the CLI import the library.",
    "kind": "cleanup",
    "effort": "medium",
    "impact": 2,
@@ -666,7 +666,7 @@
   },
   {
    "repo": "bitmark-kernel/browser-node",
-   "pitch": "Uncommitted work in the tree: SKIP_SIGS signature-verification gate in gen-snapshot.mjs and an untracked package-lock.json — commit or discard.",
+   "pitch": "Uncommitted work in the tree: SKIP_SIGS signature-verification gate in gen-snapshot.mjs and an untracked package-lock.json \u2014 commit or discard.",
    "kind": "cleanup",
    "effort": "small",
    "impact": 1,
@@ -741,7 +741,7 @@
   },
   {
    "repo": "spux/json.rocks",
-   "pitch": "Server runs on EOL fastify v3 with deprecated pre-scope plugin names while mixing in @fastify/basic-auth built for v4 — migrate to fastify v4/v5.",
+   "pitch": "Server runs on EOL fastify v3 with deprecated pre-scope plugin names while mixing in @fastify/basic-auth built for v4 \u2014 migrate to fastify v4/v5.",
    "kind": "cleanup",
    "effort": "medium",
    "impact": 2,
@@ -772,7 +772,7 @@
   {
    "id": "productivity-skillmd-hardwon-facts-still",
    "repo": "melvincarvalho/productivity",
-   "pitch": "SKILL.md 'Hard-won facts' still claims empty clones are not re-fetched — but gh-sync.sh now implements exactly that repair (fetch + checkout of the default branch for HEAD-less clones), so the doc contradicts the code.",
+   "pitch": "SKILL.md 'Hard-won facts' still claims empty clones are not re-fetched \u2014 but gh-sync.sh now implements exactly that repair (fetch + checkout of the default branch for HEAD-less clones), so the doc contradicts the code.",
    "kind": "docs",
    "effort": "small",
    "score": 27,
@@ -828,7 +828,7 @@
   {
    "id": "solid-oidc-in-the-primers-authorization",
    "repo": "solid/solid-oidc",
-   "pitch": "In the Primer's authorization request (step 6) and token request (step 15), the client_id is percent-encoded as `https%3A%2F%2Fdecentphotos.example%client_id`, where `%client_id` is invalid percent-encoding — the slash should be `%2Fclient_id` as correctly written in the same file's prose.",
+   "pitch": "In the Primer's authorization request (step 6) and token request (step 15), the client_id is percent-encoded as `https%3A%2F%2Fdecentphotos.example%client_id`, where `%client_id` is invalid percent-encoding \u2014 the slash should be `%2Fclient_id` as correctly written in the same file's prose.",
    "kind": "bug",
    "effort": "small",
    "score": 38,
@@ -912,7 +912,7 @@
   {
    "id": "comunica-browser-readme-license-section-credits",
    "repo": "rdfjs/comunica-browser",
-   "pitch": "README License section credits only 'Ghent University – imec' while LICENSE.txt credits 'Ruben Taelman, Joachim Van Herwegen, Ghent University – imec'; align the README attribution.",
+   "pitch": "README License section credits only 'Ghent University \u2013 imec' while LICENSE.txt credits 'Ruben Taelman, Joachim Van Herwegen, Ghent University \u2013 imec'; align the README attribution.",
    "kind": "docs",
    "effort": "small",
    "score": 8,
@@ -926,7 +926,7 @@
   {
    "id": "sso-loginjs-redirects-to-any",
    "repo": "JavaScriptSolidServer/sso",
-   "pitch": "login.js redirects to any attacker-supplied ?next=<url> after the signer prompt (only an http/https protocol check, no same-origin/allowlist) — an open redirect on the SSO origin that will also leak the planned phase-2 NIP-98 token to arbitrary hosts; restrict next to the resolved pod origin.",
+   "pitch": "login.js redirects to any attacker-supplied ?next=<url> after the signer prompt (only an http/https protocol check, no same-origin/allowlist) \u2014 an open redirect on the SSO origin that will also leak the planned phase-2 NIP-98 token to arbitrary hosts; restrict next to the resolved pod origin.",
    "kind": "security",
    "effort": "small",
    "score": 18,
@@ -940,7 +940,7 @@
   {
    "id": "sso-with-a-resolver-param",
    "repo": "JavaScriptSolidServer/sso",
-   "pitch": "With a ?resolver= param, wire() auto-invokes window.nostr.getPublicKey() with no user gesture, which many signer extensions block outside a click — the 'Try the fallback resolver' link likely fails silently; gate behind a click.",
+   "pitch": "With a ?resolver= param, wire() auto-invokes window.nostr.getPublicKey() with no user gesture, which many signer extensions block outside a click \u2014 the 'Try the fallback resolver' link likely fails silently; gate behind a click.",
    "kind": "bug",
    "effort": "small",
    "score": 9,
@@ -1094,7 +1094,7 @@
   {
    "id": "create-agent-readme-claims-the-cli",
    "repo": "melvincarvalho/create-agent",
-   "pitch": "README claims the CLI outputs private keys to stderr in red, but bin/create-agent.js never prints privkey/nsec and uses no red escape — the key is silently stored in git config, so the documented security-piping rationale is false.",
+   "pitch": "README claims the CLI outputs private keys to stderr in red, but bin/create-agent.js never prints privkey/nsec and uses no red escape \u2014 the key is silently stored in git config, so the documented security-piping rationale is false.",
    "kind": "docs",
    "effort": "small",
    "score": 22,
@@ -1178,7 +1178,7 @@
   {
    "id": "theme-indexhtml-imports-themesjs-twice",
    "repo": "nostr-client/theme",
-   "pitch": "index.html imports './themes.js' twice — a bare side-effect import and a dynamic import on the next line; one is redundant.",
+   "pitch": "index.html imports './themes.js' twice \u2014 a bare side-effect import and a dynamic import on the next line; one is redundant.",
    "kind": "cleanup",
    "effort": "small",
    "score": 9,
@@ -1262,7 +1262,7 @@
   {
    "id": "solidskills-the-homepage-usage-snippet",
    "repo": "solidskills/solidskills",
-   "pitch": "The homepage usage snippet destructures only 4 of the 5 exports — it omits `servers` even though the comment below documents it and index.js exports it — so copy-pasters silently lose the servers skill.",
+   "pitch": "The homepage usage snippet destructures only 4 of the 5 exports \u2014 it omits `servers` even though the comment below documents it and index.js exports it \u2014 so copy-pasters silently lose the servers skill.",
    "kind": "docs",
    "effort": "small",
    "score": 10,
@@ -1290,7 +1290,7 @@
   {
    "id": "wallet-readme-bills-this-as",
    "repo": "nostr-client/wallet",
-   "pitch": "README bills this as 'a hot wallet in localStorage — pocket change only', but for nostr-native logins the Bitcoin key IS the user's nsec reused for signing — compromise loses the whole identity, so the framing understates the risk.",
+   "pitch": "README bills this as 'a hot wallet in localStorage \u2014 pocket change only', but for nostr-native logins the Bitcoin key IS the user's nsec reused for signing \u2014 compromise loses the whole identity, so the framing understates the risk.",
    "kind": "security",
    "effort": "small",
    "score": 9,
@@ -1374,7 +1374,7 @@
   {
    "id": "mafia-renderbosses-formats-the-boss",
    "repo": "solid-apps/mafia",
-   "pitch": "renderBosses formats the boss bounty with (b.peso?moneyP:money), ignoring the ruble flag, so Moscow boss 'The Old Pakhan' shows its ₽500,000 bounty with a '$'; use fmtW(walletOf(b)) like the rest of the code.",
+   "pitch": "renderBosses formats the boss bounty with (b.peso?moneyP:money), ignoring the ruble flag, so Moscow boss 'The Old Pakhan' shows its \u20bd500,000 bounty with a '$'; use fmtW(walletOf(b)) like the rest of the code.",
    "kind": "bug",
    "effort": "small",
    "score": 15,
@@ -1430,7 +1430,7 @@
   {
    "id": "ameba-protocolmd-rule-6-says",
    "repo": "nostr-client/ameba",
-   "pitch": "PROTOCOL.md rule 6 says a money-handling amoeba 'verifies signatures first', but no entry point ever calls verifyEvent — events are trusted on relay-supplied pubkey for allowlist, decryption and payment checks, so a malicious relay can forge authorship.",
+   "pitch": "PROTOCOL.md rule 6 says a money-handling amoeba 'verifies signatures first', but no entry point ever calls verifyEvent \u2014 events are trusted on relay-supplied pubkey for allowlist, decryption and payment checks, so a malicious relay can forge authorship.",
    "kind": "security",
    "effort": "small",
    "score": 12,
@@ -1528,7 +1528,7 @@
   {
    "id": "nostr-client-github-io-contractmd-promises-every-repo",
    "repo": "nostr-client/nostr-client.github.io",
-   "pitch": "CONTRACT.md promises 'Every repo tags releases (v1, v2, …)' and documents pinned imports via cdn.jsdelivr.net/gh/nostr-client/<repo>@v1, but 22 of 43 repos have only a v0.0.1 tag and no v1, so every @v1 jsDelivr pin against them 404s.",
+   "pitch": "CONTRACT.md promises 'Every repo tags releases (v1, v2, \u2026)' and documents pinned imports via cdn.jsdelivr.net/gh/nostr-client/<repo>@v1, but 22 of 43 repos have only a v0.0.1 tag and no v1, so every @v1 jsDelivr pin against them 404s.",
    "kind": "docs",
    "effort": "small",
    "score": 18,
@@ -1570,7 +1570,7 @@
   {
    "id": "nostr-skills-github-io-the-sites-primary-install",
    "repo": "nostr-skills/nostr-skills.github.io",
-   "pitch": "The site's primary install command `npm install nostrskills` and the two npmjs.com/package/nostrskills links are dead — the npm registry returns 404 for that package, so the copy-to-clipboard CTA gives visitors a command that fails.",
+   "pitch": "The site's primary install command `npm install nostrskills` and the two npmjs.com/package/nostrskills links are dead \u2014 the npm registry returns 404 for that package, so the copy-to-clipboard CTA gives visitors a command that fails.",
    "kind": "bug",
    "effort": "small",
    "score": 26,
@@ -1612,7 +1612,7 @@
   {
    "id": "solidskills-github-io-license-contains-only-the",
    "repo": "solidskills/solidskills.github.io",
-   "pitch": "LICENSE contains only the ~18-line AGPL notice boilerplate, not the full license text, yet states 'You should have received a copy of the GNU Affero General Public License' — the copy is absent.",
+   "pitch": "LICENSE contains only the ~18-line AGPL notice boilerplate, not the full license text, yet states 'You should have received a copy of the GNU Affero General Public License' \u2014 the copy is absent.",
    "kind": "docs",
    "effort": "small",
    "score": 8,
@@ -1640,7 +1640,7 @@
   {
    "id": "gamestr-packagejson-declares-nostrtools-reconnectingwebsocket",
    "repo": "melvincarvalho/gamestr",
-   "pitch": "package.json declares nostr-tools, reconnecting-websocket and ws but none are used (nostr-tools/ws never imported; reconnecting-websocket loaded from CDN; tui.js uses built-in WebSocket) — remove them and reconcile the README 'Zero Dependencies' claim.",
+   "pitch": "package.json declares nostr-tools, reconnecting-websocket and ws but none are used (nostr-tools/ws never imported; reconnecting-websocket loaded from CDN; tui.js uses built-in WebSocket) \u2014 remove them and reconcile the README 'Zero Dependencies' claim.",
    "kind": "cleanup",
    "effort": "small",
    "score": 10,
@@ -1682,7 +1682,7 @@
   {
    "id": "browser-node-readme-heading-what-it",
    "repo": "bitcoin-kernel/browser-node",
-   "pitch": "README heading 'What it does — six acts' is contradicted by the table below listing 11 acts and by line 90 calling it 'the ten acts' — pick one consistent count.",
+   "pitch": "README heading 'What it does \u2014 six acts' is contradicted by the table below listing 11 acts and by line 90 calling it 'the ten acts' \u2014 pick one consistent count.",
    "kind": "docs",
    "effort": "small",
    "score": 15,
@@ -1696,7 +1696,7 @@
   {
    "id": "browser-node-the-demo-url-is",
    "repo": "bitcoin-kernel/browser-node",
-   "pitch": "The demo URL is advertised as http:// everywhere, but key generation uses crypto.subtle and OPFS, which require a secure context — the http:// link as written breaks keygen; use https://.",
+   "pitch": "The demo URL is advertised as http:// everywhere, but key generation uses crypto.subtle and OPFS, which require a secure context \u2014 the http:// link as written breaks keygen; use https://.",
    "kind": "bug",
    "effort": "small",
    "score": 14,
@@ -1780,7 +1780,7 @@
   {
    "id": "kernel-swiftsync-readme-quickstart-calls",
    "repo": "bitcoin-kernel/kernel",
-   "pitch": "swiftsync README quickstart calls acc.remove(encodeCoin(coin)), but the Accumulator class defines no remove method (only add/spend); the documented example throws — should be acc.spend(...).",
+   "pitch": "swiftsync README quickstart calls acc.remove(encodeCoin(coin)), but the Accumulator class defines no remove method (only add/spend); the documented example throws \u2014 should be acc.spend(...).",
    "kind": "docs",
    "effort": "small",
    "score": 15,
@@ -1808,7 +1808,7 @@
   {
    "id": "bitmark-explorer-markpanejs-sets-linkhref-markreference",
    "repo": "project-bitmark/bitmark-explorer",
-   "pitch": "mark-pane.js sets link.href = mark.reference directly for url-type marks and the /reference POST endpoint stores the reference with no scheme validation, so an unauthenticated attacker can store a javascript: reference that runs arbitrary JS on click — able to read the wallet keys in localStorage.",
+   "pitch": "mark-pane.js sets link.href = mark.reference directly for url-type marks and the /reference POST endpoint stores the reference with no scheme validation, so an unauthenticated attacker can store a javascript: reference that runs arbitrary JS on click \u2014 able to read the wallet keys in localStorage.",
    "kind": "security",
    "effort": "small",
    "score": 24,
@@ -1822,7 +1822,7 @@
   {
    "id": "poc-fragestunde-antwortmanagementhtml-case-filter-ends",
    "repo": "recordweb/poc-fragestunde",
-   "pitch": "antwortmanagement.html case filter ends in ||true so it always returns true, so a Bundesrätin sees every department's cases instead of only her own as the README promises.",
+   "pitch": "antwortmanagement.html case filter ends in ||true so it always returns true, so a Bundesr\u00e4tin sees every department's cases instead of only her own as the README promises.",
    "kind": "bug",
    "effort": "small",
    "score": 15,
@@ -1906,7 +1906,7 @@
   {
    "id": "shapes-docsvalidationstrategymd-says-rdfslabel-is",
    "repo": "solid/shapes",
-   "pitch": "docs/validation-strategy.md says rdfs:label is the required per-shape metadata field, but the validator uses sh:name and all 26 shape files use sh:name — a contributor following the docs would fail CI.",
+   "pitch": "docs/validation-strategy.md says rdfs:label is the required per-shape metadata field, but the validator uses sh:name and all 26 shape files use sh:name \u2014 a contributor following the docs would fail CI.",
    "kind": "docs",
    "effort": "small",
    "score": 33,
@@ -1976,7 +1976,7 @@
   {
    "id": "yasgui-root-packagejson-lintstaged-glob",
    "repo": "rdfjs/Yasgui",
-   "pitch": "Root package.json lint-staged glob \"*.{js, css, scss}\" has literal spaces inside the brace, so css/scss files never match and are never prettier-formatted on commit — should be \"*.{js,css,scss}\".",
+   "pitch": "Root package.json lint-staged glob \"*.{js, css, scss}\" has literal spaces inside the brace, so css/scss files never match and are never prettier-formatted on commit \u2014 should be \"*.{js,css,scss}\".",
    "kind": "bug",
    "effort": "small",
    "score": 20,
@@ -2004,7 +2004,7 @@
   {
    "id": "electrum-bitmark-the-wallets-blockexplorer-menu",
    "repo": "project-bitmark/electrum-bitmark",
-   "pitch": "The wallet's block-explorer menu still lists only Bitcoin explorers, so 'View on block explorer' opens a Bitcoin site with a BTMK txid/address and shows the wrong chain or 404 — the rebrand missed the explorer list.",
+   "pitch": "The wallet's block-explorer menu still lists only Bitcoin explorers, so 'View on block explorer' opens a Bitcoin site with a BTMK txid/address and shows the wrong chain or 404 \u2014 the rebrand missed the explorer list.",
    "kind": "bug",
    "effort": "medium",
    "score": 22,
@@ -2214,7 +2214,7 @@
   {
    "id": "schema-readme-version-badge-says",
    "repo": "bitcoin-desktop/schema",
-   "pitch": "README version badge says v0.0.14 but the roadmap ends at v0.0.17 and package.json is 0.0.24 — the headline version is stale and self-contradicting.",
+   "pitch": "README version badge says v0.0.14 but the roadmap ends at v0.0.17 and package.json is 0.0.24 \u2014 the headline version is stale and self-contradicting.",
    "kind": "docs",
    "effort": "small",
    "score": 10,
@@ -2242,7 +2242,7 @@
   {
    "id": "pigeon-readme-discovery-summary-says",
    "repo": "solid-apps/pigeon",
-   "pitch": "README Discovery summary says 'pod's built-in relay first, aggregator as fallback', but loadContacts does the opposite for public pods — aggregator first, pod relay only as fallback.",
+   "pitch": "README Discovery summary says 'pod's built-in relay first, aggregator as fallback', but loadContacts does the opposite for public pods \u2014 aggregator first, pod relay only as fallback.",
    "kind": "docs",
    "effort": "small",
    "score": 6,
@@ -2284,7 +2284,7 @@
   {
    "id": "solid-oidc-the-refreshrestore-path-never",
    "repo": "JavaScriptSolidServer/solid-oidc",
-   "pitch": "The refresh/restore path never calls validateAccessToken, so refreshed access tokens are only decodeJwt'd with no signature/issuer/audience/DPoP-binding checks, unlike initial login — inconsistent security on the primary page-reload path.",
+   "pitch": "The refresh/restore path never calls validateAccessToken, so refreshed access tokens are only decodeJwt'd with no signature/issuer/audience/DPoP-binding checks, unlike initial login \u2014 inconsistent security on the primary page-reload path.",
    "kind": "security",
    "effort": "small",
    "score": 14,
@@ -2298,7 +2298,7 @@
   {
    "id": "record-test-packagelockjson-declares-name-recordssmoke",
    "repo": "melvincarvalho/record-test",
-   "pitch": "package-lock.json declares name 'records-smoke', version 1.0.0, license ISC while package.json declares name 'record-test', 0.0.1, MIT — the lockfile is out of sync with the manifest.",
+   "pitch": "package-lock.json declares name 'records-smoke', version 1.0.0, license ISC while package.json declares name 'record-test', 0.0.1, MIT \u2014 the lockfile is out of sync with the manifest.",
    "kind": "bug",
    "effort": "small",
    "score": 15,
@@ -2410,7 +2410,7 @@
   {
    "id": "xlogin-packagejson-pins-solidoidc-008",
    "repo": "melvincarvalho/xlogin",
-   "pitch": "package.json pins solid-oidc ^0.0.8 but the runtime import loads solid-oidc@0.0.9 from esm.sh — declared vs used version mismatch.",
+   "pitch": "package.json pins solid-oidc ^0.0.8 but the runtime import loads solid-oidc@0.0.9 from esm.sh \u2014 declared vs used version mismatch.",
    "kind": "cleanup",
    "effort": "small",
    "score": 16,
@@ -2424,7 +2424,7 @@
   {
    "id": "verify-readme-claims-each-mark",
    "repo": "blocktrails/verify",
-   "pitch": "README claims each mark is verified to spend the previous one, but linkOK is only rendered as text and never affects the result — a broken chain link still shows the green verified pill and increments okCount.",
+   "pitch": "README claims each mark is verified to spend the previous one, but linkOK is only rendered as text and never affects the result \u2014 a broken chain link still shows the green verified pill and increments okCount.",
    "kind": "bug",
    "effort": "small",
    "score": 20,
@@ -2466,7 +2466,7 @@
   {
    "id": "verify-an-empty-trail-0",
    "repo": "blocktrails/verify",
-   "pitch": "An empty trail (0 marks) evaluates allOK true and shows the green 'verified — all 0/0 marks confirmed' banner, falsely presenting nothing-to-verify as fully verified.",
+   "pitch": "An empty trail (0 marks) evaluates allOK true and shows the green 'verified \u2014 all 0/0 marks confirmed' banner, falsely presenting nothing-to-verify as fully verified.",
    "kind": "bug",
    "effort": "small",
    "score": 8,
@@ -2480,7 +2480,7 @@
   {
    "id": "discuss-discussacl-grants-aclwrite-not",
    "repo": "solid-apps/discuss",
-   "pitch": "discussAcl() grants acl:Write (not just Append) to acl:AuthenticatedAgent on the whole container with acl:default, so any authenticated user can overwrite or DELETE any other user's posts — contradicting the README's Append model and 'author-gated' claim (enforced only in the UI).",
+   "pitch": "discussAcl() grants acl:Write (not just Append) to acl:AuthenticatedAgent on the whole container with acl:default, so any authenticated user can overwrite or DELETE any other user's posts \u2014 contradicting the README's Append model and 'author-gated' claim (enforced only in the UI).",
    "kind": "security",
    "effort": "small",
    "score": 20,
@@ -2494,7 +2494,7 @@
   {
    "id": "gitmark-legacy-bingitmark-interpolates-a",
    "repo": "solidpayorg/gitmark",
-   "pitch": "Legacy bin/git-mark interpolates a git-commit-message-derived token straight into execSync shell strings, so a crafted 'gitmark:a$(...)' commit subject yields arbitrary command execution — same execSync-interpolation class fixed in fund-agent.",
+   "pitch": "Legacy bin/git-mark interpolates a git-commit-message-derived token straight into execSync shell strings, so a crafted 'gitmark:a$(...)' commit subject yields arbitrary command execution \u2014 same execSync-interpolation class fixed in fund-agent.",
    "kind": "security",
    "effort": "medium",
    "score": 18,
@@ -2508,7 +2508,7 @@
   {
    "id": "gitmark-packagelockjson-declares-license-mit",
    "repo": "solidpayorg/gitmark",
-   "pitch": "package-lock.json declares license MIT while package.json, README badge and the 34KB LICENSE all say AGPL-3.0-or-later — a metadata contradiction.",
+   "pitch": "package-lock.json declares license MIT while package.json, README badge and the 34KB LICENSE all say AGPL-3.0-or-later \u2014 a metadata contradiction.",
    "kind": "docs",
    "effort": "small",
    "score": 15,
@@ -2578,7 +2578,7 @@
   {
    "id": "agent-micro-readme-whats-inside-lists",
    "repo": "jsclaw/agent-micro",
-   "pitch": "README 'What's inside' lists src/session.js but no such file exists and runner.js persists nothing since v0.0.3 — update or remove the bullet.",
+   "pitch": "README 'What's inside' lists src/session.js but no such file exists and runner.js persists nothing since v0.0.3 \u2014 update or remove the bullet.",
    "kind": "docs",
    "effort": "small",
    "score": 15,
@@ -2648,7 +2648,7 @@
   {
    "id": "bitcoin-mesh-readme-header-badge-still",
    "repo": "bitcoin-desktop/bitcoin-mesh",
-   "pitch": "README header badge still reads v0.0.2 while package.json, lockfile and index.html's wire-log all report v0.0.11 — 9 releases stale.",
+   "pitch": "README header badge still reads v0.0.2 while package.json, lockfile and index.html's wire-log all report v0.0.11 \u2014 9 releases stale.",
    "kind": "docs",
    "effort": "small",
    "score": 10,
@@ -2858,7 +2858,7 @@
   {
    "id": "journal-getentries-skips-any-resource",
    "repo": "solid-apps/journal",
-   "pitch": "getEntries() skips any resource whose URL does not end in '.jsonld', contradicting the 'tolerant reader' intent — an agent writing an entry without that exact extension never appears in the timeline.",
+   "pitch": "getEntries() skips any resource whose URL does not end in '.jsonld', contradicting the 'tolerant reader' intent \u2014 an agent writing an entry without that exact extension never appears in the timeline.",
    "kind": "bug",
    "effort": "small",
    "score": 9,
@@ -2928,7 +2928,7 @@
   {
    "id": "podkey-approving-the-lowsensitivity-getpublickey",
    "repo": "JavaScriptSolidServer/podkey",
-   "pitch": "Approving the low-sensitivity GET_PUBLIC_KEY prompt (worded only 'read your public key') calls addTrustedOrigin, and that single trust bit then lets the origin silently SIGN_EVENT any kind and NIP44_DECRYPT DMs with no further consent — a scope escalation from read to sign/decrypt.",
+   "pitch": "Approving the low-sensitivity GET_PUBLIC_KEY prompt (worded only 'read your public key') calls addTrustedOrigin, and that single trust bit then lets the origin silently SIGN_EVENT any kind and NIP44_DECRYPT DMs with no further consent \u2014 a scope escalation from read to sign/decrypt.",
    "kind": "security",
    "effort": "medium",
    "score": 29,
@@ -2965,6 +2965,591 @@
    "seeAlso": [
     "http://localhost:5445/JavaScriptSolidServer/podkey/",
     "https://github.com/JavaScriptSolidServer/podkey"
+   ]
+  },
+  {
+   "repo": "solid-apps/wallet",
+   "pitch": "The whole solid-apps suite loads its auth layer from an unpinned, un-SRI'd <script src=\"https://unpkg.com/xlogin\"> (xlogin supplies the credentialed authFetch used for every private-pod read/write), so one hijacked or broken 'latest' publish of xlogin runs with full pod credentials in ~18 apps at once \u2014 pin an exact version with an SRI integrity hash, or vendor the file the way intents does.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 5,
+   "confidence": 5,
+   "evidence": "Unversioned, integrity-less `<script src=\"https://unpkg.com/xlogin\">` in index.html across the suite: notifications, camera, gallery, webacl, tunnel, peer, wallet, health, nutrition (batch I) AND weather, maps, messages, contacts, kanban, bookmarks, notes, calendar, split (batch J); taproot loads it too. maps also pulls leaflet@1.9.4 and taproot qrcodejs from CDN without SRI. intents is the only app that vendors it.",
+   "score": 138,
+   "id": "wallet-the-whole-solid-apps-suite-loads-its-aut",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/wallet/",
+    "https://github.com/solid-apps/wallet"
+   ]
+  },
+  {
+   "repo": "solid-apps/nexus",
+   "pitch": "nexus's HTML/markdown sanitizer strips script/style/iframe tags but leaves inline event-handler attributes (onerror/onclick) and javascript: URLs intact before assigning doc.body.innerHTML, so any fetched web page or pod document (e.g. <img src=x onerror=...>) executes JS in the app origin with the user's authenticated fetch (which can PUT to the pod) \u2014 strip on* attributes and javascript: hrefs in the same sanitize pass.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 4,
+   "confidence": 5,
+   "evidence": "index.html:346 removes only 'script,style,link,meta,iframe,object,embed,base', then index.html:352 w.docEl.innerHTML=doc.body.innerHTML; same gap in renderMarkdown (index.html:326/333); authenticated PUT at index.html:431",
+   "score": 110,
+   "id": "nexus-nexus-s-html-markdown-sanitizer-strips-s",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/nexus/",
+    "https://github.com/solid-apps/nexus"
+   ]
+  },
+  {
+   "repo": "solid-apps/taproot",
+   "pitch": "taproot is a mainnet Bitcoin wallet that reads the raw secp256k1 private key from the pod into page memory, yet loads its JS from mutable CDN URLs \u2014 unpkg.com/xlogin (unversioned) and cdn.jsdelivr.net/gh/davidshimjs/qrcodejs (unversioned), no SRI on any script \u2014 so a hijacked package release can exfiltrate the key and drain funds; pin exact versions and add integrity hashes or vendor the scripts.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 4,
+   "confidence": 5,
+   "evidence": "index.html:63-65 (unpkg.com/xlogin unpinned, qrcodejs unpinned, tapscript@1.4.6 pinned but no integrity) + index.html:119-133 loadSecret() reading /private/privkey.jsonld into JS memory",
+   "score": 110,
+   "id": "taproot-taproot-is-a-mainnet-bitcoin-wallet-that",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/taproot/",
+    "https://github.com/solid-apps/taproot"
+   ]
+  },
+  {
+   "repo": "solid-apps/vouchers",
+   "pitch": "A crafted share link (?key=txo:<network>:<txid>:<vout>) is auto-imported on page load and the attacker-controlled txid/network are written into the voucher-card HTML unescaped, giving reflected XSS in an app that holds Bitcoin private keys (key exfiltration); run txid/network through escHtml() before interpolating.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 4,
+   "confidence": 5,
+   "evidence": "vouchers.js:944 interpolates ${v.txid} into an href and link text unescaped, and :929 renders ${(v.network||'').toUpperCase()} unescaped; init() at :1211 auto-imports ?key= via importKey(), which does no hex validation on txid/network. escHtml() exists (used for privkey at :951) but is not applied here.",
+   "score": 110,
+   "id": "vouchers-a-crafted-share-link-key-txo-network",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/vouchers/",
+    "https://github.com/solid-apps/vouchers"
+   ]
+  },
+  {
+   "repo": "solid-apps/wallet",
+   "pitch": "Revoking an agent flips its status to 'revoked' but leaves every previously-shared card's .acl still granting that did:nostr key acl:Read (the toast even tells the user to manually re-open each shared card), so a supposedly revoked key keeps reading ID/payment/credential cards \u2014 on revoke, iterate ITEMS whose sharedWith includes the agentId and rewrite their ACLs without it.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 4,
+   "confidence": 5,
+   "evidence": "solid-apps/wallet/app.js:219-222 \u2014 toggleAgent() only calls saveItem(it) on the agent card itself; writeAcl (app.js:124-129) runs solely for the item being saved, so cards listing the revoked agent in wallet:sharedWith keep their #shared acl:Read authorization (app.js:109). The toast at line 221 admits it: 'Agent revoked \u2014 re-open any shared card to drop its access'.",
+   "score": 110,
+   "id": "wallet-revoking-an-agent-flips-its-status-to-r",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/wallet/",
+    "https://github.com/solid-apps/wallet"
+   ]
+  },
+  {
+   "repo": "solid-apps/contacts",
+   "pitch": "Phone-book imports (third parties' names, emails, phone numbers) are written to the world-readable /public/contacts/ container and the repo's own open issue #1 already accepts the fix \u2014 implement it by pointing BOOK at a /private/ container (as weather/maps/messages do) or seeding an owner-only ACL.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 4,
+   "confidence": 5,
+   "evidence": "contacts/app.js:14 \u2014 `const BOOK = new URL('../../contacts/', location.href)` = <pod>/public/contacts/; app.js:104-151 imports the device address book and .vcf files there. README 'Notes' admits the exposure ('lock this container down with an ACL \u2014 see the issue tracker'); open issue #1 is titled 'Store contacts in an owner-only container (not world-readable /public)'. Siblings store equivalent data privately (weather/app.js:8, maps/app.js:9, messages/app.js:14).",
+   "score": 110,
+   "id": "contacts-phone-book-imports-third-parties-names",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/contacts/",
+    "https://github.com/solid-apps/contacts"
+   ]
+  },
+  {
+   "repo": "nostr-client/contacts",
+   "pitch": "follow()/unfollow() silently destroy the user's whole follow list when the kind-3 fetch returns null \u2014 pool.get() resolves null after its 8s timeout or when the list isn't on the default relays, publishContacts then signs a fresh kind-3 with 0-1 p-tags and empty content, and the null is cached page-wide so every click repeats it \u2014 refuse to publish when the previous contact list is null (or require explicit first-list confirmation).",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 4,
+   "confidence": 5,
+   "evidence": "contacts.js:25-34 \u2014 myContacts caches cache.promise = pool.get({kinds:[3],authors:[key]}) which can resolve null; contacts.js:42-49 \u2014 tags = [...(prevEvent?.tags ?? [])], content = prevEvent?.content ?? ''; contacts.js:60-70 \u2014 follow/unfollow publish the result; pool/pool.js:209-228 \u2014 list() resolves whatever arrived within 8s, get() returns events[0] ?? null. README ironically promises it 'won't wipe your follows' metadata like careless clients do'.",
+   "score": 88,
+   "id": "contacts-follow-unfollow-silently-destroy-the",
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/contacts/",
+    "https://github.com/nostr-client/contacts"
+   ]
+  },
+  {
+   "repo": "solid-apps/bridges",
+   "pitch": "login.html injects the stored profile name into innerHTML without escaping ('Continue as '+label) while index.html escapes the same value, so an attacker-controlled Nostr display name persisted to shared localStorage executes as HTML in the login page (DOM XSS on a page handling keys) \u2014 wrap label in esc().",
+   "kind": "security",
+   "effort": "small",
+   "impact": 4,
+   "confidence": 4,
+   "evidence": "login.html:118 \u2014 $('continueWrap').innerHTML = `<button ... id=contBtn>Continue as ${label}</button>...` with label=(mem().name) unescaped; mem().name is written unescaped in index.html:390 (from Nostr profile p.name fetched from a relay) and index.html:574-575 (from ?name= query param), both stored under the shared localStorage key 'bridges.v0'. Every other innerHTML sink in bridges (index.html:396,459,556) uses esc(); login.html:118 is the lone outlier.",
+   "score": 88,
+   "id": "bridges-login-html-injects-the-stored-profile-na",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/bridges/",
+    "https://github.com/solid-apps/bridges"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/magpie",
+   "pitch": "magpie-serve.mjs sets Access-Control-Allow-Origin:* on the localhost POST /decision write endpoint, so any web page you visit can fire a no-preflight cross-origin POST that appends forged entries to decisions.json (the taste dataset) and regenerates worklist.json \u2014 restrict by checking the Origin header against localhost:5445 or require a custom request header.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "magpie-serve.mjs:27-31 cors() sets ACAO * on every response; :47-72 POST /decision appends to decisions.json with no origin/auth check despite the ':7-9 single-user, local, no auth needed' comment",
+   "score": 82,
+   "id": "magpie-magpie-serve-mjs-sets-access-control-all",
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/magpie/",
+    "https://github.com/melvincarvalho/magpie"
+   ]
+  },
+  {
+   "repo": "nostr-client/tip",
+   "pitch": "tip.js pays out to a bitcoin address read from a kind-0 profile fetched with zero signature verification (tip.js, tip/index.html, and note.js's ProfileResolver never call verifyEvent, and the demo never installs the verify wrapper), so one malicious relay can serve a forged profile substituting its own address and receive the tip (mainnet supported via network=\"mainnet\"); verify the profile event with the sibling verify repo before showing the address/QR.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "tip.js:91-95,105-114 (_address/_load trust profiles() output from defaultPool); tip/index.html imports no verify; grep note.js: no verifyEvent anywhere",
+   "score": 82,
+   "id": "tip-tip-js-pays-out-to-a-bitcoin-address-rea",
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/tip/",
+    "https://github.com/nostr-client/tip"
+   ]
+  },
+  {
+   "repo": "solid-apps/news",
+   "pitch": "stripHtml() renders untrusted feed HTML via innerHTML \u2014 any subscribed RSS/Atom feed (or a compromised public CORS proxy, the app's documented fallback fetch path) can execute JS in the app origin holding the user's Solid session via <img onerror>; fix by parsing with DOMParser and reading .body.textContent instead.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "app.js:105-109 \u2014 const d = document.createElement('div'); d.innerHTML = s || '' where s is item description/summary/content straight from parseFeed; img loads and inline onerror handlers fire even on detached elements, so escaping-after is too late",
+   "score": 82,
+   "id": "news-striphtml-renders-untrusted-feed-html",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/news/",
+    "https://github.com/solid-apps/news"
+   ]
+  },
+  {
+   "repo": "js-pod/android",
+   "pitch": "Release APKs published to the rolling 'latest' GitHub release are signed with the universal React Native debug keystore (androiddebugkey, password 'android', committed to the repo), so anyone can craft an APK Android accepts as a legitimate update over users' installed pods \u2014 while the README promises 'signed with a stable key, your pod data is preserved'; fix by generating a dedicated release keystore held as a CI secret.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "android/app/build.gradle:31-45 \u2014 release buildType uses signingConfigs.debug (storeFile file('debug.keystore'), storePassword 'android'); android/app/debug.keystore is committed; .github/workflows/build.yml:37-57 builds assembleRelease and publishes it as solid-pod.apk; README.md:67 claims stable-key over-the-top updates",
+   "score": 82,
+   "id": "android-release-apks-published-to-the-rolling-l",
+   "seeAlso": [
+    "http://localhost:5445/js-pod/android/",
+    "https://github.com/js-pod/android"
+   ]
+  },
+  {
+   "repo": "nostr-client/chess",
+   "pitch": "handleEvent buffers only the FIRST kind-2434 move event seen per ply while the seen-id set dedupes, so any spectator can pre-publish junk moves at future plies: the squatted slot is deleted on pubkey mismatch but the legit player's move that arrived meanwhile was silently dropped and never re-processed, freezing the game on every client \u2014 buffer move candidates per (ply, pubkey) or only accept moves from the white/black pubkeys.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "index.html:219-220 'if (!pendingMoves.has(msg.ply)) pendingMoves.set(...)' first-writer-wins; :207-209 seen dedup prevents replay; :196-197 tryApplyMoves deletes the squatter after the real move is already lost; README claims 'a malicious relay or player can't corrupt the board'",
+   "score": 66,
+   "id": "chess-handleevent-buffers-only-the-first-kind",
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/chess/",
+    "https://github.com/nostr-client/chess"
+   ]
+  },
+  {
+   "repo": "nostr-client/embed",
+   "pitch": "The 'a comment section' (guestbook) embed option is doubly broken: snippet() pipes the page-URL input through decodeAny() which throws on any URL so a non-empty URL never yields a snippet, and the live preview renders an inert <nostr-guestbook> because guestbook.js is never imported \u2014 exclude 'guestbook' from the decodeAny branch and import guestbook.js alongside note/feed/profile.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "embed/index.html:85 \u2014 `if (kind !== 'hashtag' && kind !== 'global' && value) value = decodeAny(value).hex` also runs for kind==='guestbook' and nip19 decodeAny (nip19/nip19.js:120) throws on any URL; embed/index.html:60-62 imports only note.js/feed.js/profile.js while the preview at :119-122 relies on 'modules already loaded here', but nostr-guestbook is defined only in guestbook/guestbook.js:175",
+   "score": 66,
+   "id": "embed-the-a-comment-section-guestbook-embe",
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/embed/",
+    "https://github.com/nostr-client/embed"
+   ]
+  },
+  {
+   "repo": "nostr-client/profile-editor",
+   "pitch": "While the current kind-0 is still loading (up to 8s), _load() renders a fully-enabled empty form ('loading current profile\u2026' is only status text), so clicking Save publishes content '{}' and wipes the user's entire profile, and a timed-out fetch leaves the same empty form \u2014 disable the save button until the load resolves and confirm before overwriting when no existing profile was found.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "profile-editor.js:130-140 \u2014 _load() calls _renderForm({}, 'loading current profile\u2026') before awaiting this._pool.get(); profile-editor.js:181-219 \u2014 save button created enabled, onsubmit serializes blank inputs + this._extra ({}) into a kind-0 and publishes; pool/pool.js:225-228 \u2014 get() resolves null on timeout.",
+   "score": 66,
+   "id": "profile-editor-while-the-current-kind-0-is-still-loadin",
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/profile-editor/",
+    "https://github.com/nostr-client/profile-editor"
+   ]
+  },
+  {
+   "repo": "nostr-client/relay-manager",
+   "pitch": "applySavedRelays() adds then instantly removes any relay whose raw URL differs from pool-normalized form \u2014 line 39 checks `!urls.includes(url)` comparing normalized pool.urls against the raw input array, and _load65 feeds raw NIP-65 r-tag values which commonly carry trailing slashes ('wss://relay.damus.io/'), so 'Load my NIP-65' silently drops those relays; normalize the input URLs before the membership check.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "relay-manager.js:35-41 (raw urls vs normalized pool.urls in removal loop); relay-manager.js:156-166 (_load65 passes raw r-tag strings); pool.js:31-35 (normalizeUrl strips trailing slash, lowercases host)",
+   "score": 66,
+   "id": "relay-manager-applysavedrelays-adds-then-instantly-r",
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/relay-manager/",
+    "https://github.com/nostr-client/relay-manager"
+   ]
+  },
+  {
+   "repo": "linkedobjects/browser",
+   "pitch": "markdown-pane assigns marked() output directly to innerHTML with no sanitizer, so opening a hostile pod/nostr markdown resource in the browser executes attacker script; sanitize the parsed HTML (e.g. DOMPurify) before assigning innerHTML.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "panes/markdown-pane.js:121 \u2014 rendered.innerHTML = marked.parse(content) with no sanitize step; content comes from arbitrary fetched resources.",
+   "score": 66,
+   "id": "browser-markdown-pane-assigns-marked-output-di",
+   "seeAlso": [
+    "http://localhost:5445/linkedobjects/browser/",
+    "https://github.com/linkedobjects/browser"
+   ]
+  },
+  {
+   "repo": "nosdav/browser",
+   "pitch": "Same unsanitized-marked DOM XSS as linkedobjects/browser (byte-identical pane file): viewing a hostile markdown resource runs script; sanitize parsed HTML before innerHTML.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "panes/markdown-pane.js:121 \u2014 rendered.innerHTML = marked.parse(content), no sanitize; file is byte-identical to linkedobjects/browser/panes/markdown-pane.js (diff -q reports identical).",
+   "score": 66,
+   "id": "browser-same-unsanitized-marked-dom-xss-as-linke",
+   "seeAlso": [
+    "http://localhost:5445/nosdav/browser/",
+    "https://github.com/nosdav/browser"
+   ]
+  },
+  {
+   "repo": "solid-apps/calendar",
+   "pitch": "Personal calendar events are stored at world-readable <pod>/public/calendar/calendar.jsonld while the UI says 'Sign in ... to read and edit your calendar' (implying privacy) and, unlike contacts, no README caveat or issue tracks it \u2014 move the file to /private/calendar/ or seed an owner-only ACL and document the exposure.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "calendar/app.js:6 \u2014 `const CAL = new URL('../../calendar/calendar.jsonld', location.href)` resolves to <pod>/public/calendar/; app.js:54 sign-in note implies privacy; README documents the /public/ path with no caveat. Unlike notes (/public/note/) and bookmarks (/public/bookmark/), calendar has no hub-interop rationale for being public.",
+   "score": 66,
+   "id": "calendar-personal-calendar-events-are-stored-at-w",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/calendar/",
+    "https://github.com/solid-apps/calendar"
+   ]
+  },
+  {
+   "repo": "js-pod/android",
+   "pitch": "installApp() writes bootstrap app files to paths taken verbatim from remote tree listings (jsDelivr tree API / GitHub git-trees API) without rejecting '..' segments, allowing writes outside the app dir (e.g. overwriting main.js for code execution at next boot) if either source is compromised; fix with a one-line filter rejecting '..' segments and absolute paths.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "nodejs-assets/nodejs-project/main.js:283 \u2014 const dest = join(appDir, ...file.split(posix.sep)) with file from listAppFiles() network responses; no segment validation",
+   "score": 55,
+   "id": "android-installapp-writes-bootstrap-app-files",
+   "seeAlso": [
+    "http://localhost:5445/js-pod/android/",
+    "https://github.com/js-pod/android"
+   ]
+  },
+  {
+   "repo": "nostr-client/groups",
+   "pitch": "saveJoined() republishes the replaceable kind-10004 NIP-51 communities list from the local joined set on every Join/Leave click, but the user's existing list is only merged after the nostr:login fetch resolves \u2014 a slow/unreachable relay or an early Join click overwrites their whole communities list (incl. groups joined in Satellite/Coracle) with just the local entries; await and merge the fetched list before the first publish.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "index.html:172-182 saveJoined signs kind 10004 with only [...joined]; :346-351 login handler merges remote list asynchronously; :199 join.onclick calls saveJoined immediately",
+   "score": 53,
+   "id": "groups-savejoined-republishes-the-replaceable",
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/groups/",
+    "https://github.com/nostr-client/groups"
+   ]
+  },
+  {
+   "repo": "nostr-client/groups",
+   "pitch": "openGroup() does history.pushState('#34550:\u2026') on every group open but the page registers no popstate handler, so the browser Back button rewinds the URL without changing the view \u2014 every sibling app (chat, did-nostr, birdsite, bookface, dittly, btcnostr) has the listener; add a popstate handler that re-opens the hash group.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "index.html:187 pushState; grep 'popstate' over groups/index.html returns nothing; chat/index.html:262, dittly/index.html:158, bookface/index.html:161 all have it",
+   "score": 44,
+   "id": "groups-opengroup-does-history-pushstate-345",
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/groups/",
+    "https://github.com/nostr-client/groups"
+   ]
+  },
+  {
+   "repo": "nostr-client/jumbly",
+   "pitch": "Deep links to #person/<hex> are not restored on page load \u2014 the initial-load handler only routes 'note' while the popstate handler routes both note and person, so a shared profile permalink silently opens the home relay feed; reuse the popstate routing on load like skyline and monty do.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "jumbly/index.html:208-209 \u2014 `if (kind === 'note' && HEX.test(value))` only, vs popstate handler at :141-149 which also handles 'person'; siblings skyline/index.html:271 and monty/index.html:272 call route(location.hash) on load",
+   "score": 44,
+   "id": "jumbly-deep-links-to-person-hex-are-not-rest",
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/jumbly/",
+    "https://github.com/nostr-client/jumbly"
+   ]
+  },
+  {
+   "repo": "nostr-client/feed",
+   "pitch": "get _pool() unconditionally constructs and assigns a NEW Pool on every access when the relays attribute is set, so each reactive attribute change opens fresh WebSockets to every relay and never closes the superseded Pool \u2014 cache it with this.pool ??= like composer.js:97-103 and notifications.js:78-84 do.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "feed.js:69-73 \u2014 `if (relays) return (this.pool = new Pool(relays.split(',')...))` runs on every getter access; _resubscribe (feed.js:91-114) only closes the sub, never the old Pool; disconnectedCallback (feed.js:63) also leaves relay-attr Pools connected.",
+   "score": 44,
+   "id": "feed-get-pool-unconditionally-constructs-a",
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/feed/",
+    "https://github.com/nostr-client/feed"
+   ]
+  },
+  {
+   "repo": "nostr-client/thread",
+   "pitch": "The reply composer renders (thread.js:153) before this.replies is initialized (line 170), separated by up to 10 awaited ancestor fetches (8s timeout each), so a reply submitted in that window publishes successfully but then throws on this.replies.has(event.id) (line 265) and shows '\u2717 Cannot read properties of undefined' for a reply that actually went out; initialize this.replies before _renderComposer().",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "thread.js:153 vs :170 (composer rendered before replies Map exists), :158-164 (awaited ancestor loop between them), :264-265 (onsubmit dereferences this.replies after publish)",
+   "score": 44,
+   "id": "thread-the-reply-composer-renders-thread-js-15",
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/thread/",
+    "https://github.com/nostr-client/thread"
+   ]
+  },
+  {
+   "repo": "solid-apps/taproot",
+   "pitch": "The Send tab's 'max' link sets amount = full balance, but selectCoins requires total >= amount + fee, so sending max always throws 'Insufficient funds' \u2014 make max subtract the estimated fee (send-max).",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "index.html:270 maxBtn sets amt=bal; index.html:160-174 selectCoins: with amount==total, total>=amount+fee is never true so the loop exhausts and throws",
+   "score": 44,
+   "id": "taproot-the-send-tab-s-max-link-sets-amount",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/taproot/",
+    "https://github.com/solid-apps/taproot"
+   ]
+  },
+  {
+   "repo": "solid-apps/health",
+   "pitch": "The blood-pressure logger stores NaN: the dual-value path assigns entry.value=+sys and entry.value2=+dia with no isNaN guard (the single-value path right below has one), so a non-numeric answer saves NaN which JSON.stringify turns into null in log.jsonld and the card renders 'null/null mmHg' \u2014 add the same isNaN check to the dual branch.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "solid-apps/health/app.js:78-80 \u2014 'entry.value = +sys; entry.value2 = +dia' with no validation, versus app.js:83 where the non-dual branch checks 'if (isNaN(entry.value)) { toast(\"Numbers only\"); return }'.",
+   "score": 44,
+   "id": "health-the-blood-pressure-logger-stores-nan-th",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/health/",
+    "https://github.com/solid-apps/health"
+   ]
+  },
+  {
+   "repo": "solid-apps/messages",
+   "pitch": "manifest.json declares \"handles\": [\"webid\", \"text\"] but app.js only receives webid intents, so choosing messages from the intent chooser to share text silently drops the text \u2014 prefill the composer from a text intent or remove \"text\" from handles.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "messages/manifest.json handles [\"webid\",\"text\"]; messages/app.js:179-183 \u2014 OPEN only checks `i.type === 'webid'` and no other intent.receive() call exists, so `?intent=text&value=...` renders the plain conversation list and the shared value is lost.",
+   "score": 44,
+   "id": "messages-manifest-json-declares-handles-webi",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/messages/",
+    "https://github.com/solid-apps/messages"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/magpie",
+   "pitch": "index.js (published to npm as getmagpie) exports ACTIONS=['accepted','rejected','done','later'], but SKILL.md, magpie-serve.mjs and refresh-worklist.mjs all define actions as accepted|rejected|done with 'later' being a priority \u2014 remove 'later' from ACTIONS and export PRIORITIES=['pin','later','normal'] so the published constants match the convention.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "index.js:18 ACTIONS includes 'later'; magpie-serve.mjs:24-25 ACTIONS excludes it and PRIORITIES has it; SKILL.md:78-82 documents the two axes",
+   "score": 40,
+   "id": "magpie-index-js-published-to-npm-as-getmagpie",
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/magpie/",
+    "https://github.com/melvincarvalho/magpie"
+   ]
+  },
+  {
+   "repo": "solid-apps/hub",
+   "pitch": "hub package.json declares \"license\": \"ISC\" while the shipped LICENSE file and README both say AGPL-3.0-or-later \u2014 fix the package.json license field.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "package.json:17 \"license\": \"ISC\" vs LICENSE (AGPL-3.0) and README.md:93-95 'AGPL-3.0-or-later'",
+   "score": 40,
+   "id": "hub-hub-package-json-declares-license-is",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/hub/",
+    "https://github.com/solid-apps/hub"
+   ]
+  },
+  {
+   "repo": "nostr-client/nip19",
+   "pitch": "README says TLV entities (nevent/nprofile/naddr) are 'deliberately not included' and decoding 'may grow later', but nip19.js already exports decodeAny() with full nprofile/nevent/naddr TLV decoding, which is also missing from the README's export list; update the README to document decodeAny and drop the stale paragraph.",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "README.md 'Deliberately not included: TLV entities\u2026' vs nip19.js:120-147 export function decodeAny handling nprofile/nevent/naddr",
+   "score": 37,
+   "id": "nip19-readme-says-tlv-entities-nevent-nprofil",
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/nip19/",
+    "https://github.com/nostr-client/nip19"
+   ]
+  },
+  {
+   "repo": "nostr-client/login",
+   "pitch": "README's Theming section documents CSS custom properties --nostr-login-bg/--nostr-login-color/--nostr-login-border but login.js contains no --nostr-login-* variable at all (the component themes via --nc-accent, --nc-ink, --nc-line, \u2026), so following the docs has no effect; rewrite the Theming section to list the actual --nc-* variables.",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "login/README.md Theming section vs grep -n 'nostr-login-' login.js = no matches; login.js:208-258 TEMPLATE uses only --nc-* vars",
+   "score": 37,
+   "id": "login-readme-s-theming-section-documents-css-c",
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/login/",
+    "https://github.com/nostr-client/login"
+   ]
+  },
+  {
+   "repo": "solid-apps/win98",
+   "pitch": "win98 README declares 'License AGPL-3.0' and links the live GitHub Pages site, but the repo ships no LICENSE file \u2014 chrome (AGPL-3.0 in README) and registry (CC0 in README) have the same gap \u2014 add LICENSE files matching the declared licenses.",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "win98/README.md:54-56 + live URL at README.md:52, no LICENSE on disk; solid-apps/chrome README.md:53-55 no LICENSE; solid-apps/registry README.md:66-68 no LICENSE",
+   "score": 37,
+   "id": "win98-win98-readme-declares-license-agpl-3-0",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/win98/",
+    "https://github.com/solid-apps/win98"
+   ]
+  },
+  {
+   "repo": "solid-apps/chrome",
+   "pitch": "chrome README still opens with '\u26a0\ufe0f Day-1 scaffold' and a status table marking the window manager as 'next', but src/ ships the full desktop (windows, launcher, registry, auth, lock, panes, sync) \u2014 update the README status to match reality.",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "chrome/README.md:8-10 and 43-51 (status table days 2-5 pending) vs chrome/src/ containing windows.js, launcher.js, registry.js, auth.js, lock.js etc.",
+   "score": 37,
+   "id": "chrome-chrome-readme-still-opens-with-day-1",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/chrome/",
+    "https://github.com/solid-apps/chrome"
+   ]
+  },
+  {
+   "repo": "solid-apps/datawiki",
+   "pitch": "datawiki ships without a LICENSE file or any license statement (3-line README), while every sibling app in the suite (video, music, portal, search, tabulator, news, budget) ships an AGPL-3.0-only LICENSE plus a README license footer, and it also lacks the siblings' .nojekyll and manifest.json; fix by adding the standard AGPL-3.0-only LICENSE and README footer.",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "solid-apps/datawiki root contains only README.md + index.html (git log confirms only 3 commits); LICENSE present in all seven sibling repos in this batch",
+   "score": 37,
+   "id": "datawiki-datawiki-ships-without-a-license-file-or",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/datawiki/",
+    "https://github.com/solid-apps/datawiki"
+   ]
+  },
+  {
+   "repo": "nostr-client/reactions",
+   "pitch": "Kind-6 repost publishes tags [['e', id], ['p', author]] without a relay URL in the e tag, but NIP-18 says that tag MUST include a relay URL as its third entry (and content SHOULD be the stringified reposted note), so strict clients won't resolve these reposts while the README claims 'correct e/p tags'; add a pool relay URL as the e tag's third element.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "reactions.js:120-131 (_publish builds tags = [['e', this._id]] + optional p); README.md 'reposting publishes kind 6 \u2026 with correct e/p tags'",
+   "score": 35,
+   "id": "reactions-kind-6-repost-publishes-tags-e-id",
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/reactions/",
+    "https://github.com/nostr-client/reactions"
+   ]
+  },
+  {
+   "repo": "solid-apps/lan",
+   "pitch": "lan resolves its data file as new URL('../../../private/net/hosts.jsonld', location.href), so it only works when installed at exactly depth-3 on the pod, while the README claims it works served from GitHub Pages \u2014 derive the pod root from the signed-in WebID (like nexus's podRoot()) instead.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "app.js:15 \u2014 const LAN_HOSTS = new URL('../../../private/net/hosts.jsonld', location.href); README.md:11-12 claims 'works even when served from https:// GitHub Pages'",
+   "score": 35,
+   "id": "lan-lan-resolves-its-data-file-as-new-url",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/lan/",
+    "https://github.com/solid-apps/lan"
+   ]
+  },
+  {
+   "repo": "solid-apps/nexus",
+   "pitch": "The \u2318E Edit shortcut only fires for kind 'html' or 'source' and silently skips markdown pages, though the menu Edit and the Help page say \u2318E edits markdown \u2014 add \"markdown\" to the keydown check.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 1,
+   "confidence": 5,
+   "evidence": "index.html:472 if(we&&(we.kind===\"html\"||we.kind===\"source\")) vs menu handler index.html:467 \u2192 enterEdit accepting markdown at index.html:408",
+   "score": 22,
+   "id": "nexus-the-e-edit-shortcut-only-fires-for-kind",
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/nexus/",
+    "https://github.com/solid-apps/nexus"
+   ]
+  },
+  {
+   "repo": "nostr-client/btcnostr",
+   "pitch": "README feature table says the tip wallet is 'P2WPKH per nostr user', but wallet.js derives a taproot (p2tr) address straight from the nostr pubkey for all nostr-native logins and only falls back to a random P2WPKH key for NIP-07 extension logins \u2014 fix the table cell to say taproot (P2WPKH fallback for extensions).",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 1,
+   "confidence": 5,
+   "evidence": "README.md table row 'wallet \u2014 P2WPKH per nostr user'; wallet/wallet.js:91-95 p2tr from npub, :117-135 taproot for secret-exposing signers, p2wpkh only in the NIP-07 else branch",
+   "score": 19,
+   "id": "btcnostr-readme-feature-table-says-the-tip-wallet",
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/btcnostr/",
+    "https://github.com/nostr-client/btcnostr"
    ]
   }
  ]
