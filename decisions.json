@@ -140,5 +140,231 @@
   "repo": "fork-talk/fork-talk.github.io",
   "action": "done",
   "note": "LICENSE + README added (commit \"Add LICENSE and README (#1)\"). Verified both return 200."
+ },
+ {
+  "ts": "2026-07-08T19:13:32.849Z",
+  "id": "jspod-seedpodfiles-unconditionally-overwrites",
+  "repo": "JavaScriptSolidServer/jspod",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/JavaScriptSolidServer/jspod/pull/81 (skip-if-exists seeding, verified end-to-end)."
+ },
+ {
+  "ts": "2026-07-08T19:14:55.496Z",
+  "id": "dnstr-org-the-first-nip-134",
+  "repo": "nosdav/dnstr.org",
+  "action": "accepted",
+  "note": "Accepted (pinned). Fixing the malformed NIP-134 example tags in the README, branch + PR."
+ },
+ {
+  "ts": "2026-07-08T19:16:12.221Z",
+  "id": "dnstr-org-the-first-nip-134",
+  "repo": "nosdav/dnstr.org",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/nosdav/dnstr.org/pull/8 (fix malformed u/d tags in first example)."
+ },
+ {
+  "ts": "2026-07-08T19:28:20.045Z",
+  "id": "dnstr-org-the-first-nip-134",
+  "repo": "nosdav/dnstr.org",
+  "action": "done",
+  "note": "Merged - PR https://github.com/nosdav/dnstr.org/pull/8 (squash 1a72c61). First example now has separate u and d tags."
+ },
+ {
+  "ts": "2026-07-08T19:29:58.778Z",
+  "id": "dnstr-org-the-cli-bech32",
+  "repo": "nosdav/dnstr.org",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-08T19:48:05.551Z",
+  "id": "jspod-seedpodfiles-unconditionally-overwrites",
+  "repo": "JavaScriptSolidServer/jspod",
+  "action": "accepted",
+  "note": "PR 81 updated after Copilot review: COPYFILE_EXCL, no seeding/token-secret in --no-auth (JSS --public parity), docs.html rewrite, jss bumped to 0.0.212. Verified all modes."
+ },
+ {
+  "ts": "2026-07-08T20:11:02.387Z",
+  "id": "jspod-seedpodfiles-unconditionally-overwrites",
+  "repo": "JavaScriptSolidServer/jspod",
+  "action": "done",
+  "note": "Merged - PR https://github.com/JavaScriptSolidServer/jspod/pull/81 (squash a0e829b). Skip-if-exists seeding (COPYFILE_EXCL), no seeding/token-secret in --no-auth, docs.html rewrite, jss bumped to 0.0.212. Verified end-to-end."
+ },
+ {
+  "ts": "2026-07-08T20:12:37.497Z",
+  "id": "dnstr-org-the-cli-bech32",
+  "repo": "nosdav/dnstr.org",
+  "action": "accepted",
+  "note": "Accepted (pinned). Adding bech32 polymod checksum verification to the CLI decoder, branch + PR."
+ },
+ {
+  "ts": "2026-07-08T20:13:25.397Z",
+  "id": "fund-agent-shell-command-injection",
+  "repo": "blocktrails/fund-agent",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-08T20:15:14.472Z",
+  "id": "dnstr-org-the-cli-bech32",
+  "repo": "nosdav/dnstr.org",
+  "action": "done",
+  "note": "Merged - PR https://github.com/nosdav/dnstr.org/pull/9 (squash c64d1ba). BIP-173 polymod check added; verified with known vectors and corrupted npubs."
+ },
+ {
+  "ts": "2026-07-08T20:16:46.498Z",
+  "id": "json-rocks-13-metascraper--plugins",
+  "repo": "spux/json.rocks",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-08T20:16:57.410Z",
+  "id": "dnstr-org-packagejson-mainindexjs-but",
+  "repo": "nosdav/dnstr.org",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-08T20:17:03.906Z",
+  "id": "fork-talk-github-io-logopng-is-a",
+  "repo": "fork-talk/fork-talk.github.io",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-08T20:17:25.418Z",
+  "id": "jsclaw-github-io-landing-page-hardcodes",
+  "repo": "jsclaw/jsclaw.github.io",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-08T20:17:38.609Z",
+  "id": "bitmark-kernel-add-a-license",
+  "repo": "project-bitmark/bitmark-kernel",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-08T20:17:49.145Z",
+  "id": "rootstock-three-contracts-five",
+  "repo": "play-grounds/rootstock",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-08T20:18:02.585Z",
+  "id": "bip110-add-a-readme",
+  "repo": "fork-talk/bip110",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-08T20:18:14.241Z",
+  "id": "bip110-monitor-readme-data-sources",
+  "repo": "fork-talk/bip110-monitor",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-08T20:18:29.504Z",
+  "id": "fund-agent-explorer-link-after",
+  "repo": "blocktrails/fund-agent",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-08T20:18:36.512Z",
+  "id": "beacon-add-a-license",
+  "repo": "JavaScriptSolidServer/beacon",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-08T20:19:24.789Z",
+  "id": "fund-agent-shell-command-injection",
+  "repo": "blocktrails/fund-agent",
+  "action": "accepted",
+  "note": "Accepted (pinned). Replacing execSync shell-string gitConfig with execFileSync, plus chain validation. Branch + PR."
+ },
+ {
+  "ts": "2026-07-08T20:22:39.178Z",
+  "id": "fund-agent-shell-command-injection",
+  "repo": "blocktrails/fund-agent",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/blocktrails/fund-agent/pull/5 (execFileSync + chain/txid validation, verified). Awaiting ship confirmation."
+ },
+ {
+  "ts": "2026-07-08T20:24:52.877Z",
+  "id": "fund-agent-shell-command-injection",
+  "repo": "blocktrails/fund-agent",
+  "action": "done",
+  "note": "Merged - PR https://github.com/blocktrails/fund-agent/pull/5 (squash 63b243e). execFileSync + chain/txid validation. index.js has same gitConfig - follow-up needed."
+ },
+ {
+  "ts": "2026-07-08T20:27:21.831Z",
+  "id": "fund-agent-index-shell-injection",
+  "repo": "blocktrails/fund-agent",
+  "action": "done",
+  "note": "Merged - PR https://github.com/blocktrails/fund-agent/pull/6 (squash 8403be0). Same execFileSync + chain/txid fix applied to index.js (library main). Both CLI and library now clean. Follow-up to #5."
+ },
+ {
+  "ts": "2026-07-08T20:32:33.803Z",
+  "id": "json-rocks-13-metascraper--plugins",
+  "repo": "spux/json.rocks",
+  "action": "accepted",
+  "note": "PR https://github.com/spux/json.rocks/pull/21"
+ },
+ {
+  "ts": "2026-07-08T20:33:35.743Z",
+  "id": "dnstr-org-packagejson-mainindexjs-but",
+  "repo": "nosdav/dnstr.org",
+  "action": "accepted",
+  "note": "PR https://github.com/nosdav/dnstr.org/pull/10"
+ },
+ {
+  "ts": "2026-07-08T20:34:35.950Z",
+  "id": "fork-talk-github-io-logopng-is-a",
+  "repo": "fork-talk/fork-talk.github.io",
+  "action": "accepted",
+  "note": "PR https://github.com/fork-talk/fork-talk.github.io/pull/2"
+ },
+ {
+  "ts": "2026-07-08T20:35:30.353Z",
+  "id": "jsclaw-github-io-landing-page-hardcodes",
+  "repo": "jsclaw/jsclaw.github.io",
+  "action": "accepted",
+  "note": "PR https://github.com/jsclaw/jsclaw.github.io/pull/4"
+ },
+ {
+  "ts": "2026-07-08T20:36:24.107Z",
+  "id": "bitmark-kernel-add-a-license",
+  "repo": "project-bitmark/bitmark-kernel",
+  "action": "accepted",
+  "note": "PR https://github.com/project-bitmark/bitmark-kernel/pull/7"
+ },
+ {
+  "ts": "2026-07-08T20:37:50.470Z",
+  "id": "rootstock-three-contracts-five",
+  "repo": "play-grounds/rootstock",
+  "action": "accepted",
+  "note": "PR https://github.com/play-grounds/rootstock/pull/1"
+ },
+ {
+  "ts": "2026-07-08T20:38:56.495Z",
+  "id": "bip110-add-a-readme",
+  "repo": "fork-talk/bip110",
+  "action": "accepted",
+  "note": "PR https://github.com/fork-talk/bip110/pull/1 (also shrinks duplicated logo.png)"
+ },
+ {
+  "ts": "2026-07-08T20:40:38.340Z",
+  "id": "bip110-monitor-readme-data-sources",
+  "repo": "fork-talk/bip110-monitor",
+  "action": "accepted",
+  "note": "PR https://github.com/fork-talk/bip110-monitor/pull/1"
+ },
+ {
+  "ts": "2026-07-08T20:42:35.109Z",
+  "id": "fund-agent-explorer-link-after",
+  "repo": "blocktrails/fund-agent",
+  "action": "accepted",
+  "note": "PR https://github.com/blocktrails/fund-agent/pull/7"
+ },
+ {
+  "ts": "2026-07-08T20:43:27.966Z",
+  "id": "beacon-add-a-license",
+  "repo": "JavaScriptSolidServer/beacon",
+  "action": "accepted",
+  "note": "PR https://github.com/JavaScriptSolidServer/beacon/pull/42"
  }
 ]
