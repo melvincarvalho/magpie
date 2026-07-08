@@ -3,29 +3,29 @@
  "refreshed": true,
  "note": "All live survey findings (done/rejected removed), ranked. \"headline\" is how many the Worklist tab shows; the rest are under All. Accept/reject via decisions.json, then re-run refresh-worklist.mjs.",
  "resolved": {
-  "done": 3,
+  "done": 4,
   "rejected": 2,
-  "accepted": 0
+  "accepted": 1
  },
- "pinned": 1,
+ "pinned": 2,
  "deferred": 1,
  "headline": 12,
  "total": 51,
  "items": [
   {
-   "id": "fund-agent-shell-command-injection",
-   "repo": "blocktrails/fund-agent",
-   "pitch": "Shell command injection via a crafted voucher URI: the voucher chain segment is interpolated into an execSync git-config string where $(...) executes; switch to execFileSync.",
-   "kind": "security",
+   "id": "dnstr-org-the-first-nip-134",
+   "repo": "nosdav/dnstr.org",
+   "pitch": "The first NIP-134 spec example flattens the u and d tags into one malformed 4-element array — should be two separate tags.",
+   "kind": "docs",
    "effort": "small",
-   "score": 65,
+   "score": 41,
    "status": "open",
    "priority": "pin",
-   "evidence": "bin/fund-agent.js:98 execSync reached at :334 via untrusted voucher.chain",
-   "confidence": 4,
+   "evidence": "README example ~lines 36-42",
+   "confidence": 5,
    "seeAlso": [
-    "http://localhost:5445/blocktrails/fund-agent/",
-    "https://github.com/blocktrails/fund-agent"
+    "http://localhost:5445/nosdav/dnstr.org/",
+    "https://github.com/nosdav/dnstr.org"
    ]
   },
   {
@@ -35,13 +35,29 @@
    "kind": "bug",
    "effort": "small",
    "score": 92,
-   "status": "open",
+   "status": "accepted",
    "priority": null,
    "evidence": "lib/start.js:136-150 no existsSync guard; called at :311; contrast JSS src/server.js:887-893",
    "confidence": 5,
    "seeAlso": [
     "http://localhost:5445/JavaScriptSolidServer/jspod/",
     "https://github.com/JavaScriptSolidServer/jspod"
+   ]
+  },
+  {
+   "id": "fund-agent-shell-command-injection",
+   "repo": "blocktrails/fund-agent",
+   "pitch": "Shell command injection via a crafted voucher URI: the voucher chain segment is interpolated into an execSync git-config string where $(...) executes; switch to execFileSync.",
+   "kind": "security",
+   "effort": "small",
+   "score": 65,
+   "status": "open",
+   "priority": null,
+   "evidence": "bin/fund-agent.js:98 execSync reached at :334 via untrusted voucher.chain",
+   "confidence": 4,
+   "seeAlso": [
+    "http://localhost:5445/blocktrails/fund-agent/",
+    "https://github.com/blocktrails/fund-agent"
    ]
   },
   {
@@ -90,22 +106,6 @@
    "seeAlso": [
     "http://localhost:5445/solid/object/",
     "https://github.com/solid/object"
-   ]
-  },
-  {
-   "id": "dnstr-org-the-first-nip-134",
-   "repo": "nosdav/dnstr.org",
-   "pitch": "The first NIP-134 spec example flattens the u and d tags into one malformed 4-element array — should be two separate tags.",
-   "kind": "docs",
-   "effort": "small",
-   "score": 41,
-   "status": "open",
-   "priority": null,
-   "evidence": "README example ~lines 36-42",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/nosdav/dnstr.org/",
-    "https://github.com/nosdav/dnstr.org"
    ]
   },
   {
@@ -490,22 +490,6 @@
    "seeAlso": [
     "http://localhost:5445/solid-apps/stockfish/",
     "https://github.com/solid-apps/stockfish"
-   ]
-  },
-  {
-   "id": "fork-talk-github-io-footer-claims-mit",
-   "repo": "fork-talk/fork-talk.github.io",
-   "pitch": "Footer claims \"MIT License\" but the repo ships no LICENSE and no README — add both.",
-   "kind": "docs",
-   "effort": "small",
-   "score": 18,
-   "status": "open",
-   "priority": null,
-   "evidence": "index.html:209; root has only index.html/style.css/logo.png",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/fork-talk/fork-talk.github.io/",
-    "https://github.com/fork-talk/fork-talk.github.io"
    ]
   },
   {

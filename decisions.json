@@ -87,5 +87,58 @@
   "id": "solid-object-acptowac-emits-acppublicagent",
   "repo": "solid/object",
   "priority": "normal"
+ },
+ {
+  "ts": "2026-07-08T19:01:10.418Z",
+  "id": "fund-agent-shell-command-injection",
+  "repo": "blocktrails/fund-agent",
+  "priority": "normal"
+ },
+ {
+  "ts": "2026-07-08T19:01:51.985Z",
+  "id": "fork-talk-github-io-footer-claims-mit",
+  "repo": "fork-talk/fork-talk.github.io",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-08T19:04:35.680Z",
+  "id": "fork-talk-github-io-footer-claims-mit",
+  "repo": "fork-talk/fork-talk.github.io",
+  "action": "accepted",
+  "note": "Accepted (pinned). Adding LICENSE (MIT) + README via branch + PR."
+ },
+ {
+  "ts": "2026-07-08T19:05:46.111Z",
+  "id": "fork-talk-github-io-footer-claims-mit",
+  "repo": "fork-talk/fork-talk.github.io",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/fork-talk/fork-talk.github.io/pull/1 (LICENSE + README)."
+ },
+ {
+  "ts": "2026-07-08T19:08:13.436Z",
+  "id": "fork-talk-github-io-footer-claims-mit",
+  "repo": "fork-talk/fork-talk.github.io",
+  "action": "done",
+  "note": "Merged - PR https://github.com/fork-talk/fork-talk.github.io/pull/1 (squash 5a68be8). LICENSE + README now on gh-pages."
+ },
+ {
+  "ts": "2026-07-08T19:09:20.483Z",
+  "id": "dnstr-org-the-first-nip-134",
+  "repo": "nosdav/dnstr.org",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-08T19:09:44.769Z",
+  "id": "jspod-seedpodfiles-unconditionally-overwrites",
+  "repo": "JavaScriptSolidServer/jspod",
+  "action": "accepted",
+  "note": "Accepted (worklist top by score). Fixing seedPodFiles() to skip existing files, branch + PR."
+ },
+ {
+  "ts": "2026-07-08T19:13:25.876Z",
+  "id": "fork-talk-github-io-footer-claims-mit",
+  "repo": "fork-talk/fork-talk.github.io",
+  "action": "done",
+  "note": "LICENSE + README added (commit \"Add LICENSE and README (#1)\"). Verified both return 200."
  }
 ]
