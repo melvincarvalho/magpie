@@ -3,9 +3,9 @@
  "refreshed": true,
  "note": "Ranked survey findings minus done/rejected. Accepted items stay (in flight); later items sink. Accept/reject via decisions.jsonl, then re-run refresh-worklist.mjs.",
  "resolved": {
-  "done": 1,
+  "done": 3,
   "rejected": 2,
-  "accepted": 2,
+  "accepted": 0,
   "later": 0
  },
  "items": [
@@ -20,32 +20,6 @@
    "seeAlso": [
     "http://localhost:5445/JavaScriptSolidServer/jspod/",
     "https://github.com/JavaScriptSolidServer/jspod"
-   ]
-  },
-  {
-   "id": "alarm-top-level-permission-notificationpermission",
-   "repo": "solid-apps/alarm",
-   "pitch": "Top-level `permission: Notification.permission` throws ReferenceError on browsers without the Notification API (iOS Safari), killing the module so the app renders nothing — guard with \"Notification\" in window.",
-   "kind": "bug",
-   "effort": "small",
-   "score": 74,
-   "status": "accepted",
-   "seeAlso": [
-    "http://localhost:5445/solid-apps/alarm/",
-    "https://github.com/solid-apps/alarm"
-   ]
-  },
-  {
-   "id": "alarm-alarms-only-fire",
-   "repo": "solid-apps/alarm",
-   "pitch": "Alarms only fire when a 1s tick lands on seconds===0, so background-tab timer throttling silently skips alarms — track last-checked minute instead.",
-   "kind": "bug",
-   "effort": "small",
-   "score": 74,
-   "status": "accepted",
-   "seeAlso": [
-    "http://localhost:5445/solid-apps/alarm/",
-    "https://github.com/solid-apps/alarm"
    ]
   },
   {
@@ -163,6 +137,32 @@
    "seeAlso": [
     "http://localhost:5445/JavaScriptSolidServer/JavaScriptSolidServer/",
     "https://github.com/JavaScriptSolidServer/JavaScriptSolidServer"
+   ]
+  },
+  {
+   "id": "wrapper-packagejson-license-mit",
+   "repo": "rdfjs/wrapper",
+   "pitch": "package.json license \"MIT\" contradicts the repo dual-license (README SPDX \"MIT OR Apache-2.0\", both LICENSE files present); npm metadata should say \"(MIT OR Apache-2.0)\".",
+   "kind": "bug",
+   "effort": "small",
+   "score": 35,
+   "status": "open",
+   "seeAlso": [
+    "http://localhost:5445/rdfjs/wrapper/",
+    "https://github.com/rdfjs/wrapper"
+   ]
+  },
+  {
+   "id": "object-packagejson-license-mit",
+   "repo": "solid/object",
+   "pitch": "package.json license \"MIT\" contradicts README SPDX \"MIT OR Apache-2.0\" with both LICENSE files present.",
+   "kind": "bug",
+   "effort": "small",
+   "score": 35,
+   "status": "open",
+   "seeAlso": [
+    "http://localhost:5445/solid/object/",
+    "https://github.com/solid/object"
    ]
   }
  ]
