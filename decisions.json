@@ -415,5 +415,47 @@
   "repo": "nostrcg/http-schnorr-auth",
   "action": "accepted",
   "note": "In flight - PR https://github.com/nostrcg/http-schnorr-auth/pull/28 (drop stray Test Public Key line so test-vectors.json is valid JSON; verified it parses, pubkey preserved 11x in vectors)."
+ },
+ {
+  "ts": "2026-07-09T03:45:00Z",
+  "id": "melchat-the-cli-startup",
+  "repo": "melvincarvalho/melchat",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/melvincarvalho/melchat/pull/3 (version banner v0.0.1->0.0.3). Low-risk personal-repo fix."
+ },
+ {
+  "ts": "2026-07-09T03:45:00Z",
+  "id": "helloworld-index-html-title",
+  "repo": "melvincarvalho/helloworld",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/melvincarvalho/helloworld/pull/13 (page title Join Solid->Solid Hello World). Low-risk personal-repo fix."
+ },
+ {
+  "ts": "2026-07-09T03:45:00Z",
+  "id": "paa-pub-readme-declares-mit-license-repo",
+  "repo": "melvincarvalho/paa-pub",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/melvincarvalho/paa-pub/pull/1 (add MIT LICENSE). Low-risk personal-repo fix."
+ },
+ {
+  "ts": "2026-07-09T03:45:00Z",
+  "id": "record-test-packagelockjson-declares-name-recordssmoke",
+  "repo": "melvincarvalho/record-test",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/melvincarvalho/record-test/pull/1 (add MIT LICENSE). Low-risk personal-repo fix."
+ },
+ {
+  "ts": "2026-07-09T03:45:00Z",
+  "id": "poker-repo-has-no-license",
+  "repo": "melvincarvalho/poker",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/melvincarvalho/poker/pull/1 (add MIT LICENSE). Low-risk personal-repo fix."
+ },
+ {
+  "ts": "2026-07-09T03:45:00Z",
+  "id": "nostrgit-no-license-file",
+  "repo": "melvincarvalho/nostrgit",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/melvincarvalho/nostrgit/pull/1 (add MIT LICENSE). Low-risk personal-repo fix."
  }
 ]
