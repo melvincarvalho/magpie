@@ -2400,7 +2400,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2019-12",
     "note": "README/LICENSE-only Solid inbox placeholder; no code, no Pages, no dependents."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melvincarvalho/klaranet",
@@ -3218,7 +3220,7 @@
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
  },
  "archived": {
-  "count": 70,
+  "count": 71,
   "date": "2026-07-09",
   "note": "Archived via gh repo archive (reversible): 22 melbot snapshots, 17 quantumpayments, 5 spux, play-grounds/liquid, 5 solid-live. All verified isArchived=true."
  }
