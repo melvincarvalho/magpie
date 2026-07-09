@@ -4,14 +4,14 @@
   "id": "nanoblog-mirror-clone-is",
   "repo": "melvincarvalho/nanoblog",
   "action": "rejected",
-  "note": "False positive: remote is genuinely empty (0 commits, HTTP 409), not a failed fetch. Empty-local does not imply failed-sync \u2014 check the remote before flagging. Empty clones are now excluded from the dashboard inventory."
+  "note": "False positive: remote is genuinely empty (0 commits, HTTP 409), not a failed fetch. Empty-local does not imply failed-sync — check the remote before flagging. Empty clones are now excluded from the dashboard inventory."
  },
  {
   "ts": "2026-07-08T19:05:00Z",
   "id": "liwi-mirror-clone-is",
   "repo": "melvincarvalho/liwi",
   "action": "rejected",
-  "note": "False positive: remote genuinely empty (0 commits, HTTP 409). Same lesson as nanoblog \u2014 verify remote has commits before claiming a sync failure."
+  "note": "False positive: remote genuinely empty (0 commits, HTTP 409). Same lesson as nanoblog — verify remote has commits before claiming a sync failure."
  },
  {
   "ts": "2026-07-08T19:15:00Z",
@@ -25,14 +25,14 @@
   "id": "alarm-top-level-permission-notificationpermission",
   "repo": "solid-apps/alarm",
   "action": "accepted",
-  "note": "In flight \u2014 PR https://github.com/solid-apps/alarm/pull/4 (Notification-API guard)."
+  "note": "In flight — PR https://github.com/solid-apps/alarm/pull/4 (Notification-API guard)."
  },
  {
   "ts": "2026-07-08T19:35:00Z",
   "id": "alarm-alarms-only-fire",
   "repo": "solid-apps/alarm",
   "action": "accepted",
-  "note": "In flight \u2014 PR https://github.com/solid-apps/alarm/pull/4 (background-tab throttle fix)."
+  "note": "In flight — PR https://github.com/solid-apps/alarm/pull/4 (background-tab throttle fix)."
  },
  {
   "ts": "2026-07-08T19:50:00Z",
@@ -704,70 +704,70 @@
   "id": "taproot-taproot-is-a-mainnet-bitcoin-wallet-that",
   "repo": "solid-apps/taproot",
   "action": "rejected",
-  "note": "xlogin unpinned-CDN family \u2014 same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
  },
  {
   "ts": "2026-07-09T09:12:30.502Z",
   "id": "explorer-index-html-8-loads-auth",
   "repo": "solid-apps/explorer",
   "action": "rejected",
-  "note": "xlogin unpinned-CDN family \u2014 same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
  },
  {
   "ts": "2026-07-09T09:12:30.528Z",
   "id": "vellum-index-html-10-loads-auth",
   "repo": "solid-apps/vellum",
   "action": "rejected",
-  "note": "xlogin unpinned-CDN family \u2014 same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
  },
  {
   "ts": "2026-07-09T09:12:30.553Z",
   "id": "timeline-index-html-9-loads-auth",
   "repo": "solid-apps/timeline",
   "action": "rejected",
-  "note": "xlogin unpinned-CDN family \u2014 same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
  },
  {
   "ts": "2026-07-09T09:12:30.577Z",
   "id": "pilot-index-html-loads-auth-library",
   "repo": "solid-apps/pilot",
   "action": "rejected",
-  "note": "xlogin unpinned-CDN family \u2014 same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
  },
  {
   "ts": "2026-07-09T09:12:30.601Z",
   "id": "poker-index-html-9-loads-xlogin",
   "repo": "solid-apps/poker",
   "action": "rejected",
-  "note": "xlogin unpinned-CDN family \u2014 same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
  },
  {
   "ts": "2026-07-09T09:12:30.624Z",
   "id": "chess-index-html-14-loads-xlogin",
   "repo": "solid-apps/chess",
   "action": "rejected",
-  "note": "xlogin unpinned-CDN family \u2014 same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
  },
  {
   "ts": "2026-07-09T09:12:30.647Z",
   "id": "bitcoin-desktop-index-html-loads-xlogin-sign",
   "repo": "bitcoin-desktop/bitcoin-desktop",
   "action": "rejected",
-  "note": "xlogin unpinned-CDN family \u2014 same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
  },
  {
   "ts": "2026-07-09T09:12:30.672Z",
   "id": "bitmark-hub-index-html-pulls-xlogin-login",
   "repo": "project-bitmark/bitmark-hub",
   "action": "rejected",
-  "note": "xlogin unpinned-CDN family \u2014 same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
  },
  {
   "ts": "2026-07-09T09:12:30.696Z",
   "id": "bitmark-os-index-html-pulls-xlogin-login",
   "repo": "project-bitmark/bitmark-os",
   "action": "rejected",
-  "note": "xlogin unpinned-CDN family \u2014 same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
  },
  {
   "ts": "2026-07-09T09:19:09.753Z",
@@ -801,6 +801,13 @@
   "id": "comunica-browser-out-of-scope",
   "repo": "rdfjs/comunica-browser",
   "action": "rejected",
-  "note": "Owner: 'we dont need comunica, its a monster' \u2014 exclude rdfjs/comunica-browser from surveys (huge upstream-derived repo). Taste: skip giant vendored/fork-like repos."
+  "note": "Owner: 'we dont need comunica, its a monster' — exclude rdfjs/comunica-browser from surveys (huge upstream-derived repo). Taste: skip giant vendored/fork-like repos."
+ },
+ {
+  "ts": "2026-07-09T11:07:23.219Z",
+  "id": "jsserve-auth-user-pass-option-documented",
+  "repo": "JavaScriptSolidServer/jsserve",
+  "action": "done",
+  "note": "Merged - PR https://github.com/JavaScriptSolidServer/jsserve/pull/5 (squash 653489c). --auth now fails closed with guidance, banner shows public/no-auth vs Solid auth, README de-advertised. Copilot review clean. Local mirror pulled up to date."
  }
 ]

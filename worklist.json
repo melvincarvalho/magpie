@@ -3,31 +3,15 @@
  "refreshed": true,
  "note": "All live survey findings (done/rejected removed), ranked. \"headline\" is how many the Worklist tab shows; the rest are under All. Accept/reject via decisions.json, then re-run refresh-worklist.mjs.",
  "resolved": {
-  "done": 35,
+  "done": 36,
   "rejected": 14,
-  "accepted": 2
+  "accepted": 1
  },
  "pinned": 19,
  "deferred": 1,
  "headline": 12,
  "total": 544,
  "items": [
-  {
-   "id": "jsserve-auth-user-pass-option-documented",
-   "repo": "JavaScriptSolidServer/jsserve",
-   "pitch": "The --auth <user:pass> option is documented in the README and defined at bin/jsserve.js:131 but options.auth is never read or forwarded to JSS, so 'servejss --auth user:pass ~/sync' (the README's WebDAV use case) silently serves PUT/DELETE-enabled files on 0.0.0.0 with no authentication at all.",
-   "kind": "security",
-   "effort": "small",
-   "score": 96,
-   "status": "accepted",
-   "priority": "pin",
-   "evidence": "bin/jsserve.js:131 — .option('--auth <credentials>', 'Enable basic auth (user:pass)'); run() builds jssArgs without any auth flag and never references options.auth",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/JavaScriptSolidServer/jsserve/",
-    "https://github.com/JavaScriptSolidServer/jsserve"
-   ]
-  },
   {
    "id": "nexus-nexus-s-html-markdown-sanitizer-strips-s",
    "repo": "solid-apps/nexus",
