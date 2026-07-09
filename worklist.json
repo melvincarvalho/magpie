@@ -3,63 +3,15 @@
  "refreshed": true,
  "note": "All live survey findings (done/rejected removed), ranked. \"headline\" is how many the Worklist tab shows; the rest are under All. Accept/reject via decisions.json, then re-run refresh-worklist.mjs.",
  "resolved": {
-  "done": 16,
+  "done": 32,
   "rejected": 2,
-  "accepted": 17
+  "accepted": 1
  },
  "pinned": 14,
  "deferred": 1,
  "headline": 12,
  "total": 449,
  "items": [
-  {
-   "id": "dnstr-org-packagejson-mainindexjs-but",
-   "repo": "nosdav/dnstr.org",
-   "pitch": "package.json \"main\":\"index.js\" but no index.js exists, so importing the published package fails — drop main or add the file.",
-   "kind": "cleanup",
-   "effort": "small",
-   "score": 26,
-   "status": "accepted",
-   "priority": "pin",
-   "evidence": "package.json main vs repo has only bin/dnstr.js",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/nosdav/dnstr.org/",
-    "https://github.com/nosdav/dnstr.org"
-   ]
-  },
-  {
-   "id": "jsclaw-github-io-landing-page-hardcodes",
-   "repo": "jsclaw/jsclaw.github.io",
-   "pitch": "Landing page hardcodes v0.0.10 in four places (incl. JSON-LD softwareVersion for SEO) while jsclaw is at 0.0.20.",
-   "kind": "docs",
-   "effort": "small",
-   "score": 18,
-   "status": "accepted",
-   "priority": "pin",
-   "evidence": "index.html:40,496,605,855 vs jsclaw/package.json 0.0.20",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/jsclaw/jsclaw.github.io/",
-    "https://github.com/jsclaw/jsclaw.github.io"
-   ]
-  },
-  {
-   "id": "fund-agent-explorer-link-after",
-   "repo": "blocktrails/fund-agent",
-   "pitch": "Explorer link after broadcast is hardcoded to mempool.space/testnet4 regardless of voucher chain, so btc/signet users get a wrong link.",
-   "kind": "bug",
-   "effort": "small",
-   "score": 17,
-   "status": "accepted",
-   "priority": "pin",
-   "evidence": "bin/fund-agent.js:309",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/blocktrails/fund-agent/",
-    "https://github.com/blocktrails/fund-agent"
-   ]
-  },
   {
    "id": "wallet-the-whole-solid-apps-suite-loads-its-aut",
    "repo": "solid-apps/wallet",
@@ -330,22 +282,6 @@
    "seeAlso": [
     "http://localhost:5445/czech-grammar/dative/",
     "https://github.com/czech-grammar/dative"
-   ]
-  },
-  {
-   "id": "skillify-readme-install-section",
-   "repo": "melvincarvalho/skillify",
-   "pitch": "README Install section says 'npm install -g skillify' but the package is published on npm as 'skill-gen' (npm's 'skillify' is an unrelated package by another author, pricci1) — fix install instructions to 'npm install -g skill-gen'.",
-   "kind": "bug",
-   "effort": "small",
-   "score": 88,
-   "status": "accepted",
-   "priority": null,
-   "evidence": "README.md:7-9 vs package.json:2 (\"name\":\"skill-gen\"); registry.npmjs.org/skillify shows maintainer pricci1",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/skillify/",
-    "https://github.com/melvincarvalho/skillify"
    ]
   },
   {
@@ -938,22 +874,6 @@
    "seeAlso": [
     "http://localhost:5445/solid-lite/schemapanes/",
     "https://github.com/solid-lite/schemapanes"
-   ]
-  },
-  {
-   "id": "vocab-readme-on-master",
-   "repo": "melvincarvalho/vocab",
-   "pitch": "README on master describes an AngularJS/bower/ngAudio app with a language grid of ?lang1=/?lang2=/storageURI= links, but master's index.html is a self-contained Preact app that hardcodes data/czech-en.ttl and never reads URL params (setLang1/setLang2 are never called), so the Quick Start (bower install) and all language-grid/Hungarian links are dead — rewrite Quick Start ('open index.html'), fix Tech Stack, and remove or reimplement the language links.",
-   "kind": "docs",
-   "effort": "small",
-   "score": 56,
-   "status": "accepted",
-   "priority": null,
-   "evidence": "README.md Quick Start/Language Grid/Tech Stack vs index.html:336-434 (index.html:409 const url = 'data/czech-en.ttl'; no URLSearchParams/location.search; index.html:378-379 setLang1/setLang2 unused)",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/vocab/",
-    "https://github.com/melvincarvalho/vocab"
    ]
   },
   {
@@ -1917,22 +1837,6 @@
    ]
   },
   {
-   "id": "melchat-the-cli-startup",
-   "repo": "melvincarvalho/melchat",
-   "pitch": "The CLI startup banner hardcodes \"melchat v0.0.1\" while package.json is at 0.0.3, so npx melchat prints the wrong version; read version from package.json (or update the literal).",
-   "kind": "cleanup",
-   "effort": "small",
-   "score": 40,
-   "status": "accepted",
-   "priority": null,
-   "evidence": "bin/melchat.js banner (~line 76) prints 🤖 melchat v0.0.1; package.json version 0.0.3",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/melchat/",
-    "https://github.com/melvincarvalho/melchat"
-   ]
-  },
-  {
    "id": "lws-server-lib-storage-js",
    "repo": "linkedwebstorage/lws-server",
    "pitch": "lib/storage.js:164 calls crypto.randomUUID() but line 7 imports only { createHash } from 'crypto', so it relies on the implicit global webcrypto — on the declared minimum Node 18 (global crypto flagged off) a POST with no Slug header throws ReferenceError; fix by importing randomUUID like test/lws.test.js:9 already does.",
@@ -2861,22 +2765,6 @@
    ]
   },
   {
-   "id": "nostrgit-no-license-file",
-   "repo": "melvincarvalho/nostrgit",
-   "pitch": "No LICENSE file on a live, publicly served app; add one (e.g. MIT) so the code is legally reusable.",
-   "kind": "docs",
-   "effort": "small",
-   "score": 30,
-   "status": "accepted",
-   "priority": null,
-   "evidence": "repo root contains only README.md, index.html, manifest.json, sw.js",
-   "confidence": 4,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/nostrgit/",
-    "https://github.com/melvincarvalho/nostrgit"
-   ]
-  },
-  {
    "id": "capacitor-readme-declares-mit",
    "repo": "solid-android/capacitor",
    "pitch": "README declares MIT but there is no LICENSE file in the repo that the org landing page tells users to download from; add the MIT license text.",
@@ -3725,22 +3613,6 @@
    ]
   },
   {
-   "id": "xlogin-readme-builtin-solid-providers",
-   "repo": "melvincarvalho/xlogin",
-   "pitch": "README 'Built-in Solid Providers' lists only 4 but the modal renders solidweb.app plus the current origin too, so the documented list contradicts the code.",
-   "kind": "docs",
-   "effort": "small",
-   "score": 20,
-   "status": "accepted",
-   "priority": null,
-   "evidence": "README.md:128",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/xlogin/",
-    "https://github.com/melvincarvalho/xlogin"
-   ]
-  },
-  {
    "id": "verify-readme-claims-each-mark",
    "repo": "blocktrails/verify",
    "pitch": "README claims each mark is verified to spend the previous one, but linkOK is only rendered as text and never affects the result — a broken chain link still shows the green verified pill and increments okCount.",
@@ -3933,22 +3805,6 @@
    ]
   },
   {
-   "id": "paa-pub-readme-declares-mit-license-repo",
-   "repo": "melvincarvalho/paa-pub",
-   "pitch": "README declares an MIT license but the repo contains no LICENSE file.",
-   "kind": "docs",
-   "effort": "small",
-   "score": 19,
-   "status": "accepted",
-   "priority": null,
-   "evidence": "README.md:449-451 — \"## License / MIT\"; repo root has no LICENSE and package.json has no license field",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/paa-pub/",
-    "https://github.com/melvincarvalho/paa-pub"
-   ]
-  },
-  {
    "id": "solid-docs-github-io-solidos-org-landing-page-repo",
    "repo": "solid-docs/solid-docs.github.io",
    "pitch": "The solidos.org landing-page repo ships only CNAME, favicon.ico, img/ and index.html — no README and no LICENSE — so the source of a live homepage that says 'Built with open-source' carries no license or contributor entry point itself.",
@@ -3962,22 +3818,6 @@
    "seeAlso": [
     "http://localhost:5445/solid-docs/solid-docs.github.io/",
     "https://github.com/solid-docs/solid-docs.github.io"
-   ]
-  },
-  {
-   "id": "helloworld-index-html-title",
-   "repo": "melvincarvalho/helloworld",
-   "pitch": "index.html <title> is 'Join Solid', a leftover from a different page — retitle to match the Hello World app (one-line fix, visible on the live demo tab).",
-   "kind": "docs",
-   "effort": "small",
-   "score": 19,
-   "status": "accepted",
-   "priority": null,
-   "evidence": "index.html:6",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/helloworld/",
-    "https://github.com/melvincarvalho/helloworld"
    ]
   },
   {
@@ -4525,22 +4365,6 @@
    ]
   },
   {
-   "id": "noskey-readme-options-documents-only",
-   "repo": "melvincarvalho/noskey",
-   "pitch": "README Options documents only -v/-p/-s/-h but the CLI also defines a working -n/--npub vanity option, so it is undocumented.",
-   "kind": "docs",
-   "effort": "small",
-   "score": 15,
-   "status": "accepted",
-   "priority": null,
-   "evidence": "bin/noskey.js:23-27 vs README.md:82",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/noskey/",
-    "https://github.com/melvincarvalho/noskey"
-   ]
-  },
-  {
    "id": "kernel-swiftsync-readme-quickstart-calls",
    "repo": "bitcoin-kernel/kernel",
    "pitch": "swiftsync README quickstart calls acc.remove(encodeCoin(coin)), but the Accumulator class defines no remove method (only add/spend); the documented example throws — should be acc.spend(...).",
@@ -4698,22 +4522,6 @@
    "seeAlso": [
     "http://localhost:5445/bitcoin-kernel/bitcoin-kernel.github.io/",
     "https://github.com/bitcoin-kernel/bitcoin-kernel.github.io"
-   ]
-  },
-  {
-   "id": "record-test-packagelockjson-declares-name-recordssmoke",
-   "repo": "melvincarvalho/record-test",
-   "pitch": "package-lock.json declares name 'records-smoke', version 1.0.0, license ISC while package.json declares name 'record-test', 0.0.1, MIT — the lockfile is out of sync with the manifest.",
-   "kind": "bug",
-   "effort": "small",
-   "score": 15,
-   "status": "accepted",
-   "priority": null,
-   "evidence": "package-lock.json:2-10 vs package.json:2-9",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/record-test/",
-    "https://github.com/melvincarvalho/record-test"
    ]
   },
   {
@@ -5290,22 +5098,6 @@
    "seeAlso": [
     "http://localhost:5445/solid-apps/chess/",
     "https://github.com/solid-apps/chess"
-   ]
-  },
-  {
-   "id": "solid-login-source-file-license-header-says",
-   "repo": "melvincarvalho/solid-login",
-   "pitch": "The source file's @license header says GPL-3.0-or-later while package.json, LICENSE, and README all say AGPL-3.0-or-later.",
-   "kind": "docs",
-   "effort": "small",
-   "score": 13,
-   "status": "accepted",
-   "priority": null,
-   "evidence": "solid-login.js:17 — '@license GPL-3.0-or-later' vs package.json license 'AGPL-3.0-or-later' and AGPL LICENSE file",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/solid-login/",
-    "https://github.com/melvincarvalho/solid-login"
    ]
   },
   {
@@ -6333,22 +6125,6 @@
    ]
   },
   {
-   "id": "poker-repo-has-no-license",
-   "repo": "melvincarvalho/poker",
-   "pitch": "Repo has no LICENSE file despite being a public README-described open project, so the code defaults to all-rights-reserved; add a LICENSE.",
-   "kind": "docs",
-   "effort": "small",
-   "score": 8,
-   "status": "accepted",
-   "priority": null,
-   "evidence": "no LICENSE* in root; README.md:1-77",
-   "confidence": 4,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/poker/",
-    "https://github.com/melvincarvalho/poker"
-   ]
-  },
-  {
    "id": "metropolis-the-power-overlay-and",
    "repo": "solid-apps/metropolis",
    "pitch": "The power overlay and wire auto-tiling special-case T.COAL but omit T.NUKE, so a nuclear plant renders as unpowered and wires draw no connecting stub toward it, unlike a coal plant.",
@@ -6458,22 +6234,6 @@
    "seeAlso": [
     "http://localhost:5445/solidskills/solidskills.github.io/",
     "https://github.com/solidskills/solidskills.github.io"
-   ]
-  },
-  {
-   "id": "gamestr-readme-screenshot-embeds-an",
-   "repo": "melvincarvalho/gamestr",
-   "pitch": "README screenshot embeds an image from via.placeholder.com, a discontinued service, so the Screenshots image is a dead link.",
-   "kind": "docs",
-   "effort": "small",
-   "score": 8,
-   "status": "accepted",
-   "priority": null,
-   "evidence": "README.md:40",
-   "confidence": 4,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/gamestr/",
-    "https://github.com/melvincarvalho/gamestr"
    ]
   },
   {
@@ -6682,22 +6442,6 @@
    "seeAlso": [
     "http://localhost:5445/recordweb/rwp/",
     "https://github.com/recordweb/rwp"
-   ]
-  },
-  {
-   "id": "clgrep-packagejson-declares-deprecated-spdx",
-   "repo": "melvincarvalho/clgrep",
-   "pitch": "package.json declares deprecated SPDX id \"AGPL-3.0\" (npm warns); should be \"AGPL-3.0-only\" or \"-or-later\" to match the shipped LICENSE.",
-   "kind": "cleanup",
-   "effort": "small",
-   "score": 6,
-   "status": "accepted",
-   "priority": null,
-   "evidence": "package.json:25; LICENSE:1-2",
-   "confidence": 3,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/clgrep/",
-    "https://github.com/melvincarvalho/clgrep"
    ]
   },
   {
