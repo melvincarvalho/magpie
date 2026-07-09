@@ -3,11 +3,11 @@
  "refreshed": true,
  "note": "All live survey findings (done/rejected removed), ranked. \"headline\" is how many the Worklist tab shows; the rest are under All. Accept/reject via decisions.json, then re-run refresh-worklist.mjs.",
  "resolved": {
-  "done": 36,
+  "done": 37,
   "rejected": 14,
-  "accepted": 1
+  "accepted": 3
  },
- "pinned": 19,
+ "pinned": 20,
  "deferred": 1,
  "headline": 12,
  "total": 544,
@@ -35,7 +35,7 @@
    "kind": "security",
    "effort": "small",
    "score": 110,
-   "status": "open",
+   "status": "accepted",
    "priority": null,
    "evidence": "vouchers.js:944 interpolates ${v.txid} into an href and link text unescaped, and :929 renders ${(v.network||'').toUpperCase()} unescaped; init() at :1211 auto-imports ?key= via importKey(), which does no hex validation on txid/network. escHtml() exists (used for privkey at :951) but is not applied here.",
    "confidence": 5,
@@ -154,22 +154,6 @@
    "seeAlso": [
     "http://localhost:5445/JavaScriptSolidServer/nostr-git-sync/",
     "https://github.com/JavaScriptSolidServer/nostr-git-sync"
-   ]
-  },
-  {
-   "id": "helloworld-the-live-demo",
-   "repo": "melvincarvalho/helloworld",
-   "pitch": "The live demo linked from the README is completely broken: GitHub Pages serves the raw unbuilt index.html whose <script src=\"/src/main.js\"> resolves to melvincarvalho.github.io/src/main.js (404) and whose bare @inrupt imports can't load in a browser anyway — switch Pages to the existing Actions build workflow (deploy.yml already builds dist/) so the vite output is what gets served.",
-   "kind": "bug",
-   "effort": "small",
-   "score": 88,
-   "status": "open",
-   "priority": null,
-   "evidence": "index.html:51 (src=\"/src/main.js\"); vite.config.js base '/helloworld/'; live: GET https://melvincarvalho.github.io/helloworld/ returns unbuilt source, GET https://melvincarvalho.github.io/src/main.js = 404; .github/workflows/deploy.yml builds dist",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/melvincarvalho/helloworld/",
-    "https://github.com/melvincarvalho/helloworld"
    ]
   },
   {

@@ -809,5 +809,46 @@
   "repo": "JavaScriptSolidServer/jsserve",
   "action": "done",
   "note": "Merged - PR https://github.com/JavaScriptSolidServer/jsserve/pull/5 (squash 653489c). --auth now fails closed with guidance, banner shows public/no-auth vs Solid auth, README de-advertised. Copilot review clean. Local mirror pulled up to date."
+ },
+ {
+  "ts": "2026-07-09T11:09:08.314Z",
+  "id": "helloworld-the-live-demo",
+  "repo": "melvincarvalho/helloworld",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-09T11:13:32.691Z",
+  "id": "helloworld-the-live-demo",
+  "repo": "melvincarvalho/helloworld",
+  "action": "accepted",
+  "note": "Accepted (pinned). Modernizing to zero-build with solid-oidc instead of wiring Pages to the vite build - removes @inrupt/vite entirely. Branch + PR."
+ },
+ {
+  "ts": "2026-07-09T11:17:02.782Z",
+  "id": "helloworld-the-live-demo",
+  "repo": "melvincarvalho/helloworld",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/melvincarvalho/helloworld/pull/14 (zero-build rewrite on solid-oidc, green debug panel, -1981 lines; statically verified)."
+ },
+ {
+  "ts": "2026-07-09T11:20:27.309Z",
+  "id": "helloworld-the-live-demo",
+  "repo": "melvincarvalho/helloworld",
+  "action": "done",
+  "note": "Merged - PR https://github.com/melvincarvalho/helloworld/pull/14 (squash 76a5010). Zero-build rewrite on solid-oidc, green debug panel, -1981 lines. Local mirror pulled up to date."
+ },
+ {
+  "ts": "2026-07-09T11:40:03.591Z",
+  "id": "helloworld-showcase-ui",
+  "repo": "melvincarvalho/helloworld",
+  "action": "accepted",
+  "note": "Follow-up to helloworld-the-live-demo. In flight - PR https://github.com/melvincarvalho/helloworld/pull/15 (showcase redesign, solidweb.app default IdP, what-just-happened explainer, removed broken 2018 icon PNGs; screenshot-verified)."
+ },
+ {
+  "ts": "2026-07-09T11:40:30.687Z",
+  "id": "vouchers-a-crafted-share-link-key-txo-network",
+  "repo": "solid-apps/vouchers",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/solid-apps/vouchers/pull/1 (txo: share-link XSS: import-time txid/network validation + context-correct render escaping incl. escAttr for the privkey attribute; statically verified against payloads). Reflected/stored XSS in a Bitcoin-key-holding app."
  }
 ]
