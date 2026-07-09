@@ -6,7 +6,7 @@
   "NEEDS-HUMAN": 19,
   "KEEP": 12
  },
- "count": 139,
+ "count": 147,
  "repos": [
   {
    "repo": "linkeddata/solid-app-set-archive",
@@ -3204,6 +3204,102 @@
    "forks": 0,
    "isArchivedUpstream": false,
    "isFork": false
+  },
+  {
+   "repo": "melvincarvalho/try_git",
+   "whatItIs": "old 1-commit stub (owner-selected)",
+   "verdict": "SAFE-ARCHIVE",
+   "confidence": 4,
+   "reason": "1-commit README/gitignore-only stub; no package.json, no live references in the mirror, years dead",
+   "status": "archived",
+   "archivedAt": "2026-07-09",
+   "stars": 0,
+   "forks": 0,
+   "source": "owner-selected quick-check (outside original 139)"
+  },
+  {
+   "repo": "melvincarvalho/components",
+   "whatItIs": "old 1-commit stub (owner-selected)",
+   "verdict": "SAFE-ARCHIVE",
+   "confidence": 4,
+   "reason": "1-commit README/gitignore-only stub; no package.json, no live references in the mirror, years dead",
+   "status": "archived",
+   "archivedAt": "2026-07-09",
+   "stars": 0,
+   "forks": 0,
+   "source": "owner-selected quick-check (outside original 139)"
+  },
+  {
+   "repo": "melvincarvalho/experiments",
+   "whatItIs": "old 1-commit stub (owner-selected)",
+   "verdict": "SAFE-ARCHIVE",
+   "confidence": 4,
+   "reason": "1-commit README/gitignore-only stub; no package.json, no live references in the mirror, years dead",
+   "status": "archived",
+   "archivedAt": "2026-07-09",
+   "stars": 0,
+   "forks": 0,
+   "source": "owner-selected quick-check (outside original 139)"
+  },
+  {
+   "repo": "melvincarvalho/myledger",
+   "whatItIs": "old 1-commit stub (owner-selected)",
+   "verdict": "SAFE-ARCHIVE",
+   "confidence": 4,
+   "reason": "1-commit README/gitignore-only stub; no package.json, no live references in the mirror, years dead",
+   "status": "archived",
+   "archivedAt": "2026-07-09",
+   "stars": 0,
+   "forks": 0,
+   "source": "owner-selected quick-check (outside original 139)"
+  },
+  {
+   "repo": "melvincarvalho/gitlama",
+   "whatItIs": "old 1-commit stub (owner-selected)",
+   "verdict": "SAFE-ARCHIVE",
+   "confidence": 4,
+   "reason": "1-commit README/gitignore-only stub; no package.json, no live references in the mirror, years dead",
+   "status": "archived",
+   "archivedAt": "2026-07-09",
+   "stars": 0,
+   "forks": 0,
+   "source": "owner-selected quick-check (outside original 139)"
+  },
+  {
+   "repo": "melvincarvalho/swap",
+   "whatItIs": "old 1-commit stub (owner-selected)",
+   "verdict": "SAFE-ARCHIVE",
+   "confidence": 4,
+   "reason": "1-commit README/gitignore-only stub; no package.json, no live references in the mirror, years dead",
+   "status": "archived",
+   "archivedAt": "2026-07-09",
+   "stars": 0,
+   "forks": 0,
+   "source": "owner-selected quick-check (outside original 139)"
+  },
+  {
+   "repo": "melvincarvalho/lichess",
+   "whatItIs": "old stub / personal data snapshot (owner-selected)",
+   "verdict": "SAFE-ARCHIVE",
+   "confidence": 4,
+   "reason": "tiny old repo; no package.json, no live references in the mirror",
+   "status": "archived",
+   "archivedAt": "2026-07-09",
+   "stars": 0,
+   "forks": 0,
+   "source": "owner-selected quick-check (outside original 139)"
+  },
+  {
+   "repo": "melvincarvalho/hash160",
+   "whatItIs": "old stub / personal data snapshot (owner-selected)",
+   "verdict": "SAFE-ARCHIVE",
+   "confidence": 4,
+   "reason": "tiny old repo; no package.json, no live references in the mirror",
+   "status": "archived",
+   "archivedAt": "2026-07-09",
+   "stars": 0,
+   "forks": 0,
+   "source": "owner-selected quick-check (outside original 139)"
   }
  ],
  "adversarialPass": {
@@ -3220,7 +3316,7 @@
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
  },
  "archived": {
-  "count": 71,
+  "count": 79,
   "date": "2026-07-09",
   "note": "Archived via gh repo archive (reversible): 22 melbot snapshots, 17 quantumpayments, 5 spux, play-grounds/liquid, 5 solid-live. All verified isArchived=true."
  }
