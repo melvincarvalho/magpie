@@ -2,8 +2,8 @@
  "generated": "2026-07-09",
  "purpose": "Archival-safety review of the 139 ARCHIVE-CANDIDATE repos from the 2026-07-09 shallow sweep. Each deep-checked for identity, successor, live references (grep across the whole mirror for owner/name + npm name), GitHub metadata (stars/forks/isArchived), and sync sanity. PROPOSE-ONLY: archiving is a human decision per magpie's hard rules; nothing here is actioned. Sorted SAFE-ARCHIVE (highest confidence first), then NEEDS-HUMAN, then KEEP.",
  "totals": {
-  "SAFE-ARCHIVE": 110,
-  "NEEDS-HUMAN": 17,
+  "SAFE-ARCHIVE": 108,
+  "NEEDS-HUMAN": 19,
   "KEEP": 12
  },
  "count": 139,
@@ -19,7 +19,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2018-01",
+    "note": "Self-described archive of unused solid-app-set panes; no dependents, no namespace, master-only."
+   }
   },
   {
    "repo": "melbotz/melbot_20220716",
@@ -32,7 +43,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published (melbot_20220716) but GitHub archive does not unpublish npm; 233 downloads are scanner noise and only self-referential chain dependents exist",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": true,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Redundant daily snapshot in a prev/next-linked chain, superseded by next day; npm stays live independent of GitHub archive."
+   }
   },
   {
    "repo": "melbotz/melbot_20220717",
@@ -45,7 +67,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published but archive doesn't affect npm; 137 downloads bot-noise, no external code dependents",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": true,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Daily snapshot, self-referential chain only."
+   }
   },
   {
    "repo": "melbotz/melbot_20220718",
@@ -58,7 +91,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published but archive-independent; 272 downloads bot-noise, no real dependents",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": true,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Daily snapshot, superseded by next day."
+   }
   },
   {
    "repo": "melbotz/melbot_20220719",
@@ -71,7 +115,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published but archive-independent; 231 downloads noise, no external dependents",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": true,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Daily snapshot in redundant chain."
+   }
   },
   {
    "repo": "melbotz/melbot_20220720",
@@ -84,7 +139,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published, highest downloads (708) but still scanner-noise pattern, no external code importers",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": true,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Daily snapshot; download count is passive mirror traffic, not real usage."
+   }
   },
   {
    "repo": "melbotz/melbot_20220721",
@@ -97,7 +163,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published but archive-independent; 459 downloads noise, no dependents",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": true,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Daily snapshot, self-referential prev/next only."
+   }
   },
   {
    "repo": "melbotz/melbot_20220722",
@@ -110,7 +187,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published but archive-independent; no external dependents",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": true,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Daily snapshot, superseded."
+   }
   },
   {
    "repo": "melbotz/melbot_20220723",
@@ -123,7 +211,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published but archive-independent; only 96 downloads, no dependents",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": true,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Daily snapshot in redundant chain."
+   }
   },
   {
    "repo": "melbotz/melbot_20220724",
@@ -136,7 +235,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published but archive-independent; 94 downloads, no dependents",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": true,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Daily snapshot, self-referential only."
+   }
   },
   {
    "repo": "melbotz/melbot_20220725",
@@ -149,7 +259,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published but archive-independent; latest within this batch yet superseded by 20220726-31, no external dependents",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": true,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Daily snapshot; not canonical latest of the bot (chain continues to 20220731)."
+   }
   },
   {
    "repo": "melvincarvalho/rwwcoin",
@@ -162,7 +283,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "Historical provenance: cited in mediaprophet/xec-slp-rdf as an rww/solid-coin concept, but link points to a W3C mailing-list archive, not this repo",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2014-04",
+    "note": "One-line README stub with no code; historical mention exists but nothing dereferences or imports the repo."
+   }
   },
   {
    "repo": "dacse/dacse.org",
@@ -175,7 +307,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2017-03",
+    "note": "dacse.org resolves NXDOMAIN and repo holds only README+LICENSE, so it backs no live site."
+   }
   },
   {
    "repo": "gitpay/sales",
@@ -188,7 +331,18 @@
    "stars": 1,
    "forks": 1,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2015-07",
+    "note": "Empty README with only badge/gitter content; single fork is a badge bot, not a real dependent."
+   }
   },
   {
    "repo": "linkeddata/gold-misc",
@@ -201,7 +355,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2015-02",
+    "note": "Two deploy/supervisor config scripts for the long-dead linkeddata/gold Go server; no dependents or namespace."
+   }
   },
   {
    "repo": "linkeddata/goturtle",
@@ -214,7 +379,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "Single turtle.ebnf grammar file is a semi-unique artifact",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2015-03",
+    "note": "Turtle grammar is published in the W3C spec and archive is non-destructive, so the EBNF stays readable with nothing dereferencing it."
+   }
   },
   {
    "repo": "linkeddata/widgets-acl",
@@ -227,7 +403,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2015-06",
+    "note": "README+LICENSE only, no widget code ever committed; no dependents or namespace."
+   }
   },
   {
    "repo": "melbotz/melbot_20220705",
@@ -240,7 +427,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": true,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Earliest minimal snapshot, not even npm-published; committed node_modules, purely superseded."
+   }
   },
   {
    "repo": "melbotz/melbot_20220706",
@@ -253,7 +451,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Redundant daily bot snapshot, not npm-published, superseded next day, no dependents or live target."
+   }
   },
   {
    "repo": "melbotz/melbot_20220707",
@@ -266,7 +475,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Redundant daily snapshot, not published, only 6 commits, superseded by 20220708."
+   }
   },
   {
    "repo": "melbotz/melbot_20220708",
@@ -279,7 +499,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published (melbot_20220708) but zero dependents and npm persists independent of archive",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Published daily snapshot with no real dependents; npm copy survives archive so nothing lost."
+   }
   },
   {
    "repo": "melbotz/melbot_20220709",
@@ -292,7 +523,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published (melbot_20220709, v0.0.23) but dependents=0; downloads are scraper noise",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Prior npm flag confirmed published but zero dependents; immutable npm package unaffected by GitHub archive."
+   }
   },
   {
    "repo": "melbotz/melbot_20220710",
@@ -305,7 +547,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published but no dependents; superseded daily snapshot",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Published vanity daily snapshot, no external use, archive non-lossy."
+   }
   },
   {
    "repo": "melbotz/melbot_20220711",
@@ -318,7 +571,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published but no dependents",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Redundant published daily snapshot with zero dependents."
+   }
   },
   {
    "repo": "melbotz/melbot_20220712",
@@ -331,7 +595,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published but no dependents",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Published daily snapshot, superseded, no real usage."
+   }
   },
   {
    "repo": "melbotz/melbot_20220713",
@@ -344,7 +619,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published but no dependents",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Published daily snapshot with no dependents; npm artifact persists past archive."
+   }
   },
   {
    "repo": "melbotz/melbot_20220714",
@@ -357,7 +643,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published but no dependents",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Redundant published daily snapshot, zero external dependents."
+   }
   },
   {
    "repo": "melbotz/melbot_20220715",
@@ -370,7 +667,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published but no dependents",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Published daily snapshot, no real usage, superseded next day."
+   }
   },
   {
    "repo": "melbotz/melbot_20220726",
@@ -383,7 +691,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm-published but no dependents; not the latest in chain (runs to 20220731)",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-07",
+    "note": "Later published daily snapshot but still superseded and dependent-free; archive non-lossy."
+   }
   },
   {
    "repo": "melvincarvalho/bots",
@@ -396,7 +715,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2015-12",
+    "note": "Single-commit 'solid bots' README stub with no code, dependents, or namespace."
+   }
   },
   {
    "repo": "melvincarvalho/brain",
@@ -409,7 +739,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2019-06",
+    "note": "Single-commit 'brain wallet misc' README stub with no code, dependents, or namespace."
+   }
   },
   {
    "repo": "melvincarvalho/lget",
@@ -422,7 +763,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-04",
+    "note": "README-only stub ('linked data get'), single 2016 commit, no forks/stars/dependents."
+   }
   },
   {
    "repo": "melvincarvalho/markbot",
@@ -435,7 +787,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2014-09",
+    "note": "Abandoned 2014 IRC tip-bot prototype (single markbot.js), 1 star, no package.json or dependents."
+   }
   },
   {
    "repo": "melvincarvalho/rdf-libraries",
@@ -448,7 +811,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2017-11",
+    "note": "README-only 'testing rdf libraries' stub, initial commit only, 1 star, no code to depend on."
+   }
   },
   {
    "repo": "melvincarvalho/react-brain",
@@ -461,7 +835,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2019-08",
+    "note": "README-only 'react brain wallet' stub, no LICENSE even, single commit, 0 stars/forks."
+   }
   },
   {
    "repo": "melvincarvalho/searx",
@@ -474,7 +859,18 @@
    "stars": 2,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2017-04",
+    "note": "README-only 'searx app' stub, single 2017 commit, 2 stars but no code/homepage/dependents."
+   }
   },
   {
    "repo": "melvincarvalho/solid-ipfs",
@@ -487,7 +883,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2018-10",
+    "note": "README-only 'solid and ipfs integration' stub, single commit, no forks/stars/dependents."
+   }
   },
   {
    "repo": "melvincarvalho/watch",
@@ -500,7 +907,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2017-08",
+    "note": "README-only 'watch interactions' stub, single 2017 commit, 0 stars/forks/dependents."
+   }
   },
   {
    "repo": "play-grounds/bitmark",
@@ -513,7 +931,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-01",
+    "note": "README-only playground stub ('bitmark'), single 2022 commit, no code/homepage/dependents."
+   }
   },
   {
    "repo": "play-grounds/liquid",
@@ -526,7 +955,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2021-03",
+    "note": "README-only 'liquid play ground' stub, single 2021 commit, no code/homepage/dependents."
+   }
   },
   {
    "repo": "play-grounds/slidev",
@@ -539,7 +979,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-01",
+    "note": "Two-line placeholder README from a single Initial commit, no code, no dependents or namespace."
+   }
   },
   {
    "repo": "play-grounds/tailwind",
@@ -552,7 +1003,18 @@
    "stars": 2,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-01",
+    "note": "Empty playground stub with only a placeholder README and LICENSE."
+   }
   },
   {
    "repo": "play-grounds/vite",
@@ -565,7 +1027,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2022-04",
+    "note": "Single-commit placeholder with a two-line README and no code or dependents."
+   }
   },
   {
    "repo": "project-bitmark/muwa-core",
@@ -578,7 +1051,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2015-07",
+    "note": "Bare title-only README from 2015, no content, no npm package, no dependents."
+   }
   },
   {
    "repo": "quantumpayments/ads",
@@ -591,7 +1075,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-06",
+    "note": "Two-line idea stub ('ads with payments') with no implementation."
+   }
   },
   {
    "repo": "quantumpayments/bash",
@@ -604,7 +1099,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-03",
+    "note": "README documents a bash payment-hook idea but ships no code; abandoned 2016 experiment."
+   }
   },
   {
    "repo": "quantumpayments/bitmark",
@@ -617,7 +1123,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-02",
+    "note": "Two-line stub, no code, no dependents, dead since 2016."
+   }
   },
   {
    "repo": "quantumpayments/gitpay",
@@ -630,7 +1147,18 @@
    "stars": 2,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-01",
+    "note": "Two-line stub; npm 'gitpay' package maps to a different repo (gitpay/util), so no dependency link."
+   }
   },
   {
    "repo": "quantumpayments/hook",
@@ -643,7 +1171,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-01",
+    "note": "README-only concept note on payment hooks, no code, abandoned 2016."
+   }
   },
   {
    "repo": "quantumpayments/inartes",
@@ -656,7 +1195,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-01",
+    "note": "One-line 2016 stub, README+LICENSE only, no npm, no dependents, no data."
+   }
   },
   {
    "repo": "quantumpayments/interledger",
@@ -669,7 +1219,18 @@
    "stars": 1,
    "forks": 1,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-01",
+    "note": "npm 'interledger' is the unrelated Interledger Team package, not from this stub repo."
+   }
   },
   {
    "repo": "quantumpayments/lightning",
@@ -682,7 +1243,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2018-01",
+    "note": "One-line 2018 stub; npm 'lightning' is an unrelated third-party package."
+   }
   },
   {
    "repo": "quantumpayments/master_slave",
@@ -695,7 +1267,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-01",
+    "note": "README concept note only, no npm entry, no code or data."
+   }
   },
   {
    "repo": "quantumpayments/monitor",
@@ -708,7 +1291,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-04",
+    "note": "One-line stub; npm 'monitor' is Loren West's unrelated package."
+   }
   },
   {
    "repo": "quantumpayments/mysql",
@@ -721,7 +1315,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-05",
+    "note": "One-line stub; npm 'mysql' is the famous unrelated driver package."
+   }
   },
   {
    "repo": "quantumpayments/paymentchannel",
@@ -734,7 +1339,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "npm 'paymentchannel' v0.0.1 is published by the owner with repository URL pointing at this repo",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-02",
+    "note": "npm pkg exists but v0.0.1/2016, 0 dependents, 88 dl/yr noise; archive is non-destructive so npm+repo link stay live."
+   }
   },
   {
    "repo": "quantumpayments/paywall",
@@ -747,7 +1363,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-01",
+    "note": "Two-word stub; npm 'paywall' is an unrelated third-party package."
+   }
   },
   {
    "repo": "quantumpayments/points",
@@ -760,7 +1387,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-05",
+    "note": "README brainstorm note; npm 'points' is an unrelated shape-data package."
+   }
   },
   {
    "repo": "quantumpayments/quantumpayments.org",
@@ -773,7 +1411,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "name implies a project website but repo holds only README+LICENSE, no HTML/Pages/homepage, so it backs no live URL",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-01",
+    "note": "Empty stub, single 2016 commit, no code, no pages, no dependents; safe to archive."
+   }
   },
   {
    "repo": "quantumpayments/taskify",
@@ -786,7 +1435,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-01",
+    "note": "Empty stub (README+LICENSE only); unrelated npm 'taskify' is a different project, no dependents."
+   }
   },
   {
    "repo": "solid-live/WorldWideWeb",
@@ -799,7 +1459,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "evocative TBL/first-browser name, but repo is a one-line stub that backs no site, spec, or namespace",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-09",
+    "note": "Name is notable-sounding but content is only a README stub with no code or served artifact."
+   }
   },
   {
    "repo": "solid-live/app",
@@ -812,7 +1483,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-10",
+    "note": "Empty stub, single 2016 commit, no code or dependents."
+   }
   },
   {
    "repo": "solid-live/code-of-conduct",
@@ -825,7 +1507,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "contains real CoC prose, but it is generic boilerplate not referenced or served anywhere",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-04",
+    "note": "Standard code-of-conduct text, no dependents, no pages; safe to archive."
+   }
   },
   {
    "repo": "solid-live/extension",
@@ -838,7 +1531,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-10",
+    "note": "Empty stub browser-extension placeholder, single 2016 commit, no code."
+   }
   },
   {
    "repo": "solid/communication",
@@ -853,7 +1557,18 @@
    "stars": 0,
    "forks": 1,
    "isArchivedUpstream": true,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "linked from solidproject.org process docs, but already isArchived upstream and archive is non-destructive so links still resolve",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2020-12",
+    "note": "Already archived upstream (isArchived=true); strategy docs stay readable when archived."
+   }
   },
   {
    "repo": "solid/education",
@@ -868,7 +1583,18 @@
    "stars": 2,
    "forks": 1,
    "isArchivedUpstream": true,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "had a 2025 merged PR, but repo is already isArchived upstream and holds only link-list docs",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2025-02",
+    "note": "Already archived upstream despite recent edits; curated links remain readable, no data loss."
+   }
   },
   {
    "repo": "solid/research-topics",
@@ -883,7 +1609,18 @@
    "stars": 2,
    "forks": 1,
    "isArchivedUpstream": true,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "active 2025 edits plus two unique PDFs, but repo is already isArchived upstream and archiving preserves all content read-only",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2025-06",
+    "note": "Already archived upstream; PDFs and research notes stay fully accessible, so no lossy archive."
+   }
   },
   {
    "repo": "solidpayorg/brain",
@@ -896,7 +1633,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2019-07",
+    "note": "README-only stub ('brain wallet utils'), no code, no npm, no homepage, 0 forks."
+   }
   },
   {
    "repo": "spux/docs",
@@ -909,7 +1657,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2020-08",
+    "note": "Unmodified default Docusaurus scaffold (doc1/2/3, sample blog posts), single Initial commit, no homepage."
+   }
   },
   {
    "repo": "spux/info",
@@ -922,7 +1681,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2020-06",
+    "note": "README-only stub ('info and docs'), 1 star, no code or homepage."
+   }
   },
   {
    "repo": "spux/realtime",
@@ -935,7 +1705,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2020-07",
+    "note": "README-only stub; unrelated npm 'realtime' package exists but is a different author's socket.io app."
+   }
   },
   {
    "repo": "spux/spux-todomvc",
@@ -948,7 +1729,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2020-05",
+    "note": "README-only stub, no TodoMVC code ever committed, not on npm."
+   }
   },
   {
    "repo": "spux/spux-util",
@@ -961,7 +1753,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2020-06",
+    "note": "Named like a util library but contains only a one-line README, no importable code, not on npm."
+   }
   },
   {
    "repo": "taskify/taskify-bots",
@@ -974,7 +1777,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2012-12",
+    "note": "2012 README-only stub, no code, not on npm, 0 forks."
+   }
   },
   {
    "repo": "taskify/taskify-data",
@@ -987,7 +1801,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2012-11",
+    "note": "2012 README-only stub ('taskify data server'), no code or data, not on npm."
+   }
   },
   {
    "repo": "taskify/taskify-drivers",
@@ -1000,7 +1825,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2012-11",
+    "note": "2012 README-only stub, no code, not on npm, 0 forks."
+   }
   },
   {
    "repo": "taskify/taskify-hub",
@@ -1013,7 +1849,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2012-11",
+    "note": "Single 2012 initial commit, README is a one-line stub with no code, namespace, or dependents."
+   }
   },
   {
    "repo": "unhosted/dns-scripts",
@@ -1026,7 +1873,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2013-06",
+    "note": "Operational DNS provisioning shell scripts for the defunct un.ht service, no namespace or dependents."
+   }
   },
   {
    "repo": "unhosted/gd-proxy",
@@ -1039,7 +1897,18 @@
    "stars": 6,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2013-01",
+    "note": "Explicitly marked deprecated in its last commit; Google Docs proxy experiment, dead."
+   }
   },
   {
    "repo": "unhosted/remoteCouch",
@@ -1052,7 +1921,18 @@
    "stars": 2,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2012-06",
+    "note": "Single 2012 initial commit, README-only stub describing an unbuilt CouchDB frontend."
+   }
   },
   {
    "repo": "unhosted/unht-diagrams",
@@ -1065,20 +1945,42 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2013-06",
+    "note": "A .dia diagram of un.ht customer-creation flow for the defunct service, no dependents or namespace."
+   }
   },
   {
    "repo": "w3c-social/social-web",
    "whatItIs": "unofficial W3C Social Web WG tracker",
-   "verdict": "SAFE-ARCHIVE",
+   "verdict": "NEEDS-HUMAN",
    "confidence": 4,
-   "reason": "self-described 'unofficial' tracker superseded by official WG repos, 3 commits in 2015, 0 stars, apparent refs were false positives on social-web-protocols",
+   "reason": "Overturned by adversarial re-check: Repo sits under the W3C-affiliated w3c-social org (ambiguous ownership) and holds an ACL whose id is its own raw.githubusercontent URL",
    "successor": "w3c-social/social-web-protocols",
    "referencedByLive": [],
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "NEEDS-HUMAN",
+    "confidence": 2,
+    "strongestKeepReason": "Repo sits under the W3C-affiliated w3c-social org (ambiguous ownership) and holds an ACL whose id is its own raw.githubusercontent URL",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": true,
+    "uniqueDataLoss": false,
+    "lastActivity": "2015-06",
+    "note": "Self-described 'unofficial' WG tracker with a 2015 experimental phubble ACL; archive is non-lossy (raw URLs still resolve) but org ownership warrants a human check."
+   }
   },
   {
    "repo": "webcredits/wc_api",
@@ -1091,7 +1993,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-11",
+    "note": "README+LICENSE stub only; the live webcredits npm package does not depend on it."
+   }
   },
   {
    "repo": "webcredits/wc_authentication",
@@ -1104,7 +2017,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "Name is self-published on npm (wc_authentication 0.0.1) but by the same owner with 0 dependents",
+    "npmPublished": true,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-06",
+    "note": "README-only stub; a stale self-published npm package exists but archiving GitHub does not affect npm and nothing depends on it."
+   }
   },
   {
    "repo": "wondersearch/wondersearch",
@@ -1117,7 +2041,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2017-04",
+    "note": "Single 2017 initial commit, README-only stub for an unbuilt JS module, not on npm."
+   }
   },
   {
    "repo": "DesignIssues/designissues",
@@ -1130,7 +2065,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 3,
+    "strongestKeepReason": "org-level repo whose name matches timbl's canonical W3C DesignIssues namespace, but it hosts none of that content (README-only pointer to w3.org)",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2017-02",
+    "note": "Empty org stub README linking to www.w3.org/DesignIssues/; no Pages, no unique content, archive is lossless and reversible."
+   }
   },
   {
    "repo": "bitcoincc/bitcoin.cc",
@@ -1143,7 +2089,18 @@
    "stars": 3,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2019-01",
+    "note": "Single-commit website placeholder with only README/LICENSE, no Pages and no code serving bitcoin.cc."
+   }
   },
   {
    "repo": "daoever/daoever",
@@ -1156,7 +2113,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2021-04",
+    "note": "Single-commit README-only placeholder org repo with no content or dependents."
+   }
   },
   {
    "repo": "mark-book/bookmark-pane",
@@ -1169,7 +2137,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "describes itself as a Solid-panes framework pane, but contains no code and is not on npm or imported anywhere",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2018-10",
+    "note": "Empty README/LICENSE stub for an unbuilt Solid bookmark applet; no dependents."
+   }
   },
   {
    "repo": "melvincarvalho/chat",
@@ -1182,7 +2161,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "contains a real chat.html RDF viewer, but it is not served via Pages and nothing resolves to it",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2020-02",
+    "note": "Static mashlib-based chat.html with no Pages/hosting; archiving blocks nothing live."
+   }
   },
   {
    "repo": "melvincarvalho/docs",
@@ -1195,7 +2185,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2019-09",
+    "note": "README-only stub literally titled 'docs' with empty homepage field and no content."
+   }
   },
   {
    "repo": "melvincarvalho/elgg",
@@ -1208,7 +2209,18 @@
    "stars": 2,
    "forks": 1,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2010-04",
+    "note": "Confirmed 2010 single-commit Elgg framework dump; upstream project, no unique data."
+   }
   },
   {
    "repo": "melvincarvalho/extractors",
@@ -1221,7 +2233,18 @@
    "stars": 0,
    "forks": 1,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2020-02",
+    "note": "README/LICENSE-only Solid extractors placeholder; not on npm and not imported anywhere."
+   }
   },
   {
    "repo": "melvincarvalho/inbox",
@@ -1234,7 +2257,18 @@
    "stars": 0,
    "forks": 1,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2019-12",
+    "note": "README/LICENSE-only Solid inbox placeholder; no code, no Pages, no dependents."
+   }
   },
   {
    "repo": "melvincarvalho/klaranet",
@@ -1247,7 +2281,18 @@
    "stars": 3,
    "forks": 5,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2014-09",
+    "note": "Personal 2014 Hubot/Campfire bot deploy (private 'hosted-hubot'), no dependents or namespace."
+   }
   },
   {
    "repo": "melvincarvalho/newmachine",
@@ -1260,7 +2305,18 @@
    "stars": 0,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2019-04",
+    "note": "Two-commit personal machine-setup notes in a 5-line README, nothing depends on it."
+   }
   },
   {
    "repo": "melvincarvalho/scaffold",
@@ -1273,7 +2329,18 @@
    "stars": 1,
    "forks": 2,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "gh-pages homepage serves an AdminLTE demo, but Pages stay served after archive",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-04",
+    "note": "Vendored AdminLTE 2.3.3 copy (package name admin-lte); Pages demo survives non-destructive archive."
+   }
   },
   {
    "repo": "melvincarvalho/search",
@@ -1286,7 +2353,18 @@
    "stars": 0,
    "forks": 1,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2020-02",
+    "note": "README+LICENSE only ('solid search'), no code or dependents."
+   }
   },
   {
    "repo": "melvincarvalho/solid.community",
@@ -1299,7 +2377,18 @@
    "stars": 2,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 3,
+    "strongestKeepReason": "named after the live solid.community/solidcommunity.net service but contains no code",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2018-10",
+    "note": "README+LICENSE-only 'utils' stub; does not back the domain or any namespace."
+   }
   },
   {
    "repo": "project-bitmark/code-of-conduct",
@@ -1312,7 +2401,18 @@
    "stars": 3,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-04",
+    "note": "Static Code of Conduct text, two commits in 2016, no dependents."
+   }
   },
   {
    "repo": "project-bitmark/documents",
@@ -1325,7 +2425,18 @@
    "stars": 2,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 3,
+    "strongestKeepReason": "holds 5 project-management PDFs that may be the only copy, but archive preserves them readable",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2014-09",
+    "note": "PDFs stay downloadable after non-destructive archive; no live URI dereferences them so archiving is not lossy."
+   }
   },
   {
    "repo": "project-bitmark/quickapi",
@@ -1338,7 +2449,18 @@
    "stars": 3,
    "forks": 2,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2014-09",
+    "note": "2014 PHP script dumping bitmarkd daemon data to cached JSON, inactive, no dependents."
+   }
   },
   {
    "repo": "quantumpayments/bubble",
@@ -1351,7 +2473,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-05",
+    "note": "Experimental bash ledger-cycling scripts from 2016, no dependents or namespace."
+   }
   },
   {
    "repo": "rww-apps/helloworld",
@@ -1364,7 +2497,18 @@
    "stars": 2,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "Historical 2013 read-write-web/Solid PUT/PATCH/SPARQL demo app, but static-only, no Pages served, 2 stars, no dependents",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2013-10",
+    "note": "Dormant 2013 static Solid demo; has_pages=false so no live app or URI is lost by non-destructive archive."
+   }
   },
   {
    "repo": "solid-community/scripts",
@@ -1377,7 +2521,18 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2018-12",
+    "note": "Single trivial fixsolidterms.sh shell script, 1 star, no dependents, dormant since 2018."
+   }
   },
   {
    "repo": "solid-live/invites",
@@ -1390,7 +2545,18 @@
    "stars": 1,
    "forks": 1,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 5,
+    "strongestKeepReason": "none",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2016-03",
+    "note": "README-only placeholder repo (empty donation address), no code, only self-reference in search."
+   }
   },
   {
    "repo": "solidpayorg/node-lnbits",
@@ -1403,20 +2569,42 @@
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "Intended lnbits CLI wrapper but repo is an empty README+LICENSE stub with no code; not on npm",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2020-06",
+    "note": "Empty stub (Initial commit only); code-search hits are auto-generated crypto-ecosystem crawler lists, not real dependents."
+   }
   },
   {
    "repo": "spux/me",
    "whatItIs": "unfinished spux identity repo with uncustomized social-share boilerplate README",
-   "verdict": "SAFE-ARCHIVE",
+   "verdict": "NEEDS-HUMAN",
    "confidence": 3,
-   "reason": "README is unmodified sharing-buttons boilerplate (not real content), abandoned since 2020, no references",
+   "reason": "Overturned by adversarial re-check: Ambiguous ownership: distinct near-empty 'spux' account (no name/bio) hosting a verbatim redistribution of third-party social-share-URLs reference content",
    "successor": null,
    "referencedByLive": [],
    "stars": 1,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "NEEDS-HUMAN",
+    "confidence": 3,
+    "strongestKeepReason": "Ambiguous ownership: distinct near-empty 'spux' account (no name/bio) hosting a verbatim redistribution of third-party social-share-URLs reference content",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2020-06",
+    "note": "Copy of a well-known social-share-urls reference under an unrelated account; confirm melvin actually controls 'spux' before archiving."
+   }
   },
   {
    "repo": "unhosted/design",
@@ -1429,7 +2617,18 @@
    "stars": 3,
    "forks": 0,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "Only copy of unhosted/remoteStorage movement branding source files (.psd/.xcf/.svg), but these stay fully readable after non-destructive archive",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2012-10",
+    "note": "2012 historical design/sticker assets; no Pages, no dependents, archiving preserves the source files."
+   }
   },
   {
    "repo": "unhosted/nsupdate-proxy",
@@ -1442,7 +2641,18 @@
    "stars": 0,
    "forks": 3,
    "isArchivedUpstream": false,
-   "isFork": false
+   "isFork": false,
+   "adversarial": {
+    "newVerdict": "ARCHIVE-CONFIRMED",
+    "confidence": 4,
+    "strongestKeepReason": "Historical backend for the defunct un.ht dynamic-DNS service of the unhosted movement",
+    "npmPublished": false,
+    "externalDependents": [],
+    "servesNamespaceOrURI": false,
+    "uniqueDataLoss": false,
+    "lastActivity": "2013-06",
+    "note": "2013 proxy for now-dead un.ht service; no Pages/npm/code-dependents, forks are historical only."
+   }
   },
   {
    "repo": "TheNullParty/The-Null-Party",
@@ -1853,5 +3063,18 @@
    "isArchivedUpstream": false,
    "isFork": false
   }
- ]
+ ],
+ "adversarialPass": {
+  "generated": "2026-07-09",
+  "method": "Each of the 110 SAFE-ARCHIVE repos was re-checked by a skeptic instructed to REFUTE the archive verdict, with external-dependent search (gh/npm), namespace/URI dereferencing, data-uniqueness, and liveness re-tests.",
+  "outcome": {
+   "ARCHIVE-CONFIRMED": 108,
+   "NEEDS-HUMAN": 2
+  },
+  "overturned": [
+   "w3c-social/social-web",
+   "spux/me"
+  ],
+  "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
+ }
 }
