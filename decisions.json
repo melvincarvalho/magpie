@@ -775,5 +775,12 @@
   "repo": "nostrapps/nostr.chat",
   "action": "accepted",
   "note": "In flight - PR https://github.com/nostrapps/nostr.chat/pull/1 (safePictureUrl http(s)-only validation + DOM src assignment at both avatar sites; escapeHtml alone would not fix the quote breakout)"
+ },
+ {
+  "ts": "2026-07-09T09:22:11.815Z",
+  "id": "nostr-chat-profile-picture-urls",
+  "repo": "nostrapps/nostr.chat",
+  "action": "done",
+  "note": "Merged - PR https://github.com/nostrapps/nostr.chat/pull/1 (squash 1c1351d). http(s)-only picture URL validation + DOM src assignment at both avatar sites. Local mirror pulled up to date."
  }
 ]

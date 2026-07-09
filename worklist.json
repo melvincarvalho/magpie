@@ -3,31 +3,15 @@
  "refreshed": true,
  "note": "All live survey findings (done/rejected removed), ranked. \"headline\" is how many the Worklist tab shows; the rest are under All. Accept/reject via decisions.json, then re-run refresh-worklist.mjs.",
  "resolved": {
-  "done": 34,
+  "done": 35,
   "rejected": 13,
-  "accepted": 2
+  "accepted": 1
  },
  "pinned": 18,
  "deferred": 1,
  "headline": 12,
  "total": 449,
  "items": [
-  {
-   "id": "nostr-chat-profile-picture-urls",
-   "repo": "nostrapps/nostr.chat",
-   "pitch": "Profile picture URLs are interpolated unescaped into img src attributes (index.html:871 and :1017) while name/content ARE escaped, so a hostile Nostr profile picture value like `x\"><img src=y onerror=...>` is stored XSS executed for every viewer; escape/attribute-encode picture and restrict to http(s).",
-   "kind": "security",
-   "effort": "small",
-   "score": 138,
-   "status": "accepted",
-   "priority": "pin",
-   "evidence": "index.html:871, index.html:1015-1017",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/nostrapps/nostr.chat/",
-    "https://github.com/nostrapps/nostr.chat"
-   ]
-  },
   {
    "id": "nexus-nexus-s-html-markdown-sanitizer-strips-s",
    "repo": "solid-apps/nexus",
