@@ -1130,7 +1130,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-06",
     "note": "Two-line idea stub ('ads with payments') with no implementation."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "quantumpayments/bash",
@@ -1154,7 +1156,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-03",
     "note": "README documents a bash payment-hook idea but ships no code; abandoned 2016 experiment."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "quantumpayments/bitmark",
@@ -1178,7 +1182,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-02",
     "note": "Two-line stub, no code, no dependents, dead since 2016."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "quantumpayments/gitpay",
@@ -1202,7 +1208,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-01",
     "note": "Two-line stub; npm 'gitpay' package maps to a different repo (gitpay/util), so no dependency link."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "quantumpayments/hook",
@@ -1226,7 +1234,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-01",
     "note": "README-only concept note on payment hooks, no code, abandoned 2016."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "quantumpayments/inartes",
@@ -1250,7 +1260,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-01",
     "note": "One-line 2016 stub, README+LICENSE only, no npm, no dependents, no data."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "quantumpayments/interledger",
@@ -1274,7 +1286,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-01",
     "note": "npm 'interledger' is the unrelated Interledger Team package, not from this stub repo."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "quantumpayments/lightning",
@@ -1298,7 +1312,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2018-01",
     "note": "One-line 2018 stub; npm 'lightning' is an unrelated third-party package."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "quantumpayments/master_slave",
@@ -1322,7 +1338,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-01",
     "note": "README concept note only, no npm entry, no code or data."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "quantumpayments/monitor",
@@ -1346,7 +1364,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-04",
     "note": "One-line stub; npm 'monitor' is Loren West's unrelated package."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "quantumpayments/mysql",
@@ -1370,7 +1390,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-05",
     "note": "One-line stub; npm 'mysql' is the famous unrelated driver package."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "quantumpayments/paymentchannel",
@@ -1394,7 +1416,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-02",
     "note": "npm pkg exists but v0.0.1/2016, 0 dependents, 88 dl/yr noise; archive is non-destructive so npm+repo link stay live."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "quantumpayments/paywall",
@@ -1418,7 +1442,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-01",
     "note": "Two-word stub; npm 'paywall' is an unrelated third-party package."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "quantumpayments/points",
@@ -1442,7 +1468,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-05",
     "note": "README brainstorm note; npm 'points' is an unrelated shape-data package."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "quantumpayments/quantumpayments.org",
@@ -1466,7 +1494,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-01",
     "note": "Empty stub, single 2016 commit, no code, no pages, no dependents; safe to archive."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "quantumpayments/taskify",
@@ -1490,7 +1520,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-01",
     "note": "Empty stub (README+LICENSE only); unrelated npm 'taskify' is a different project, no dependents."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "solid-live/WorldWideWeb",
@@ -2528,7 +2560,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-05",
     "note": "Experimental bash ledger-cycling scripts from 2016, no dependents or namespace."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "rww-apps/helloworld",
@@ -3122,8 +3156,8 @@
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
  },
  "archived": {
-  "count": 22,
+  "count": 39,
   "date": "2026-07-09",
-  "note": "22 melbotz/melbot_YYYYMMDD daily snapshots archived via gh repo archive (reversible; npm packages unaffected). All verified isArchived=true."
+  "note": "Archived via gh repo archive (reversible; npm packages unaffected): 22 melbot daily snapshots + 17 quantumpayments 2016 experiment stubs. All verified isArchived=true."
  }
 }
