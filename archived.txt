@@ -61,3 +61,5 @@ melvincarvalho/search
 melvincarvalho/rwwcoin
 melvincarvalho/bots
 melvincarvalho/scaffold
+melvincarvalho/lget
+melvincarvalho/chat

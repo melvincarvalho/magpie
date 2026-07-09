@@ -822,7 +822,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-04",
     "note": "README-only stub ('linked data get'), single 2016 commit, no forks/stars/dependents."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melvincarvalho/markbot",
@@ -2280,7 +2282,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2020-02",
     "note": "Static mashlib-based chat.html with no Pages/hosting; archiving blocks nothing live."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melvincarvalho/docs",
@@ -3198,7 +3202,7 @@
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
  },
  "archived": {
-  "count": 60,
+  "count": 62,
   "date": "2026-07-09",
   "note": "Archived via gh repo archive (reversible): 22 melbot snapshots, 17 quantumpayments, 5 spux, play-grounds/liquid, 5 solid-live. All verified isArchived=true."
  }
