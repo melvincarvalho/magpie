@@ -6,7 +6,7 @@
   "NEEDS-HUMAN": 19,
   "KEEP": 12
  },
- "count": 148,
+ "count": 149,
  "repos": [
   {
    "repo": "linkeddata/solid-app-set-archive",
@@ -3314,6 +3314,18 @@
    "stars": 0,
    "forks": 0,
    "source": "owner-selected quick-check (outside original 139)"
+  },
+  {
+   "repo": "melvincarvalho/solid-utils",
+   "whatItIs": "old solid utils stub (owner-selected)",
+   "verdict": "SAFE-ARCHIVE",
+   "confidence": 4,
+   "reason": "2-commit stub; no package.json, no live references in the mirror, ~8.6y dead",
+   "status": "archived",
+   "archivedAt": "2026-07-09",
+   "stars": 0,
+   "forks": 0,
+   "source": "owner-selected quick-check (outside original 139)"
   }
  ],
  "adversarialPass": {
@@ -3330,7 +3342,7 @@
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
  },
  "archived": {
-  "count": 81,
+  "count": 82,
   "date": "2026-07-09",
   "note": "Archived via gh repo archive (reversible): 22 melbot snapshots, 17 quantumpayments, 5 spux, play-grounds/liquid, 5 solid-live. All verified isArchived=true."
  }
