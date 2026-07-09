@@ -6,7 +6,7 @@
   "NEEDS-HUMAN": 19,
   "KEEP": 12
  },
- "count": 149,
+ "count": 154,
  "repos": [
   {
    "repo": "linkeddata/solid-app-set-archive",
@@ -3334,6 +3334,66 @@
    "stars": 0,
    "forks": 0,
    "source": "owner-selected quick-check (outside original 139)"
+  },
+  {
+   "repo": "melvincarvalho/20240326",
+   "whatItIs": "dated personal daily-note repo (2024 journaling series)",
+   "verdict": "SAFE-ARCHIVE",
+   "confidence": 4,
+   "reason": "personal daily-journal repo, no code, no package.json, no live references; owner-selected",
+   "status": "archived",
+   "archivedAt": "2026-07-09",
+   "stars": 0,
+   "forks": 0,
+   "source": "owner-selected (2024 dated series)"
+  },
+  {
+   "repo": "melvincarvalho/20240327",
+   "whatItIs": "dated personal daily-note repo (2024 journaling series)",
+   "verdict": "SAFE-ARCHIVE",
+   "confidence": 4,
+   "reason": "personal daily-journal repo, no code, no package.json, no live references; owner-selected",
+   "status": "archived",
+   "archivedAt": "2026-07-09",
+   "stars": 0,
+   "forks": 0,
+   "source": "owner-selected (2024 dated series)"
+  },
+  {
+   "repo": "melvincarvalho/20240328",
+   "whatItIs": "dated personal daily-note repo (2024 journaling series)",
+   "verdict": "SAFE-ARCHIVE",
+   "confidence": 4,
+   "reason": "personal daily-journal repo, no code, no package.json, no live references; owner-selected",
+   "status": "archived",
+   "archivedAt": "2026-07-09",
+   "stars": 0,
+   "forks": 0,
+   "source": "owner-selected (2024 dated series)"
+  },
+  {
+   "repo": "melvincarvalho/20240331",
+   "whatItIs": "dated personal daily-note repo (2024 journaling series)",
+   "verdict": "SAFE-ARCHIVE",
+   "confidence": 4,
+   "reason": "personal daily-journal repo, no code, no package.json, no live references; owner-selected",
+   "status": "archived",
+   "archivedAt": "2026-07-09",
+   "stars": 0,
+   "forks": 0,
+   "source": "owner-selected (2024 dated series)"
+  },
+  {
+   "repo": "melvincarvalho/20240413",
+   "whatItIs": "dated personal daily-note repo (2024 journaling series)",
+   "verdict": "SAFE-ARCHIVE",
+   "confidence": 4,
+   "reason": "personal daily-journal repo, no code, no package.json, no live references; owner-selected",
+   "status": "archived",
+   "archivedAt": "2026-07-09",
+   "stars": 0,
+   "forks": 0,
+   "source": "owner-selected (2024 dated series)"
   }
  ],
  "adversarialPass": {
@@ -3350,7 +3410,7 @@
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
  },
  "archived": {
-  "count": 86,
+  "count": 91,
   "date": "2026-07-09",
   "note": "Archived via gh repo archive (reversible): 22 melbot snapshots, 17 quantumpayments, 5 spux, play-grounds/liquid, 5 solid-live. All verified isArchived=true."
  }
