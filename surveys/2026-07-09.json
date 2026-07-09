@@ -6586,6 +6586,2194 @@
     "http://localhost:5445/bitcoin-desktop/bitcoin-mesh/",
     "https://github.com/bitcoin-desktop/bitcoin-mesh"
    ]
+  },
+  {
+   "repo": "melvincarvalho/skillify",
+   "pitch": "Generated SKILL.md frontmatter interpolates the package description into YAML unquoted, so any description containing ': ' or a ' #' (common in npm descriptions) produces invalid frontmatter that skill loaders reject.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "bin/skillify.js:166-168 \u2014 `let content = `---\\nname: ${name}\\ndescription: ${description}\\n---`` with no YAML quoting/escaping of `description` built in generateDescription() from pkg.description",
+   "score": 35,
+   "id": "skillify-generated-skillmd-frontmatter-interpolates-the",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/skillify/",
+    "https://github.com/melvincarvalho/skillify"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/skillify",
+   "pitch": "CLI version string '0.0.1' is hardcoded in three places instead of read from package.json, so the first version bump will make --version and the banner lie.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 1,
+   "confidence": 5,
+   "evidence": "bin/skillify.js:23,45,259 \u2014 literal 'skillify v0.0.1' / console.log('0.0.1') vs package.json version field",
+   "score": 20,
+   "id": "skillify-cli-version-string-001-is",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/skillify/",
+    "https://github.com/melvincarvalho/skillify"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/skillify",
+   "pitch": "The usage header promises `npx skill-gen btctx # npm package (fetches info)` but no npm-fetch mode exists \u2014 a bare package name just errors 'No package.json found'; delete the line or implement the fetch.",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 1,
+   "confidence": 5,
+   "evidence": "bin/skillify.js:9 \u2014 usage comment claims npm fetch; main() at bin/skillify.js:262-272 only resolves local paths and exits on missing package.json",
+   "score": 19,
+   "id": "skillify-the-usage-header-promises-npx",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/skillify/",
+    "https://github.com/melvincarvalho/skillify"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/xlogin",
+   "pitch": "Re-read window.nostr at the top of init() so late-injecting NIP-07 signers get the extension button and the ?webid= auto-trigger \u2014 the one-line option A from #18.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "xlogin.js:54 \u2014 `_ext = window.nostr || null` captured once at script load; init() at xlogin.js:679 never refreshes it",
+   "tags": [
+    "issue"
+   ],
+   "issueRefs": [
+    18
+   ],
+   "score": 66,
+   "id": "xlogin-reread-windownostr-at-the-top",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/xlogin/",
+    "https://github.com/melvincarvalho/xlogin"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/xlogin",
+   "pitch": "Add the data-pill='false' kill-switch and document window.xlogin.ready plus the accounts/currentAccount localStorage keys \u2014 clears both open doc issues (#24, #5) and unblocks apps that vendor a pill-suppressed fork.",
+   "kind": "feature",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "xlogin.js:359 \u2014 `shadow.appendChild(btn)` unconditional (no 'pill' string anywhere in the file); window.xlogin.ready defined at xlogin.js:654 but absent from README.md",
+   "tags": [
+    "issue"
+   ],
+   "issueRefs": [
+    24,
+    5
+   ],
+   "score": 50,
+   "id": "xlogin-add-the-datapillfalse-killswitch-and",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/xlogin/",
+    "https://github.com/melvincarvalho/xlogin"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/xlogin",
+   "pitch": "package.json declares a `nip07: \"*\"` dependency that is never imported anywhere (runtime pulls @noble/secp256k1, solid-oidc, nip98 and @noble/hashes from esm.sh) \u2014 drop it from dependencies.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 1,
+   "confidence": 4,
+   "evidence": "package.json dependencies block lists nip07 '*'; the only dynamic imports are xlogin.js:57,80,85,95 and none reference nip07",
+   "score": 16,
+   "id": "xlogin-packagejson-declares-a-nip07-dependency",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/xlogin/",
+    "https://github.com/melvincarvalho/xlogin"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/xlogin",
+   "pitch": "Pressing Escape does not close the login modal \u2014 only the Cancel button or a backdrop click does; add a keydown listener that calls the existing cancel() for standard dialog behavior.",
+   "kind": "feature",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "xlogin.js:433-440 \u2014 cancel() is wired only to .xl-cancel buttons and overlay backdrop click; no Escape/keydown handler anywhere in the file",
+   "tags": [
+    "graphical"
+   ],
+   "score": 33,
+   "id": "xlogin-pressing-escape-does-not-close",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/xlogin/",
+    "https://github.com/melvincarvalho/xlogin"
+   ]
+  },
+  {
+   "repo": "jsclaw/jsclaw.github.io",
+   "pitch": "The hero stats row is stale for v0.0.20: it claims '109 Tests passing' and '~57 kB Installed' while jsclaw@0.0.20 has 166 top-level test() cases and ~291 kB of published files \u2014 the same 109 figure is also baked into the og:image alt text and the og-image.svg/png, so the share card needs a re-render too.",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "index.html:512-514 \u2014 stat tiles '~57 kB / Installed' and '109 / Tests passing'; index.html:17 og:image:alt '\u2026109 tests\u2026'; og-image.svg:30 text '109'; jsclaw/jsclaw test/*.js contains 166 top-level test( calls and files[] (src/, bin/, container/, README, LICENSE) total 297,847 bytes",
+   "tags": [
+    "graphical"
+   ],
+   "score": 45,
+   "id": "jsclaw-github-io-the-hero-stats-row-is",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/jsclaw/jsclaw.github.io/",
+    "https://github.com/jsclaw/jsclaw.github.io"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/record-test",
+   "pitch": "The lockfile mismatch flagged in an earlier run and marked done was never actually fixed: package-lock.json still declares name 'records-smoke', version 1.0.0, license ISC against package.json's record-test/0.0.1/MIT \u2014 regenerate the lockfile.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "package-lock.json:2-4 and :8-10 \u2014 name 'records-smoke', version '1.0.0', license 'ISC'; package.json:2-3 \u2014 name 'record-test', version '0.0.1'; git log shows only the LICENSE commit (d31fd0a) touched the repo since the initial commit",
+   "score": 44,
+   "id": "record-test-the-lockfile-mismatch-flagged-in",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/record-test/",
+    "https://github.com/melvincarvalho/record-test"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/solid-login",
+   "pitch": "Logout leaves stale globals: doLogout() never clears window.solid.session / window.solid.webId, so after logout apps (including the repo's own demo whoami button) still see the old WebID and a dead Session \u2014 xlogin's equivalent onLogout nulls both.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "solid-login.js:56-67 \u2014 doLogout resets _webId/_session and the button but omits window.solid.session/webId, which loginSuccess set at solid-login.js:76-78; contrast xlogin.js:229-231 which nulls them on logout",
+   "score": 66,
+   "id": "solid-login-logout-leaves-stale-globals-dologout",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/solid-login/",
+    "https://github.com/melvincarvalho/solid-login"
+   ]
+  },
+  {
+   "repo": "nosdav/dnstr.org",
+   "pitch": "npm 'dnstr' is stuck at 0.0.1 published 2023-09-18, so the README-documented `npx dnstr npub1...` runs a 3-year-old version that predates the entire did:nostr resolver CLI and the bech32 checksum fix \u2014 publish 0.1.0.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "package.json:4 version 0.1.0 vs `npm view dnstr version` = 0.0.1 (time.modified 2023-09-18); README.md CLI section documents `npx dnstr npub1melv...`; checksum fix landed in repo commit c64d1ba (2026-07-08), never published.",
+   "score": 66,
+   "id": "dnstr-org-npm-dnstr-is-stuck-at",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nosdav/dnstr.org/",
+    "https://github.com/nosdav/dnstr.org"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/noskey",
+   "pitch": "Combining a fixed key with an unmatchable vanity string (e.g. `noskey -p <hex> -v zzzz`) spins the vanity loop forever at 100% CPU with no output, because the loop regenerates nothing when -p/-s is given \u2014 verified with timeout (exit 124).",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "bin/noskey.js:56-72 \u2014 while(true) sets privateKey = argv.p (constant) each iteration, so the startsWith(vanity) condition can never become true; should error out or check once when a fixed key is supplied.",
+   "score": 44,
+   "id": "noskey-combining-a-fixed-key-with",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/noskey/",
+    "https://github.com/melvincarvalho/noskey"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/noskey",
+   "pitch": "Root-level vanitygen.html (40 KB, green-terminal style, added 2025-07-01) is referenced by nothing and duplicates the newer web/ vanity miner \u2014 delete it or link it, since gh-pages serves it live at /noskey/vanitygen.html.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "vanitygen.html:1-30 (standalone 'Nostr Vanity Address Generator'); grep for 'vanitygen' across all md/html/js finds zero references; web/index.html + assets/vanity-worker.js implement the same feature with workers.",
+   "score": 32,
+   "id": "noskey-rootlevel-vanitygenhtml-40-kb-greenterminal",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/noskey/",
+    "https://github.com/melvincarvalho/noskey"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/noskey",
+   "pitch": "The polished web keygen page ships no favicon and no og:/twitter meta, so the browser tab shows a blank default icon and shares render bare \u2014 a one-line data-URI emoji icon would fix the tab.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "web/index.html:3-8 \u2014 head has charset/viewport/title/description only; no <link rel=\"icon\"> and no og: tags anywhere in the file.",
+   "tags": [
+    "graphical"
+   ],
+   "score": 40,
+   "id": "noskey-the-polished-web-keygen-page",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/noskey/",
+    "https://github.com/melvincarvalho/noskey"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/paa-pub",
+   "pitch": "README deploy Option B tells users to push to main so 'the workflow at .github/workflows/deploy.yml deploys automatically', but the repo has no .github directory at all \u2014 the documented CI/CD path cannot work.",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "README.md:46 references .github/workflows/deploy.yml; `ls -a` at repo root shows no .github directory.",
+   "score": 56,
+   "id": "paa-pub-readme-deploy-option-b-tells",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/paa-pub/",
+    "https://github.com/melvincarvalho/paa-pub"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/paa-pub",
+   "pitch": "The 'Deploy to Cloudflare Workers' button links to https://github.com/daryltd/paa.pub instead of this repo, so anyone clicking it from melvincarvalho/paa-pub forks a different project (or a dead URL).",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "README.md:16 \u2014 deploy.workers.cloudflare.com/?url=https://github.com/daryltd/paa.pub; repository is melvincarvalho/paa-pub.",
+   "score": 30,
+   "id": "paa-pub-the-deploy-to-cloudflare-workers",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/paa-pub/",
+    "https://github.com/melvincarvalho/paa-pub"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/paa-pub",
+   "pitch": "Every server-rendered UI page (dashboard, profile, storage, login) has no favicon link and no favicon in public/, so browsers 404 on /favicon.ico and every tab shows the default globe.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "src/ui/templates/layout.html:3-9 \u2014 head contains only charset/viewport/title/stylesheets, no <link rel=\"icon\">; public/ contains only css/ and scripts/.",
+   "tags": [
+    "graphical"
+   ],
+   "score": 40,
+   "id": "paa-pub-every-serverrendered-ui-page-dashboard",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/paa-pub/",
+    "https://github.com/melvincarvalho/paa-pub"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/paa-pub",
+   "pitch": "wrangler.toml is committed with the owner's real KV namespace IDs even though wrangler-example.toml exists as the template, so forks inherit IDs that fail against their accounts \u2014 gitignore wrangler.toml and keep only the example.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 3,
+   "evidence": "wrangler.toml:18,22 \u2014 id = 371b47cb3eaf48b082975ffec4d10c18 / e2f43635ca294cd2aff29a2ed2da08c3 where wrangler-example.toml has placeholder 'triplestore-kv-id'/'appdata-kv-id'; .gitignore does not exclude wrangler.toml.",
+   "score": 24,
+   "id": "paa-pub-wranglertoml-is-committed-with-the",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/paa-pub/",
+    "https://github.com/melvincarvalho/paa-pub"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/clgrep",
+   "pitch": "npm 'clgrep' is stuck at 0.0.1 (published 2026-01-19), predating the July rewrite that fixed searching the current transcript schema \u2014 README's `npm install -g clgrep` / `npx clgrep` therefore installs a version that misses matches in today's Claude Code logs; publish 0.1.0.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 4,
+   "confidence": 5,
+   "evidence": "package.json:3 version 0.1.0 vs `npm view clgrep version` = 0.0.1 (time.modified 2026-01-19); repo commit 9233b88 (2026-07-02) 'Fix search for current transcript schema and improve CLI' was never published; README.md Quick Start documents npm install -g clgrep.",
+   "score": 88,
+   "id": "clgrep-npm-clgrep-is-stuck-at",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/clgrep/",
+    "https://github.com/melvincarvalho/clgrep"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/clgrep",
+   "pitch": "Unknown flags are silently swallowed into the search string \u2014 `clgrep -i foo` (the grep muscle-memory flag) searches for the literal text '-i foo' and reports 0 matches instead of erroring with usage, violating the exit-code-2-on-usage-error contract the README advertises.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "bin/clgrep.js:25-37 \u2014 the arg loop matches only -h/-V/-s and pushes every other token (including dash-prefixed ones) into terms; README.md states exit code 2 is for 'usage or runtime errors'.",
+   "score": 40,
+   "id": "clgrep-unknown-flags-are-silently-swallowed",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/clgrep/",
+    "https://github.com/melvincarvalho/clgrep"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/vocab",
+   "pitch": "The README's Features, Language Grid, and Tech Stack sections still describe the old AngularJS/Solid app \u2014 'Frontend: AngularJS', 'Auth: Solid WebID', LDN, audio feedback, and ?lang1=/?lang2=/storageURI= links \u2014 but master's app hardcodes the Czech deck and ignores every URL parameter, so e.g. the 'Hungarian' link loads Czech.",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "README.md:69-74 Tech Stack lists AngularJS/ngAudio/Solid WebID/LDN and README.md:33-40 Language Grid passes lang1/lang2/storageURI params; index.html:409 hardcodes `const url = 'data/czech-en.ttl'`, setLang1/setLang2 (index.html:378-379) are never called, and no URLSearchParams/location.search or audio/*.mp3 reference exists in the file. Prior 'done' fix only rewrote the Quick Start (commit f073576).",
+   "score": 56,
+   "id": "vocab-the-readmes-features-language-grid",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/vocab/",
+    "https://github.com/melvincarvalho/vocab"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/vocab",
+   "pitch": "The page still titles itself 'Solid Words' although the rewritten app has no Solid integration, so the browser tab and PWA name ('Vocab' in manifest.json) disagree with each other and with the README's 'Vocab' branding.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:6 <title>Solid Words</title> vs manifest.json name 'Vocab'; no Solid/WebID code remains in index.html.",
+   "tags": [
+    "graphical"
+   ],
+   "score": 32,
+   "id": "vocab-the-page-still-titles-itself",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/vocab/",
+    "https://github.com/melvincarvalho/vocab"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/helloworld",
+   "pitch": "Deployed PWA manifest is broken: the icon 404s and start_url points into /assets/ \u2014 Vite hashes manifest.json into /helloworld/assets/manifest-*.json so its relative \"images/icon.png\" and \"index.html\" resolve to nonexistent /helloworld/assets/... paths (both verified 404 live); serve manifest.json from a public/ dir or use absolute /helloworld/ paths.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "manifest.json:5 (\"src\": \"images/icon.png\") and manifest.json:11 (\"start_url\": \"index.html\"); live: https://melvincarvalho.github.io/helloworld/assets/images/icon.png -> 404, /helloworld/images/icon.png -> 404",
+   "tags": [
+    "graphical"
+   ],
+   "score": 44,
+   "id": "helloworld-deployed-pwa-manifest-is-broken",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/helloworld/",
+    "https://github.com/melvincarvalho/helloworld"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/helloworld",
+   "pitch": "1.9 MB of dead pre-rewrite files ship in the repo: popup.html and the whole scripts/ dir (jquery.js, rdflib.min.js + .map, solid-auth-client.bundle.js, scripts/main.js) are referenced by nothing \u2014 the Vite app loads only /src/main.js \u2014 delete them.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:51 is the only script tag (<script type=\"module\" src=\"/src/main.js\">); du -sh scripts/ = 1.9M; grep shows popup.html/scripts/* referenced only by each other",
+   "issueRefs": [
+    7
+   ],
+   "tags": [
+    "issue"
+   ],
+   "score": 32,
+   "id": "helloworld-19-mb-of-dead-prerewrite",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/helloworld/",
+    "https://github.com/melvincarvalho/helloworld"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/gamestr",
+   "pitch": "Level-up confetti passes the invalid color '#gold' (not a hex value) to canvas-confetti, so the intended gold particles never render \u2014 replace with '#FFD700'.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:803 \u2014 colors: [labelColorMapping[key], '#ffffff', '#gold']",
+   "tags": [
+    "graphical"
+   ],
+   "score": 35,
+   "id": "gamestr-levelup-confetti-passes-the-invalid",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/gamestr/",
+    "https://github.com/melvincarvalho/gamestr"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/gamestr",
+   "pitch": "Remove ~50 lines of dead code in index.html: drawPieChart() is never called (and contains the 'Workkk' typo), getRandomColor() is never called, and isReconnecting/maxReconnectAttempts are set but never read; also fix the doneSound element declaring type=\"audio/ogg\" for an .mp3 file.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 1,
+   "confidence": 4,
+   "evidence": "index.html:850-866 (drawPieChart, unused), index.html:683-690 (getRandomColor, unused), index.html:453-455 (isReconnecting/maxReconnectAttempts never read), index.html:340-344 (.mp3 with type=audio/ogg)",
+   "score": 16,
+   "id": "gamestr-remove-50-lines-of-dead",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/gamestr/",
+    "https://github.com/melvincarvalho/gamestr"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/nostrgit",
+   "pitch": "The Issues page is built on the wrong NIP-34 kinds: it subscribes to kind 30618 as 'issues' and kind 1621 as 'replies', but per NIP-34 kind 1621 IS the issue kind (1622 is the reply, and 30618 is repository *state* announcements) \u2014 so real issues render as comments and repo-state events masquerade as issues; swap to kinds 1621/1622.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 4,
+   "confidence": 4,
+   "evidence": "index.html:804-813 (REQ kinds:[30618] labelled 'Subscribe to issues'), index.html:815-824 (REQ kinds:[1621] labelled 'issue replies'), index.html:840 and index.html:864 (handlers); repo page correctly uses 30617 at index.html:1291. parseIssueInfo even reads the 'subject' tag (index.html:947) that NIP-34 defines for kind-1621 issues, not 30618 state events.",
+   "score": 70,
+   "id": "nostrgit-the-issues-page-is-built",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/nostrgit/",
+    "https://github.com/melvincarvalho/nostrgit"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/poker",
+   "pitch": "index.html has no favicon and no og:/twitter meta despite being a polished public app \u2014 the tab shows the default globe and shared links render bare; add a <link rel=icon> (a card emoji SVG data-URI works) and og:title/description.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "index.html:3-6 \u2014 head contains only charset, viewport, title and <style>; grep for 'icon' and 'og:' in index.html matches nothing but JS 'log:' strings",
+   "tags": [
+    "graphical"
+   ],
+   "score": 40,
+   "id": "poker-indexhtml-has-no-favicon-and",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/poker/",
+    "https://github.com/melvincarvalho/poker"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/poker",
+   "pitch": "README never links the live app even though GitHub Pages serves it (verified https://melvincarvalho.github.io/poker/ returns 200) \u2014 add a Demo link under the title like the sibling repos have.",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "README.md:1-77 \u2014 grep -i 'demo|github.io' matches nothing; live URL verified 200",
+   "score": 30,
+   "id": "poker-readme-never-links-the-live",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/poker/",
+    "https://github.com/melvincarvalho/poker"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/poker",
+   "pitch": "Stray agent.did.json (a did:nostr DID document pointing seeAlso at init-agent.com/SKILL.md) sits in the repo root referenced by nothing and unrelated to the poker app \u2014 remove it or document why it's there.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 1,
+   "confidence": 3,
+   "evidence": "agent.did.json:1-24 \u2014 did:nostr:19a041d6...4104 doc; grep -rn 'agent.did' across the repo finds zero references",
+   "score": 12,
+   "id": "poker-stray-agentdidjson-a-didnostr-did",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/poker/",
+    "https://github.com/melvincarvalho/poker"
+   ]
+  },
+  {
+   "repo": "JavaScriptSolidServer/sso",
+   "pitch": "?resolver= is an unauthenticated attacker-controlled fetch-and-redirect target that auto-runs without any click: a crafted link like jss.live/sso/?resolver=https://evil.example silently sends the victim's Nostr pubkey to the attacker's host and then redirects the browser wherever the attacker's DID doc's alsoKnownAs points \u2014 allowlist known resolvers or require an explicit confirmation showing the host before running.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "login.js:37 (resolver taken raw from URL param), login.js:309-313 (presence of ?resolver auto-invokes run()), login.js:205 (fetch to ${resolver}/.well-known/... leaks pubkey), login.js:228-264 (redirect target taken from the fetched doc's alsoKnownAs with only an http/https protocol check); distinct from the prior open ?next= finding \u2014 different param, plus pubkey exfiltration",
+   "issueRefs": [
+    3
+   ],
+   "tags": [
+    "issue"
+   ],
+   "score": 66,
+   "id": "sso-resolver-is-an-unauthenticated-attackercontrolled",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/sso/",
+    "https://github.com/JavaScriptSolidServer/sso"
+   ]
+  },
+  {
+   "repo": "JavaScriptSolidServer/sso",
+   "pitch": "The manual-key form renders a pasted nsec in a plain visible text input \u2014 switch #manual-key to type=\"password\" (or mask dynamically when the value starts with nsec1) so private keys aren't exposed on screen even in the PoC.",
+   "kind": "security",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 3,
+   "evidence": "index.html:184-186 \u2014 <input id=\"manual-key\" autocomplete=\"off\" ...> with no type attribute (defaults to text) while the placeholder invites 'nsec1\u2026'; login.js:155-158 accepts and decodes nsec",
+   "score": 33,
+   "id": "sso-the-manualkey-form-renders-a",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/sso/",
+    "https://github.com/JavaScriptSolidServer/sso"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/yatl",
+   "pitch": "The README's first line is a stray 'test' left over from the repo's first commit, so the file opens with a meaningless word before the real title.",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "README:1 \u2014 line 1 is literally 'test' (also present in committed HEAD:README), before 'YATL - Yet Another Todo List'",
+   "score": 37,
+   "id": "yatl-the-readmes-first-line-is",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/yatl/",
+    "https://github.com/melvincarvalho/yatl"
+   ]
+  },
+  {
+   "repo": "melvincarvalho/yatl",
+   "pitch": "The finished Python and Node terminal re-implementations (yatl.py, yatl.js) plus the updated README are complete on disk but untracked/uncommitted, so git still only ships the 2009 YATL.ahk and a one-word README.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "git status: 'M README', '?? yatl.js', '?? yatl.py'; git ls-files shows only README + YATL.ahk",
+   "score": 32,
+   "id": "yatl-the-finished-python-and-node",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/melvincarvalho/yatl/",
+    "https://github.com/melvincarvalho/yatl"
+   ]
+  },
+  {
+   "repo": "spux/json.rocks",
+   "pitch": "scrapeUrl maps the fetched URL's raw legacy-parsed pathname straight into a filesystem cache path, so a request like /api?uri=https://github.com/../../../tmp/x lets an attacker read/write JSON files outside the ./data cache dir (path traversal / arbitrary-file-write).",
+   "kind": "security",
+   "effort": "small",
+   "impact": 4,
+   "confidence": 4,
+   "evidence": "bin/server.js:532-537 mapURI + :702-717 (fs.existsSync/readFile of mapped) + :881-884 fs.outputFile(mapURI) \u2014 url.parse keeps literal '../' (verified pathname='/../../etc/passwd'), mapped './data/github.com/../../../../tmp/x' resolves outside ./data; hostname passes the allowlist so validateSecureUrl doesn't stop it",
+   "score": 88,
+   "id": "json-rocks-scrapeurl-maps-the-fetched-urls",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/spux/json.rocks/",
+    "https://github.com/spux/json.rocks"
+   ]
+  },
+  {
+   "repo": "solid-apps/alarm",
+   "pitch": "Seeded ACL grants owner access to a hardcoded '/profile/card.jsonld#me' instead of the signed-in user's actual WebID (window.xlogin.id), so any user whose WebID lives elsewhere seeds an ACL that locks them out of their own alarms doc.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "index.html:536 \u2014 'acl:agent': { '@id': '/profile/card.jsonld#me' } inside ensureSeeded(); xl.id (the real WebID) is available at index.html:496-498 but unused in the ACL body",
+   "score": 53,
+   "id": "alarm-seeded-acl-grants-owner-access",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/alarm/",
+    "https://github.com/solid-apps/alarm"
+   ]
+  },
+  {
+   "repo": "solid-apps/alarm",
+   "pitch": "subscribeSolidWs discovers the updates-via WebSocket with a plain unauthenticated fetch, but the doc is now owner-only after the ACL fix, so the request can 401 and live multi-device sync silently never connects \u2014 use xlogin.authFetch.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 3,
+   "evidence": "index.html:891 \u2014 'try { r = await fetch(url); } catch { return; }' then reads r.headers.get('updates-via'); contrast owner-only ACL seeded at index.html:530-537",
+   "score": 26,
+   "id": "alarm-subscribesolidws-discovers-the-updatesvia-websocket",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/alarm/",
+    "https://github.com/solid-apps/alarm"
+   ]
+  },
+  {
+   "repo": "solid-apps/alarm",
+   "pitch": "AudioService never calls audioContext.resume(), so if the AudioContext is created outside a user gesture (page reloaded, alarm fires while user hasn't clicked) it stays 'suspended' under Chrome's autoplay policy and the alarm rings silently.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "index.html:676-696 \u2014 init() does new AudioContext() and play() starts the oscillator with no resume() call or state check; triggerAlarm (index.html:800) runs from a setInterval, not a gesture",
+   "score": 53,
+   "id": "alarm-audioservice-never-calls-audiocontextresume-so",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/alarm/",
+    "https://github.com/solid-apps/alarm"
+   ]
+  },
+  {
+   "repo": "solid-apps/alarm",
+   "pitch": "On browsers without the Notification API (iOS Safari) the app still renders the 'Enable Notifications' prompt whose button silently does nothing \u2014 detect unsupported and hide the prompt or show 'notifications not supported here'.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:1240-1242 \u2014 showNotificationPrompt = !NotificationService.hasPermission() is true when permission is the 'denied' fallback from index.html:638; requestPermission (index.html:640-644) just console.warns and returns false, leaving the prompt up",
+   "tags": [
+    "graphical"
+   ],
+   "score": 35,
+   "id": "alarm-on-browsers-without-the-notification",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/solid-apps/alarm/",
+    "https://github.com/solid-apps/alarm"
+   ]
+  },
+  {
+   "repo": "clawdocs/clawdocs.github.io",
+   "pitch": "The site's JSON-LD WebSite schema advertises a SearchAction at https://clawdocs.org/search but no search plugin is installed anywhere, so the advertised endpoint 404s and a 70+ page docs site ships with no search at all \u2014 add @easyops-cn/docusaurus-search-local (or Algolia) and align the structured data.",
+   "kind": "feature",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "docusaurus.config.ts:60-64 \u2014 potentialAction SearchAction targeting 'https://clawdocs.org/search?q={search_term_string}'; package.json has no search/algolia dependency and themeConfig has no algolia block",
+   "score": 63,
+   "id": "clawdocs-github-io-the-sites-jsonld-website-schema",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/clawdocs/clawdocs.github.io/",
+    "https://github.com/clawdocs/clawdocs.github.io"
+   ]
+  },
+  {
+   "repo": "nostr-client/ameba",
+   "pitch": "bus.send() with both channel:{id,sk} and to double-encrypts (channel layer then direct layer) and pushes two enc tags, but listen() only reads the first enc tag and only ever peels one layer, so any channel+direct message is undeliverable to everyone \u2014 reject the combination or handle nested decryption.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "botbus.js:85-97 \u2014 channel branch encrypts content and tags ['enc','nip44-channel'], then the to branch re-encrypts the ciphertext and tags ['enc','nip44']; botbus.js:124 reads only tags.find('enc') (first tag) and botbus.js:126-132 decrypts a single layer, so decrypt throws or the 'else if (enc) return' drops it",
+   "score": 35,
+   "id": "ameba-bussend-with-both-channelidsk-and",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/ameba/",
+    "https://github.com/nostr-client/ameba"
+   ]
+  },
+  {
+   "repo": "nostr-client/ameba",
+   "pitch": "memory.recallAll() fetches at most 200 kind-30078 events with no pagination, so once an agent has remembered more than ~200 keys older memories silently vanish from recallAll while recall(key) still finds them \u2014 document the cap or paginate with until.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "memory.js:63 \u2014 p.list([{ kinds: [KIND_APPDATA], authors: [pk], limit: 200 }]) is the only query; the newest-wins dedupe at memory.js:64-68 also means the 200 may be mostly superseded revisions of the same keys",
+   "score": 35,
+   "id": "ameba-memoryrecallall-fetches-at-most-200",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/ameba/",
+    "https://github.com/nostr-client/ameba"
+   ]
+  },
+  {
+   "repo": "nostr-client/chess",
+   "pitch": "openGame pushes '#<id>' history entries but there is no popstate/hashchange listener, so the browser back button (and pasting a new game hash into the address bar of an open tab) changes the URL while the board silently stays on the old game \u2014 chat/index.html in the sibling repo already shows the popstate pattern.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "index.html:249 \u2014 history.pushState({}, '', '#' + id) in openGame; grep finds no popstate or hashchange handler anywhere in the file (only the load-time hash check at index.html:288-289)",
+   "score": 44,
+   "id": "chess-opengame-pushes-id-history-entries",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/chess/",
+    "https://github.com/nostr-client/chess"
+   ]
+  },
+  {
+   "repo": "nostr-client/chess",
+   "pitch": "Pawn promotion is hardcoded to queen with no picker, so underpromotion (e.g. knight to avoid stalemate) is impossible for the local player even though the protocol carries full SAN and would replay it fine for the opponent.",
+   "kind": "feature",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "index.html:123 \u2014 game.move({ from: orig, to: dest, promotion: 'q' }) is the only promotion path in onUserMove",
+   "score": 42,
+   "id": "chess-pawn-promotion-is-hardcoded-to",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/chess/",
+    "https://github.com/nostr-client/chess"
+   ]
+  },
+  {
+   "repo": "nostr-client/chat",
+   "pitch": "The room rail throws away its own activity ranking: topIds is sorted by message count but rooms are painted in whatever order the kind-40 definitions arrive from relays, so the busiest rooms land in random positions \u2014 insert into the Map in topIds order (or sort in paintRooms).",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:244 computes topIds sorted by count, but index.html:246-252 does rooms.set(d.id, ...) in pool.list arrival order and paintRooms (index.html:133-137) iterates Map insertion order",
+   "tags": [
+    "graphical"
+   ],
+   "score": 32,
+   "id": "chat-the-room-rail-throws-away",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/chat/",
+    "https://github.com/nostr-client/chat"
+   ]
+  },
+  {
+   "repo": "nostr-client/chat",
+   "pitch": "NIP-28 moderation events are ignored \u2014 kind 43 (hide message) and kind 44 (mute user) are never subscribed or applied, so the notoriously spammy public channels render everything other clients hide; honoring the channel creator's kind-43/44 events would make busy rooms usable.",
+   "kind": "feature",
+   "effort": "medium",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:192-195 \u2014 the room subscription requests only kinds:[42]; no other kind-43/44 handling exists in the file (NIP-28 defines both as part of public chat)",
+   "score": 24,
+   "id": "chat-nip28-moderation-events-are-ignored",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/chat/",
+    "https://github.com/nostr-client/chat"
+   ]
+  },
+  {
+   "repo": "nostr-client/groups",
+   "pitch": "Thread rows for posts without a NIP-14 subject tag print the first line twice: the subject falls back to content.split('\\n')[0].slice(0,70) and the snippet then re-appends the same content, so most posts from other NIP-72 clients render as 'Hello world \u2014 Hello world \u2026' in the list.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:240-245 \u2014 subject fallback is post.content.split('\\n')[0].slice(0,70); snip.textContent = '\u2014 ' + post.content.split('\\n\u2014\\n')[0]...slice(0,90) appended to the same row",
+   "tags": [
+    "graphical"
+   ],
+   "score": 35,
+   "id": "groups-thread-rows-for-posts-without",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/groups/",
+    "https://github.com/nostr-client/groups"
+   ]
+  },
+  {
+   "repo": "nostr-client/groups",
+   "pitch": "On <=760px the app grid collapses to one column so the entire rail (compose + Your groups + up to 25 Discover buttons) stacks above the thread list and the internal .scroll pane loses its height constraint \u2014 mobile users scroll past a wall of group buttons to reach any content; cap the rail height or move it behind a toggle.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 3,
+   "evidence": "index.html:91-93 \u2014 @media (max-width: 760px) { .app { grid-template-columns: 1fr; } .rail { flex-direction: row; flex-wrap: wrap; overflow-x: auto; } } with implicit auto-height rows, defeating the 100vh/.scroll layout from index.html:20,60",
+   "tags": [
+    "graphical"
+   ],
+   "score": 26,
+   "id": "groups-on-760px-the-app-grid",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/groups/",
+    "https://github.com/nostr-client/groups"
+   ]
+  },
+  {
+   "repo": "nostr-client/purse",
+   "pitch": "og:image and twitter summary_large_image point to https://nostr-client.github.io/purse/og.png but the repo contains no og.png (unlike sibling apps groups/did-nostr which ship one), so every social share of the wallet renders a broken/blank preview card.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "index.html:10 \u2014 <meta property=\"og:image\" content=\"https://nostr-client.github.io/purse/og.png\">; git ls-files shows only LICENSE, README.md, index.html",
+   "tags": [
+    "graphical"
+   ],
+   "score": 44,
+   "id": "purse-ogimage-and-twitter-summarylargeimage-point",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/purse/",
+    "https://github.com/nostr-client/purse"
+   ]
+  },
+  {
+   "repo": "nostr-client/did-nostr",
+   "pitch": "Leftover debug hook: commit e0b4611 added two debug globals and the follow-up 'remove debug hook' commit (9fafb6d) deleted only window.__lastClick, leaving window.__nodes = nodes exported on every graph draw.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 1,
+   "confidence": 5,
+   "evidence": "index.html:155 \u2014 window.__nodes = nodes; git show 9fafb6d removes only the window.__lastClick line of the pair added in e0b4611",
+   "score": 20,
+   "id": "did-nostr-leftover-debug-hook-commit-e0b4611",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/did-nostr/",
+    "https://github.com/nostr-client/did-nostr"
+   ]
+  },
+  {
+   "repo": "nostr-client/did-nostr",
+   "pitch": "The lede promises 'Paste anything' but parseInput() uses nip19 decode(), so pasted nprofile1\u2026/nostr:npub1\u2026 strings (the common copy format from nostr clients) fail with 'not a key I understand' even though the already-imported nip19.js ships decodeAny() built exactly for pasted UI-edge strings \u2014 a one-line swap plus type filter.",
+   "kind": "feature",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:85-89 \u2014 parseInput() calls decode(raw); nip19/nip19.js:120-122 \u2014 decodeAny() strips nostr: prefix and handles nprofile/nevent/naddr",
+   "score": 33,
+   "id": "did-nostr-the-lede-promises-paste-anything",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/did-nostr/",
+    "https://github.com/nostr-client/did-nostr"
+   ]
+  },
+  {
+   "repo": "solid/solid-oidc",
+   "pitch": "index.bs uses JWS and JWE in the ID Token and DPoP Proof definitions without defining them or citing RFC 7515/7516 (every other cited spec resolves via the biblio; the primer does cite RFC7515), so the published spec has dangling undefined terms \u2014 confirms open issue #220.",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.bs:85 'encoded in a JWS or JWE' and index.bs:100 'signed (using JWS)'; grep shows no RFC7515/RFC7516 anywhere in index.bs biblio or citations",
+   "tags": [
+    "issue"
+   ],
+   "issueRefs": [
+    220
+   ],
+   "score": 30,
+   "id": "solid-oidc-indexbs-uses-jws-and-jwe",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/solid/solid-oidc/",
+    "https://github.com/solid/solid-oidc"
+   ]
+  },
+  {
+   "repo": "solid/solid-oidc",
+   "pitch": "Four un-reported typos in the published Primer: 'Sets to body's content type' (should be 'Sets the'), 'they all must access urlencoded content types' (should be 'accept'), 'does not correspond the the http method', and 'the AS retreives the user's WebId document' \u2014 one small copy-edit PR fixes all.",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "primer/index.bs:493 ('Sets to body's'), :495 ('must access urlencoded'), :772 ('correspond the the'), :797 ('retreives ... WebId')",
+   "issueRefs": [],
+   "score": 37,
+   "id": "solid-oidc-four-unreported-typos-in-the",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/solid/solid-oidc/",
+    "https://github.com/solid/solid-oidc"
+   ]
+  },
+  {
+   "repo": "nostr-client/btcnostr",
+   "pitch": "The 'Free tBTC' faucet page links three testnet3 faucets, but the wallet defaults to testnet4 \u2014 new users following the onboarding steps fund the wrong chain and their tip wallet stays empty.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 4,
+   "confidence": 4,
+   "evidence": "index.html:230-232 links coinfaucet.eu/en/btc-testnet/, bitcoinfaucet.uo1.net, testnet-faucet.com/btc-testnet/ (all testnet3), while wallet/wallet.js:67 defaults preferredNetwork() to 'testnet4' whose faucets (wallet.js:36-39) are coinfaucet.eu/en/btc-testnet4/ and faucet.testnet4.dev",
+   "score": 70,
+   "id": "btcnostr-the-free-tbtc-faucet-page",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/btcnostr/",
+    "https://github.com/nostr-client/btcnostr"
+   ]
+  },
+  {
+   "repo": "nostr-client/btcnostr",
+   "pitch": "On mobile (<=860px) the sidebar is display:none and the bottombar only has home/explore/wallet/notifications/search, so phone users cannot log in, sign up, or reach Settings/Faucet/Leaderboard/Blog/FAQ at all.",
+   "kind": "bug",
+   "effort": "medium",
+   "impact": 4,
+   "confidence": 5,
+   "evidence": "index.html:127 `.side { display: none }` in the max-width:860px media query; the only auth UI (<nostr-login> + Sign Up link, index.html:154-155) and the Settings/Faucet/Leaderboard nav (index.html:163-173) live exclusively in that sidebar; bottombar (index.html:287-293) has just 5 views",
+   "tags": [
+    "graphical"
+   ],
+   "score": 64,
+   "id": "btcnostr-on-mobile-860px-the-sidebar",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/btcnostr/",
+    "https://github.com/nostr-client/btcnostr"
+   ]
+  },
+  {
+   "repo": "nostr-client/btcnostr",
+   "pitch": "The Tip Leaderboard ranks people by summing self-published 'amount' tags on kind-1 receipts without checking the attached txid on-chain, so anyone can top the board with fabricated tips.",
+   "kind": "security",
+   "effort": "medium",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "index.html:479-483 \u2014 loadLeaderboard() lists kind-1 events tagged #t=onchain-tip and adds Number(ev.tags.find(t => t[0]==='amount')?.[1]) per pubkey; the 'tx' tag is never verified against mempool.space",
+   "score": 40,
+   "id": "btcnostr-the-tip-leaderboard-ranks-people",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/btcnostr/",
+    "https://github.com/nostr-client/btcnostr"
+   ]
+  },
+  {
+   "repo": "nostr-client/wallet",
+   "pitch": "Fee estimation counts every output as 31 vB but the primary flow pays taproot (tb1p) outputs which are 43 vB, so at the 1 sat/vB floor common on testnet the built tx lands below min-relay fee and mempool.space rejects the broadcast.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "wallet.js:197 `vsize = (ins, outs) => Math.ceil(10.5 + inVb * ins + 31 * outs)` (and wallet.js:176 in maxSendable) \u2014 31 vB is a P2WPKH output; P2TR outputs are 43 vB, and both the npub-derived recipient address (wallet.js:94, always p2tr) and nostr-native change (wallet.js:219) are taproot, so a 1-in/2-out tx is estimated 131 vB vs ~154 actual (~0.85 sat/vB at rate 1)",
+   "score": 53,
+   "id": "wallet-fee-estimation-counts-every-output",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/wallet/",
+    "https://github.com/nostr-client/wallet"
+   ]
+  },
+  {
+   "repo": "nostr-client/wallet",
+   "pitch": "publishAddressToProfile() rebuilds kind-0 from whatever one relay get() returns \u2014 if the fetch misses (relay down/slow), it publishes a profile containing only the btc field, wiping the user's name, picture, and bio.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 3,
+   "evidence": "wallet.js:234-241 \u2014 `const existing = await defaultPool().get(...); let content = {}; if (existing) {...}` then signs kind-0 with `JSON.stringify(content)`; no guard or local-cache fallback (globalThis.__nostrClientProfiles cache is written at wallet.js:244 but never read before publishing)",
+   "score": 40,
+   "id": "wallet-publishaddresstoprofile-rebuilds-kind0-from-whatever",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/wallet/",
+    "https://github.com/nostr-client/wallet"
+   ]
+  },
+  {
+   "repo": "nostr-client/wallet",
+   "pitch": "testnet3 and testnet4 share the same kind-0 profile field 'btc_test' while wallet keys are stored per-network, so a tipper on testnet4 pays an address whose key exists only in the recipient's testnet3 wallet (valid on both chains, same 'tb1' prefix) and the recipient never sees the sats.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 3,
+   "evidence": "wallet.js:35 and wallet.js:46 both set `profileField: 'btc_test'`, but wallet.js:61 scopes stored keys per network (`nostr-client:btc-wallet:${network}:${scope}`); btc-tip-button reads the field for whatever network the sender uses (wallet.js:584-586)",
+   "score": 26,
+   "id": "wallet-testnet3-and-testnet4-share-the",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/wallet/",
+    "https://github.com/nostr-client/wallet"
+   ]
+  },
+  {
+   "repo": "nostr-client/wallet",
+   "pitch": "The send form placeholder is hardcoded 'send to tb1\u2026' even when the wallet is on mainnet, where addresses start bc1 \u2014 misleading right where users paste real-money addresses.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "wallet.js:394 `to.placeholder = 'send to tb1\u2026'` regardless of w.networkName (mainnet exists per NETWORKS at wallet.js:52-58)",
+   "tags": [
+    "graphical"
+   ],
+   "score": 40,
+   "id": "wallet-the-send-form-placeholder-is",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/wallet/",
+    "https://github.com/nostr-client/wallet"
+   ]
+  },
+  {
+   "repo": "nostr-client/wallet",
+   "pitch": "Once the tip button shows 'log in to tip' it never resets: after the user logs in, the button keeps that label forever (until a successful tip), because _open() only writes the label and nothing restores it on nostr:login or on a later open.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "wallet.js:580 `if (!window.nostrPubkey) { this.$('label').textContent = 'log in to tip'; return }` \u2014 no listener for nostr:login and no label reset in the logged-in branch of _open(); label only reverts via the setTimeout after a successful _tip() (wallet.js:620)",
+   "tags": [
+    "graphical"
+   ],
+   "score": 35,
+   "id": "wallet-once-the-tip-button-shows",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/wallet/",
+    "https://github.com/nostr-client/wallet"
+   ]
+  },
+  {
+   "repo": "nostr-client/bookface",
+   "pitch": "On phones (<=760px) the left menu is display:none with no substitute nav (unlike btcnostr's bottombar), so Friends, Notifications, and Profile views are completely unreachable on mobile.",
+   "kind": "bug",
+   "effort": "medium",
+   "impact": 4,
+   "confidence": 5,
+   "evidence": "index.html:60 `@media (max-width: 760px) { .app { grid-template-columns: 1fr; } .leftcol { display: none; } }` \u2014 the #menu buttons (index.html:72-78) are the only way to switch views and live inside .leftcol; no bottombar or header nav exists",
+   "tags": [
+    "graphical"
+   ],
+   "score": 64,
+   "id": "bookface-on-phones-760px-the-left",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/bookface/",
+    "https://github.com/nostr-client/bookface"
+   ]
+  },
+  {
+   "repo": "nostr-client/birdsite",
+   "pitch": "Dim and Lights-out display modes leave the sticky tab bar, viewbar, compose modal box, and mobile bottombar hard-coded white (rgb(255 255 255/\u2026)/#fff), so switching to dark mode shows glaring white chrome over the dark feed; swap those literals for var(--nc-bg)/color-mix so the display-mode overrides reach them.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 4,
+   "confidence": 4,
+   "evidence": "index.html:44 (.tabs background: rgb(255 255 255 / 85%)), :55 (.viewbar same), :78 (.modal .box background: #fff), :88 (.bottombar rgb(255 255 255 / 94%)) vs applyMode() at :268-275 which only overrides --nc-* variables on :root",
+   "tags": [
+    "graphical"
+   ],
+   "score": 70,
+   "id": "birdsite-dim-and-lightsout-display-modes",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/birdsite/",
+    "https://github.com/nostr-client/birdsite"
+   ]
+  },
+  {
+   "repo": "nostr-client/dittly",
+   "pitch": "On mobile (<=1000px) both side columns are display:none, which removes login, the composer, AND all navigation (Notifications/Search/Profile) \u2014 phone users get a read-only federated feed with no way to reach any other view; add a bottom bar like birdsite/skyline already have.",
+   "kind": "bug",
+   "effort": "medium",
+   "impact": 4,
+   "confidence": 5,
+   "evidence": "index.html:59-60 \u2014 @media (max-width: 1000px) { .left, .right { display: none; } }; nostr-login/nostr-composer live only in .left (:69-70) and the #nav navlist only in .right (:102-107)",
+   "tags": [
+    "graphical"
+   ],
+   "score": 64,
+   "id": "dittly-on-mobile-1000px-both-side",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/dittly/",
+    "https://github.com/nostr-client/dittly"
+   ]
+  },
+  {
+   "repo": "nostr-client/dittly",
+   "pitch": "The Home (following) tab caches `follows` but never listens for nostr:contacts-changed, so following/unfollowing someone doesn't update the home timeline until a full reload \u2014 birdsite (index.html:351) and skyline (index.html:308) both invalidate on that event.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:193-194 \u2014 only nostr:login/nostr:logout reset `follows = null`; no nostr:contacts-changed listener anywhere in the file",
+   "score": 35,
+   "id": "dittly-the-home-following-tab-caches",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/dittly/",
+    "https://github.com/nostr-client/dittly"
+   ]
+  },
+  {
+   "repo": "nostr-client/dittly",
+   "pitch": "The hashtag view (#view-tag) has no back button and hides the tab bar context, unlike thread and person views which both have '\u2190 back' \u2014 after clicking a hashtag the only way out is browser back or a right-column nav click that mobile users don't have.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:98 \u2014 <div class=\"view\" id=\"view-tag\"> contains only the feed, while view-thread (:90) and view-person (:94) each start with a .back button",
+   "tags": [
+    "graphical"
+   ],
+   "score": 35,
+   "id": "dittly-the-hashtag-view-viewtag-has",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/dittly/",
+    "https://github.com/nostr-client/dittly"
+   ]
+  },
+  {
+   "repo": "nostr-client/jumbly",
+   "pitch": "The composer says 'Say something on this relay\u2026' and the README promises 'post to it', but the nostr-composer never gets a relays attribute and is never updated when currentRelay changes, so posts always go to the default pool relays instead of the browsed relay \u2014 composer.js already supports relays=\"\u2026\" so applyMode() just needs to set it.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 4,
+   "confidence": 4,
+   "evidence": "index.html:85 \u2014 <nostr-composer placeholder=\"Say something on this relay\u2026\"> with no relays attribute; applyMode() (:156-167) only touches #home-feed; composer/composer.js:99-100 \u2014 `const relays = this.getAttribute('relays'); this.pool = relays ? new Pool(...) : defaultPool()`",
+   "score": 70,
+   "id": "jumbly-the-composer-says-say-something",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/jumbly/",
+    "https://github.com/nostr-client/jumbly"
+   ]
+  },
+  {
+   "repo": "nostr-client/jumbly",
+   "pitch": "Hashtags in notes are dead links in jumbly: note.js preventDefaults the click and emits nostr:hashtag-click, but jumbly registers no listener for it (and has no tag view), so clicking a #hashtag does nothing at all.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "index.html has no 'nostr:hashtag-click' listener and no view-tag; note/note.js:113-118 \u2014 click handler calls e.preventDefault() then dispatches the CustomEvent, so without a listener the click is a no-op",
+   "score": 53,
+   "id": "jumbly-hashtags-in-notes-are-dead",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/jumbly/",
+    "https://github.com/nostr-client/jumbly"
+   ]
+  },
+  {
+   "repo": "nostr-client/jumbly",
+   "pitch": "Quoting a note from the thread or profile view silently fails: jumbly has no nostr:quote handler, so reactions.js falls back to inserting into document.querySelector('nostr-composer') \u2014 which lives inside #view-home and is display:none while the thread view is active.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:57 (.view { display: none }) with the only composer at :85 inside #view-home; reactions/reactions.js:155-157 \u2014 default quote path does composer?.insert?.(text) with no visibility check",
+   "score": 35,
+   "id": "jumbly-quoting-a-note-from-the",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/jumbly/",
+    "https://github.com/nostr-client/jumbly"
+   ]
+  },
+  {
+   "repo": "nostr-client/jumbly",
+   "pitch": "The custom-relay input swallows all errors (`catch {}`) and accepts any URL scheme, so typing 'relay.damus.io' (no wss://) silently does nothing and pasting an https:// URL sets a relay that can never connect \u2014 validate for wss:// and show a hint.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:179-181 \u2014 custom.onchange = () => { try { currentRelay = new URL(custom.value).href.replace(/\\/$/, ''); \u2026 } catch {} } with no scheme check and no user feedback",
+   "score": 32,
+   "id": "jumbly-the-customrelay-input-swallows-all",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/jumbly/",
+    "https://github.com/nostr-client/jumbly"
+   ]
+  },
+  {
+   "repo": "nostr-client/skyline",
+   "pitch": "The Quote button silently does nothing outside the home view: skyline has no nostr:quote handler, so reactions.js inserts the quote text into the composer inside #composer-wrap, which is display:none unless opened and lives in the inactive home view \u2014 copy birdsite's handler (openComposer + insert).",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "index.html:86-87 \u2014 #composer-wrap { display: none } (only .open shows it) and no 'nostr:quote' listener in the file; reactions/reactions.js:155-157 default inserts into the first nostr-composer; birdsite/index.html:249-253 shows the intended pattern",
+   "score": 53,
+   "id": "skyline-the-quote-button-silently-does",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/skyline/",
+    "https://github.com/nostr-client/skyline"
+   ]
+  },
+  {
+   "repo": "nostr-client/skyline",
+   "pitch": "A bluesky replica with no dark mode: skyline hard-codes a light palette on :root and theme.css pins color-scheme: light, so dark-scheme users get a white app \u2014 bsky's dim/dark look is one alternate token set away, and sibling birdsite already ships a 3-mode display toggle to crib from.",
+   "kind": "feature",
+   "effort": "medium",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "index.html:18-35 \u2014 light-only --nc-* tokens with no prefers-color-scheme block or toggle; theme/theme.css:16 \u2014 color-scheme: light; birdsite/index.html:256-282 has the reusable MODES/applyMode pattern",
+   "tags": [
+    "graphical"
+   ],
+   "score": 36,
+   "id": "skyline-a-bluesky-replica-with-no",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/skyline/",
+    "https://github.com/nostr-client/skyline"
+   ]
+  },
+  {
+   "repo": "nostr-client/starter",
+   "pitch": "Copying the secret key \u2014 the single most important act in the whole onboarding \u2014 gives zero feedback: clicking the nsec (or npub) calls clipboard.writeText with no 'copied!' confirmation, so users can't tell whether their key was actually saved before ticking 'I copied my key somewhere safe'.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "index.html:185 \u2014 $('nsec').onclick = () => navigator.clipboard?.writeText(...) and :216 same for npub; no textContent/class change on success anywhere",
+   "tags": [
+    "graphical"
+   ],
+   "score": 53,
+   "id": "starter-copying-the-secret-key-the",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/starter/",
+    "https://github.com/nostr-client/starter"
+   ]
+  },
+  {
+   "repo": "nostr-client/starter",
+   "pitch": "If none of the starter-pack profiles resolve from relays, step 3 shows 'finding people\u2026' forever with no timeout or fallback, and Publish then skips the kind-3 entirely \u2014 the new user ends up following nobody with an empty Following feed in every client; after a timeout, render the pack rows with placeholder names instead.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 3,
+   "evidence": "index.html:90 (static 'finding people\u2026' status), :151-182 (rows appended only inside profiles().get callbacks), :201-207 (`if (follows.length)` skips publishing kind 3 when no rows rendered)",
+   "score": 26,
+   "id": "starter-if-none-of-the-starterpack",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/starter/",
+    "https://github.com/nostr-client/starter"
+   ]
+  },
+  {
+   "repo": "nostr-client/starter",
+   "pitch": "A non-https avatar URL is silently discarded at publish time (pic.startsWith('https://') gate) with no validation message on the input, so users who paste an http:// or bare URL get a profile without a picture and never learn why.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:197-198 \u2014 `const pic = $('picture').value.trim(); if (pic.startsWith('https://')) content.picture = pic` with no else branch or input feedback",
+   "score": 32,
+   "id": "starter-a-nonhttps-avatar-url-is",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/starter/",
+    "https://github.com/nostr-client/starter"
+   ]
+  },
+  {
+   "repo": "nostr-client/nostr-client.github.io",
+   "pitch": "The org front door hard-codes a light scheme (color-scheme: light, white background) with no dark variant, so dark-mode visitors get a blinding white page from a project that ships ten themes including midnight.",
+   "kind": "feature",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:17-21 \u2014 :root { color-scheme: light; ... } body { background: #fff }; no prefers-color-scheme block anywhere in the file",
+   "tags": [
+    "graphical"
+   ],
+   "score": 33,
+   "id": "nostr-client-github-io-the-org-front-door-hardcodes",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/nostr-client.github.io/",
+    "https://github.com/nostr-client/nostr-client.github.io"
+   ]
+  },
+  {
+   "repo": "nostr-client/embed",
+   "pitch": "The hashtag embed inserts the user's input into the snippet attribute and the live-preview innerHTML with no validation or escaping, so a value containing a double quote or > breaks out of the hashtag attribute in the generated snippet and injects markup into the preview.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "index.html:99-102 \u2014 value.replace(/^#/,'').toLowerCase() then interpolated raw into `hashtag=\"${value}\"`; index.html:120-121 renders that string via tmp.innerHTML. Contrast the guestbook branch (line 105) which at least strips quotes; feed/profile branches validate hex. Fix: restrict to /^[\\p{L}\\p{N}_]+$/u or strip \"<>.",
+   "score": 44,
+   "id": "embed-the-hashtag-embed-inserts-the",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/embed/",
+    "https://github.com/nostr-client/embed"
+   ]
+  },
+  {
+   "repo": "nostr-client/embed",
+   "pitch": "The Copy button gives zero feedback \u2014 no 'Copied!' state, and a clipboard failure (navigator.clipboard undefined over non-secure contexts or denied permission) is silently swallowed, so users cannot tell whether the snippet was copied.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:133-136 \u2014 copy handler is `if (snip) navigator.clipboard?.writeText(snip)` with no .then feedback, no textContent change, no error path",
+   "tags": [
+    "graphical"
+   ],
+   "score": 35,
+   "id": "embed-the-copy-button-gives-zero",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/embed/",
+    "https://github.com/nostr-client/embed"
+   ]
+  },
+  {
+   "repo": "nostr-client/pulse",
+   "pitch": "pulse never calls restoreTheme(), so the theme a user picked in micro/monty Settings (shared localStorage key 'nostr-client:theme' on the same origin) is ignored \u2014 midnight users get a bright light page from the app pitched as a screensaver.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:76-77 imports only pool.js; no import of theme/themes.js anywhere, while micro/index.html:117 and monty/index.html:186 both call restoreTheme(). Two-line fix; all ten theme accents are 6-digit hex so the chart's `accent + '22'` alpha trick (index.html:151) keeps working.",
+   "tags": [
+    "graphical"
+   ],
+   "score": 35,
+   "id": "pulse-pulse-never-calls-restoretheme-so",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/pulse/",
+    "https://github.com/nostr-client/pulse"
+   ]
+  },
+  {
+   "repo": "nostr-client/pulse",
+   "pitch": "KIND_NAMES defines 34550 'communities' but the firehose subscription never requests kind 34550, so that label is dead code \u2014 either add 34550 to the filter or drop the entry.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 1,
+   "confidence": 5,
+   "evidence": "index.html:79-81 \u2014 KIND_NAMES includes `34550: 'communities'`; index.html:92 \u2014 subscribe filter kinds list [0,1,3,5,6,7,1059,1311,9735,10002,30023,30315] omits 34550",
+   "score": 20,
+   "id": "pulse-kindnames-defines-34550-communities-but",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/pulse/",
+    "https://github.com/nostr-client/pulse"
+   ]
+  },
+  {
+   "repo": "nostr-client/pulse",
+   "pitch": "The authors Set and tags Map grow without bound for the life of the tab; on a page the README explicitly pitches as 'a nice screensaver', a multi-hour session accumulates hundreds of thousands of 64-char strings \u2014 cap or periodically prune them.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 3,
+   "evidence": "index.html:86-88 \u2014 `const authors = new Set(); const kinds = new Map(); const tags = new Map()` with adds at 95-101 and no eviction anywhere; README.md:12 'and a nice screensaver'",
+   "score": 24,
+   "id": "pulse-the-authors-set-and-tags",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/pulse/",
+    "https://github.com/nostr-client/pulse"
+   ]
+  },
+  {
+   "repo": "nostr-client/micro",
+   "pitch": "themes.js is imported twice \u2014 once for restoreTheme at line 117 and again as a bare awaited import at line 121 \u2014 the second import is a no-op (module cache) and can be deleted.",
+   "kind": "cleanup",
+   "effort": "small",
+   "impact": 1,
+   "confidence": 5,
+   "evidence": "index.html:117 \u2014 `const { restoreTheme } = await import('.../theme/themes.js')`; index.html:121 \u2014 `await import('.../theme/themes.js')` again",
+   "score": 20,
+   "id": "micro-themesjs-is-imported-twice-once",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/micro/",
+    "https://github.com/nostr-client/micro"
+   ]
+  },
+  {
+   "repo": "nostr-client/micro",
+   "pitch": "The header is sticky but the 7-tab nav is not, so on a phone the tabs scroll off screen and switching views mid-feed means scrolling all the way back up \u2014 monty solved this with a fixed bottom bar; moving the nav into the sticky header (or making nav sticky) is a small CSS change.",
+   "kind": "feature",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 3,
+   "evidence": "index.html:19-23 \u2014 only `header` has position: sticky; index.html:27-31 \u2014 `nav` is a plain flex block with no positioning; contrast monty/index.html:75-86 mobile fixed bottom aside",
+   "tags": [
+    "graphical"
+   ],
+   "score": 25,
+   "id": "micro-the-header-is-sticky-but",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/micro/",
+    "https://github.com/nostr-client/micro"
+   ]
+  },
+  {
+   "repo": "nostr-client/micro",
+   "pitch": "The footer parts list and the README import list predate the wallet/search/settings additions \u2014 neither mentions search, wallet, theme, verify or cache even though the page now imports all five, so the 'view-source is the docs' story is out of date.",
+   "kind": "docs",
+   "effort": "small",
+   "impact": 1,
+   "confidence": 5,
+   "evidence": "index.html:99-101 \u2014 footer lists 'login \u00b7 composer \u00b7 feed \u00b7 thread \u00b7 note \u00b7 reactions \u00b7 notifications \u00b7 contacts \u00b7 profile-editor \u00b7 relay-manager \u00b7 pool' only; README.md import block likewise omits search.js, wallet.js, verify.js, cache.js, themes.js which index.html:109-131 loads",
+   "score": 19,
+   "id": "micro-the-footer-parts-list-and",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/micro/",
+    "https://github.com/nostr-client/micro"
+   ]
+  },
+  {
+   "repo": "nostr-client/monty",
+   "pitch": "route() feeds the raw, possibly percent-encoded hash segment to the tag feed while decoding it only for the title, so a shared '#tag/caf%C3%A9' permalink queries hashtag 'caf%c3%a9' and finds nothing; the first of the two title assignments is also dead code.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:240-244 \u2014 `$('tag-feed').setAttribute('hashtag', value)` uses raw value; `$('title').textContent = '#' + value` (242) is overwritten by show() then reset with decodeURIComponent(value) (244) \u2014 the attribute never gets the decode",
+   "score": 35,
+   "id": "monty-route-feeds-the-raw-possibly",
+   "run": 7,
+   "tags": [],
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/monty/",
+    "https://github.com/nostr-client/monty"
+   ]
+  },
+  {
+   "repo": "nostr-client/monty",
+   "pitch": "The Explore custom-relay input silently does nothing on invalid input (empty catch) and accepts any URL scheme \u2014 typing 'nos.lol' without wss:// gives no feedback at all, and pasting an https:// URL is accepted and yields a feed that never loads; prefix bare hosts with wss:// and show an error state.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "index.html:328-331 \u2014 `custom.onchange = () => { try { pickRelay(new URL(custom.value).href.replace(/\\/$/, '')) } catch {} }` \u2014 no scheme check, no user feedback on failure",
+   "tags": [
+    "graphical"
+   ],
+   "score": 35,
+   "id": "monty-the-explore-customrelay-input-silently",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/monty/",
+    "https://github.com/nostr-client/monty"
+   ]
+  },
+  {
+   "repo": "nostr-client/reader",
+   "pitch": "Back-button trap: openArticle() calls history.pushState even when invoked from popstate or the initial hash deep-link, so pressing Back while viewing a deep-linked article re-pushes the same entry and the user can never leave the page via Back.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "index.html:97 (unconditional pushState in openArticle) + index.html:106-110 (popstate handler calls openArticle) + index.html:161-162 (initial hash also routes through openArticle); fix is replaceState on initial load and a no-push variant for popstate",
+   "tags": [],
+   "score": 53,
+   "id": "reader-backbutton-trap-openarticle-calls-historypushstate",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/reader/",
+    "https://github.com/nostr-client/reader"
+   ]
+  },
+  {
+   "repo": "nostr-client/reader",
+   "pitch": "Article cards are click-only divs, so middle-click/open-in-new-tab, link copying, and keyboard navigation don't work even though every article already has a shareable #<id> URL \u2014 wrap the card (or title) in <a href=\"#<id>\">.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "index.html:130-157 \u2014 card is document.createElement('div') with card.onclick, no <a>, no tabindex/role; hash routes exist at index.html:97",
+   "tags": [
+    "graphical"
+   ],
+   "score": 44,
+   "id": "reader-article-cards-are-clickonly-divs",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/reader/",
+    "https://github.com/nostr-client/reader"
+   ]
+  },
+  {
+   "repo": "nostr-client/zen",
+   "pitch": "Same back-button trap as reader: openThread() pushes history state even when called from the popstate handler or the initial hash, so Back from a deep-linked thread re-pushes the entry and traps the user on the page.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 4,
+   "evidence": "index.html:121 (pushState in openThread) + index.html:135-139 (popstate calls openThread) + index.html:140-141 (initial hash calls openThread)",
+   "tags": [],
+   "score": 53,
+   "id": "zen-same-backbutton-trap-as-reader",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/zen/",
+    "https://github.com/nostr-client/zen"
+   ]
+  },
+  {
+   "repo": "nostr-client/zen",
+   "pitch": "Stale empty-state copy: once a logged-in user with no follows sees 'your circle is empty \u2014 follow someone first', that text permanently overwrites the logged-out message, so after logout the circle tab shows 'follow someone first' instead of 'log in, and your circle appears here'.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 1,
+   "confidence": 4,
+   "evidence": "index.html:107 mutates empty.textContent and nothing ever restores the default set in index.html:58; the logged-out branch at index.html:97 reuses whatever text is there",
+   "tags": [
+    "graphical"
+   ],
+   "score": 18,
+   "id": "zen-stale-emptystate-copy-once-a",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/zen/",
+    "https://github.com/nostr-client/zen"
+   ]
+  },
+  {
+   "repo": "nostr-client/article",
+   "pitch": "Demo page is completely blank while relays are queried and stays blank if no kind-30023 events come back \u2014 add a loading/'nothing found' status line like reader's 'gathering articles\u2026'.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "index.html:26-34 \u2014 <nostr-article id=\"a\"> renders nothing until .event is set, and `if (good)` at index.html:34 silently does nothing when the list is empty; no status element exists",
+   "tags": [
+    "graphical"
+   ],
+   "score": 44,
+   "id": "article-demo-page-is-completely-blank",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/article/",
+    "https://github.com/nostr-client/article"
+   ]
+  },
+  {
+   "repo": "nostr-client/cache",
+   "pitch": "get() by-id fast path honors the id but ignores a second filter constraint: `Object.keys(filter).length <= 2` lets e.g. {ids:[x], kinds:[0]} through, and the cached event is returned even if its kind doesn't match \u2014 restrict the fast path to ids-only (or ids+limit) or check the extra constraint against the cached event.",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 4,
+   "evidence": "cache.js:104-110 \u2014 `if (filter.ids?.length === 1 && Object.keys(filter).length <= 2)` returns idbGet(EVENTS, id) with no check of the other filter key; latent today (thread.js:145 and note.js:276 pass plain {ids:[id]}) but wrong for any future caller",
+   "tags": [],
+   "score": 35,
+   "id": "cache-get-byid-fast-path-honors",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/cache/",
+    "https://github.com/nostr-client/cache"
+   ]
+  },
+  {
+   "repo": "nostr-client/cache",
+   "pitch": "The EVENTS store grows without bound \u2014 every event seen via subscribe/list/get is stored forever with no eviction, cap, or age-based pruning, so long-term users of zen/reader/monty accumulate an ever-growing IndexedDB; add a simple size cap or created_at-based prune on startup (clearCache exists but nothing calls it automatically).",
+   "kind": "feature",
+   "effort": "medium",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "cache.js:64-76 storeEvent puts every event with no counterpart deletion anywhere in the file; only manual clearCache() at cache.js:149-157 removes data",
+   "tags": [],
+   "score": 46,
+   "id": "cache-the-events-store-grows-without",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/cache/",
+    "https://github.com/nostr-client/cache"
+   ]
+  },
+  {
+   "repo": "nostr-client/composer",
+   "pitch": "A publish rejected by every relay is treated as success downstream: 'nostr:published' fires and the char counter is cleared even when okCount is 0, so skyline/birdsite/bookface close or hide the composer over a note that was never published (with the draft still trapped inside).",
+   "kind": "bug",
+   "effort": "small",
+   "impact": 3,
+   "confidence": 5,
+   "evidence": "composer.js:126-134 \u2014 okCount computed, then countEl cleared and both CustomEvents dispatched unconditionally; consumers skyline/index.html:319-322 and birdsite/index.html:248 close the compose UI on that event, bookface/index.html:183 hides the composer",
+   "tags": [],
+   "score": 66,
+   "id": "composer-a-publish-rejected-by-every",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/composer/",
+    "https://github.com/nostr-client/composer"
+   ]
+  },
+  {
+   "repo": "nostr-client/composer",
+   "pitch": "No Ctrl/Cmd+Enter to publish \u2014 the standard keyboard shortcut every social composer has; one keydown listener on the textarea that requestSubmit()s the form.",
+   "kind": "feature",
+   "effort": "small",
+   "impact": 2,
+   "confidence": 5,
+   "evidence": "composer.js:75-78 \u2014 only 'input' and form onsubmit handlers exist; no keydown handling anywhere in the file",
+   "tags": [],
+   "score": 42,
+   "id": "composer-no-ctrlcmdenter-to-publish-the",
+   "run": 7,
+   "seeAlso": [
+    "http://localhost:5445/nostr-client/composer/",
+    "https://github.com/nostr-client/composer"
+   ]
   }
- ]
+ ],
+ "run7": {
+  "cohort": "extended survey: top 50 freshest repos, lenses = existing-issue triage + improvements + graphical (tagged)",
+  "reposSurveyed": 49,
+  "agentFiles": 10,
+  "newFindings": 95,
+  "graphical": 30,
+  "issueLinked": 5,
+  "issueTriage": {
+   "melvincarvalho/skillify": [],
+   "melvincarvalho/xlogin": [
+    {
+     "number": 24,
+     "title": "P1: document the programmatic API + add a data-pill kill-switch",
+     "assessment": "actionable-now",
+     "note": "README now covers login/logout/authFetch/guestLogin but window.xlogin.ready is still undocumented and 'pill' appears nowhere in xlogin.js \u2014 the button is injected unconditionally at xlogin.js:359, so the kill-switch remains a small unimplemented gate on _script.dataset.pill."
+    },
+    {
+     "number": 21,
+     "title": "authFetch should support relative URLs",
+     "assessment": "stale-or-obsolete",
+     "note": "Already fixed: authFetch resolves relative strings via new URL(url, document.baseURI).href at xlogin.js:667 (comment cites #25) \u2014 issue can be closed."
+    },
+    {
+     "number": 18,
+     "title": "Late-injecting window.nostr not detected",
+     "assessment": "actionable-now",
+     "note": "Still true: _ext is captured once at xlogin.js:54 and never re-read; the issue's option A (re-read window.nostr at the top of init(), xlogin.js:679) is a one-liner that fixes both the modal button (gated at xlogin.js:366) and the ?webid= auto-trigger (xlogin.js:721)."
+    },
+    {
+     "number": 15,
+     "title": "Expose authenticated issuer on window.xlogin",
+     "assessment": "needs-decision",
+     "note": "Not implemented \u2014 doSolidLogin(idp) at xlogin.js:519 has the Solid issuer in hand so that half is trivial, but the owner must decide what (if anything) the Nostr value should be (relay URL vs null)."
+    },
+    {
+     "number": 12,
+     "title": "NIP-04 AES-CBC paths still depend on crypto.subtle",
+     "assessment": "actionable-now",
+     "note": "Still true: crypto.subtle.importKey/encrypt/decrypt at xlogin.js:172-183 have no non-secure-context fallback (the sha256 fallback pattern at xlogin.js:139-143 shows the shape of the fix); matches the existing open prior finding."
+    },
+    {
+     "number": 5,
+     "title": "Document localStorage patterns",
+     "assessment": "actionable-now",
+     "note": "Still open: the accounts/currentAccount keys and account object shape live at xlogin.js:110-120 but README only mentions localStorage in passing (README.md:61,140) \u2014 a short 'Session storage' README section closes it."
+    }
+   ],
+   "jsclaw/jsclaw.github.io": [],
+   "melvincarvalho/record-test": [],
+   "melvincarvalho/solid-login": [],
+   "nosdav/dnstr.org": [
+    {
+     "number": 6,
+     "title": "Human-readable names layer on top of key-based .nostr domains",
+     "assessment": "discussion",
+     "note": "Naming-layer design space (petnames vs nip-05 vs Nomen interop); no code path exists yet to attach it to, needs spec discussion first."
+    },
+    {
+     "number": 5,
+     "title": "did:nostr integration: use the DID document as a lookup tier",
+     "assessment": "needs-decision",
+     "note": "bin/dnstr.js already fetches the DID doc for the website mapping, but extending to relay discovery means adding a websocket/relay client to a currently zero-dependency CLI \u2014 owner must choose the dependency approach."
+    },
+    {
+     "number": 4,
+     "title": "Dual-stack publishing: mirror records to the pkarr Mainline DHT",
+     "assessment": "needs-decision",
+     "note": "Valid design but requires choosing a pkarr/Mainline DHT dependency and a publish command that does not exist yet (repo has no publish tooling at all, only the resolve CLI)."
+    },
+    {
+     "number": 3,
+     "title": "Build dnstr-server: a DNS/DoH bridge that serves .nostr names from relays",
+     "assessment": "actionable-now",
+     "note": "Its stated blocker is resolved \u2014 the DNS record set format from #2 is now specified in README.md ('DNS record set' section with [type,name,ttl,data] tuples), so the ~150-line dns2/dgram daemon can be built as designed."
+    }
+   ],
+   "melvincarvalho/noskey": [
+    {
+     "number": 2,
+     "title": "npm i -g noskey results in libnode.so.72 error on Ubuntu 24.04",
+     "assessment": "stale-or-obsolete",
+     "note": "The native ed25519/bindings dependency that threw ERR_DLOPEN_FAILED was replaced with pure-JS tweetnacl in commit 7f4f496 (2025-08-07); package-lock.json@0.0.65 (matching the published npm 0.0.65) contains no bindings/native modules, so reinstalling fixes it \u2014 close with that note."
+    },
+    {
+     "number": 1,
+     "title": "Support resolve from bip39 mnemonics / \"seed words\"?",
+     "assessment": "actionable-now",
+     "note": "lib/index.js:405 already has mnemonicToSeed() plus bip32 and the 2048-entry words.json, so adding a -m/--mnemonic input option to bin/noskey.js (NIP-06 path m/44'/1237'/0'/0/0) is a small, well-scoped change."
+    }
+   ],
+   "melvincarvalho/paa-pub": [],
+   "melvincarvalho/clgrep": [],
+   "melvincarvalho/vocab": [
+    {
+     "number": 6,
+     "title": "Create notification in JSON-LD",
+     "assessment": "stale-or-obsolete",
+     "note": "The LDN sender it refers to no longer exists \u2014 master's index.html (Preact rewrite f6e5f6b) contains no notification/inbox code at all; close as overtaken by the rewrite."
+    },
+    {
+     "number": 5,
+     "title": "Use ldp:inbox",
+     "assessment": "stale-or-obsolete",
+     "note": "Same as #6: no inbox/LDN code remains on master (grep for inbox/ldn/notification in index.html matches only CSS 'solid' borders)."
+    },
+    {
+     "number": 4,
+     "title": "stopped working on locahost",
+     "assessment": "stale-or-obsolete",
+     "note": "Empty-bodied 2016 bug against the old AngularJS app; the app was fully rewritten as a no-build Preact page and the README Quick Start (`npx serve`) now covers localhost \u2014 nothing left to reproduce."
+    }
+   ],
+   "melvincarvalho/helloworld": [
+    {
+     "number": 12,
+     "title": "Still functional?",
+     "assessment": "actionable-now",
+     "note": "Answer is yes: repo was revived (b94e4c5 rewrote onto @inrupt 2.x, deploy.yml builds via Actions) and https://melvincarvalho.github.io/helloworld/ verified serving the built app today \u2014 reply and close."
+    },
+    {
+     "number": 7,
+     "title": "Add WebID-TLS login",
+     "assessment": "stale-or-obsolete",
+     "note": "The 2018 solid-auth-client app this targeted was replaced by @inrupt/solid-client-authn-browser (src/main.js), which has no WebID-TLS support and WebID-TLS is effectively deprecated in Solid; the old stack survives only as unused files in scripts/."
+    }
+   ],
+   "melvincarvalho/gamestr": [
+    {
+     "number": 3,
+     "title": "Green dot shows connected to relay, but no updates are received",
+     "assessment": "stale-or-obsolete",
+     "note": "Addressed by later work (90097f0 2025-12-21 zombie detection, 64ebaa0 2026-01-16 connection-status indicators, 84767b6 reconnecting-websocket): index.html:486-495 force-reconnects zombie sockets after 2 min silence and index.html:545-573 degrades the dot to orange/stale after 30-60 s without a message \u2014 suggest closing with those refs."
+    }
+   ],
+   "melvincarvalho/nostrgit": [],
+   "melvincarvalho/poker": [],
+   "JavaScriptSolidServer/sso": [
+    {
+     "number": 8,
+     "title": "Cross-origin SSO\u2192pod handoff (phased plan): ?webid= now, NIP-98 fragment later",
+     "assessment": "discussion",
+     "note": "Tracking issue; phase 1 is verifiably shipped (login.js:254 sets ?webid= via url.searchParams.set) and phase 2a lives in melvincarvalho/xlogin#16 \u2014 nothing to do in this repo until that merges."
+    },
+    {
+     "number": 7,
+     "title": "Multi-user support: switch identities, multiple sessions, identity picker",
+     "assessment": "discussion",
+     "note": "Self-described pre-1.0 design-space placeholder with no single code action; its one concrete constraint (scope the future 0.0.5 localStorage by pubkey) should be honored when implementing #4."
+    },
+    {
+     "number": 6,
+     "title": "0.0.4 \u2014 direct Nostr-relay resolution (depends on JSS#414)",
+     "assessment": "needs-decision",
+     "note": "Explicitly blocked on JSS#414 landing server-side first; login.js has no relay/WebSocket code today, so nothing can start until that dependency (or a decision to do browser-only relay REQs anyway)."
+    },
+    {
+     "number": 5,
+     "title": "0.0.6 \u2014 authenticated session (NIP-98 \u2192 DPoP exchange)",
+     "assessment": "needs-decision",
+     "note": "Requires a new JSS server endpoint (/idp/sso-token) before any client work \u2014 the bigger-lift server piece is the decision, per the issue's own sketch; current login.js deliberately stops at unauthenticated redirect (header comment lines 13-23)."
+    },
+    {
+     "number": 4,
+     "title": "0.0.5 \u2014 remember the user's successful resolver in localStorage",
+     "assessment": "actionable-now",
+     "note": "Small self-contained feature with concrete acceptance criteria; login.js currently has zero localStorage usage, and per #7 the stored {host,lastSuccess} should be keyed by pubkey."
+    },
+    {
+     "number": 3,
+     "title": "0.0.3 \u2014 multi-resolver fallback",
+     "assessment": "actionable-now",
+     "note": "Still unimplemented: login.js:32-33 has exactly one DEFAULT_RESOLVER plus a single manual fallback link (linkCoaching, login.js:82-92); note the '0.0.3' label was since reused by commit 2162f61 (manual key sign-in), so renumber when picking it up."
+    },
+    {
+     "number": 2,
+     "title": "0.0.2 \u2014 step-by-step coaching UI (checklist)",
+     "assessment": "actionable-now",
+     "note": "The one-shot setStatus() surface it describes is still exactly the code (login.js:42-52) and the addStep sketch drops in cleanly; same caveat that '0.0.2' was since reused by the ?webid= phase-1 commit cb0c996."
+    },
+    {
+     "number": 1,
+     "title": "0.0.1 \u2014 one-button SSO end-to-end against solid.social",
+     "assessment": "stale-or-obsolete",
+     "note": "Describes the abandoned OIDC-code-flow design that issue #8 says was replaced; shipped login.js does resolver-lookup + redirect with no /idp/auth step, so most acceptance boxes no longer apply \u2014 close or rewrite."
+    }
+   ],
+   "melvincarvalho/yatl": [],
+   "spux/json.rocks": [],
+   "melvincarvalho/magpie": [
+    {
+     "number": 1,
+     "title": "Make decisions.json concurrency-safe for simultaneous agents",
+     "assessment": "needs-decision",
+     "note": "Valid latent race \u2014 magpie-serve.mjs:58-60 does a read-modify-write of the whole decisions.json array and refresh-worklist.mjs re-globs it \u2014 but the issue itself says 'Not doing now' and defers until multi-agent writes actually collide, so it is a design note awaiting the owner's trigger, not a ready fix."
+    }
+   ],
+   "melvincarvalho/productivity": [
+    {
+     "number": 4,
+     "title": "pm2 does not have user permissions",
+     "assessment": "stale-or-obsolete",
+     "note": "From 2019 and about the old Freeplane/telegram/pm2 productivity daemon that has since been fully removed \u2014 README.md states the previous tools were deleted and the repo now contains only scripts/gh-sync.sh + gh-index.js (no pm2/ecosystem)."
+    },
+    {
+     "number": 5,
+     "title": "link telegram to timeline",
+     "assessment": "stale-or-obsolete",
+     "note": "2019 feature request for the removed telegram-bot tooling; grep for 'telegram' finds no code, only these dead issues \u2014 the repo was repurposed into a GitHub-mirror toolkit."
+    },
+    {
+     "number": 6,
+     "title": "allow bot to bookmark a link",
+     "assessment": "stale-or-obsolete",
+     "note": "2019 request for the removed bot; no 'bookmark' code remains \u2014 obsolete alongside #4 and #5, all three should be closed."
+    }
+   ],
+   "nostrapps/did-explorer": [
+    {
+     "number": 1,
+     "title": "Fetch kind 10002 relay list for service endpoints (Tier 3 completeness)",
+     "assessment": "actionable-now",
+     "note": "Confirmed gap: index.html fetchFromRelay is only ever called with kind 0 (fetchProfile:141) and kind 3 (fetchFollows:245); adding a kind-10002 fetch to surface relay-list service endpoints is a small, well-scoped addition."
+    },
+    {
+     "number": 2,
+     "title": "Verify bech32 checksum when decoding npub input",
+     "assessment": "actionable-now",
+     "note": "Code confirms it: npubToHex (index.html:53-75) drops the last 6 words as checksum without any polymod verification and only checks the payload is 32 bytes, and parseDid:83 accepts anything starting 'npub1' without checking the HRP \u2014 a ~15-line polymod check fixes both."
+    },
+    {
+     "number": 3,
+     "title": "Render enhanced DID document fields (service, alsoKnownAs) in the UI",
+     "assessment": "needs-decision",
+     "note": "Valid feature: provider docs' service/alsoKnownAs only appear in the Expand raw-JSON view (DidDocument:337-340); surfacing them needs a UI/card design choice, so owner should pick the layout before implementing."
+    }
+   ],
+   "solid-apps/alarm": [],
+   "clawdocs/clawdocs.github.io": [
+    {
+     "number": 111,
+     "title": "Cloudflared tunnel instructions are broken: missing login step, wrong install command, mislabeled quick tunnel",
+     "assessment": "actionable-now",
+     "note": "Confirmed: docs/security/hardening.md:858-859 still says 'apt install cloudflared' then 'tunnel create' with no login step, and docs/guides/api-webhooks.md:987-989 still labels a named tunnel 'Zero-config HTTPS tunnel'."
+    },
+    {
+     "number": 110,
+     "title": "Address 23 Dependabot vulnerabilities (1 critical, 11 high)",
+     "assessment": "needs-decision",
+     "note": "Partially done: commit c95cac8 (PR #115, 2026-07-08) applied non-breaking npm audit fixes; what remains needs major bumps or dismiss-with-note decisions the owner must make."
+    },
+    {
+     "number": 100,
+     "title": "Document the purpose of agent.did.json in the repo root",
+     "assessment": "needs-decision",
+     "note": "agent.did.json is still in the repo root and referenced nowhere (grep across README, docs/, .github/ finds nothing); owner must pick document / move to static/.well-known / delete."
+    },
+    {
+     "number": 99,
+     "title": "Specify version range for deprecated Clawdbot/Moltbot legacy env vars",
+     "assessment": "needs-decision",
+     "note": "docs/reference/environment-variables.md Legacy Variables section still says 'may still work'; filling in concrete versions requires upstream OpenClaw release knowledge, not a code fix here."
+    },
+    {
+     "number": 98,
+     "title": "architecture/heartbeat.md omits the OAuth-channel heartbeat interval exception",
+     "assessment": "actionable-now",
+     "note": "Confirmed: docs/guides/heartbeat.md:16 documents the 60-min OAuth exception but docs/architecture/heartbeat.md (interval table at line 157) only has the 30-min default."
+    },
+    {
+     "number": 97,
+     "title": "Fix H1\u2192H3 heading hierarchy jumps across ~36 docs",
+     "assessment": "stale-or-obsolete",
+     "note": "A fence-aware scan of docs/**/*.md finds exactly one real jump (docs/reference/glossary.md:14, H1\u2192H3 dictionary style); the ~36-doc count came from '#' bash comments inside code blocks (e.g. basic-usage.md:19,22), which are not headings."
+    },
+    {
+     "number": 96,
+     "title": "Standardize quiet_hours example times across guides",
+     "assessment": "actionable-now",
+     "note": "Confirmed: basic-usage.md:545 uses 22:00 and multi-agent.md:756 uses 23:00, both without timezone, while configuration.md:155 and heartbeat.md:329 include timezone."
+    },
+    {
+     "number": 95,
+     "title": "Align frontmatter title with H1 in local-models.md",
+     "assessment": "actionable-now",
+     "note": "Confirmed: docs/guides/local-models.md:3 'title: Local Models' vs line 8 H1 '# Running with Local Models'."
+    },
+    {
+     "number": 94,
+     "title": "Align frontmatter title with H1 in configuration.md",
+     "assessment": "actionable-now",
+     "note": "Confirmed: docs/reference/configuration.md:3 'title: Configuration' vs line 8 H1 '# Configuration Reference'."
+    },
+    {
+     "number": 93,
+     "title": "Align frontmatter title with H1 in faq.md",
+     "assessment": "actionable-now",
+     "note": "Confirmed: docs/reference/faq.md:3 'title: FAQ' vs line 8 H1 '# Frequently Asked Questions'."
+    },
+    {
+     "number": 92,
+     "title": "Align frontmatter title with H1 in introduction.md",
+     "assessment": "actionable-now",
+     "note": "Confirmed: docs/getting-started/introduction.md:3 'title: Introduction' vs line 8 H1 '# Introduction to OpenClaw'."
+    },
+    {
+     "number": 91,
+     "title": "Deduplicate or remove inert sidebar_position frontmatter (19 collisions in guides/, 1 in reference/)",
+     "assessment": "actionable-now",
+     "note": "70 docs still carry sidebar_position (e.g. guides/model-selection.md:2 and guides/skill-development.md:2 both '3') while sidebars.ts is fully explicit; removing the inert frontmatter is the clean mechanical fix."
+    },
+    {
+     "number": 90,
+     "title": "Remove leftover Docusaurus scaffold page src/pages/markdown-page.md",
+     "assessment": "actionable-now",
+     "note": "Confirmed: src/pages/markdown-page.md still exists and nothing links to it."
+    },
+    {
+     "number": 89,
+     "title": "README deployment section describes manual deploy; actual deployment is GitHub Actions",
+     "assessment": "actionable-now",
+     "note": "Confirmed: README.md:32,38 still document USE_SSH/GIT_USER yarn deploy while .github/workflows/deploy.yml handles deployment; fix together with #88."
+    },
+    {
+     "number": 88,
+     "title": "README uses yarn commands but the project is npm-based",
+     "assessment": "actionable-now",
+     "note": "Confirmed: README.md:8,14,22 still say yarn/yarn start/yarn build; repo has package-lock.json only and deploy.yml runs npm ci."
+    },
+    {
+     "number": 87,
+     "title": "Resolve default-model contradiction across configuration, env-vars, and model-selection docs",
+     "assessment": "needs-decision",
+     "note": "Contradiction still live: configuration.md:234 and environment-variables.md:68 say default claude-opus-4-6 while model-selection.md:214 says brain.model defaults to Sonnet 4.6 \u2014 owner must establish the actual default before the sweep."
+    },
+    {
+     "number": 86,
+     "title": "Update stale 183k GitHub star counts in comparison.md (5 occurrences)",
+     "assessment": "actionable-now",
+     "note": "Confirmed: comparison.md lines 18, 113, 153, 169, 185 all still say 183k while introduction/faq say 377k; same edit as #85."
+    },
+    {
+     "number": 85,
+     "title": "Update stale GitHub star count in glossary.md (183k \u2192 377k)",
+     "assessment": "actionable-now",
+     "note": "Confirmed: docs/reference/glossary.md:140 still says '183,000+ GitHub stars as of February 2026'."
+    },
+    {
+     "number": 84,
+     "title": "Set onBrokenLinks to 'throw' so CI fails on broken internal links",
+     "assessment": "actionable-now",
+     "note": "docusaurus.config.ts:16 is still 'warn' and the stated blocker (#83's broken Day links) was fixed in commit 0d0d2e6, so this can flip now (verify a clean npm run build first)."
+    },
+    {
+     "number": 83,
+     "title": "Fix 7 broken Day 1-7 links on First 7 Days index page",
+     "assessment": "stale-or-obsolete",
+     "note": "Fixed in commit 0d0d2e6: docs/guides/first-7-days/index.md:16-22 now uses file-relative ./day-N-*.md links; issue can be closed."
+    }
+   ],
+   "nostr-client/ameba": [],
+   "nostr-client/chess": [],
+   "nostr-client/chat": [],
+   "nostr-client/groups": [],
+   "nostr-client/purse": [],
+   "nostr-client/did-nostr": [],
+   "solid/solid-oidc": [
+    {
+     "number": 258,
+     "title": "Remove sequence numbers from section ids",
+     "assessment": "actionable-now",
+     "note": "primer/index.bs already shows the symptom \u2014 steps '2.1' (line 138) and '6.1' (line 776) were inserted to dodge renumbering after PR #257; renaming the ~35 '...-step-N' h4 ids to descriptive slugs is mechanical."
+    },
+    {
+     "number": 238,
+     "title": "Trying to understand Solid-OIDC better",
+     "assessment": "discussion",
+     "note": "Design Q&A about why the UMA and WebID steps exist compared to an OpenPubKey-style scheme; no spec edit requested."
+    },
+    {
+     "number": 237,
+     "title": "IETF I-D for Client Identifiers as URIs",
+     "assessment": "discussion",
+     "note": "Heads-up that draft-parecki-oauth-client-id-metadata-document standardizes Client ID Documents at IETF; at most warrants a future informative reference in index.bs."
+    },
+    {
+     "number": 231,
+     "title": "Are relative links in Solid-OIDC Client Identifier Document supported?",
+     "assessment": "needs-decision",
+     "note": "index.bs Client ID Document section is silent on relative URIs; adding 'metadata URI values MUST be absolute' is a small edit but the client-MUST vs OP-must-resolve choice is the editors' call."
+    },
+    {
+     "number": 227,
+     "title": "Basic Definitions for Solid-OIDC Providers",
+     "assessment": "needs-decision",
+     "note": "Proposes new provider label/description/icon vocabulary; nothing in index.bs covers OP presentation metadata, needs group direction on vocabulary and requirement level."
+    },
+    {
+     "number": 226,
+     "title": "Passkey",
+     "assessment": "discussion",
+     "note": "How the OP authenticates the end-user is out of Solid-OIDC's normative scope (index.bs constrains token issuance, not login UI), so this is a compatibility question, not a spec change."
+    },
+    {
+     "number": 220,
+     "title": "JWS",
+     "assessment": "actionable-now",
+     "note": "Confirmed: index.bs:85 and index.bs:100 use JWS/JWE with no definition and no RFC7515/RFC7516 citation anywhere in index.bs (the primer cites RFC7515, the spec doesn't)."
+    },
+    {
+     "number": 219,
+     "title": "Security considerations for integrity of solid:oidcIssuer triples",
+     "assessment": "actionable-now",
+     "note": "Still unaddressed \u2014 the new Issuer Trust section (index.bs:529, added by PR #254) covers trusting the issuer but not write-integrity of the solid:oidcIssuer triple itself; the proposed consideration is a one-paragraph addition to that section."
+    },
+    {
+     "number": 216,
+     "title": "Dynamic Registration requirement level for OP",
+     "assessment": "needs-decision",
+     "note": "index.bs OIDC Registration section still never states whether the OP MUST/SHOULD/MAY offer Dynamic Registration; editors must pick a requirement level (issue author suggests SHOULD or MAY)."
+    },
+    {
+     "number": 215,
+     "title": "DPoP usage with ID Tokens",
+     "assessment": "discussion",
+     "note": "Asks for a security review of applying DPoP proof JWTs to ID Tokens rather than access tokens; analysis thread with no concrete edit proposed yet."
+    },
+    {
+     "number": 214,
+     "title": "Clarify use of client secret in Primer",
+     "assessment": "actionable-now",
+     "note": "Still valid \u2014 primer token request step 15 (primer/index.bs:471-503) never mentions token-endpoint client authentication (client_secret_basic) that statically/dynamically registered clients need on servers like ESS."
+    },
+    {
+     "number": 213,
+     "title": "Clarify in the Primer whether access tokens are DPoP-bound",
+     "assessment": "actionable-now",
+     "note": "Still valid \u2014 primer request-flow step 13 (primer/index.bs:928-938) returns \"token_type\":\"Bearer\" with no note on whether the access token may or should be DPoP-bound."
+    },
+    {
+     "number": 211,
+     "title": "Require and/or describe authentication methods in ID Token",
+     "assessment": "needs-decision",
+     "note": "Requiring or recommending acr / acr_values_supported is a new normative design choice; index.bs currently says nothing about authentication context claims."
+    },
+    {
+     "number": 210,
+     "title": "Make link headers canonical",
+     "assessment": "needs-decision",
+     "note": "index.bs:267 still says 'A client MUST treat the RDF in the body of the WebID Profile as canonical'; flipping precedence to Link headers reverses a normative decision and needs editor buy-in."
+    },
+    {
+     "number": 207,
+     "title": "Reconsider Client Identifiers in light of OpenID Federation Entities",
+     "assessment": "discussion",
+     "note": "14-comment architectural thread on replacing Client Identifier Documents with OpenID Federation entity statements; partially overtaken by the #237 IETF draft path."
+    },
+    {
+     "number": 0,
+     "title": "triage scope note",
+     "assessment": "discussion",
+     "note": "Triaged the 15 most recent of 89 open issues; skipped 74, dominated by the April-2022 per-section editorial review batch (#107-#152, one issue per spec/primer section) plus older low-traffic design discussions."
+    }
+   ],
+   "nostr-client/theme": [],
+   "nostr-client/guestbook": [],
+   "nostr-client/btcnostr": [],
+   "nostr-client/wallet": [],
+   "nostr-client/bookface": [],
+   "nostr-client/birdsite": [],
+   "nostr-client/dittly": [],
+   "nostr-client/jumbly": [],
+   "nostr-client/skyline": [],
+   "nostr-client/starter": [],
+   "nostr-client/nostr-client.github.io": [],
+   "nostr-client/embed": [],
+   "nostr-client/pulse": [],
+   "nostr-client/micro": [],
+   "nostr-client/monty": [],
+   "nostr-client/reader": [],
+   "nostr-client/zen": [],
+   "nostr-client/article": [],
+   "nostr-client/cache": [],
+   "nostr-client/composer": []
+  }
+ },
+ "note": " | run 7 (2026-07-09): extended top-50 survey, read-only; findings carry tags (graphical) and issueRefs; issue triage stored under run7.issueTriage."
 }

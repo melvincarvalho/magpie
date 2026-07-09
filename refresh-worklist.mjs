@@ -55,7 +55,9 @@ const item = f => ({
   id: f.id, repo: f.repo, pitch: f.pitch, kind: f.kind, effort: f.effort,
   score: f.score, status: verdict.get(f.id) || 'open',
   priority: shownPriority(f.id),
-  evidence: f.evidence, confidence: f.confidence, seeAlso: f.seeAlso
+  evidence: f.evidence, confidence: f.confidence, seeAlso: f.seeAlso,
+  ...(f.tags?.length ? { tags: f.tags } : {}),
+  ...(f.issueRefs?.length ? { issueRefs: f.issueRefs } : {})
 })
 const worklist = {
   generated: survey.generated,
