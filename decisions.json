@@ -492,5 +492,26 @@
   "repo": "melvincarvalho/vocab",
   "action": "accepted",
   "note": "In flight - PR https://github.com/melvincarvalho/vocab/pull/7 (fix stale bower Quick Start -> serve locally). Low-risk personal-repo README fix."
+ },
+ {
+  "ts": "2026-07-09T04:15:00Z",
+  "id": "clgrep-packagejson-declares-deprecated-spdx",
+  "repo": "melvincarvalho/clgrep",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/melvincarvalho/clgrep/pull/1 (AGPL-3.0 -> AGPL-3.0-only SPDX id). Low-risk personal-repo cleanup."
+ },
+ {
+  "ts": "2026-07-09T04:15:00Z",
+  "id": "solid-login-source-file-license-header-says",
+  "repo": "melvincarvalho/solid-login",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/melvincarvalho/solid-login/pull/1 (@license header GPL -> AGPL to match pkg/LICENSE). Low-risk personal-repo cleanup."
+ },
+ {
+  "ts": "2026-07-09T04:15:00Z",
+  "id": "gamestr-readme-screenshot-embeds-an",
+  "repo": "melvincarvalho/gamestr",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/melvincarvalho/gamestr/pull/8 (remove broken via.placeholder.com screenshot). Low-risk personal-repo cleanup."
  }
 ]

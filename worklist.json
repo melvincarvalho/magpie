@@ -5,7 +5,7 @@
  "resolved": {
   "done": 16,
   "rejected": 2,
-  "accepted": 14
+  "accepted": 17
  },
  "pinned": 14,
  "deferred": 1,
@@ -5299,7 +5299,7 @@
    "kind": "docs",
    "effort": "small",
    "score": 13,
-   "status": "open",
+   "status": "accepted",
    "priority": null,
    "evidence": "solid-login.js:17 — '@license GPL-3.0-or-later' vs package.json license 'AGPL-3.0-or-later' and AGPL LICENSE file",
    "confidence": 5,
@@ -6467,7 +6467,7 @@
    "kind": "docs",
    "effort": "small",
    "score": 8,
-   "status": "open",
+   "status": "accepted",
    "priority": null,
    "evidence": "README.md:40",
    "confidence": 4,
@@ -6691,7 +6691,7 @@
    "kind": "cleanup",
    "effort": "small",
    "score": 6,
-   "status": "open",
+   "status": "accepted",
    "priority": null,
    "evidence": "package.json:25; LICENSE:1-2",
    "confidence": 3,
