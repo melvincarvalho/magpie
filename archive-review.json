@@ -1744,7 +1744,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2020-08",
     "note": "Unmodified default Docusaurus scaffold (doc1/2/3, sample blog posts), single Initial commit, no homepage."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "spux/info",
@@ -1768,7 +1770,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2020-06",
     "note": "README-only stub ('info and docs'), 1 star, no code or homepage."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "spux/realtime",
@@ -1792,7 +1796,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2020-07",
     "note": "README-only stub; unrelated npm 'realtime' package exists but is a different author's socket.io app."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "spux/spux-todomvc",
@@ -1816,7 +1822,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2020-05",
     "note": "README-only stub, no TodoMVC code ever committed, not on npm."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "spux/spux-util",
@@ -1840,7 +1848,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2020-06",
     "note": "Named like a util library but contains only a one-line README, no importable code, not on npm."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "taskify/taskify-bots",
@@ -3156,8 +3166,8 @@
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
  },
  "archived": {
-  "count": 39,
+  "count": 44,
   "date": "2026-07-09",
-  "note": "Archived via gh repo archive (reversible; npm packages unaffected): 22 melbot daily snapshots + 17 quantumpayments 2016 experiment stubs. All verified isArchived=true."
+  "note": "Archived via gh repo archive (reversible; npm unaffected): 22 melbot snapshots + 17 quantumpayments stubs + 5 spux stubs. All verified isArchived=true."
  }
 }

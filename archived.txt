@@ -40,3 +40,8 @@ quantumpayments/paywall
 quantumpayments/points
 quantumpayments/quantumpayments.org
 quantumpayments/taskify
+spux/docs
+spux/info
+spux/realtime
+spux/spux-util
+spux/spux-todomvc
