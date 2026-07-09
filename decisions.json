@@ -850,5 +850,12 @@
   "repo": "solid-apps/vouchers",
   "action": "accepted",
   "note": "In flight - PR https://github.com/solid-apps/vouchers/pull/1 (txo: share-link XSS: import-time txid/network validation + context-correct render escaping incl. escAttr for the privkey attribute; statically verified against payloads). Reflected/stored XSS in a Bitcoin-key-holding app."
+ },
+ {
+  "ts": "2026-07-09T11:58:39.288Z",
+  "id": "vouchers-a-crafted-share-link-key-txo-network",
+  "repo": "solid-apps/vouchers",
+  "action": "done",
+  "note": "Merged - PR https://github.com/solid-apps/vouchers/pull/1 (squash 6bcdc3d). Import-time txid(64-hex)/network validation + context-correct render escaping (escHtml text, encodeURIComponent href, new escAttr for privkey/address attrs). Local mirror pulled up to date."
  }
 ]

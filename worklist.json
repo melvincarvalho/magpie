@@ -3,9 +3,9 @@
  "refreshed": true,
  "note": "All live survey findings (done/rejected removed), ranked. \"headline\" is how many the Worklist tab shows; the rest are under All. Accept/reject via decisions.json, then re-run refresh-worklist.mjs.",
  "resolved": {
-  "done": 37,
+  "done": 38,
   "rejected": 14,
-  "accepted": 3
+  "accepted": 2
  },
  "pinned": 20,
  "deferred": 1,
@@ -26,22 +26,6 @@
    "seeAlso": [
     "http://localhost:5445/solid-apps/nexus/",
     "https://github.com/solid-apps/nexus"
-   ]
-  },
-  {
-   "id": "vouchers-a-crafted-share-link-key-txo-network",
-   "repo": "solid-apps/vouchers",
-   "pitch": "A crafted share link (?key=txo:<network>:<txid>:<vout>) is auto-imported on page load and the attacker-controlled txid/network are written into the voucher-card HTML unescaped, giving reflected XSS in an app that holds Bitcoin private keys (key exfiltration); run txid/network through escHtml() before interpolating.",
-   "kind": "security",
-   "effort": "small",
-   "score": 110,
-   "status": "accepted",
-   "priority": null,
-   "evidence": "vouchers.js:944 interpolates ${v.txid} into an href and link text unescaped, and :929 renders ${(v.network||'').toUpperCase()} unescaped; init() at :1211 auto-imports ?key= via importKey(), which does no hex validation on txid/network. escHtml() exists (used for privkey at :951) but is not applied here.",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/solid-apps/vouchers/",
-    "https://github.com/solid-apps/vouchers"
    ]
   },
   {
