@@ -51,3 +51,5 @@ solid-live/app
 solid-live/code-of-conduct
 solid-live/extension
 solid-live/invites
+melvincarvalho/elgg
+melvincarvalho/solid-ipfs
