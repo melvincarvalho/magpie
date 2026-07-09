@@ -85,3 +85,4 @@ melvincarvalho/mychores
 melvincarvalho/solid-utils
 melvincarvalho/brain
 melvincarvalho/react-brain
+melvincarvalho/solid.community
