@@ -83,3 +83,5 @@ melvincarvalho/hash160
 melvincarvalho/extractors
 melvincarvalho/mychores
 melvincarvalho/solid-utils
+melvincarvalho/brain
+melvincarvalho/react-brain

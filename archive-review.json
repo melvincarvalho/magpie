@@ -800,7 +800,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2019-06",
     "note": "Single-commit 'brain wallet misc' README stub with no code, dependents, or namespace."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melvincarvalho/lget",
@@ -900,7 +902,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2019-08",
     "note": "README-only 'react brain wallet' stub, no LICENSE even, single commit, 0 stars/forks."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melvincarvalho/searx",
@@ -3342,7 +3346,7 @@
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
  },
  "archived": {
-  "count": 82,
+  "count": 84,
   "date": "2026-07-09",
   "note": "Archived via gh repo archive (reversible): 22 melbot snapshots, 17 quantumpayments, 5 spux, play-grounds/liquid, 5 solid-live. All verified isArchived=true."
  }
