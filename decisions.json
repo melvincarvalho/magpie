@@ -464,5 +464,33 @@
   "repo": "spux/json.rocks",
   "action": "done",
   "note": "Merged - PR https://github.com/spux/json.rocks/pull/21 (squash 018fa194b). Confirmed via pin-status reconciliation."
+ },
+ {
+  "ts": "2026-07-09T04:00:00Z",
+  "id": "skillify-readme-install-section",
+  "repo": "melvincarvalho/skillify",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/melvincarvalho/skillify/pull/1 (README install skillify->skill-gen). Low-risk personal-repo README fix."
+ },
+ {
+  "ts": "2026-07-09T04:00:00Z",
+  "id": "noskey-readme-options-documents-only",
+  "repo": "melvincarvalho/noskey",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/melvincarvalho/noskey/pull/10 (document -n/--npub option). Low-risk personal-repo README fix."
+ },
+ {
+  "ts": "2026-07-09T04:00:00Z",
+  "id": "xlogin-readme-builtin-solid-providers",
+  "repo": "melvincarvalho/xlogin",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/melvincarvalho/xlogin/pull/28 (add solidweb.app to documented providers). Low-risk personal-repo README fix."
+ },
+ {
+  "ts": "2026-07-09T04:00:00Z",
+  "id": "vocab-readme-on-master",
+  "repo": "melvincarvalho/vocab",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/melvincarvalho/vocab/pull/7 (fix stale bower Quick Start -> serve locally). Low-risk personal-repo README fix."
  }
 ]
