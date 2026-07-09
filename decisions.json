@@ -457,5 +457,12 @@
   "repo": "melvincarvalho/nostrgit",
   "action": "accepted",
   "note": "In flight - PR https://github.com/melvincarvalho/nostrgit/pull/1 (add MIT LICENSE). Low-risk personal-repo fix."
+ },
+ {
+  "ts": "2026-07-09T03:50:00Z",
+  "id": "json-rocks-13-metascraper--plugins",
+  "repo": "spux/json.rocks",
+  "action": "done",
+  "note": "Merged - PR https://github.com/spux/json.rocks/pull/21 (squash 018fa194b). Confirmed via pin-status reconciliation."
  }
 ]

@@ -3,31 +3,15 @@
  "refreshed": true,
  "note": "All live survey findings (done/rejected removed), ranked. \"headline\" is how many the Worklist tab shows; the rest are under All. Accept/reject via decisions.json, then re-run refresh-worklist.mjs.",
  "resolved": {
-  "done": 15,
+  "done": 16,
   "rejected": 2,
-  "accepted": 11
+  "accepted": 10
  },
  "pinned": 14,
  "deferred": 1,
  "headline": 12,
  "total": 449,
  "items": [
-  {
-   "id": "json-rocks-13-metascraper--plugins",
-   "repo": "spux/json.rocks",
-   "pitch": "13 metascraper-* plugins imported by the server are undeclared phantom deps (present only transitively via a commented-out package) — declare them before a dep cleanup breaks startup.",
-   "kind": "cleanup",
-   "effort": "small",
-   "score": 26,
-   "status": "accepted",
-   "priority": "pin",
-   "evidence": "bin/server.js:12-31; package.json declares only 5 metascraper plugins",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/spux/json.rocks/",
-    "https://github.com/spux/json.rocks"
-   ]
-  },
   {
    "id": "dnstr-org-packagejson-mainindexjs-but",
    "repo": "nosdav/dnstr.org",
