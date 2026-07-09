@@ -2376,7 +2376,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2020-02",
     "note": "README/LICENSE-only Solid extractors placeholder; not on npm and not imported anywhere."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melvincarvalho/inbox",
@@ -3316,7 +3318,7 @@
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
  },
  "archived": {
-  "count": 79,
+  "count": 80,
   "date": "2026-07-09",
   "note": "Archived via gh repo archive (reversible): 22 melbot snapshots, 17 quantumpayments, 5 spux, play-grounds/liquid, 5 solid-live. All verified isArchived=true."
  }
