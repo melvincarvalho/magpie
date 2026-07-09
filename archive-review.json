@@ -54,7 +54,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Redundant daily snapshot in a prev/next-linked chain, superseded by next day; npm stays live independent of GitHub archive."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220717",
@@ -78,7 +80,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Daily snapshot, self-referential chain only."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220718",
@@ -102,7 +106,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Daily snapshot, superseded by next day."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220719",
@@ -126,7 +132,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Daily snapshot in redundant chain."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220720",
@@ -150,7 +158,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Daily snapshot; download count is passive mirror traffic, not real usage."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220721",
@@ -174,7 +184,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Daily snapshot, self-referential prev/next only."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220722",
@@ -198,7 +210,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Daily snapshot, superseded."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220723",
@@ -222,7 +236,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Daily snapshot in redundant chain."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220724",
@@ -246,7 +262,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Daily snapshot, self-referential only."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220725",
@@ -270,7 +288,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Daily snapshot; not canonical latest of the bot (chain continues to 20220731)."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melvincarvalho/rwwcoin",
@@ -438,7 +458,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Earliest minimal snapshot, not even npm-published; committed node_modules, purely superseded."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220706",
@@ -462,7 +484,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Redundant daily bot snapshot, not npm-published, superseded next day, no dependents or live target."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220707",
@@ -486,7 +510,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Redundant daily snapshot, not published, only 6 commits, superseded by 20220708."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220708",
@@ -510,7 +536,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Published daily snapshot with no real dependents; npm copy survives archive so nothing lost."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220709",
@@ -534,7 +562,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Prior npm flag confirmed published but zero dependents; immutable npm package unaffected by GitHub archive."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220710",
@@ -558,7 +588,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Published vanity daily snapshot, no external use, archive non-lossy."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220711",
@@ -582,7 +614,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Redundant published daily snapshot with zero dependents."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220712",
@@ -606,7 +640,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Published daily snapshot, superseded, no real usage."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220713",
@@ -630,7 +666,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Published daily snapshot with no dependents; npm artifact persists past archive."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220714",
@@ -654,7 +692,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Redundant published daily snapshot, zero external dependents."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220715",
@@ -678,7 +718,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Published daily snapshot, no real usage, superseded next day."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melbotz/melbot_20220726",
@@ -702,7 +744,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2022-07",
     "note": "Later published daily snapshot but still superseded and dependent-free; archive non-lossy."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melvincarvalho/bots",
@@ -3076,5 +3120,10 @@
    "spux/me"
   ],
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
+ },
+ "archived": {
+  "count": 22,
+  "date": "2026-07-09",
+  "note": "22 melbotz/melbot_YYYYMMDD daily snapshots archived via gh repo archive (reversible; npm packages unaffected). All verified isArchived=true."
  }
 }
