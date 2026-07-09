@@ -2452,7 +2452,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-04",
     "note": "Vendored AdminLTE 2.3.3 copy (package name admin-lte); Pages demo survives non-destructive archive."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melvincarvalho/search",
@@ -3196,7 +3198,7 @@
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
  },
  "archived": {
-  "count": 59,
+  "count": 60,
   "date": "2026-07-09",
   "note": "Archived via gh repo archive (reversible): 22 melbot snapshots, 17 quantumpayments, 5 spux, play-grounds/liquid, 5 solid-live. All verified isArchived=true."
  }

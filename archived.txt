@@ -60,3 +60,4 @@ melvincarvalho/docs
 melvincarvalho/search
 melvincarvalho/rwwcoin
 melvincarvalho/bots
+melvincarvalho/scaffold
