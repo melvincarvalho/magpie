@@ -45,3 +45,9 @@ spux/info
 spux/realtime
 spux/spux-util
 spux/spux-todomvc
+play-grounds/liquid
+solid-live/WorldWideWeb
+solid-live/app
+solid-live/code-of-conduct
+solid-live/extension
+solid-live/invites

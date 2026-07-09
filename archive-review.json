@@ -1010,7 +1010,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2021-03",
     "note": "README-only 'liquid play ground' stub, single 2021 commit, no code/homepage/dependents."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "play-grounds/slidev",
@@ -1546,7 +1548,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-09",
     "note": "Name is notable-sounding but content is only a README stub with no code or served artifact."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "solid-live/app",
@@ -1570,7 +1574,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-10",
     "note": "Empty stub, single 2016 commit, no code or dependents."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "solid-live/code-of-conduct",
@@ -1594,7 +1600,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-04",
     "note": "Standard code-of-conduct text, no dependents, no pages; safe to archive."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "solid-live/extension",
@@ -1618,7 +1626,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-10",
     "note": "Empty stub browser-extension placeholder, single 2016 commit, no code."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "solid/communication",
@@ -2644,7 +2654,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2016-03",
     "note": "README-only placeholder repo (empty donation address), no code, only self-reference in search."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "solidpayorg/node-lnbits",
@@ -3166,8 +3178,8 @@
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
  },
  "archived": {
-  "count": 44,
+  "count": 50,
   "date": "2026-07-09",
-  "note": "Archived via gh repo archive (reversible; npm unaffected): 22 melbot snapshots + 17 quantumpayments stubs + 5 spux stubs. All verified isArchived=true."
+  "note": "Archived via gh repo archive (reversible): 22 melbot snapshots, 17 quantumpayments, 5 spux, play-grounds/liquid, 5 solid-live. All verified isArchived=true."
  }
 }
