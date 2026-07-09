@@ -10,13 +10,19 @@
 #   ./archive-actions.sh --go --delete   # also run BUCKET 2 (DELETE, permanent)
 # BUCKET 3 (transfer/leave) is never auto-run — manual, see notes at bottom.
 #
-# Requires: gh auth status  (GitHub CLI, authenticated; delete needs delete_repo scope)
-# Archiving is reversible: gh repo unarchive owner/repo. Deleting is NOT.
+# Archived repos are appended to archived.txt so the dashboard headline count
+# ticks down toward 1,000. Archiving is reversible (gh repo unarchive); delete is NOT.
+# Requires: gh auth status  (delete needs the delete_repo scope).
 # ============================================================
 set -uo pipefail
+HERE="$(cd "$(dirname "$0")" && pwd)"; ARCHIVED="$HERE/archived.txt"
 RUN=0; DODEL=0
 for a in "$@"; do [ "$a" = "--go" ] && RUN=1; [ "$a" = "--delete" ] && DODEL=1; done
-arch(){ if [ "$RUN" = 1 ]; then gh repo archive "$1" --yes; else echo "DRY archive : $1"; fi; }
+arch(){
+  if [ "$RUN" = 1 ]; then
+    if gh repo archive "$1" --yes; then grep -qxF "$1" "$ARCHIVED" 2>/dev/null || echo "$1" >> "$ARCHIVED"; fi
+  else echo "DRY archive : $1"; fi
+}
 del(){ if [ "$RUN" = 1 ] && [ "$DODEL" = 1 ]; then gh repo delete "$1" --yes; else echo "DRY DELETE  : $1  (needs --go --delete)"; fi; }
 echo
 echo "=== BUCKET 1: ARCHIVE — 93 repos, reversible (default action) ==="
