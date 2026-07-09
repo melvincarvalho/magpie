@@ -3,9 +3,9 @@
  "refreshed": true,
  "note": "All live survey findings (done/rejected removed), ranked. \"headline\" is how many the Worklist tab shows; the rest are under All. Accept/reject via decisions.json, then re-run refresh-worklist.mjs.",
  "resolved": {
-  "done": 9,
+  "done": 15,
   "rejected": 2,
-  "accepted": 10
+  "accepted": 4
  },
  "pinned": 14,
  "deferred": 1,
@@ -45,22 +45,6 @@
    ]
   },
   {
-   "id": "fork-talk-github-io-logopng-is-a",
-   "repo": "fork-talk/fork-talk.github.io",
-   "pitch": "logo.png is a 914 KB 1254x1254 PNG rendered as a 28x28 nav icon on every page — resize/compress (same oversized file duplicated in bip110).",
-   "kind": "cleanup",
-   "effort": "small",
-   "score": 26,
-   "status": "accepted",
-   "priority": "pin",
-   "evidence": "logo.png 914174 bytes; style.css:71 28px",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/fork-talk/fork-talk.github.io/",
-    "https://github.com/fork-talk/fork-talk.github.io"
-   ]
-  },
-  {
    "id": "jsclaw-github-io-landing-page-hardcodes",
    "repo": "jsclaw/jsclaw.github.io",
    "pitch": "Landing page hardcodes v0.0.10 in four places (incl. JSON-LD softwareVersion for SEO) while jsclaw is at 0.0.20.",
@@ -77,70 +61,6 @@
    ]
   },
   {
-   "id": "bitmark-kernel-add-a-license",
-   "repo": "project-bitmark/bitmark-kernel",
-   "pitch": "Add a LICENSE file: README and package.json declare AGPL-3.0-or-later but no license text is committed.",
-   "kind": "docs",
-   "effort": "small",
-   "score": 18,
-   "status": "accepted",
-   "priority": "pin",
-   "evidence": "no LICENSE; package.json license AGPL-3.0-or-later",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/project-bitmark/bitmark-kernel/",
-    "https://github.com/project-bitmark/bitmark-kernel"
-   ]
-  },
-  {
-   "id": "rootstock-three-contracts-five",
-   "repo": "play-grounds/rootstock",
-   "pitch": "Three contracts, five ops scripts and a faucet dApp but no README — add setup/deploy instructions.",
-   "kind": "docs",
-   "effort": "small",
-   "score": 18,
-   "status": "accepted",
-   "priority": "pin",
-   "evidence": "no README.md; contracts/ scripts/ faucet/ present",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/play-grounds/rootstock/",
-    "https://github.com/play-grounds/rootstock"
-   ]
-  },
-  {
-   "id": "bip110-add-a-readme",
-   "repo": "fork-talk/bip110",
-   "pitch": "Add a README and a LICENSE — the page footer claims \"MIT License\" but no license text is committed and the landing page is empty.",
-   "kind": "docs",
-   "effort": "small",
-   "score": 18,
-   "status": "accepted",
-   "priority": "pin",
-   "evidence": "index.html:488; no README/LICENSE",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/fork-talk/bip110/",
-    "https://github.com/fork-talk/bip110"
-   ]
-  },
-  {
-   "id": "bip110-monitor-readme-data-sources",
-   "repo": "fork-talk/bip110-monitor",
-   "pitch": "README \"Data sources\" says mempool.space, but all code fetches bip110monitor.com — fix the README.",
-   "kind": "docs",
-   "effort": "small",
-   "score": 18,
-   "status": "accepted",
-   "priority": "pin",
-   "evidence": "README vs cli.mjs:4, js/api.mjs:2",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/fork-talk/bip110-monitor/",
-    "https://github.com/fork-talk/bip110-monitor"
-   ]
-  },
-  {
    "id": "fund-agent-explorer-link-after",
    "repo": "blocktrails/fund-agent",
    "pitch": "Explorer link after broadcast is hardcoded to mempool.space/testnet4 regardless of voucher chain, so btc/signet users get a wrong link.",
@@ -154,22 +74,6 @@
    "seeAlso": [
     "http://localhost:5445/blocktrails/fund-agent/",
     "https://github.com/blocktrails/fund-agent"
-   ]
-  },
-  {
-   "id": "beacon-add-a-license",
-   "repo": "JavaScriptSolidServer/beacon",
-   "pitch": "Add a LICENSE file — package.json declares MIT and it is published to npm as nostr-beacon 0.0.4, but no LICENSE exists.",
-   "kind": "cleanup",
-   "effort": "small",
-   "score": 14,
-   "status": "accepted",
-   "priority": "pin",
-   "evidence": "package.json license MIT; no LICENSE in root",
-   "confidence": 4,
-   "seeAlso": [
-    "http://localhost:5445/JavaScriptSolidServer/beacon/",
-    "https://github.com/JavaScriptSolidServer/beacon"
    ]
   },
   {

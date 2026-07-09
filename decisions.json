@@ -366,5 +366,47 @@
   "repo": "JavaScriptSolidServer/beacon",
   "action": "accepted",
   "note": "PR https://github.com/JavaScriptSolidServer/beacon/pull/42"
+ },
+ {
+  "ts": "2026-07-09T02:11:12Z",
+  "id": "beacon-add-a-license",
+  "repo": "JavaScriptSolidServer/beacon",
+  "action": "done",
+  "note": "Merged - PR https://github.com/JavaScriptSolidServer/beacon/pull/42 (squash 956e4c91e). LICENSE (MIT) added. Reconciliation: docs/license batch."
+ },
+ {
+  "ts": "2026-07-09T02:11:12Z",
+  "id": "bitmark-kernel-add-a-license",
+  "repo": "project-bitmark/bitmark-kernel",
+  "action": "done",
+  "note": "Merged - PR https://github.com/project-bitmark/bitmark-kernel/pull/7 (squash 6468bcd15). LICENSE (AGPL-3.0-or-later) added. Reconciliation: docs/license batch."
+ },
+ {
+  "ts": "2026-07-09T02:11:12Z",
+  "id": "bip110-add-a-readme",
+  "repo": "fork-talk/bip110",
+  "action": "done",
+  "note": "Merged - PR https://github.com/fork-talk/bip110/pull/1 (squash 128acca97). README + LICENSE + shrunk logo.png. Reconciliation: docs/license batch."
+ },
+ {
+  "ts": "2026-07-09T02:11:12Z",
+  "id": "bip110-monitor-readme-data-sources",
+  "repo": "fork-talk/bip110-monitor",
+  "action": "done",
+  "note": "Merged - PR https://github.com/fork-talk/bip110-monitor/pull/1 (squash 4e8680a87). README data-sources corrected. Reconciliation: docs/license batch."
+ },
+ {
+  "ts": "2026-07-09T02:11:12Z",
+  "id": "rootstock-three-contracts-five",
+  "repo": "play-grounds/rootstock",
+  "action": "done",
+  "note": "Merged - PR https://github.com/play-grounds/rootstock/pull/1 (squash 684d22d56). README added. Reconciliation: docs/license batch."
+ },
+ {
+  "ts": "2026-07-09T02:11:12Z",
+  "id": "fork-talk-github-io-logopng-is-a",
+  "repo": "fork-talk/fork-talk.github.io",
+  "action": "done",
+  "note": "Merged - PR https://github.com/fork-talk/fork-talk.github.io/pull/2 (squash 5f5330988). Oversized nav logo.png shrunk. Reconciliation: docs/license batch."
  }
 ]
