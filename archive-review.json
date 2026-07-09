@@ -1668,7 +1668,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2020-12",
     "note": "Already archived upstream (isArchived=true); strategy docs stay readable when archived."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09 (already archived upstream)"
   },
   {
    "repo": "solid/education",
@@ -1694,7 +1696,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2025-02",
     "note": "Already archived upstream despite recent edits; curated links remain readable, no data loss."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09 (already archived upstream)"
   },
   {
    "repo": "solid/research-topics",
@@ -1720,7 +1724,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2025-06",
     "note": "Already archived upstream; PDFs and research notes stay fully accessible, so no lossy archive."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09 (already archived upstream)"
   },
   {
    "repo": "solidpayorg/brain",
@@ -3202,7 +3208,7 @@
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
  },
  "archived": {
-  "count": 62,
+  "count": 65,
   "date": "2026-07-09",
   "note": "Archived via gh repo archive (reversible): 22 melbot snapshots, 17 quantumpayments, 5 spux, play-grounds/liquid, 5 solid-live. All verified isArchived=true."
  }

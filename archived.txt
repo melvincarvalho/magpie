@@ -63,3 +63,6 @@ melvincarvalho/bots
 melvincarvalho/scaffold
 melvincarvalho/lget
 melvincarvalho/chat
+solid/communication
+solid/education
+solid/research-topics
