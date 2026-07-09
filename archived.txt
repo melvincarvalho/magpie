@@ -54,3 +54,4 @@ solid-live/invites
 melvincarvalho/elgg
 melvincarvalho/solid-ipfs
 melvincarvalho/searx
+melvincarvalho/rdf-libraries

@@ -866,7 +866,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2017-11",
     "note": "README-only 'testing rdf libraries' stub, initial commit only, 1 star, no code to depend on."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melvincarvalho/react-brain",
@@ -3184,7 +3186,7 @@
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
  },
  "archived": {
-  "count": 53,
+  "count": 54,
   "date": "2026-07-09",
   "note": "Archived via gh repo archive (reversible): 22 melbot snapshots, 17 quantumpayments, 5 spux, play-grounds/liquid, 5 solid-live. All verified isArchived=true."
  }
