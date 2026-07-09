@@ -4,14 +4,14 @@
   "id": "nanoblog-mirror-clone-is",
   "repo": "melvincarvalho/nanoblog",
   "action": "rejected",
-  "note": "False positive: remote is genuinely empty (0 commits, HTTP 409), not a failed fetch. Empty-local does not imply failed-sync — check the remote before flagging. Empty clones are now excluded from the dashboard inventory."
+  "note": "False positive: remote is genuinely empty (0 commits, HTTP 409), not a failed fetch. Empty-local does not imply failed-sync \u2014 check the remote before flagging. Empty clones are now excluded from the dashboard inventory."
  },
  {
   "ts": "2026-07-08T19:05:00Z",
   "id": "liwi-mirror-clone-is",
   "repo": "melvincarvalho/liwi",
   "action": "rejected",
-  "note": "False positive: remote genuinely empty (0 commits, HTTP 409). Same lesson as nanoblog — verify remote has commits before claiming a sync failure."
+  "note": "False positive: remote genuinely empty (0 commits, HTTP 409). Same lesson as nanoblog \u2014 verify remote has commits before claiming a sync failure."
  },
  {
   "ts": "2026-07-08T19:15:00Z",
@@ -25,14 +25,14 @@
   "id": "alarm-top-level-permission-notificationpermission",
   "repo": "solid-apps/alarm",
   "action": "accepted",
-  "note": "In flight — PR https://github.com/solid-apps/alarm/pull/4 (Notification-API guard)."
+  "note": "In flight \u2014 PR https://github.com/solid-apps/alarm/pull/4 (Notification-API guard)."
  },
  {
   "ts": "2026-07-08T19:35:00Z",
   "id": "alarm-alarms-only-fire",
   "repo": "solid-apps/alarm",
   "action": "accepted",
-  "note": "In flight — PR https://github.com/solid-apps/alarm/pull/4 (background-tab throttle fix)."
+  "note": "In flight \u2014 PR https://github.com/solid-apps/alarm/pull/4 (background-tab throttle fix)."
  },
  {
   "ts": "2026-07-08T19:50:00Z",
@@ -408,5 +408,12 @@
   "repo": "fork-talk/fork-talk.github.io",
   "action": "done",
   "note": "Merged - PR https://github.com/fork-talk/fork-talk.github.io/pull/2 (squash 5f5330988). Oversized nav logo.png shrunk. Reconciliation: docs/license batch."
+ },
+ {
+  "ts": "2026-07-09T03:30:00Z",
+  "id": "http-schnorr-auth-test-vectors-test",
+  "repo": "nostrcg/http-schnorr-auth",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/nostrcg/http-schnorr-auth/pull/28 (drop stray Test Public Key line so test-vectors.json is valid JSON; verified it parses, pubkey preserved 11x in vectors)."
  }
 ]

@@ -5,7 +5,7 @@
  "resolved": {
   "done": 15,
   "rejected": 2,
-  "accepted": 4
+  "accepted": 5
  },
  "pinned": 14,
  "deferred": 1,
@@ -419,7 +419,7 @@
    "kind": "bug",
    "effort": "small",
    "score": 88,
-   "status": "open",
+   "status": "accepted",
    "priority": null,
    "evidence": "test-vectors/test-vectors.json:1; python3 -m json.tool fails 'Expecting value: line 1 column 1'; after stripping the line, all 10 vector event IDs verify correctly",
    "confidence": 5,
