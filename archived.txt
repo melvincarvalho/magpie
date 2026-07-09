@@ -53,3 +53,4 @@ solid-live/extension
 solid-live/invites
 melvincarvalho/elgg
 melvincarvalho/solid-ipfs
+melvincarvalho/searx
