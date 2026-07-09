@@ -4,14 +4,14 @@
   "id": "nanoblog-mirror-clone-is",
   "repo": "melvincarvalho/nanoblog",
   "action": "rejected",
-  "note": "False positive: remote is genuinely empty (0 commits, HTTP 409), not a failed fetch. Empty-local does not imply failed-sync \u2014 check the remote before flagging. Empty clones are now excluded from the dashboard inventory."
+  "note": "False positive: remote is genuinely empty (0 commits, HTTP 409), not a failed fetch. Empty-local does not imply failed-sync — check the remote before flagging. Empty clones are now excluded from the dashboard inventory."
  },
  {
   "ts": "2026-07-08T19:05:00Z",
   "id": "liwi-mirror-clone-is",
   "repo": "melvincarvalho/liwi",
   "action": "rejected",
-  "note": "False positive: remote genuinely empty (0 commits, HTTP 409). Same lesson as nanoblog \u2014 verify remote has commits before claiming a sync failure."
+  "note": "False positive: remote genuinely empty (0 commits, HTTP 409). Same lesson as nanoblog — verify remote has commits before claiming a sync failure."
  },
  {
   "ts": "2026-07-08T19:15:00Z",
@@ -25,14 +25,14 @@
   "id": "alarm-top-level-permission-notificationpermission",
   "repo": "solid-apps/alarm",
   "action": "accepted",
-  "note": "In flight \u2014 PR https://github.com/solid-apps/alarm/pull/4 (Notification-API guard)."
+  "note": "In flight — PR https://github.com/solid-apps/alarm/pull/4 (Notification-API guard)."
  },
  {
   "ts": "2026-07-08T19:35:00Z",
   "id": "alarm-alarms-only-fire",
   "repo": "solid-apps/alarm",
   "action": "accepted",
-  "note": "In flight \u2014 PR https://github.com/solid-apps/alarm/pull/4 (background-tab throttle fix)."
+  "note": "In flight — PR https://github.com/solid-apps/alarm/pull/4 (background-tab throttle fix)."
  },
  {
   "ts": "2026-07-08T19:50:00Z",
@@ -625,5 +625,148 @@
   "repo": "blocktrails/fund-agent",
   "action": "done",
   "note": "Merged - PR https://github.com/blocktrails/fund-agent/pull/7 (squash 12f8ecb). Local mirror pulled up to date. (local clone diverged from tool use; PR merged, clone left untouched)"
+ },
+ {
+  "ts": "2026-07-09T08:35:56.797Z",
+  "id": "contacts-follow-unfollow-silently-destroy-the",
+  "repo": "nostr-client/contacts",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-09T08:38:24.980Z",
+  "id": "contacts-follow-unfollow-silently-destroy-the",
+  "repo": "nostr-client/contacts",
+  "action": "accepted",
+  "note": "Accepted (pinned). Guarding publishContacts against null prev kind-3, no null caching. Branch + PR."
+ },
+ {
+  "ts": "2026-07-09T08:41:53.463Z",
+  "id": "contacts-follow-unfollow-silently-destroy-the",
+  "repo": "nostr-client/contacts",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/nostr-client/contacts/pull/1 (refuse publish on null prev kind-3, no null caching, allowCreate escape hatch; stub-tested)."
+ },
+ {
+  "ts": "2026-07-09T08:45:53.317Z",
+  "id": "contacts-follow-unfollow-silently-destroy-the",
+  "repo": "nostr-client/contacts",
+  "action": "done",
+  "note": "Merged - PR https://github.com/nostr-client/contacts/pull/1 (squash 3824528). publishContacts refuses null prev kind-3, null fetch never cached, allowCreate first-list path. Local mirror pulled up to date."
+ },
+ {
+  "ts": "2026-07-09T08:48:47.538Z",
+  "id": "nostr-git-sync-verifyevent-only-matches",
+  "repo": "JavaScriptSolidServer/nostr-git-sync",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-09T08:52:16.791Z",
+  "id": "wallet-the-whole-solid-apps-suite-loads-its-aut",
+  "repo": "solid-apps/wallet",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-09T08:52:48.241Z",
+  "id": "contacts-button-first-list-race-errors",
+  "repo": "nostr-client/contacts",
+  "action": "accepted",
+  "priority": "pin",
+  "note": "Follow-up to contacts-follow-unfollow-silently-destroy-the. In flight - PR https://github.com/nostr-client/contacts/pull/2 (serialize publishes, NO_CONTACT_LIST confirm-to-create on button, visible error state; stub-tested)."
+ },
+ {
+  "ts": "2026-07-09T08:53:37.868Z",
+  "id": "contacts-button-first-list-race-errors",
+  "repo": "nostr-client/contacts",
+  "action": "done",
+  "note": "Merged - PR https://github.com/nostr-client/contacts/pull/2 (squash 5ee1580). Serialized publishes, confirm-to-create first list, visible button errors. Local mirror pulled up to date."
+ },
+ {
+  "ts": "2026-07-09T09:11:52.582Z",
+  "id": "nostr-git-sync-verifyevent-only-matches",
+  "repo": "JavaScriptSolidServer/nostr-git-sync",
+  "priority": "normal"
+ },
+ {
+  "ts": "2026-07-09T09:12:19.398Z",
+  "id": "nostr-chat-profile-picture-urls",
+  "repo": "nostrapps/nostr.chat",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-09T09:12:30.449Z",
+  "id": "wallet-the-whole-solid-apps-suite-loads-its-aut",
+  "repo": "solid-apps/wallet",
+  "action": "rejected",
+  "note": "Rejected by owner: I control both xlogin and every consuming app, npm publish is behind 2FA, and unpinned latest is deliberate at 0.0.x velocity so library fixes propagate to all ~60 apps instantly. Taste: do not re-flag unpinned unpkg.com/xlogin script tags in owned apps."
+ },
+ {
+  "ts": "2026-07-09T09:12:30.477Z",
+  "id": "taproot-taproot-is-a-mainnet-bitcoin-wallet-that",
+  "repo": "solid-apps/taproot",
+  "action": "rejected",
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+ },
+ {
+  "ts": "2026-07-09T09:12:30.502Z",
+  "id": "explorer-index-html-8-loads-auth",
+  "repo": "solid-apps/explorer",
+  "action": "rejected",
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+ },
+ {
+  "ts": "2026-07-09T09:12:30.528Z",
+  "id": "vellum-index-html-10-loads-auth",
+  "repo": "solid-apps/vellum",
+  "action": "rejected",
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+ },
+ {
+  "ts": "2026-07-09T09:12:30.553Z",
+  "id": "timeline-index-html-9-loads-auth",
+  "repo": "solid-apps/timeline",
+  "action": "rejected",
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+ },
+ {
+  "ts": "2026-07-09T09:12:30.577Z",
+  "id": "pilot-index-html-loads-auth-library",
+  "repo": "solid-apps/pilot",
+  "action": "rejected",
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+ },
+ {
+  "ts": "2026-07-09T09:12:30.601Z",
+  "id": "poker-index-html-9-loads-xlogin",
+  "repo": "solid-apps/poker",
+  "action": "rejected",
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+ },
+ {
+  "ts": "2026-07-09T09:12:30.624Z",
+  "id": "chess-index-html-14-loads-xlogin",
+  "repo": "solid-apps/chess",
+  "action": "rejected",
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+ },
+ {
+  "ts": "2026-07-09T09:12:30.647Z",
+  "id": "bitcoin-desktop-index-html-loads-xlogin-sign",
+  "repo": "bitcoin-desktop/bitcoin-desktop",
+  "action": "rejected",
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+ },
+ {
+  "ts": "2026-07-09T09:12:30.672Z",
+  "id": "bitmark-hub-index-html-pulls-xlogin-login",
+  "repo": "project-bitmark/bitmark-hub",
+  "action": "rejected",
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+ },
+ {
+  "ts": "2026-07-09T09:12:30.696Z",
+  "id": "bitmark-os-index-html-pulls-xlogin-login",
+  "repo": "project-bitmark/bitmark-os",
+  "action": "rejected",
+  "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
  }
 ]

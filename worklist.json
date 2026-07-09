@@ -3,31 +3,15 @@
  "refreshed": true,
  "note": "All live survey findings (done/rejected removed), ranked. \"headline\" is how many the Worklist tab shows; the rest are under All. Accept/reject via decisions.json, then re-run refresh-worklist.mjs.",
  "resolved": {
-  "done": 32,
-  "rejected": 2,
+  "done": 34,
+  "rejected": 13,
   "accepted": 1
  },
- "pinned": 14,
+ "pinned": 18,
  "deferred": 1,
  "headline": 12,
  "total": 449,
  "items": [
-  {
-   "id": "wallet-the-whole-solid-apps-suite-loads-its-aut",
-   "repo": "solid-apps/wallet",
-   "pitch": "The whole solid-apps suite loads its auth layer from an unpinned, un-SRI'd <script src=\"https://unpkg.com/xlogin\"> (xlogin supplies the credentialed authFetch used for every private-pod read/write), so one hijacked or broken 'latest' publish of xlogin runs with full pod credentials in ~18 apps at once — pin an exact version with an SRI integrity hash, or vendor the file the way intents does.",
-   "kind": "security",
-   "effort": "small",
-   "score": 138,
-   "status": "open",
-   "priority": null,
-   "evidence": "Unversioned, integrity-less `<script src=\"https://unpkg.com/xlogin\">` in index.html across the suite: notifications, camera, gallery, webacl, tunnel, peer, wallet, health, nutrition (batch I) AND weather, maps, messages, contacts, kanban, bookmarks, notes, calendar, split (batch J); taproot loads it too. maps also pulls leaflet@1.9.4 and taproot qrcodejs from CDN without SRI. intents is the only app that vendors it.",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/solid-apps/wallet/",
-    "https://github.com/solid-apps/wallet"
-   ]
-  },
   {
    "id": "nostr-chat-profile-picture-urls",
    "repo": "nostrapps/nostr.chat",
@@ -36,7 +20,7 @@
    "effort": "small",
    "score": 138,
    "status": "open",
-   "priority": null,
+   "priority": "pin",
    "evidence": "index.html:871, index.html:1015-1017",
    "confidence": 5,
    "seeAlso": [
@@ -58,22 +42,6 @@
    "seeAlso": [
     "http://localhost:5445/solid-apps/nexus/",
     "https://github.com/solid-apps/nexus"
-   ]
-  },
-  {
-   "id": "taproot-taproot-is-a-mainnet-bitcoin-wallet-that",
-   "repo": "solid-apps/taproot",
-   "pitch": "taproot is a mainnet Bitcoin wallet that reads the raw secp256k1 private key from the pod into page memory, yet loads its JS from mutable CDN URLs — unpkg.com/xlogin (unversioned) and cdn.jsdelivr.net/gh/davidshimjs/qrcodejs (unversioned), no SRI on any script — so a hijacked package release can exfiltrate the key and drain funds; pin exact versions and add integrity hashes or vendor the scripts.",
-   "kind": "security",
-   "effort": "small",
-   "score": 110,
-   "status": "open",
-   "priority": null,
-   "evidence": "index.html:63-65 (unpkg.com/xlogin unpinned, qrcodejs unpinned, tapscript@1.4.6 pinned but no integrity) + index.html:119-133 loadSecret() reading /private/privkey.jsonld into JS memory",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/solid-apps/taproot/",
-    "https://github.com/solid-apps/taproot"
    ]
   },
   {
@@ -170,22 +138,6 @@
    "seeAlso": [
     "http://localhost:5445/JavaScriptSolidServer/jsserve/",
     "https://github.com/JavaScriptSolidServer/jsserve"
-   ]
-  },
-  {
-   "id": "contacts-follow-unfollow-silently-destroy-the",
-   "repo": "nostr-client/contacts",
-   "pitch": "follow()/unfollow() silently destroy the user's whole follow list when the kind-3 fetch returns null — pool.get() resolves null after its 8s timeout or when the list isn't on the default relays, publishContacts then signs a fresh kind-3 with 0-1 p-tags and empty content, and the null is cached page-wide so every click repeats it — refuse to publish when the previous contact list is null (or require explicit first-list confirmation).",
-   "kind": "bug",
-   "effort": "small",
-   "score": 88,
-   "status": "open",
-   "priority": null,
-   "evidence": "contacts.js:25-34 — myContacts caches cache.promise = pool.get({kinds:[3],authors:[key]}) which can resolve null; contacts.js:42-49 — tags = [...(prevEvent?.tags ?? [])], content = prevEvent?.content ?? ''; contacts.js:60-70 — follow/unfollow publish the result; pool/pool.js:209-228 — list() resolves whatever arrived within 8s, get() returns events[0] ?? null. README ironically promises it 'won't wipe your follows' metadata like careless clients do'.",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/nostr-client/contacts/",
-    "https://github.com/nostr-client/contacts"
    ]
   },
   {
@@ -957,54 +909,6 @@
    ]
   },
   {
-   "id": "explorer-index-html-8-loads-auth",
-   "repo": "solid-apps/explorer",
-   "pitch": "index.html:8 loads the auth layer via unpinned <script src=\"https://unpkg.com/xlogin\"> (no version), so any future npm publish of xlogin runs unreviewed code in the app — pin it like plume pins xlogin@0.0.12.",
-   "kind": "security",
-   "effort": "small",
-   "score": 55,
-   "status": "open",
-   "priority": null,
-   "evidence": "index.html:8 — <script src=\"https://unpkg.com/xlogin\"></script>",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/solid-apps/explorer/",
-    "https://github.com/solid-apps/explorer"
-   ]
-  },
-  {
-   "id": "vellum-index-html-10-loads-auth",
-   "repo": "solid-apps/vellum",
-   "pitch": "index.html:10 loads the auth layer via unpinned <script src=\"https://unpkg.com/xlogin\"> while Crepe is pinned to 7.20.0, so a bad or breaking xlogin publish silently compromises or breaks login — pin a version.",
-   "kind": "security",
-   "effort": "small",
-   "score": 55,
-   "status": "open",
-   "priority": null,
-   "evidence": "index.html:10 — <script src=\"https://unpkg.com/xlogin\"></script>",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/solid-apps/vellum/",
-    "https://github.com/solid-apps/vellum"
-   ]
-  },
-  {
-   "id": "timeline-index-html-9-loads-auth",
-   "repo": "solid-apps/timeline",
-   "pitch": "index.html:9 loads the auth layer via unpinned <script src=\"https://unpkg.com/xlogin\"> (no version), so any future xlogin publish runs unreviewed code in the app — pin it like plume pins xlogin@0.0.12.",
-   "kind": "security",
-   "effort": "small",
-   "score": 55,
-   "status": "open",
-   "priority": null,
-   "evidence": "index.html:9 — <script src=\"https://unpkg.com/xlogin\"></script>",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/solid-apps/timeline/",
-    "https://github.com/solid-apps/timeline"
-   ]
-  },
-  {
    "id": "git-live-jss-live-git-browser",
    "repo": "JavaScriptSolidServer/git",
    "pitch": "The live jss.live/git/ browser renders README/markdown from any user-supplied `?repo=` remote via marked.parse(text) piped straight into dangerouslySetInnerHTML with no sanitizer, so a malicious repo's README can run script on the jss.live origin (DOM XSS).",
@@ -1034,22 +938,6 @@
    "seeAlso": [
     "http://localhost:5445/nip98/nip98.github.io/",
     "https://github.com/nip98/nip98.github.io"
-   ]
-  },
-  {
-   "id": "pilot-index-html-loads-auth-library",
-   "repo": "solid-apps/pilot",
-   "pitch": "index.html loads the auth library from https://unpkg.com/xlogin with no version pin and no SRI hash, so any future npm publish of xlogin executes arbitrary code with the user's authenticated pod session (which PUTs to their WebID and trackers).",
-   "kind": "security",
-   "effort": "small",
-   "score": 55,
-   "status": "open",
-   "priority": null,
-   "evidence": "index.html:544 — <script src=\"https://unpkg.com/xlogin\"></script> (unversioned, no integrity attribute), while the esm.sh dep at line 42 is pinned to @0.0.2",
-   "confidence": 4,
-   "seeAlso": [
-    "http://localhost:5445/solid-apps/pilot/",
-    "https://github.com/solid-apps/pilot"
    ]
   },
   {
@@ -1706,38 +1594,6 @@
    "seeAlso": [
     "http://localhost:5445/solid/object/",
     "https://github.com/solid/object"
-   ]
-  },
-  {
-   "id": "poker-index-html-9-loads-xlogin",
-   "repo": "solid-apps/poker",
-   "pitch": "index.html:9 loads xlogin unpinned from unpkg while pokersolver is pinned to 2.1.4 on the line above — a bad xlogin publish silently compromises or breaks the app; pin a version.",
-   "kind": "security",
-   "effort": "small",
-   "score": 41,
-   "status": "open",
-   "priority": null,
-   "evidence": "index.html:8-9 — pokersolver@2.1.4 pinned, xlogin unversioned",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/solid-apps/poker/",
-    "https://github.com/solid-apps/poker"
-   ]
-  },
-  {
-   "id": "chess-index-html-14-loads-xlogin",
-   "repo": "solid-apps/chess",
-   "pitch": "index.html:14 loads xlogin unpinned from unpkg while chessground assets are pinned to 9.1.0 — a bad xlogin publish silently compromises or breaks the app; pin a version.",
-   "kind": "security",
-   "effort": "small",
-   "score": 41,
-   "status": "open",
-   "priority": null,
-   "evidence": "index.html:9-14 — chessground@9.1.0 pinned, xlogin unversioned",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/solid-apps/chess/",
-    "https://github.com/solid-apps/chess"
    ]
   },
   {
@@ -3661,22 +3517,6 @@
    ]
   },
   {
-   "id": "bitcoin-desktop-index-html-loads-xlogin-sign",
-   "repo": "bitcoin-desktop/bitcoin-desktop",
-   "pitch": "index.html loads the xlogin sign-in library from https://unpkg.com/xlogin unpinned and without SRI, so a self-custody Bitcoin app fetches its credential-handling code as mutable CDN 'latest'.",
-   "kind": "security",
-   "effort": "small",
-   "score": 20,
-   "status": "open",
-   "priority": null,
-   "evidence": "index.html:62 — <script src=\"https://unpkg.com/xlogin\"></script> (no version, no integrity)",
-   "confidence": 3,
-   "seeAlso": [
-    "http://localhost:5445/bitcoin-desktop/bitcoin-desktop/",
-    "https://github.com/bitcoin-desktop/bitcoin-desktop"
-   ]
-  },
-  {
    "id": "japps-example-index-html-reads-e",
    "repo": "json-os/japps",
    "pitch": "example/index.html reads e.detail.pubkey from the nlAuth event, but nip7.js dispatches nlAuth with detail {type} only, so the login status always renders the fallback string \"unknown…nown\".",
@@ -4154,38 +3994,6 @@
    "seeAlso": [
     "http://localhost:5445/melvincarvalho/xlogin/",
     "https://github.com/melvincarvalho/xlogin"
-   ]
-  },
-  {
-   "id": "bitmark-hub-index-html-pulls-xlogin-login",
-   "repo": "project-bitmark/bitmark-hub",
-   "pitch": "index.html pulls the xlogin login library from https://unpkg.com/xlogin unpinned and without SRI, exposing the pod sign-in flow to CDN 'latest' tampering.",
-   "kind": "security",
-   "effort": "small",
-   "score": 16,
-   "status": "open",
-   "priority": null,
-   "evidence": "index.html:82 — <script src=\"https://unpkg.com/xlogin\"></script> (no version, no integrity)",
-   "confidence": 3,
-   "seeAlso": [
-    "http://localhost:5445/project-bitmark/bitmark-hub/",
-    "https://github.com/project-bitmark/bitmark-hub"
-   ]
-  },
-  {
-   "id": "bitmark-os-index-html-pulls-xlogin-login",
-   "repo": "project-bitmark/bitmark-os",
-   "pitch": "index.html pulls the xlogin login library from https://unpkg.com/xlogin unpinned and without SRI, exposing the pod sign-in flow to CDN 'latest' tampering.",
-   "kind": "security",
-   "effort": "small",
-   "score": 16,
-   "status": "open",
-   "priority": null,
-   "evidence": "index.html:62 — <script src=\"https://unpkg.com/xlogin\"></script> (no version, no integrity)",
-   "confidence": 3,
-   "seeAlso": [
-    "http://localhost:5445/project-bitmark/bitmark-os/",
-    "https://github.com/project-bitmark/bitmark-os"
    ]
   },
   {
