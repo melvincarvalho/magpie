@@ -5,7 +5,7 @@
  "resolved": {
   "done": 34,
   "rejected": 13,
-  "accepted": 1
+  "accepted": 2
  },
  "pinned": 18,
  "deferred": 1,
@@ -19,7 +19,7 @@
    "kind": "security",
    "effort": "small",
    "score": 138,
-   "status": "open",
+   "status": "accepted",
    "priority": "pin",
    "evidence": "index.html:871, index.html:1015-1017",
    "confidence": 5,

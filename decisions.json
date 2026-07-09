@@ -768,5 +768,12 @@
   "repo": "project-bitmark/bitmark-os",
   "action": "rejected",
   "note": "xlogin unpinned-CDN family — same rationale as suite-wide wallet item: owner controls both sides, npm 2FA, unpinned deliberate at 0.0.x."
+ },
+ {
+  "ts": "2026-07-09T09:19:09.753Z",
+  "id": "nostr-chat-profile-picture-urls",
+  "repo": "nostrapps/nostr.chat",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/nostrapps/nostr.chat/pull/1 (safePictureUrl http(s)-only validation + DOM src assignment at both avatar sites; escapeHtml alone would not fix the quote breakout)"
  }
 ]
