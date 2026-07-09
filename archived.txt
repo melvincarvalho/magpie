@@ -58,3 +58,5 @@ melvincarvalho/rdf-libraries
 melvincarvalho/watch
 melvincarvalho/docs
 melvincarvalho/search
+melvincarvalho/rwwcoin
+melvincarvalho/bots

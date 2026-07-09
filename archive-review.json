@@ -314,7 +314,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2014-04",
     "note": "One-line README stub with no code; historical mention exists but nothing dereferences or imports the repo."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "dacse/dacse.org",
@@ -770,7 +772,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2015-12",
     "note": "Single-commit 'solid bots' README stub with no code, dependents, or namespace."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "melvincarvalho/brain",
@@ -3192,7 +3196,7 @@
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
  },
  "archived": {
-  "count": 57,
+  "count": 59,
   "date": "2026-07-09",
   "note": "Archived via gh repo archive (reversible): 22 melbot snapshots, 17 quantumpayments, 5 spux, play-grounds/liquid, 5 solid-live. All verified isArchived=true."
  }
