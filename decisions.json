@@ -782,5 +782,18 @@
   "repo": "nostrapps/nostr.chat",
   "action": "done",
   "note": "Merged - PR https://github.com/nostrapps/nostr.chat/pull/1 (squash 1c1351d). http(s)-only picture URL validation + DOM src assignment at both avatar sites. Local mirror pulled up to date."
+ },
+ {
+  "ts": "2026-07-09T09:30:08.079Z",
+  "id": "jsserve-auth-user-pass-option-documented",
+  "repo": "JavaScriptSolidServer/jsserve",
+  "priority": "pin"
+ },
+ {
+  "ts": "2026-07-09T10:38:28.775Z",
+  "id": "jsserve-auth-user-pass-option-documented",
+  "repo": "JavaScriptSolidServer/jsserve",
+  "action": "accepted",
+  "note": "In flight - PR https://github.com/JavaScriptSolidServer/jsserve/pull/5 (fail closed on --auth, banner says public/no-auth, README de-advertises; JSS has no basic auth to forward to)"
  }
 ]

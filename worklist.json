@@ -5,13 +5,29 @@
  "resolved": {
   "done": 35,
   "rejected": 13,
-  "accepted": 1
+  "accepted": 2
  },
- "pinned": 18,
+ "pinned": 19,
  "deferred": 1,
  "headline": 12,
  "total": 449,
  "items": [
+  {
+   "id": "jsserve-auth-user-pass-option-documented",
+   "repo": "JavaScriptSolidServer/jsserve",
+   "pitch": "The --auth <user:pass> option is documented in the README and defined at bin/jsserve.js:131 but options.auth is never read or forwarded to JSS, so 'servejss --auth user:pass ~/sync' (the README's WebDAV use case) silently serves PUT/DELETE-enabled files on 0.0.0.0 with no authentication at all.",
+   "kind": "security",
+   "effort": "small",
+   "score": 96,
+   "status": "accepted",
+   "priority": "pin",
+   "evidence": "bin/jsserve.js:131 — .option('--auth <credentials>', 'Enable basic auth (user:pass)'); run() builds jssArgs without any auth flag and never references options.auth",
+   "confidence": 5,
+   "seeAlso": [
+    "http://localhost:5445/JavaScriptSolidServer/jsserve/",
+    "https://github.com/JavaScriptSolidServer/jsserve"
+   ]
+  },
   {
    "id": "nexus-nexus-s-html-markdown-sanitizer-strips-s",
    "repo": "solid-apps/nexus",
@@ -106,22 +122,6 @@
    "seeAlso": [
     "http://localhost:5445/solid-apps/plume/",
     "https://github.com/solid-apps/plume"
-   ]
-  },
-  {
-   "id": "jsserve-auth-user-pass-option-documented",
-   "repo": "JavaScriptSolidServer/jsserve",
-   "pitch": "The --auth <user:pass> option is documented in the README and defined at bin/jsserve.js:131 but options.auth is never read or forwarded to JSS, so 'servejss --auth user:pass ~/sync' (the README's WebDAV use case) silently serves PUT/DELETE-enabled files on 0.0.0.0 with no authentication at all.",
-   "kind": "security",
-   "effort": "small",
-   "score": 96,
-   "status": "open",
-   "priority": null,
-   "evidence": "bin/jsserve.js:131 — .option('--auth <credentials>', 'Enable basic auth (user:pass)'); run() builds jssArgs without any auth flag and never references options.auth",
-   "confidence": 5,
-   "seeAlso": [
-    "http://localhost:5445/JavaScriptSolidServer/jsserve/",
-    "https://github.com/JavaScriptSolidServer/jsserve"
    ]
   },
   {
