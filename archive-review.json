@@ -340,7 +340,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2017-03",
     "note": "dacse.org resolves NXDOMAIN and repo holds only README+LICENSE, so it backs no live site."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "gitpay/sales",
@@ -1904,7 +1906,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2012-12",
     "note": "2012 README-only stub, no code, not on npm, 0 forks."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "taskify/taskify-data",
@@ -1928,7 +1932,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2012-11",
     "note": "2012 README-only stub ('taskify data server'), no code or data, not on npm."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "taskify/taskify-drivers",
@@ -1952,7 +1958,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2012-11",
     "note": "2012 README-only stub, no code, not on npm, 0 forks."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "taskify/taskify-hub",
@@ -1976,7 +1984,9 @@
     "uniqueDataLoss": false,
     "lastActivity": "2012-11",
     "note": "Single 2012 initial commit, README is a one-line stub with no code, namespace, or dependents."
-   }
+   },
+   "status": "archived",
+   "archivedAt": "2026-07-09"
   },
   {
    "repo": "unhosted/dns-scripts",
@@ -3208,7 +3218,7 @@
   "note": "GitHub archive is non-destructive and reversible (repo stays readable, Pages/npm stay live), which is why npm-published melbot snapshots and PDF/asset repos still confirm."
  },
  "archived": {
-  "count": 65,
+  "count": 70,
   "date": "2026-07-09",
   "note": "Archived via gh repo archive (reversible): 22 melbot snapshots, 17 quantumpayments, 5 spux, play-grounds/liquid, 5 solid-live. All verified isArchived=true."
  }
